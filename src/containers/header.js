@@ -6,7 +6,6 @@ export function HeaderContainer({ children }) {
     <Header>
       <Header.Logo alt={Logo}/>
       <Header.Menu />
-      {children}
     </Header>
   )
 }
