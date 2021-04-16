@@ -4,8 +4,8 @@ import { Header } from '../components'
 export function HeaderContainer({ children }) {
   return (
     <Header>
-      <Header.Logo alt={Logo}/>
-      <Header.Menu />
+      <Header.Logo alt="Logo"/>
+      <Header.Menu/>
     </Header>
   )
 }

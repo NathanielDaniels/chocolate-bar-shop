@@ -1,9 +1,9 @@
 import React from 'react'
-import { Home } from './pages'
+import HeaderContainer from './pages/Home'
 
 function App() {
   return (
-    <Home/>
+    <HeaderContainer/>
   );
 }
 
