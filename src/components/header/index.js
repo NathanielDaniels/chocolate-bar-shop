@@ -13,13 +13,13 @@ Header.Menu = function HeaderMenu({ ...restProps }) {
   return <Menu { ...restProps }>
     <ul>
       <li>
-       <a href="#">Home</a>
+       <a href="#OurMission">Our Mission</a>
       </li>
       <li>
-        <a href="#">About</a>
+        <a href="#Join">Join In</a>
       </li>
       <li>
-        <a href="#">Contact</a>
+        <a href="#Shop">Chocoshop</a>
       </li>
     </ul>
   </Menu>
