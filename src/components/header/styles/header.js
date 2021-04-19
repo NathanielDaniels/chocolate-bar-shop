@@ -8,7 +8,7 @@ export const Container = styled.header`
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  margin-top: 50px;
+  margin-top: 25px;
 `;
 
 export const Menu = styled.nav`

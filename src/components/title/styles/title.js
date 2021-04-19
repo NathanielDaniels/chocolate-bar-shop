@@ -7,7 +7,7 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 12%;
+  padding-left: calc(25% - 100px);
   padding-top: 50px;
 `;
 
