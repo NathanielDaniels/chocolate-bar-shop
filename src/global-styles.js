@@ -18,12 +18,15 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   html, body {
+    width: 100vw;
+    height: 100%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--main-blue);
     color: #333;
     font-size: 16px;
+    overflow-x: hidden;
   }
 
   a {

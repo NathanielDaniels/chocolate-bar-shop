@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,10 +12,12 @@ export const Container = styled.header`
 `;
 
 export const Menu = styled.nav`
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  margin: 0 auto;
+  width: clamp(25em, 50vw, 35em);
   height: 100%;
   background: var(--main-red);
   box-shadow: 0 2px 5px hsl(210, 100%, 20%);
@@ -25,9 +28,10 @@ export const Menu = styled.nav`
     li {
       a {
         color: #fff;
-        font-size: 1.4rem;
+        font-size: clamp(100%, 2vw, 1.4rem);
         transition: border-bottom .2s ease;
         position: relative;
+        
         &::after {
           content: '';
           width: 0px;
@@ -38,7 +42,8 @@ export const Menu = styled.nav`
           left: 0;
           transition: width .3s ease;
         }
-        &:hover{
+        &:hover, &:focus{
+        outline: none;
           &::after {
             width: 100%;
           }
