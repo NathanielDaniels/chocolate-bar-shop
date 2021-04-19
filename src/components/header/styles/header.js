@@ -1,44 +1,47 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.header`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 2px solid red;
-  width: 100%;
-  height: 80px;
-  padding: 0 20px;
-`;
-
-export const Logo = styled.img`
-  width: 50px;
-  height: 50px;
-  display: inherit;
   justify-content: center;
   align-items: center;
-  border: 2px solid blue;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  margin-top: 50px;
 `;
 
 export const Menu = styled.nav`
   display: flex;
-  ${'' /* border: 2px solid yellow; */}
-  width: 40%;
-  background: transparent;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background: var(--main-red);
+  box-shadow: 0 2px 5px hsl(210, 100%, 20%);
   ul {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    &:hover {
-      background: var(--main-red);
-    }
     li {
       a {
         color: #fff;
         font-size: 1.4rem;
         transition: border-bottom .2s ease;
-        &:hover {
-          border-bottom: 1px solid #fff;
+        position: relative;
+        &::after {
+          content: '';
+          width: 0px;
+          height: 3px;
+          background: var(--main-white);
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          transition: width .3s ease;
+        }
+        &:hover{
+          &::after {
+            width: 100%;
+          }
         }
       }
     }

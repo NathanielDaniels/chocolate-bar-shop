@@ -1,10 +1,9 @@
 import React from 'react';
 import { Header } from '../components'
 
-export function HeaderContainer({ children }) {
+export function HeaderContainer() {
   return (
     <Header>
-      <Header.Logo alt="Logo"/>
       <Header.Menu/>
     </Header>
   )

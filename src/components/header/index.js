@@ -1,12 +1,8 @@
 import React from 'react';
-import { Container, Logo, Menu } from './styles/header'
+import { Container, Menu,} from './styles/header'
 
 export default function Header({ children, ...restProps }) {
   return <Container { ...restProps }>{ children }</Container>
-}
-
-Header.Logo = function HeaderLogo({ children, ...restProps }) {
-  return <Logo {...restProps }>{ children }</Logo>
 }
 
 Header.Menu = function HeaderMenu({ ...restProps }) {

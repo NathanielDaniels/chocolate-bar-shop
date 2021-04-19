@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
     --main-red: #FF0000;
     --main-white: #FFFFFF;
     --main-black: #101010;
+    --main-yellow: #F5E719;
   }
 
   *,
@@ -20,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #000;
+    background-color: var(--main-blue);
     color: #333;
     font-size: 16px;
   }
