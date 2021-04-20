@@ -1,26 +1,28 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components/macro';
 
 export const Container = styled.header`
   position: absolute;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 60px;
-  padding: 0 20px;
-  margin-top: 25px;
 `;
 
 export const Menu = styled.nav`
+  position: fixed;
+  height: 50px;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   width: clamp(25em, 50vw, 35em);
-  height: 100%;
+  ${'' /* height: 100%; */}
   background: var(--main-red);
   box-shadow: 0 2px 5px hsl(210, 100%, 20%);
+  transition: 0.6s;
+
+    
   ul {
     display: flex;
     justify-content: space-evenly;
@@ -51,4 +53,9 @@ export const Menu = styled.nav`
       }
     }
   }
+  ${'' /* ${props => props.primary && css`
+    background: white;
+    color: black;
+    padding: 100%;
+  `} */}
 `;
