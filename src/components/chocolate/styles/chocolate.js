@@ -6,7 +6,6 @@ export const Container = styled.div`
 `;
 
 export const ChocoBars = styled.img`
-
   z-index: 1;
   width: 1000px;
   height: 500px;
@@ -19,4 +18,9 @@ export const ChocoBars = styled.img`
   @media (max-width: 600px) {
     right: calc(10% - 700px);
   }
+`;
+
+export const SmallOne = styled.img`
+  border: 2px solid red;
+  width: 15%;
 `;
