@@ -40,7 +40,7 @@ export const SmallBarOne = styled.img`
 //? Yellow Bar
 export const SmallBarTwo = styled.img`
   ${'' /* width: 10%; */}
-  max-width: calc(100vh - 500px);
+  max-width: calc(90vh - 500px);
   min-width: 100px;
   position: absolute;
   top: 70px;
