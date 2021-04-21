@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.section`
-  border: 2px solid yellow;
+  ${'' /* border: 2px solid yellow; */}
   position: relative;
   width: 100vw;
   max-width: 1600px;
