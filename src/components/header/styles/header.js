@@ -1,28 +1,27 @@
 import styled, {css} from 'styled-components/macro';
 
 export const Container = styled.header`
-  position: absolute;
-  margin-top: 25px;
+  ${'' /* border: 2px solid yellow; */}
+  z-index: 2;
+  position: fixed;
   display: flex;
   justify-content: center;
+  margin-top: 25px;
   width: 100%;
 `;
 
 export const Menu = styled.nav`
-  position: fixed;
-  height: 50px;
-  z-index: 2;
+  ${'' /* position: fixed; */}
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   width: clamp(25em, 50vw, 35em);
-  ${'' /* height: 100%; */}
+  height: 50px;
   background: var(--main-red);
   box-shadow: 0 2px 5px hsl(210, 100%, 20%);
   transition: 0.6s;
 
-    
   ul {
     display: flex;
     justify-content: space-evenly;

@@ -19,12 +19,15 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
+  ${'' /* html {
+    max-width: 1600px;
+    margin: auto;
+  } */}
+
   html, body {
-    ${'' /* max-width: 1600px;
-    margin: 0 auto; */}
     ${'' /* border: 2px solid red; */}
     width: 100vw;
-    height: 100%;
+    ${'' /* height: 100%; */}
     font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

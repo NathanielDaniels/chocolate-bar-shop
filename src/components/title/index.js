@@ -20,22 +20,22 @@ Title.Quote = function TitleQuote({children, ...restProps}) {
 }
 
 //? Chocolate Bars ==============================================
-Title.ChocoBars = function ChocolateBars({children, ...restProps}) {
-  return <ChocoBars {...restProps}/>
-}
+// Title.ChocoBars = function ChocolateBars({children, ...restProps}) {
+//   return <ChocoBars {...restProps}/>
+// }
 
-Title.SmallBarOne = function TitleSmallBarOne({...restProps}) {
-  return <SmallBarOne {...restProps}/>
-}
-Title.SmallBarTwo = function TitleSmallBarTwo({...restProps}) {
-  return <SmallBarTwo {...restProps}/>
-}
-Title.SmallBarThree = function TitleSmallBarThree({...restProps}) {
-  return <SmallBarThree {...restProps}/>
-}
-Title.SmallBarFour = function TitleSmallBarFour({...restProps}) {
-  return <SmallBarFour {...restProps}/>
-}
-Title.SmallBarFive = function TitleSmallBarFive({...restProps}) {
-  return <SmallBarFive {...restProps}/>
-}
+// Title.SmallBarOne = function TitleSmallBarOne({...restProps}) {
+//   return <SmallBarOne {...restProps}/>
+// }
+// Title.SmallBarTwo = function TitleSmallBarTwo({...restProps}) {
+//   return <SmallBarTwo {...restProps}/>
+// }
+// Title.SmallBarThree = function TitleSmallBarThree({...restProps}) {
+//   return <SmallBarThree {...restProps}/>
+// }
+// Title.SmallBarFour = function TitleSmallBarFour({...restProps}) {
+//   return <SmallBarFour {...restProps}/>
+// }
+// Title.SmallBarFive = function TitleSmallBarFive({...restProps}) {
+//   return <SmallBarFive {...restProps}/>
+// }

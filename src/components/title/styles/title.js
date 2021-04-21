@@ -1,8 +1,10 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.section`
-  border: 2px solid yellow;
+  ${'' /* border: 2px solid yellow; */}
   width: 100vw;
+  max-width: 1600px;
+  margin: 0 auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,19 +15,19 @@ export const Container = styled.section`
 //? Title
 export const Top = styled.h1`
   color: var(--main-white);
-  font-size: clamp(1.4rem, 3vw, 2.6rem);
+  font-size: clamp(1.4rem, 5vw, 2.6rem);
   margin-left: calc(30% - 100px);
 `;
 
 export const Bottom = styled.h2`
   ${'' /* border: 2px solid red; */}
   color: var(--main-yellow);
-  font-size: clamp(2.6rem, 5vw, 4.8rem);
-  width: clamp(300px, 35vw, 600px);
+  font-size: clamp(2.6rem, 8vw, 4.8rem);
+  width: clamp(360px, 55vw, 600px);
   line-height: 1;
   margin-left: calc(30% - 100px);
   span.serious {
-    font-size: clamp(4rem, 8vw, 7.4rem);
+    font-size: clamp(4rem, 12vw, 7.4rem);
   }
   span.people {
     color: var(--main-white); 
@@ -52,56 +54,80 @@ export const Quote = styled.p`
 `;
 
 //? Chocolate Bars
-export const ChocoBars = styled.img`
-  z-index: 1;
-  width: 1000px;
-  height: 500px;
-  transform: rotate(50deg);
-  position: absolute;
-  top: -50px;
-  right: calc(10% - 600px);
-  box-shadow: 0 2px 5px hsl(210, 100%, 30%);
+// export const ChocoBars = styled.img`
+//   z-index: 1;
+//   width: 1000px;
+//   height: 500px;
+//   transform: rotate(50deg);
+//   position: absolute;
+//   top: -50px;
+//   right: calc(10% - 600px);
+//   box-shadow: 0 2px 5px hsl(210, 100%, 30%);
 
-  @media (max-width: 1000px) {
-    ${'' /* right: calc(10% - 700px); */}
-    width: 700px;
-    height: 400px;
-    top: -110px;
-    right: calc(10% - 450px);
-  }
-`;
+//   @media (max-width: 1000px) {
+//     ${'' /* right: calc(10% - 700px); */}
+//     width: 700px;
+//     height: 400px;
+//     top: -110px;
+//     right: calc(10% - 450px);
+//   }
+// `;
+//? Chocolate Bars
+// export const ChocoBars = styled.div`
+//   background-image: url("../img/big-bars/bars-straight-bg-transparent.jpg");
+//   background-size: cover;
+//   background-position: bottom;
+//   z-index: 1;
+//   width: 1000px;
+//   height: 500px;
+//   transform: rotate(50deg);
+//   position: absolute;
+//   top: -50px;
+//   right: calc(10% - 600px);
+//   box-shadow: 0 2px 5px hsl(210, 100%, 30%);
 
-//? Purple Bar
-export const SmallBarOne = styled.img`
-  width: 14%;
-  position: absolute;
-  top: -20px;
-  left: 50px;
-  transform: rotate(-35deg);
-`;
+//   @media (max-width: 1000px) {
+//     ${'' /* right: calc(10% - 700px); */}
+//     width: 700px;
+//     height: 400px;
+//     top: -110px;
+//     right: calc(10% - 500px);
+//   }
+// `;
 
-//? Yellow Bar
-export const SmallBarTwo = styled.img`
-  width: 10%;
-  position: absolute;
-  top: 70px;
-  left: calc(50% - 250px);
-  transform: rotate(20deg);
-  filter: brightness(95%);
-`;
+// //? Purple Bar
+// export const SmallBarOne = styled.img`
+//   width: 14%;
+//   position: absolute;
+//   top: -20px;
+//   left: 50px;
+//   transform: rotate(-35deg);
+// `;
 
-//? Red Bar
-export const SmallBarThree = styled.img`
-  width: 7%;
-  position: absolute;
-  top: 250px;
-  left: 80px;
-  transform: rotate(-20deg);
-  filter: brightness(90%);
-`;
+// //? Yellow Bar
+// export const SmallBarTwo = styled.img`
+//   ${'' /* width: 10%; */}
+//   max-width: calc(100vh - 500px);
+//   min-width: 100px;
+//   position: absolute;
+//   top: 70px;
+//   left: calc(50% - 250px);
+//   transform: rotate(20deg);
+//   filter: brightness(95%);
+// `;
 
-//? Green Bar
-export const SmallBarFour = styled.img``;
+// //? Red Bar
+// export const SmallBarThree = styled.img`
+//   width: 7%;
+//   position: absolute;
+//   top: 250px;
+//   left: 80px;
+//   transform: rotate(-20deg);
+//   filter: brightness(90%);
+// `;
 
-//? Orange Bar
-export const SmallBarFive = styled.img``;
+// //? Green Bar
+// export const SmallBarFour = styled.img``;
+
+// //? Orange Bar
+// export const SmallBarFive = styled.img``;
