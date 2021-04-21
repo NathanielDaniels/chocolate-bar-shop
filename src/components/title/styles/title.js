@@ -1,15 +1,23 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.section`
-  ${'' /* border: 2px solid yellow; */}
+  border: 2px solid yellow;
+  position: relative;
   width: 100vw;
   max-width: 1600px;
-  margin: 0 auto;
   height: 100vh;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 100px;
+  justify-content: flex-end;
+
+  .titleContent {
+    ${'' /* border: 2px solid red; */}
+    position: relative;
+    bottom:15%;
+    ${'' /* margin: 0 auto; */}
+    width: 100%;
+  }
 `;
 
 //? Title
@@ -42,6 +50,8 @@ export const Quote = styled.p`
   font-weight: 500;
   margin: 2em auto;
   display: inline-block;
+  left: 50%;
+  transform: translate(-50%,0);
   &::after {
     position: absolute;
     content: '';
