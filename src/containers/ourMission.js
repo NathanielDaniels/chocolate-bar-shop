@@ -37,6 +37,28 @@ export function OurMissionContainer() {
           </p>
         </div>
       </OurMission.Info>
+       <OurMission.Info>
+       <div className="right">
+          <h3>Tony’s 5 Sourcing Principles for slave-free cocoa</h3>
+          <p>
+            With incredibly tasty chocolate, we lead by example to show the world that chocolate can be made differently. By following Tony’s Sourcing Principles for slave-free cocoa, it’s possible to make slave-free chocolate and be commercially successful. 
+          </p>
+        </div>
+        <div className="left">
+          <h1>Image</h1>
+        </div>
+      </OurMission.Info>
+      <OurMission.Info>
+        <div className="left">
+          <h1>Image</h1>
+        </div>
+        <div className="right">
+          <h3>TAll hands on deck!</h3>
+          <p>
+           We can't do it alone. Alone we'll make slave-free chocolate but together we can make all chocolate 100% slave free. The more people who join our mission and share our story, the sooner 100% slave free becomes the norm in chocolate. We all have to roll up our sleeves.. So what action do we expect everyone to take? 
+          </p>
+        </div>
+      </OurMission.Info>
     </OurMission>
   )
 }

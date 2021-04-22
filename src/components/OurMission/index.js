@@ -8,9 +8,3 @@ export default function OurMission({children, ...restProps}) {
 OurMission.Info = function OurMissionInfo({children, ...restProps}) {
   return <Info {...restProps}>{children}</Info>
 }
-// OurMission.InfoTwo = function OurMissionInfoTwo({children, ...restProps}) {
-//   return <Info {...restProps}>{children}</Info>
-// }
-// OurMission.InfoThree = function OurMissionInfoThree({children, ...restProps}) {
-//  return <Info {...restProps}>{children}</Info>
-// }
