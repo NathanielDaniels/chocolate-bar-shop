@@ -5,9 +5,9 @@ export function HeaderContainer() {
   return (
     <Header>
       <Header.Menu>
-        <ul>
+        <Header.MenuList>
           <li>
-          <a href="#OurMission">Our Mission</a>
+            <a className="active" href="#OurMission">Our Mission</a>
           </li>
           <li>
             <a href="#Join">Join In</a>
@@ -15,7 +15,7 @@ export function HeaderContainer() {
           <li>
             <a href="#Shop">Chocoshop</a>
           </li>
-        </ul>
+        </Header.MenuList>
       </Header.Menu>
     </Header>
   )
