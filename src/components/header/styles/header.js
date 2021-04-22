@@ -67,17 +67,14 @@ export const Container = styled.header`
   align-items: center;
   margin-top: 25px;
   width: 100%;
-  transition: margin .3s ease;
+  transition: margin .3s ease, height .3s ease;
+  letter-spacing: .8px;
   &.sticky {
     margin-top: 0;
-
     ${Menu} {
       height: 45px;
       width: 100%;
-      ${'' /* padding: 0 25%; */}
-      ${'' /* justify-content: space-evenly; */}
     }
-
     ${MenuList} {
       justify-content: flex-end;
       padding: 0 20px;
