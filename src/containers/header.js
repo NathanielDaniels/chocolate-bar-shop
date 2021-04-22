@@ -1,10 +1,13 @@
 import React from 'react';
 import { Header } from '../components'
 
+// const myRef = React.createRef()
+// console.log(myRef)
+
 export function HeaderContainer() {
   return (
-    <Header>
-      <Header.Menu>
+    <Header >
+      <Header.Menu >
         <Header.MenuList>
           <li>
             <a className="active" href="#OurMission">Our Mission</a>
