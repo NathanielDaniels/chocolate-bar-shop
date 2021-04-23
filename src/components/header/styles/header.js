@@ -1,7 +1,6 @@
 import styled, {css} from 'styled-components/macro';
 
 export const Menu = styled.nav`
-  ${'' /* position: fixed; */}
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +10,7 @@ export const Menu = styled.nav`
   background: var(--main-red);
   box-shadow: 0 2px 5px hsl(210, 100%, 20%);
   transition: 0.6s;
+  border-radius: 4px;
   }
   ${'' /* ${props => props.primary && css`
     background: white;
@@ -26,22 +26,24 @@ export const MenuList = styled.ul`
     justify-content: space-evenly;
     width: 100%;
     li {
+      ${'' /* border: 2px solid yellow; */}
+      ${'' /* padding: 100% 0; */}
       a {
         color: #fff;
         font-size: clamp(100%, 2vw, 1.4rem);
         transition: border-bottom .2s ease;
         position: relative;
-       
+        ${'' /* font-weight: 500; */}
+        //? Underline effect
         &::after {
           content: '';
           width: 0px;
           height: 3px;
           background: var(--main-white);
           position: absolute;
-          bottom: 0;
           left: 0;
+          bottom: 0;
           transition: width .3s ease;
-
         }
         
         &:hover, &:focus{
@@ -58,6 +60,7 @@ export const MenuList = styled.ul`
         }
 `;
 
+//? Main Container
 export const Container = styled.header`
   ${'' /* border: 2px solid yellow; */}
   z-index: 2;
@@ -67,13 +70,17 @@ export const Container = styled.header`
   align-items: center;
   margin-top: 25px;
   width: 100%;
+  height: auto;
   transition: margin .3s ease, height .3s ease;
-  letter-spacing: .8px;
+  ${'' /* letter-spacing: .8px; */}
+
+  //? Sticky Menu on scroll
   &.sticky {
     margin-top: 0;
+    ${'' /* opacity: .8; */}
     ${Menu} {
-      height: 45px;
       width: 100%;
+      border-radius: 0;
     }
     ${MenuList} {
       justify-content: flex-end;

@@ -31,7 +31,7 @@ export function OurMissionContainer() {
           <h1>Image</h1>
         </div>
         <div className="right">
-          <h3>Tony’s route to 100% <br/>slave-free chocolate</h3>
+          <h3>Tony’s route to 100% slave-free chocolate</h3>
           <p>
            Our vision: 100% slave-free chocolate. Not just our chocolate, but all chocolate worldwide. How we are going to achieve that? It won't be easy. And it’s pretty complex. But we will accomplish it with the help of Tony’s roadmap. Our roadmap has 3 pillars and shows us the way to 100% slave-free chocolate.
           </p>
@@ -39,7 +39,7 @@ export function OurMissionContainer() {
       </OurMission.Info>
        <OurMission.Info>
        <div className="right">
-          <h3>Tony’s 5 Sourcing Principles <br/>for slave-free cocoa</h3>
+          <h3>Tony’s 5 Sourcing Principles for slave-free cocoa</h3>
           <p>
             With incredibly tasty chocolate, we lead by example to show the world that chocolate can be made differently. By following Tony’s Sourcing Principles for slave-free cocoa, it’s possible to make slave-free chocolate and be commercially successful. 
           </p>

@@ -2,7 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 
 
 export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+${'' /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap'); */}
+
   :root {
     --main-blue: #0066CC;
     --main-red: #FF0000;
@@ -28,7 +30,8 @@ export const GlobalStyles = createGlobalStyle`
     ${'' /* border: 2px solid red; */}
     width: 100vw;
     ${'' /* height: 100%; */}
-    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
+    ${'' /* font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; */}
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--main-blue);

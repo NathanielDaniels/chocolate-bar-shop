@@ -1,5 +1,16 @@
 import React from 'react';
-import {Container, Top, Bottom, Quote, ChocoBars, SmallBarOne, SmallBarTwo, SmallBarThree, SmallBarFour, SmallBarFive} from './styles/title'
+import {
+  Container, 
+  Top, 
+  Bottom, 
+  Quote, 
+  // ChocoBars, 
+  // SmallBarOne, 
+  // SmallBarTwo, 
+  // SmallBarThree, 
+  // SmallBarFour, 
+  // SmallBarFive
+} from './styles/title'
 
 export default function Title({ children, ...restProps }) {
  return <Container {...restProps}>{children}</Container>

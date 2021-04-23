@@ -3,7 +3,9 @@ import styled from 'styled-components/macro';
 export const Container = styled.section`
   ${'' /* border: 2px solid yellow; */}
   ${'' /* height: 100vh; */}
-  padding: 0 50px;
+  ${'' /* padding: 0 50px; */}
+  width: 1000px;
+  margin: 0 auto;
 `;
 
 export const Info = styled.div`
@@ -15,9 +17,11 @@ export const Info = styled.div`
   margin: 5em 0;
 
   .left, .right {
+    ${'' /* border: 2px solid orange; */}
     display: flex;
     justify-content: center;
     align-items: center;
+    ${'' /* width: 50%; */}
   }
 
   .left {
@@ -27,8 +31,9 @@ export const Info = styled.div`
   .right {
     flex-direction: column;
     align-items: flex-start;
-    width: 60ch;
+    max-width: 60ch;
     line-height: 1.3;
+    padding: 20px;
     h3 {
       padding: 20px 0;
     }
