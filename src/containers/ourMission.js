@@ -6,7 +6,6 @@ export function OurMissionContainer() {
     <OurMission>
       <OurMission.Info>
         <div className="left">
-          {/* <h1>Image</h1> */}
           <img src="./img/OurMission/OurMission-sectionOne-blue.jpg" alt="Chocolate Factory"/>
         </div>
         <div className="right">
@@ -24,12 +23,12 @@ export function OurMissionContainer() {
           </p>
         </div>
         <div className="left">
-          <img src="./img/OurMission/OurMission-sectionTwo-transparent.png" alt="Changing Modern Slavery"/>
+          <img src="./img/OurMission/OurMission-sectionTwo-transparent.png" alt="Drawing of people next to a choco plant"/>
         </div>
       </OurMission.Info>
       <OurMission.Info>
         <div className="left">
-          <h1>Image</h1>
+          <img src="./img/OurMission/OurMission-sectionThree-yellow.png" alt="Our Vision"/>
         </div>
         <div className="right">
           <h3>Tony’s route to 100% slave-free chocolate</h3>
@@ -46,12 +45,12 @@ export function OurMissionContainer() {
           </p>
         </div>
         <div className="left">
-          <h1>Image</h1>
+          <img src="./img/OurMission/OurMission-sectionfour-tran.png" alt="Our Vision"/>
         </div>
       </OurMission.Info>
       <OurMission.Info>
         <div className="left">
-          <h1>Image</h1>
+          <img src="./img/OurMission/OurMission-sectionFive-tran.png" alt="Our Vision"/>
         </div>
         <div className="right">
           <h3>All hands on deck!</h3>
