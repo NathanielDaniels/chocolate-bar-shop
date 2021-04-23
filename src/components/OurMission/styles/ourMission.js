@@ -15,7 +15,7 @@ export const Info = styled.div`
   grid-template-columns: repeat(2, 1fr);
   color: #fff;
   margin: 5em 0;
-
+  gap: 1em;
   .left, .right {
     ${'' /* border: 2px solid orange; */}
     display: flex;
@@ -25,17 +25,23 @@ export const Info = styled.div`
   }
 
   .left {
-    background: transparent;
+    ${'' /* background: transparent; */}
+    img {
+      ${'' /* display: block; */}
+      width: 100%;
+      height: auto;
+    }
   }
 
   .right {
     flex-direction: column;
     align-items: flex-start;
     max-width: 60ch;
-    line-height: 1.3;
+    line-height: 1.4;
+    letter-spacing: .2px;
     padding: 20px;
     h3 {
-      padding: 20px 0;
+      padding: 10px 0;
     }
 
     h3 {

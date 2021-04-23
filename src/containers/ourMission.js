@@ -6,7 +6,8 @@ export function OurMissionContainer() {
     <OurMission>
       <OurMission.Info>
         <div className="left">
-          <h1>Image</h1>
+          {/* <h1>Image</h1> */}
+          <img src="./img/OurMission/OurMission-sectionOne-blue.jpg" alt="Chocolate Factory"/>
         </div>
         <div className="right">
           <h3>The Problem</h3>
@@ -23,7 +24,7 @@ export function OurMissionContainer() {
           </p>
         </div>
         <div className="left">
-          <h1>Image</h1>
+          <img src="./img/OurMission/OurMission-sectionTwo-transparent.png" alt="Changing Modern Slavery"/>
         </div>
       </OurMission.Info>
       <OurMission.Info>
