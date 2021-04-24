@@ -14,7 +14,7 @@ export const Info = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   color: #fff;
-  margin: 5em 0;
+  margin-bottom: 8em;
   gap: 1em;
   .left, .right {
     ${'' /* border: 2px solid orange; */}
@@ -49,29 +49,3 @@ export const Info = styled.div`
     }
   }
 `;
-
-
-// export const InfoOne = styled.div`
-//   width: 100%;
-//   ${'' /* height: 100%; */}
-//   display: grid;
-//   grid-template-columns: repeat(2, 1fr);
-//   ${'' /* border: 2px solid red; */}
-//   background: #fff;
-// `;
-// export const InfoTwo = styled.div`
-//   width: 100%;
-//   ${'' /* height: 100%; */}
-//   display: grid;
-//   grid-template-columns: repeat(2, 1fr);
-//   ${'' /* border: 2px solid red; */}
-//   background: #fff;
-// `;
-// export const InfoThree = styled.div`
-//   width: 100%;
-//   ${'' /* height: 100%; */}
-//   display: grid;
-//   grid-template-columns: repeat(2, 1fr);
-//   ${'' /* border: 2px solid red; */}
-//   background: #fff;
-// `;
