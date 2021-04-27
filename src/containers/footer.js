@@ -17,8 +17,8 @@ export function FooterContainer() {
       <Footer.Section>
       <h4>Join In</h4>
         <ul>
-          <li>See What You Can Do</li>
-          <li>Become Serious Friends</li>
+          <li><a href="#WhatYouCanDo">See What You Can Do</a></li>
+          <li><a href="#BecomeFriends">Become Serious Friends</a></li>
         </ul>
       </Footer.Section>
       <Footer.Section>
