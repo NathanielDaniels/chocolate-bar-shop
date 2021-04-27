@@ -24,10 +24,10 @@ export function FooterContainer() {
       <Footer.Section>
       <h4>ChocoShop</h4>
         <ul>
-          <li>Big Bars</li>
-          <li>Small Bars</li>
-          <li>Tiny Tony's</li>
-          <li>Store Locator</li>
+          <li><a href="#BigBars">Big Bars</a></li>
+          <li><a href="#SmallBars">Small Bars</a></li>
+          <li><a href="#TinyTonys">Tiny Tony's</a></li>
+          <li><a href="#StoreLocator">Store Locator</a></li>
         </ul>
       </Footer.Section>
       <Footer.Section>
