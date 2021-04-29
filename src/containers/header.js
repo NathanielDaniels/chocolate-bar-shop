@@ -10,10 +10,10 @@ export function HeaderContainer() {
       <Header.Menu >
         <Header.MenuList>
           <li>
-            <a className="active" href="#OurMission">Our Mission</a>
+            <a className="active" href="/">Our Mission</a>
           </li>
           <li>
-            <a href="#Join">Join In</a>
+            <a href="/Join">Join In</a>
           </li>
           <li>
             <a href="#Shop">Chocoshop</a>

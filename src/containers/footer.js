@@ -8,10 +8,10 @@ export function FooterContainer() {
       <Footer.Section>
         <h4>Our Story</h4>
         <ul>
-        <li><a href="#OurMission">Our Mission</a></li>
-        <li><a href="#OurTimeline">Our Timeline</a></li>
-        <li><a href="#TonysImpact">Tony's Impact</a></li>
-        <li><a href="#AnualReports">Anual FAIR report</a></li>
+          <li><a href="/">Our Mission</a></li>
+          <li><a href="#OurTimeline">Our Timeline</a></li>
+          <li><a href="#TonysImpact">Tony's Impact</a></li>
+          <li><a href="#AnualReports">Anual FAIR report</a></li>
         </ul>
       </Footer.Section>
       <Footer.Section>

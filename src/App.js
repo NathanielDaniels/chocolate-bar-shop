@@ -1,14 +1,20 @@
 import React from 'react'
 import Home from './pages/Home'
-// import { GlobalStyles } from './global-styles'
-
+import Join from './pages/Join'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-    {/* <GlobalStyles /> */}
-    <Home />
-    </>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/Join">
+          <Join />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
