@@ -4,13 +4,21 @@ export const Container = styled.section`
   border-top: 2px solid red;
   background: #fff;
   padding: 50px 35px;
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  
+  position: relative;
+  bottom:0;
+  left: 0;
+  right: 0;
 
   @media (max-width: 748px) {
     justify-content: flex-start;
   }
+`;
+
+export const Wrapper = styled.div`
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 `;
 
 export const Logo = styled.img`

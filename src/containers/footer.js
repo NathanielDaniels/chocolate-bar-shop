@@ -4,6 +4,7 @@ import { Footer } from '../components';
 export function FooterContainer() {
  return (
    <Footer>
+    <Footer.Wrapper>
       <Footer.Logo src="./img/icons/chocolate-bar-pieces-blue.png" alt="Chocolate Bar Logo" />
       <Footer.Section>
         <h4>Our Story</h4>
@@ -47,6 +48,7 @@ export function FooterContainer() {
           <li><a href="#BigBars">Instagram</a></li>
         </ul>
       </Footer.Section>
+    </Footer.Wrapper>
    </Footer>
  )
 }
