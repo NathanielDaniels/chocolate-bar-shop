@@ -42,9 +42,9 @@ export function FooterContainer() {
       </Footer.Section>
       <Footer.Section>
         <ul>
-          <li>Facebook</li>
-          <li>Twitter</li>
-          <li>Instagram</li>
+          <li><a href="#BigBars">Facebook</a></li>
+          <li><a href="#BigBars">Twitter</a></li>
+          <li><a href="#BigBars">Instagram</a></li>
         </ul>
       </Footer.Section>
    </Footer>

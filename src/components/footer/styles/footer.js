@@ -5,12 +5,10 @@ export const Container = styled.section`
   background: #fff;
   padding: 50px 35px;
   display:flex;
-
   flex-wrap: wrap;
   justify-content: space-evenly;
 
   @media (max-width: 748px) {
-    ${'' /* flex-wrap: wrap; */}
     justify-content: flex-start;
   }
 `;
@@ -37,6 +35,19 @@ export const Section = styled.div`
     li {
       font-size: clamp(14px, 2vw, 1rem);
       color: #222;
+      a {
+        transition: color .2s ease-in-out;
+        color: var(--main-black);
+        &:hover {
+          color: var(--main-red);
+        }
+      }
+    }
+    &:nth-child(1) {
+      height: 100%;
+      display: inherit;
+      flex-direction: column;
+      justify-content: center;
     }
   };
 `;
