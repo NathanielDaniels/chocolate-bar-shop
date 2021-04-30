@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Container, Menu, MenuList} from './styles/header'
+import { Container, Menu, MenuList } from './styles/header'
 
 export default function Header({ ref, children, ...restProps }) {
   const headerDom = useRef(null);
@@ -9,15 +9,13 @@ export default function Header({ ref, children, ...restProps }) {
       const elem = headerDom.current;
       elem.classList.toggle("sticky", window.scrollY > 0);
     });
-    
-    console.log(headerDom);
+    // console.log(headerDom);
+    // return (window.removeEventListener())
   }, []);
   return <Container ref={headerDom} { ...restProps }>{ children }</Container>
 };
 
 Header.Menu = function HeaderMenu({ children, ...restProps }) {
- 
-
   return <Menu  { ...restProps }>{children}</Menu>
 };
 
