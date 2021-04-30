@@ -1,6 +1,6 @@
 import React from 'react'
 import Home from './pages/Home'
-import Join from './pages/Join'
+import JoinForm from './pages/JoinForm'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/Join">
-          <Join />
+          <JoinForm />
         </Route>
       </Switch>
     </Router>
