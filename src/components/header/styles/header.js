@@ -26,14 +26,11 @@ export const MenuList = styled.ul`
     justify-content: space-evenly;
     width: 100%;
     li {
-      ${'' /* border: 2px solid yellow; */}
-      ${'' /* padding: 100% 0; */}
       a {
         color: #fff;
         font-size: clamp(100%, 2vw, 1.4rem);
         transition: border-bottom .2s ease;
         position: relative;
-        ${'' /* font-weight: 500; */}
         //? Underline effect
         &::after {
           content: '';
@@ -62,7 +59,6 @@ export const MenuList = styled.ul`
 
 //? Main Container
 export const Container = styled.header`
-  ${'' /* border: 2px solid yellow; */}
   z-index: 2;
   position: fixed;
   display: flex;
@@ -72,12 +68,10 @@ export const Container = styled.header`
   width: 100%;
   height: auto;
   transition: margin .3s ease, height .3s ease;
-  ${'' /* letter-spacing: .8px; */}
 
   //? Sticky Menu on scroll
   &.sticky {
     margin-top: 0;
-    ${'' /* opacity: .8; */}
     ${Menu} {
       width: 100%;
       border-radius: 0;

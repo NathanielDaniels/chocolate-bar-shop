@@ -9,8 +9,6 @@ export default function Header({ ref, children, ...restProps }) {
       const elem = headerDom.current;
       elem.classList.toggle("sticky", window.scrollY > 0);
     });
-    // console.log(headerDom);
-    // return (window.removeEventListener())
   }, []);
   return <Container ref={headerDom} { ...restProps }>{ children }</Container>
 };
