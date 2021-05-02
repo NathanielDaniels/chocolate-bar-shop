@@ -50,11 +50,11 @@ export const MenuList = styled.ul`
           }
         }
       }
-       a.active {
-          &::after {
-            width: 100%;
-          }
+      a.active {
+        &::after {
+          width: 100%;
         }
+      }
 `;
 
 //? Main Container
@@ -68,7 +68,7 @@ export const Container = styled.header`
   width: 100%;
   height: auto;
   transition: margin .3s ease, height .3s ease;
-
+  
   //? Sticky Menu on scroll
   &.sticky {
     margin-top: 0;

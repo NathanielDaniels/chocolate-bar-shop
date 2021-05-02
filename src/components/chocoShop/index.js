@@ -1,23 +1,33 @@
-import React from 'react';
-import { Container, MenuContainer, MenuNav, MainMenuContainer, MainMenu } from './styles/chocoShop';
+import React, { useRef, useEffect } from 'react';
+import { Container, SidebarContainer, SidebarNav, MainMenuContainer, MainMenu } from './styles/chocoShop';
 
-export default function chocoShop({children, ...restProps}) {
+export default function ChocoShop({children, ...restProps}) {
   return <Container {...restProps}>{children}</Container>;
 };
 
-chocoShop.MenuContainer = function chocoShopMenuContainer({children, ...restProps}) {
-  return <MenuContainer {...restProps}>{children}</MenuContainer>;
+ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({ children, ...restProps}) {
+   
+  return <SidebarContainer {...restProps}>{children}</SidebarContainer>;
 }
 
-chocoShop.MenuNav = function chocoShopMenuNav({children, ...restProps}) {
-  return <MenuNav {...restProps}>{children}</MenuNav>;
+ChocoShop.SidebarNav = function ChocoShopSidebarNav({ref, children, ...restProps}) {
+
+  const sidebarRef = useRef(null);
+  useEffect(() => {
+    window.addEventListener('scroll', function() {
+      const elem = sidebarRef.current;
+      // console.log(elem)
+      elem.classList.toggle("sticky", window.scrollY > 0);
+    });
+  }, []);
+  return <SidebarNav ref={sidebarRef} {...restProps}>{children}</SidebarNav>;
 }
 
-chocoShop.MainMenuContainer = function chocoShopMainMenu({children, ...restProps}) {
+ChocoShop.MainMenuContainer = function ChocoShopMainMenu({children, ...restProps}) {
   return <MainMenuContainer {...restProps}>{children}</MainMenuContainer>;
 }
 
-chocoShop.MainMenu = function chocoShopMainMenu({children, ...restProps}) {
+ChocoShop.MainMenu = function ChocoShopMainMenu({children, ...restProps}) {
   return <MainMenu {...restProps}>{children}</MainMenu>;
 }
 

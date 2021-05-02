@@ -10,13 +10,14 @@ export default function Header({ ref, children, ...restProps }) {
       elem.classList.toggle("sticky", window.scrollY > 0);
     });
   }, []);
-  return <Container ref={headerDom} { ...restProps }>{ children }</Container>
+  
+  return <Container ref={ headerDom } { ...restProps }>{ children }</Container>
 };
 
 Header.Menu = function HeaderMenu({ children, ...restProps }) {
-  return <Menu  { ...restProps }>{children}</Menu>
+  return <Menu  { ...restProps }>{ children }</Menu>
 };
 
 Header.MenuList = function HeaderMenuList({children, ...restProps}) {
-  return <MenuList {...restProps}>{children}</MenuList>
+  return <MenuList { ...restProps }>{ children }</MenuList>
 };
