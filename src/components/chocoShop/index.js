@@ -1,8 +1,18 @@
-import React, { useRef, useEffect } from 'react';
-import { Container, SidebarContainer, SidebarNav, MainMenuContainer, MainMenu } from './styles/chocoShop';
+import React, { useRef, useState, useEffect, useContext, createContext } from 'react';
+import { Container, SidebarContainer, SidebarNav, MainMenuContainer, MainMenu, MenuItem, ChocoSelectModal } from './styles/chocoShop';
+
+export const FeatureContext = createContext();
 
 export default function ChocoShop({children, ...restProps}) {
-  return <Container {...restProps}>{children}</Container>;
+  const [showModal, setShowModal] = useState(false);
+  const [itemFeature, setItemFeature] = useState({});
+  const [isClicked, setIsClicked] = useState(false)
+
+  return (
+    <FeatureContext.Provider value={showModal, setShowModal, itemFeature, setItemFeature, isClicked, setIsClicked}>
+      <Container {...restProps}>{children}</Container>;
+    </FeatureContext.Provider>
+  )
 };
 
 ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({ children, ...restProps}) {
@@ -29,5 +39,30 @@ ChocoShop.MainMenuContainer = function ChocoShopMainMenu({children, ...restProps
 
 ChocoShop.MainMenu = function ChocoShopMainMenu({children, ...restProps}) {
   return <MainMenu {...restProps}>{children}</MainMenu>;
+}
+
+ChocoShop.MenuItem = function ChocoShopMenuItem({children, ...restProps}) {
+  const { setShowModal, setItemFeature } = useContext(FeatureContext);
+  // const modal = useRef(null) 
+
+  //  useEffect(() => {
+  //   const newModal = modal.current
+  //   console.log(newModal)
+  //   newModal.addEventListener('click', function() {
+  //     console.log("clicked!")
+      
+  //   });
+  // }, []);
+  return (
+    <MenuItem 
+      onClick={() => {
+        setShowModal(true)
+      }} 
+      {...restProps}>{children}</MenuItem>
+  );
+}
+
+ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ children, ...restProps}) {
+  return <ChocoSelectModal {...restProps}>{children}</ChocoSelectModal>;
 }
 

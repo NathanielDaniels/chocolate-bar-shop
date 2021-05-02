@@ -77,38 +77,53 @@ export const MainMenu = styled.div`
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    li {
-      margin: 10px;
-      padding: 0 0 5px;
-      border-radius: 5px;
-      a {
-        img {
-          max-width: 300px;
+    
+  }
+`;
 
-          &.tinyTony1{
-            max-width: 200px;
-            margin-bottom: -20px;
-          }
-          &.tinyTony2 {
-            max-width:185px;
-          }
-          &.tinyTony3 {
-            margin-bottom: -40px;
-          }
-        }
-        p {
-          padding-left: 10px;
-          color: var(--main-black);
-        }
-        div {
-          display: flex;
-          justify-content: space-between;
-          color: var(--main-red);
-          font-weight: 500;
-          font-size: 1.4rem;
-          padding-right: 5px;
-        }
+export const MenuItem = styled.li`
+  margin: 10px;
+  padding: 0 0 5px;
+  border-radius: 5px;
+  a {
+    img {
+      max-width: 300px;
+
+      &.tinyTony1{
+        max-width: 200px;
+        margin-bottom: -20px;
+      }
+      &.tinyTony2 {
+        max-width:185px;
+      }
+      &.tinyTony3 {
+        margin-bottom: -40px;
       }
     }
-  }
+    p {
+      padding-left: 10px;
+      color: var(--main-black);
+    }
+    div {
+      display: flex;
+      justify-content: space-between;
+      color: var(--main-red);
+      font-weight: 500;
+      font-size: 1.4rem;
+      padding-right: 5px;
+    }
+  } 
+    
+`;
+
+export const ChocoSelectModal = styled.div`
+  display: none;
+  width: 800px;
+  height: 400px;
+  border: 2px solid red;
+  background: var(--main-white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 `;

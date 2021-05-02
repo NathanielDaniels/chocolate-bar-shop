@@ -20,8 +20,8 @@ export function ChocoShopContainer() {
         <ChocoShop.MainMenu>
           <ul>
           {/* //? Big Bars ====================*/}
-            <li>
-              <a href="/ChocoShop">
+            <ChocoShop.MenuItem>
+              <a href="#ChocoShop">
                 <img src="./img/big-bars/milk-chocolate-bar-red.png" alt="Milk Chocolate Bar"/>
                 <p>Milk Chocolate 32%</p>
                 <p>6.35oz, 1 bar</p>
@@ -30,9 +30,9 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-            <li>
-              <a href="/ChocoShop">
+            </ChocoShop.MenuItem>
+            <ChocoShop.MenuItem>
+              <a href="#ChocoShop">
                 <img src="./img/big-bars/milk-chocolate-hazelnut-green.png" alt="Milk Chocolate Hazelnut Bar"/>
                 <p>Milk Hazelnut 32%</p>
                 <p>6.35oz, 1 bar</p>
@@ -41,8 +41,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-            <li>
+            </ChocoShop.MenuItem>
+            <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/big-bars/milk-chocolate-seasalt-caramel-orange.png" alt="Milk Caramel Sea Salt Bar"/>
                 <p>Milk Caramel Sea Salt 32%</p>
@@ -52,8 +52,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-            <li>
+            </ChocoShop.MenuItem>
+            <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/big-bars/chocolate-honey-almond-nougat-yellow.png" alt="Milk Honey Almond Nougat"/>
                 <p>Milk Honey Almond Nougat 32%</p>
@@ -63,9 +63,9 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
+            </ChocoShop.MenuItem>
 
-             <li>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/big-bars/chocolate-almond-seasalt-limegreen.png" alt="Dark Almond Sea Salt"/>
                 <p>Dark Almond Sea Salt 51%</p>
@@ -75,8 +75,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-             <li>
+            </ChocoShop.MenuItem>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/big-bars/dark-chocolate-pecan-coconut-teal.png" alt="Dark Pecan Coconut"/>
                 <p>Dark Pecan Coconut 51%</p>
@@ -86,8 +86,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-             <li>
+            </ChocoShop.MenuItem>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/big-bars/dark-chocolate-blue.png" alt="Dark Chocolate"/>
                 <p>Dark Chocolate 70%</p>
@@ -97,8 +97,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-             <li>
+            </ChocoShop.MenuItem>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/big-bars/dark-milk-chocolate-pretzel-toffee-purple.png" alt="Dark Milk Pretzel Toffee"/>
                 <p>Dark Milk Pretzel Toffee 42%</p>
@@ -108,9 +108,9 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
+            </ChocoShop.MenuItem>
 
-             <li>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/big-bars/white-raspberry-popping-candy-pink.png" alt="White Raspberry Popping Candy"/>
                 <p>White Raspberry Popping Candy 28%</p>
@@ -120,9 +120,9 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
+            </ChocoShop.MenuItem>
             {/* //? Small Bars ====================*/}
-             <li>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/small-bars/milk-chocolate-small-red.png" alt="Milk Chocolate"/>
                 <p>Milk Chocolate 32%</p>
@@ -132,8 +132,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-             <li>
+            </ChocoShop.MenuItem>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/small-bars/milk-caramel-sea-salt-small-orange.png" alt="Milk Caramel Sea Salt"/>
                 <p>Milk Caramel Sea Salt 32%</p>
@@ -143,8 +143,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-             <li>
+            </ChocoShop.MenuItem>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/small-bars/dark-almond-seasalt-small-lime.png" alt="Dark Almond Sea Salt"/>
                 <p>Dark Almond Sea Salt 51%</p>
@@ -154,8 +154,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-             <li>
+            </ChocoShop.MenuItem>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img src="./img/small-bars/dark-chocolate-small-blue.png" alt="Dark Chocolate"/>
                 <p>Dark Chocolate 70%</p>
@@ -165,9 +165,9 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
+            </ChocoShop.MenuItem>
             {/* //? Tiny Tony's ====================*/}
-             <li>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img className="tinyTony1" src="./img/tiny-tonys/milk-chocolate/milk-chocolate-mini-open-small.png" alt="Milk Chocolate"/>
                 <p>Milk Chocolate 32% Tiny Tony's</p>
@@ -177,8 +177,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-             <li>
+            </ChocoShop.MenuItem>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img className="tinyTony2" src="./img/tiny-tonys/milk-chocolate-caramel-seasalt/milk-chocolate-caramel-open.png" alt="Milk Chocolate Caramel Sea Salt Tiny Tony's"/>
                 <p>Milk Caramel Sea Salt 32% Tiny Tony's</p>
@@ -188,8 +188,8 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
-             <li>
+            </ChocoShop.MenuItem>
+             <ChocoShop.MenuItem>
               <a href="/ChocoShop">
                 <img className="tinyTony3" src="./img/tiny-tonys/dark-chocolate/dark-chocolate-mini-open-large.png" alt="Dark Chocolate Tiny Tony's"/>
                 <p>Dark Chocolate 70% Tiny Tony's</p>
@@ -199,10 +199,20 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </li>
+            </ChocoShop.MenuItem>
           </ul>
         </ChocoShop.MainMenu>
       </ChocoShop.MainMenuContainer>
+
+      <ChocoShop.ChocoSelectModal>
+        <img src="./img/small-bars/milk-chocolate-small-red.png" alt="Milk Chocolate"/>
+        <p>Milk Chocolate 32%</p>
+        <p>1.8oz, 1 bar</p>
+        <div>
+          <p>$2.39</p>
+          <AddCircleOutlineIcon style={{ fontSize: 35}}/>
+        </div>
+      </ChocoShop.ChocoSelectModal>
     </ChocoShop>
   )
 }
