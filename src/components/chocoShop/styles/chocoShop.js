@@ -25,10 +25,8 @@ export const SidebarContainer = styled.section`
 `;
 
 export const SidebarNav = styled.nav`
-  ${'' /* border: 2px solid red; */}
-  z-index: 999;
   position: fixed;
-  top: 20px;
+  top: 100px;
   transition: top .3s ease-in-out;
   width: 20%;
   ul {
@@ -53,9 +51,7 @@ export const SidebarNav = styled.nav`
 
   //? Sticky Menu on scroll
   &.sticky {
-    ${'' /* border: 2px solid red; */}
     top: 60px;
-    bottom: 0;
   }
 `;
 
@@ -87,13 +83,22 @@ export const MainMenu = styled.div`
       border-radius: 5px;
       a {
         img {
-          ${'' /* width: 275px; */}
           max-width: 300px;
+
+          &.tinyTony1{
+            max-width: 200px;
+            margin-bottom: -20px;
+          }
+          &.tinyTony2 {
+            max-width:185px;
+          }
+          &.tinyTony3 {
+            margin-bottom: -40px;
+          }
         }
         p {
           padding-left: 10px;
           color: var(--main-black);
-          ${'' /* color: var(--main-white); */}
         }
         div {
           display: flex;
