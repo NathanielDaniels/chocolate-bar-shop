@@ -2,6 +2,23 @@ import React from 'react';
 import { ChocoShop } from '../components'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
+const ChocoShopMenu = [
+  {
+    title: "Milk Chocolate 32%",
+    subTitle: "6.35oz, 1 bar",
+    price: "$5.95",
+    image: "./img/big-bars/milk-chocolate-bar-red.png",
+    alt: "Milk Chocolate Bar"
+  },
+  {
+    title: "Milk Chocolate 32%",
+    subTitle: "6.35oz, 1 bar",
+    price: "$5.95",
+    image: "./img/big-bars/milk-chocolate-bar-red.png",
+    alt: "Milk Chocolate Bar"
+  },
+]
+
 export function ChocoShopContainer() {
   return (
     <ChocoShop>
@@ -18,9 +35,23 @@ export function ChocoShopContainer() {
 
       <ChocoShop.MainMenuContainer>
         <ChocoShop.MainMenu>
-          <ul>
-          {/* //? Big Bars ====================*/}
-            <ChocoShop.MenuItem>
+          {ChocoShopMenu.map((chocolate) => {
+            <ul>
+              <ChocoShop.MenuItem>
+                <a href="#ChocoShop">
+                  <img src={chocolate.image} alt={chocolate.alt}/>
+                  <p>{chocolate.title}</p>
+                  <p>{chocolate.subTitle}</p>
+                  <div>
+                    {/* <p>{chocolate.price}</p> */}
+                    <AddCircleOutlineIcon style={{ fontSize: 35}}/>
+                  </div>
+                </a>
+              </ChocoShop.MenuItem>
+            {/* </ul> */}
+          })}
+
+            {/* <ChocoShop.MenuItem>
               <a href="#ChocoShop">
                 <img src="./img/big-bars/milk-chocolate-bar-red.png" alt="Milk Chocolate Bar"/>
                 <p>Milk Chocolate 32%</p>
@@ -30,7 +61,7 @@ export function ChocoShopContainer() {
                   <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                 </div>
               </a>
-            </ChocoShop.MenuItem>
+            </ChocoShop.MenuItem> */}
             <ChocoShop.MenuItem>
               <a href="#ChocoShop">
                 <img src="./img/big-bars/milk-chocolate-hazelnut-green.png" alt="Milk Chocolate Hazelnut Bar"/>
