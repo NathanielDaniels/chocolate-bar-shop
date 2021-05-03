@@ -70,7 +70,6 @@ export const MainMenuContainer = styled.section`
 export const MainMenu = styled.div`
   ${'' /* border: 2px solid red; */}
   width: 95%;
-  ${'' /* height: 500px; */}
   ul {
     display: flex;
     flex-direction: row;
