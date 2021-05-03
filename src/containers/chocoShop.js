@@ -43,12 +43,12 @@ export function ChocoShopContainer() {
                   <p>{chocolate.title}</p>
                   <p>{chocolate.subTitle}</p>
                   <div>
-                    {/* <p>{chocolate.price}</p> */}
+                    <p>{chocolate.price}</p>
                     <AddCircleOutlineIcon style={{ fontSize: 35}}/>
                   </div>
                 </a>
               </ChocoShop.MenuItem>
-            {/* </ul> */}
+            </ul>
           })}
 
             {/* <ChocoShop.MenuItem>
@@ -62,6 +62,7 @@ export function ChocoShopContainer() {
                 </div>
               </a>
             </ChocoShop.MenuItem> */}
+            <ul>
             <ChocoShop.MenuItem>
               <a href="#ChocoShop">
                 <img src="./img/big-bars/milk-chocolate-hazelnut-green.png" alt="Milk Chocolate Hazelnut Bar"/>
