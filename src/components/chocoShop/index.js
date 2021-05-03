@@ -123,15 +123,18 @@ const allChocolates = bigBars.concat(smallBars).concat(tinyTonys)
 const filterBigBars = allChocolates.filter((bars) => bars.price === "$5.95")
 const filterSmallBars = allChocolates.filter((bars) => bars.price === "$2.39")
 const filterTinyTonys = allChocolates.filter((bars) => bars.price === "$48.69")
-console.log(filterTinyTonys)
 
 export default function ChocoShop({children, ...restProps}) {
   const [showModal, setShowModal] = useState(false);
-  const [itemFeature, setItemFeature] = useState({});
-  const [isClicked, setIsClicked] = useState(false)
+  const [itemFeature, setItemFeature] = useState(null);
+  const [isClicked, setIsClicked] = useState(false);
+
+  // setItemFeature(allChocolates)
+  // console.log(allChocolates)
+console.log("item Feature 1", itemFeature)
 
   return (
-    <FeatureContext.Provider value={showModal, setShowModal, itemFeature, setItemFeature, isClicked, setIsClicked}>
+    <FeatureContext.Provider value={{showModal, setShowModal, itemFeature, setItemFeature, isClicked, setIsClicked}}>
       <Container {...restProps}>{children}</Container>;
     </FeatureContext.Provider>
   )
@@ -145,6 +148,10 @@ ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({ children, ...r
 }
 
 ChocoShop.SidebarNav = function ChocoShopSidebarNav({ref, children, ...restProps}) {
+
+  const { itemFeature, setItemFeature } = useContext(FeatureContext)
+
+  console.log("item Feature : sidebar nav", itemFeature)
 
   const sidebarRef = useRef(null);
   useEffect(() => {
@@ -164,9 +171,11 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({ref, children, ...restProps
       <ul>
         <a href="#" onClick={(e) => {
           e.preventDefault()
-          return allChocolates
+          // setItemFeature(allChocolates)
+          // console.log(itemFeature)
+          
           }}><li>All Chocolate</li></a>
-        <a href="#" onClick={() => bigBars}><li>Big Bars</li></a>
+        <a href="#"><li>Big Bars</li></a>
         <a href="/ChocoShop"><li>Small Bars</li></a>
         <a href="/ChocoShop"><li>Tiny Tony's</li></a>
       </ul>

@@ -5,10 +5,10 @@ import { Header } from '../components'
 // console.log(myRef)
 
 export function HeaderContainer() {
-  const [activeMenu, setActiveMenu] = useState(true);
+  const [activeMenu, setActiveMenu] = useState('');
 
   useEffect(() => {
-    setActiveMenu("active")
+    setActiveMenu('active')
   },[])
 
   // if (activeMenu) {
