@@ -65,6 +65,7 @@ export const MainMenuContainer = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid var(--main-red);
 `;
 
 export const MainMenu = styled.div`

@@ -9,9 +9,9 @@ export const FeatureContext = createContext();
 const ChocoShopTotalMenu = bigBars.concat(smallBars).concat(tinyTonys);
 
 //? Filtered Chocolates by size
-const filterBigBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$5.95");
-const filterSmallBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$2.39");
-const filterTinyTonys = ChocoShopTotalMenu.filter((bars) => bars.price === "$48.69");
+// const filterBigBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$5.95");
+// const filterSmallBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$2.39");
+// const filterTinyTonys = ChocoShopTotalMenu.filter((bars) => bars.price === "$48.69");
 
 
 export function ChocoShopContainer() {
@@ -34,19 +34,19 @@ export function ChocoShopContainer() {
             </a>
             <a href="#" onClick={(e) => {
               e.preventDefault()
-              setItemFeature(filterBigBars)
+              setItemFeature(bigBars)
             }}>
               <li>Big Bars</li>
             </a>
             <a href="/ChocoShop" onClick={(e) => {
               e.preventDefault()
-              setItemFeature(filterSmallBars)
+              setItemFeature(smallBars)
             }}>
               <li>Small Bars</li>
             </a>
             <a href="/ChocoShop" onClick={(e) => {
               e.preventDefault()
-              setItemFeature(filterTinyTonys)
+              setItemFeature(tinyTonys)
             }}>
               <li>Tiny Tony's</li>
             </a>
