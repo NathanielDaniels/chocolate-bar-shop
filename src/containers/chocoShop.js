@@ -4,6 +4,7 @@ import { bigBars, smallBars, tinyTonys } from '../components/chocoShop';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 export const FeatureContext = createContext();
+export const FeatureModalContext = createContext();
 
 //? All Chocolates
 const ChocoShopTotalMenu = bigBars.concat(smallBars).concat(tinyTonys);
@@ -17,11 +18,27 @@ const ChocoShopTotalMenu = bigBars.concat(smallBars).concat(tinyTonys);
 export function ChocoShopContainer() {
   //? State for Chocolate Menu
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
+  const [item, setItem] = useState(null);
   // console.log("item Feature : sidebar nav", itemFeature);
+
+  function modalFeature(chocolate) {
+      console.log("modalFeature:", chocolate.currentTarget.children[0].firstChild)
+      return (
+         <ChocoShop.MenuItem key={chocolate.title + chocolate.price}>
+            <img src={chocolate.image} loading="lazy" alt={chocolate.alt}/>
+            {/* {chocolate.currentTarget.children[0].firstChild} */}
+            <p>{chocolate.title}</p>
+            <p>{chocolate.subTitle}</p>
+            <div>
+              <p>{chocolate.price}</p>
+              <AddCircleOutlineIcon style={{ fontSize: 35}}/>
+            </div>
+          </ChocoShop.MenuItem>
+      )
+    }
 
   return (
     <ChocoShop>
-
       <ChocoShop.SidebarContainer>
       <ChocoShop.SidebarNav />
         <ChocoShop.SidebarNav>
@@ -56,12 +73,11 @@ export function ChocoShopContainer() {
 
       <ChocoShop.MainMenuContainer>
         <ChocoShop.MainMenu>
-        {console.log("main menu component", itemFeature)}
           <ul>
             {itemFeature.map((chocolate) => {
               return (
-                <ChocoShop.MenuItem key={chocolate.title + chocolate.price}>
-                  <a href="#ChocoShop">
+                <ChocoShop.MenuItem onClick={(chocolate) => modalFeature(chocolate)} key={chocolate.title + chocolate.price}>
+                  <a href="#">
                     <img src={chocolate.image} loading="lazy" alt={chocolate.alt}/>
                     <p>{chocolate.title}</p>
                     <p>{chocolate.subTitle}</p>
@@ -78,13 +94,8 @@ export function ChocoShopContainer() {
       </ChocoShop.MainMenuContainer>
 
       <ChocoShop.ChocoSelectModal>
-        <img src="./img/small-bars/milk-chocolate-small-red.png" alt="Milk Chocolate"/>
-        <p>Milk Chocolate 32%</p>
-        <p>1.8oz, 1 bar</p>
-        <div>
-          <p>$2.39</p>
-          <AddCircleOutlineIcon style={{ fontSize: 35}}/>
-        </div>
+        <h1>Test</h1>
+        {/* {modalFeature} */}
       </ChocoShop.ChocoSelectModal>
 
     </ChocoShop>

@@ -119,7 +119,7 @@ export const tinyTonys = [
 ];
 export default function ChocoShop({children, ...restProps}) {
   const [showModal, setShowModal] = useState(false);
-  // const [itemFeature, setItemFeature] = useState(null);
+  const [item, setItem] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
 
   return (
@@ -168,27 +168,28 @@ ChocoShop.MainMenu = function ChocoShopMainMenu({children, ...restProps}) {
 }
 
 ChocoShop.MenuItem = function ChocoShopMenuItem({children, ...restProps}) {
-  // const { setShowModal, setItemFeature } = useContext(FeatureModalContext);
-  // const modal = useRef(null) 
+  const { setShowModal } = useContext(FeatureModalContext);
+  const modal = useRef(null) 
 
-  //  useEffect(() => {
-  //   const newModal = modal.current
-  //   console.log(newModal)
-  //   newModal.addEventListener('click', function() {
-  //     console.log("clicked!")
-      
-  //   });
-  // }, []);
+   useEffect(() => {
+    const newModal = modal.current
+    console.log(newModal)
+    newModal.addEventListener('click', function() {
+      console.log("clicked!")
+    });
+  }, []);
   return (
-    <MenuItem 
-      // onClick={() => {
-      //   setShowModal(true)
-      // }} 
+    <MenuItem ref={modal}
+      onClick={() => {
+        setShowModal(true)
+      }} 
       {...restProps}>{children}</MenuItem>
   );
 }
 
 ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ children, ...restProps}) {
+  // const { showModal } = useContext(FeatureModalContext);
+  // showModal ? console.log("its true") : console.log("its false")
   return <ChocoSelectModal {...restProps}>{children}</ChocoSelectModal>;
 }
 
