@@ -3,6 +3,8 @@ import { ChocoShop } from '../components';
 import { bigBars, smallBars, tinyTonys } from '../components/chocoShop'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
+
+
 // const bigBars = [
 //   {
 //     title: "Milk Chocolate 32%",

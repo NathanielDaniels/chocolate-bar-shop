@@ -129,9 +129,13 @@ export default function ChocoShop({children, ...restProps}) {
   const [itemFeature, setItemFeature] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
 
-  // setItemFeature(allChocolates)
-  // console.log(allChocolates)
-console.log("item Feature 1", itemFeature)
+  console.log(filterTinyTonys)
+
+  useEffect(() => {
+    setItemFeature(allChocolates)
+  }, [])
+
+  // console.log("item Feature 1", itemFeature)
 
   return (
     <FeatureContext.Provider value={{showModal, setShowModal, itemFeature, setItemFeature, isClicked, setIsClicked}}>
@@ -171,13 +175,28 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({ref, children, ...restProps
       <ul>
         <a href="#" onClick={(e) => {
           e.preventDefault()
-          // setItemFeature(allChocolates)
-          // console.log(itemFeature)
-          
-          }}><li>All Chocolate</li></a>
-        <a href="#"><li>Big Bars</li></a>
-        <a href="/ChocoShop"><li>Small Bars</li></a>
-        <a href="/ChocoShop"><li>Tiny Tony's</li></a>
+          setItemFeature(allChocolates)
+        }}>
+          <li>All Chocolate</li>
+        </a>
+        <a href="#" onClick={(e) => {
+          e.preventDefault()
+          setItemFeature(filterBigBars)
+        }}>
+          <li>Big Bars</li>
+        </a>
+        <a href="/ChocoShop" onClick={(e) => {
+          e.preventDefault()
+          setItemFeature(filterSmallBars)
+        }}>
+          <li>Small Bars</li>
+        </a>
+        <a href="/ChocoShop" onClick={(e) => {
+          e.preventDefault()
+          setItemFeature("Tiny Tony's", filterTinyTonys)
+        }}>
+          <li>Tiny Tony's</li>
+        </a>
       </ul>
     </SidebarNav>
   );
