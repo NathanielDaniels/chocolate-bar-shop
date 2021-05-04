@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useContext, createContext } from 'react';
 import { Container, SidebarContainer, SidebarNav, MainMenuContainer, MainMenu, MenuItem, ChocoSelectModal } from './styles/chocoShop';
 
-export const FeatureContext = createContext();
+export const FeatureModalContext = createContext();
 
 export const bigBars = [
   {
@@ -92,7 +92,7 @@ export const smallBars = [
     image:"./img/small-bars/dark-chocolate-small-blue.png",
     alt: "Dark Chocolate"
   },      
-]
+];
 
 export const tinyTonys = [
   {
@@ -116,31 +116,16 @@ export const tinyTonys = [
     image:"./img/tiny-tonys/dark-chocolate/dark-chocolate-mini-open-large.png"  ,
     alt: "Dark Chocolate Tiny Tony's"
   },
-]
-
-const allChocolates = bigBars.concat(smallBars).concat(tinyTonys)
-
-const filterBigBars = allChocolates.filter((bars) => bars.price === "$5.95")
-const filterSmallBars = allChocolates.filter((bars) => bars.price === "$2.39")
-const filterTinyTonys = allChocolates.filter((bars) => bars.price === "$48.69")
-
+];
 export default function ChocoShop({children, ...restProps}) {
   const [showModal, setShowModal] = useState(false);
-  const [itemFeature, setItemFeature] = useState(null);
+  // const [itemFeature, setItemFeature] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
 
-  console.log(filterTinyTonys)
-
-  useEffect(() => {
-    setItemFeature(allChocolates)
-  }, [])
-
-  // console.log("item Feature 1", itemFeature)
-
   return (
-    <FeatureContext.Provider value={{showModal, setShowModal, itemFeature, setItemFeature, isClicked, setIsClicked}}>
+    <FeatureModalContext.Provider value={{showModal, setShowModal, isClicked, setIsClicked}}>
       <Container {...restProps}>{children}</Container>;
-    </FeatureContext.Provider>
+    </FeatureModalContext.Provider>
   )
 };
 
@@ -152,10 +137,6 @@ ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({ children, ...r
 }
 
 ChocoShop.SidebarNav = function ChocoShopSidebarNav({ref, children, ...restProps}) {
-
-  const { itemFeature, setItemFeature } = useContext(FeatureContext)
-
-  console.log("item Feature : sidebar nav", itemFeature)
 
   const sidebarRef = useRef(null);
   useEffect(() => {
@@ -171,33 +152,7 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({ref, children, ...restProps
       ref={sidebarRef} 
       {...restProps}
     >
-      {/* {children} */}
-      <ul>
-        <a href="#" onClick={(e) => {
-          e.preventDefault()
-          setItemFeature(allChocolates)
-        }}>
-          <li>All Chocolate</li>
-        </a>
-        <a href="#" onClick={(e) => {
-          e.preventDefault()
-          setItemFeature(filterBigBars)
-        }}>
-          <li>Big Bars</li>
-        </a>
-        <a href="/ChocoShop" onClick={(e) => {
-          e.preventDefault()
-          setItemFeature(filterSmallBars)
-        }}>
-          <li>Small Bars</li>
-        </a>
-        <a href="/ChocoShop" onClick={(e) => {
-          e.preventDefault()
-          setItemFeature("Tiny Tony's", filterTinyTonys)
-        }}>
-          <li>Tiny Tony's</li>
-        </a>
-      </ul>
+      {children}
     </SidebarNav>
   );
 }
@@ -213,7 +168,7 @@ ChocoShop.MainMenu = function ChocoShopMainMenu({children, ...restProps}) {
 }
 
 ChocoShop.MenuItem = function ChocoShopMenuItem({children, ...restProps}) {
-  const { setShowModal, setItemFeature } = useContext(FeatureContext);
+  // const { setShowModal, setItemFeature } = useContext(FeatureModalContext);
   // const modal = useRef(null) 
 
   //  useEffect(() => {
