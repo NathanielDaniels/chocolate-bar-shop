@@ -77,7 +77,9 @@ export const MainMenu = styled.div`
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    
+    a {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -111,7 +113,6 @@ export const MenuItem = styled.li`
     div {
       display: flex;
       justify-content: space-between;
-      color: var(--main-red);
       font-weight: 500;
       font-size: 1.4rem;
       padding-right: 5px;
@@ -133,11 +134,56 @@ export const ChocoSelectModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  
+    
+`;
 
+export const ChocoModalContent = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+  width: 100%;
   button {
+    position: absolute;
     cursor: pointer;
     padding: 5px 10px;
     margin: 10px;
-    float: right;
+    right: 0;
+    top: 0;
+  }
+  .leftSide, .rightSide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .leftSide {
+    grid-column: 1 / span 1;
+    flex-direction: column;
+    img {
+      width: 80%;
+    }
+  }
+  .rightSide {
+    flex-direction: column;
+    align-items: flex-start;
+    ${'' /* justify-content: space-evenly; */}
+    grid-column: 2 / span 1;
+    ${'' /* .price {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 1.4rem;
+    } */}
+    div {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+      font-size: 1.4rem;
+      padding-right: 5px;
+    }
+  } 
   }
 `;

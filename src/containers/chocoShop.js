@@ -22,7 +22,9 @@ export function ChocoShopContainer() {
 
   // console.log("item", item)
   
-  
+  useEffect(() => {
+    console.log("item", item)
+  }, [item])
 
   function modalFeature(chocolate) {
       // console.log("modalFeature:", chocolate.currentTarget.children[0].firstChild)
@@ -85,14 +87,14 @@ export function ChocoShopContainer() {
           <ul>
             {itemFeature.map((chocolate) => {
               return (
-                <ChocoShop.MenuItem onClick={(chocolate) => modalFeature(chocolate.target)} key={chocolate.title + chocolate.price}>
-                  <a href="#">
-                    <img src={chocolate.image} loading="lazy" alt={chocolate.alt}/>
-                    <p>{chocolate.title}</p>
-                    <p>{chocolate.subTitle}</p>
+                <ChocoShop.MenuItem onClick={(chocolate) => modalFeature(chocolate.target)} item={chocolate} key={chocolate.title + chocolate.price}>
+                  <a>
+                    <img src={ chocolate.image } loading="lazy" alt={ chocolate.alt }/>
+                    <p>{ chocolate.title }</p>
+                    <p>{ chocolate.subTitle }</p>
                     <div>
-                      <p>{chocolate.price}</p>
-                      <AddCircleOutlineIcon style={{ fontSize: 35}}/>
+                      <p>{ chocolate.price }</p>
+                      <AddCircleOutlineIcon style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}/>
                     </div>
                   </a>
                 </ChocoShop.MenuItem>
@@ -102,7 +104,7 @@ export function ChocoShopContainer() {
         </ChocoShop.MainMenu>
       </ChocoShop.MainMenuContainer>
 
-      <ChocoShop.ChocoSelectModal item={item}/>
+      <ChocoShop.ChocoSelectModal item={ item } />
 
     </ChocoShop>
   )
