@@ -93,10 +93,17 @@ export function ChocoShopContainer() {
         </ChocoShop.MainMenu>
       </ChocoShop.MainMenuContainer>
 
-      <ChocoShop.ChocoSelectModal>
+      <ChocoShop.ChocoSelectModal/>
+      {/* <ChocoShop.ChocoSelectModal>
+        <button 
+          onClick={() => {
+            console.log("close btn clicked");
+
+          }}>
+          Close
+        </button>
         <h1>Test</h1>
-        {/* {modalFeature} */}
-      </ChocoShop.ChocoSelectModal>
+      </ChocoShop.ChocoSelectModal> */}
 
     </ChocoShop>
   )

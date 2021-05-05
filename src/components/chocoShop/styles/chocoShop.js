@@ -117,7 +117,7 @@ export const MenuItem = styled.li`
 `;
 
 export const ChocoSelectModal = styled.div`
-  ${'' /* display: none; */}
+  display: none;
   width: 800px;
   height: 400px;
   border: 2px solid red;

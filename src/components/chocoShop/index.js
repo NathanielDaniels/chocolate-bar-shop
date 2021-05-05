@@ -168,28 +168,45 @@ ChocoShop.MainMenu = function ChocoShopMainMenu({children, ...restProps}) {
 }
 
 ChocoShop.MenuItem = function ChocoShopMenuItem({children, ...restProps}) {
-  const { setShowModal } = useContext(FeatureModalContext);
-  const modal = useRef(null) 
+  const { showModal, setShowModal } = useContext(FeatureModalContext);
+  const menuItem = useRef(null) 
 
    useEffect(() => {
-    const newModal = modal.current
-    console.log(newModal)
-    newModal.addEventListener('click', function() {
-      console.log("clicked!")
+    const selectedMenuItem = menuItem.current
+    // console.log(newModal)
+    selectedMenuItem.addEventListener('click', function() {
+      setShowModal(true)
     });
   }, []);
+    // console.log("outside useEffect:", showModal)
   return (
-    <MenuItem ref={modal}
-      onClick={() => {
-        setShowModal(true)
-      }} 
-      {...restProps}>{children}</MenuItem>
+    <MenuItem ref={menuItem} {...restProps}>{children}</MenuItem>
   );
 }
 
-ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ children, ...restProps}) {
-  // const { showModal } = useContext(FeatureModalContext);
-  // showModal ? console.log("its true") : console.log("its false")
-  return <ChocoSelectModal {...restProps}>{children}</ChocoSelectModal>;
+ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children, ...restProps}) {
+  const { showModal, setShowModal } = useContext(FeatureModalContext);
+  const modal = useRef(null)
+  const activeModal = modal.current;
+
+  useEffect(() => {
+    // console.log("Modal:", activeModal);
+    showModal && (activeModal.style.display = "block");
+
+  }, [showModal])
+
+  return (
+    <ChocoSelectModal ref={modal} {...restProps}>
+      <button 
+          onClick={() => {
+            // console.log("close btn clicked");
+            activeModal.style.display = "none";
+            setShowModal(false)
+          }}>
+          Close
+        </button>
+        <h1>Test</h1>
+    </ChocoSelectModal>
+  );
 }
 
