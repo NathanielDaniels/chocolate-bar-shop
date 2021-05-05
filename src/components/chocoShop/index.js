@@ -117,30 +117,29 @@ export const tinyTonys = [
     alt: "Dark Chocolate Tiny Tony's"
   },
 ];
+
 export default function ChocoShop({children, ...restProps}) {
   const [showModal, setShowModal] = useState(false);
-  const [item, setItem] = useState(null);
-  const [isClicked, setIsClicked] = useState(false);
+  const [item, setItem] = useState('');
 
   return (
-    <FeatureModalContext.Provider value={{showModal, setShowModal, isClicked, setIsClicked}}>
-      <Container {...restProps}>{children}</Container>;
+    <FeatureModalContext.Provider value={{ showModal, setShowModal, item, setItem }}>
+      <Container { ...restProps }>{ children }</Container>;
     </FeatureModalContext.Provider>
   )
 };
 
 //? Left Side Menu ===========================================
 
-ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({ children, ...restProps}) {
-   
-  return <SidebarContainer {...restProps}>{children}</SidebarContainer>;
+ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({ children, ...restProps }) {
+  return <SidebarContainer { ...restProps }>{ children }</SidebarContainer>;
 }
 
-ChocoShop.SidebarNav = function ChocoShopSidebarNav({ref, children, ...restProps}) {
+ChocoShop.SidebarNav = function ChocoShopSidebarNav({ ref, children, ...restProps }) {
 
-  const sidebarRef = useRef(null);
+  //? Menu moves on scroll
+  const sidebarRef = useRef( null );
   useEffect(() => {
-    //? Menu moves on scroll
     window.addEventListener('scroll', function() {
       const elem = sidebarRef.current;
       elem.classList.toggle("sticky", window.scrollY > 0);
@@ -148,64 +147,64 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({ref, children, ...restProps
   }, []);
 
   return (
-    <SidebarNav 
-      ref={sidebarRef} 
-      {...restProps}
-    >
-      {children}
-    </SidebarNav>
+    <SidebarNav ref={ sidebarRef } { ...restProps }>{ children }</SidebarNav>
   );
 }
 
 //? Right Side Menu ============================================
 
-ChocoShop.MainMenuContainer = function ChocoShopMainMenu({children, ...restProps}) {
-  return <MainMenuContainer {...restProps}>{children}</MainMenuContainer>;
+ChocoShop.MainMenuContainer = function ChocoShopMainMenu({ children, ...restProps }) {
+  return <MainMenuContainer { ...restProps }>{ children }</MainMenuContainer>;
 }
 
-ChocoShop.MainMenu = function ChocoShopMainMenu({children, ...restProps}) {
-  return <MainMenu {...restProps}>{children}</MainMenu>;
+ChocoShop.MainMenu = function ChocoShopMainMenu({ children, ...restProps }) {
+  return <MainMenu { ...restProps }>{ children }</MainMenu>;
 }
 
-ChocoShop.MenuItem = function ChocoShopMenuItem({children, ...restProps}) {
-  const { showModal, setShowModal } = useContext(FeatureModalContext);
+ChocoShop.MenuItem = function ChocoShopMenuItem({ children, ...restProps }) {
+  const { showModal, setShowModal, setItem } = useContext(FeatureModalContext);
   const menuItem = useRef(null) 
 
    useEffect(() => {
-    const selectedMenuItem = menuItem.current
-    // console.log(newModal)
-    selectedMenuItem.addEventListener('click', function() {
+    const MenuItems = menuItem.current
+    MenuItems.addEventListener('click', function() {
       setShowModal(true)
     });
   }, []);
-    // console.log("outside useEffect:", showModal)
   return (
-    <MenuItem ref={menuItem} {...restProps}>{children}</MenuItem>
+    <MenuItem ref={ menuItem } { ...restProps }>{ children }</MenuItem>
   );
 }
 
-ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children, ...restProps}) {
+ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ item, ref, children, ...restProps }) {
   const { showModal, setShowModal } = useContext(FeatureModalContext);
   const modal = useRef(null)
   const activeModal = modal.current;
 
-  useEffect(() => {
-    // console.log("Modal:", activeModal);
-    showModal && (activeModal.style.display = "block");
+  console.log("item shown", item)
 
+  useEffect(() => {
+    showModal && (activeModal.style.display = "block");
   }, [showModal])
 
   return (
-    <ChocoSelectModal ref={modal} {...restProps}>
+    <ChocoSelectModal ref={ modal } { ...restProps }>
       <button 
-          onClick={() => {
-            // console.log("close btn clicked");
-            activeModal.style.display = "none";
-            setShowModal(false)
-          }}>
-          Close
-        </button>
-        <h1>Test</h1>
+        onClick={() => {
+          activeModal.style.display = "none";
+          setShowModal(false)
+        }}>
+        Close
+      </button>
+      <h1>Test</h1>
+
+      {item && <img src={item.attributes[0].nodeValue} loading="lazy" alt={item.alt}/>}
+      <p>{item.title}</p>
+      <p>{item.subTitle}</p>
+      <div>
+        <p>{item.price}</p>
+        {/* <AddCircleOutlineIcon style={{ fontSize: 35}}/> */}
+      </div>
     </ChocoSelectModal>
   );
 }

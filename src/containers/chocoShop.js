@@ -18,11 +18,20 @@ const ChocoShopTotalMenu = bigBars.concat(smallBars).concat(tinyTonys);
 export function ChocoShopContainer() {
   //? State for Chocolate Menu
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
-  const [item, setItem] = useState(null);
-  // console.log("item Feature : sidebar nav", itemFeature);
+  const [item, setItem] = useState('');
+
+  // console.log("item", item)
+  
+  
 
   function modalFeature(chocolate) {
-      console.log("modalFeature:", chocolate.currentTarget.children[0].firstChild)
+      // console.log("modalFeature:", chocolate.currentTarget.children[0].firstChild)
+      setItem(chocolate)
+      
+      console.log("item", item)
+      console.log("chocolate", chocolate.target)
+
+
       return (
          <ChocoShop.MenuItem key={chocolate.title + chocolate.price}>
             <img src={chocolate.image} loading="lazy" alt={chocolate.alt}/>
@@ -31,7 +40,7 @@ export function ChocoShopContainer() {
             <p>{chocolate.subTitle}</p>
             <div>
               <p>{chocolate.price}</p>
-              <AddCircleOutlineIcon style={{ fontSize: 35}}/>
+              <AddCircleOutlineIcon style={{ fontSize: 35 }}/>
             </div>
           </ChocoShop.MenuItem>
       )
@@ -76,7 +85,7 @@ export function ChocoShopContainer() {
           <ul>
             {itemFeature.map((chocolate) => {
               return (
-                <ChocoShop.MenuItem onClick={(chocolate) => modalFeature(chocolate)} key={chocolate.title + chocolate.price}>
+                <ChocoShop.MenuItem onClick={(chocolate) => modalFeature(chocolate.target)} key={chocolate.title + chocolate.price}>
                   <a href="#">
                     <img src={chocolate.image} loading="lazy" alt={chocolate.alt}/>
                     <p>{chocolate.title}</p>
@@ -93,17 +102,7 @@ export function ChocoShopContainer() {
         </ChocoShop.MainMenu>
       </ChocoShop.MainMenuContainer>
 
-      <ChocoShop.ChocoSelectModal/>
-      {/* <ChocoShop.ChocoSelectModal>
-        <button 
-          onClick={() => {
-            console.log("close btn clicked");
-
-          }}>
-          Close
-        </button>
-        <h1>Test</h1>
-      </ChocoShop.ChocoSelectModal> */}
+      <ChocoShop.ChocoSelectModal item={item}/>
 
     </ChocoShop>
   )

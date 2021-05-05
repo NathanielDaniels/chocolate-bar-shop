@@ -99,6 +99,10 @@ export const MenuItem = styled.li`
       &.tinyTony3 {
         margin-bottom: -40px;
       }
+
+      @media (max-width: 1200px) {
+        width: 250px;
+      }
     }
     p {
       padding-left: 10px;
@@ -118,12 +122,22 @@ export const MenuItem = styled.li`
 
 export const ChocoSelectModal = styled.div`
   display: none;
-  width: 800px;
-  height: 400px;
+  z-index: 9999;
+  width: 80%;
+  height: 80%;
+  max-width: 800px;
+  max-height: 400px;
   border: 2px solid red;
   background: var(--main-white);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+
+  button {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 10px;
+    float: right;
+  }
 `;
