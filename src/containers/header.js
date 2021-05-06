@@ -5,33 +5,33 @@ import { Header } from '../components'
 // console.log(myRef)
 
 export function HeaderContainer() {
-  const [activeMenu, setActiveMenu] = useState('');
+  // const [activeMenu, setActiveMenu] = useState('');
 
-  useEffect(() => {
-    setActiveMenu('active')
-  },[])
+  // useEffect(() => {
+  //   setActiveMenu('active')
+  // },[])
 
   // if (activeMenu) {
   //   setActiveMenu("active")
   // }
 
-  function removeActive() {
-    return setActiveMenu(null)
-  }
+  // function removeActive() {
+  //   return setActiveMenu(null)
+  // }
 
   return (
     <Header >
       <Header.Menu >
         <Header.MenuList>
-          <li onMouseEnter = {removeActive}>
-            <a className={activeMenu} href="/">Our Mission</a>
-          </li>
-          <li>
+          <Header.MenuListItem>
+            <a href="/">Our Mission</a>
+          </Header.MenuListItem>
+          <Header.MenuListItem>
             <a href="/Join">Join In</a>
-          </li>
-          <li>
+          </Header.MenuListItem>
+          <Header.MenuListItem>
             <a href="/ChocoShop">Chocoshop</a>
-          </li>
+          </Header.MenuListItem>
         </Header.MenuList>
       </Header.Menu>
     </Header>

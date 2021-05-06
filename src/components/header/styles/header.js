@@ -25,36 +25,38 @@ export const MenuList = styled.ul`
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    li {
-      a {
-        color: #fff;
-        font-size: clamp(100%, 2vw, 1.4rem);
-        transition: border-bottom .2s ease;
-        position: relative;
-        //? Underline effect
-        &::after {
-          content: '';
-          width: 0px;
-          height: 3px;
-          background: var(--main-white);
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          transition: width .3s ease;
-        }
-        
-        &:hover, &:focus{
-          outline: none;
-          &::after {
-            width: 100%;
-          }
-        }
+`;
+
+export const MenuListItem = styled.li`
+    a {
+      color: #fff;
+      font-size: clamp(100%, 2vw, 1.4rem);
+      transition: border-bottom .2s ease;
+      position: relative;
+      //? Underline effect
+      &::after {
+        content: '';
+        width: 0px;
+        height: 3px;
+        background: var(--main-white);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: width .3s ease;
       }
-      a.active {
+      
+      &:hover, &:focus{
+        outline: none;
         &::after {
           width: 100%;
         }
       }
+    }
+    a.active {
+      &::after {
+        width: 100%;
+      }
+    }
 `;
 
 //? Main Container

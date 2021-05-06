@@ -121,29 +121,31 @@ export const MenuItem = styled.li`
     
 `;
 
+//? Popup Modal ===========================
 export const ChocoSelectModal = styled.div`
   display: none;
   z-index: 9999;
   width: 80%;
-  height: 80%;
-  max-width: 800px;
-  max-height: 400px;
+  ${'' /* min-height: 60%; */}
+  padding: 20px;
+  border-radius: 10px;
+  ${'' /* max-width: 800px;
+  max-height: 400px; */}
   border: 2px solid red;
   background: var(--main-white);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  
-    
 `;
 
 export const ChocoModalContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   height: 100%;
   width: 100%;
+  font-size: 14px;
   button {
     position: absolute;
     cursor: pointer;
@@ -154,36 +156,55 @@ export const ChocoModalContent = styled.div`
   }
   .leftSide, .rightSide {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 40px 20px;
   }
   .leftSide {
-    grid-column: 1 / span 1;
+    grid-column: 1 / 2;
     flex-direction: column;
+    justify-content: center;
+  }
+  .middleSide {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    ${'' /* justify-content: space-evenly; */}
+    justify-content: center;
+    align-items: center;
     img {
       width: 80%;
+      margin-bottom: 1em;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      ${'' /* align-items: space-between; */}
+      font-size: 1.4rem;
+      div {
+        justify-content: space-between;
+        flex-direction: row;
+        font-weight: 500;
+        ${'' /* padding-right: 5px; */}
+      }
     }
   }
   .rightSide {
+    justify-content: space-evenly;
     flex-direction: column;
     align-items: flex-start;
-    ${'' /* justify-content: space-evenly; */}
-    grid-column: 2 / span 1;
-    ${'' /* .price {
-      width: 50%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      font-size: 1.4rem;
-    } */}
-    div {
-      width: 50%;
-      display: flex;
-      justify-content: space-between;
+    grid-column: 3 / 4;
+    .allergies {
+      border: 2px solid red;
+      border-radius: 5px;
+      ${'' /* margin-top: 10px; */}
+      padding: 5px 10px;
       font-weight: 500;
-      font-size: 1.4rem;
-      padding-right: 5px;
     }
-  } 
+    div {
+      margin-bottom: 10px;
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
   }
 `;

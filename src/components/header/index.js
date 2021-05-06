@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Container, Menu, MenuList } from './styles/header'
+import { Container, Menu, MenuList, MenuListItem } from './styles/header'
 
 export default function Header({ ref, children, ...restProps }) {
   const headerDom = useRef(null);
@@ -20,4 +20,8 @@ Header.Menu = function HeaderMenu({ children, ...restProps }) {
 
 Header.MenuList = function HeaderMenuList({children, ...restProps}) {
   return <MenuList { ...restProps }>{ children }</MenuList>
+};
+
+Header.MenuListItem = function HeaderMenuListItem({children, ...restProps}) {
+  return <MenuListItem { ...restProps }>{ children }</MenuListItem>
 };

@@ -97,7 +97,7 @@ export const bigBars = [
     title: "White Raspberry Popping Candy 28%",
     subTitle: "6.35oz, 1 bar",
     price: "$5.95",
-    image: "./img/big-bars/white-raspberry-popping-candy-pink.png"  ,
+    image: "./img/big-bars/white-raspberry-popping-candy-pink.png",
     alt: "White Raspberry Popping Candy",
     about: "Break out your disco balls because our white raspberry popping candy bar is here to get the party started! We mixed creamy, dreamy white chocolate with raspberry and some popping candy to really make this bar pop.",
     contains: "Belgian Fairtrade white chocolate with freeze-dried raspberry and popping candy. Cocoa solids: 28% minimum. Made in Belgium.",
@@ -225,7 +225,7 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children,
   useEffect(() => {
     showModal && (activeModal.style.display = "block");
   }, [showModal])
-
+  //! about, contains, ingredients, allergies
   return (
     <ChocoSelectModal ref={ modal } { ...restProps }>
       <ChocoModalContent>
@@ -238,15 +238,29 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children,
           Close
         </button>
       <div className="leftSide">
+        <h1>{item.title}</h1>
+        <p className="about">{item.about}</p>
+      </div>
+      <div className="middleSide">
         <img src={item.image} loading="lazy" alt={item.alt}/>
+        <div>
+          <p>{item.subTitle}</p>
+          <div>
+            <p>{item.price}</p>
+            <AddCircleOutlineIcon style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}/>
+          </div>
+        </div>
       </div>
       <div className="rightSide">
-        <p>{item.title}</p>
-        <p>{item.subTitle}</p>
         <div>
-          <p>{item.price}</p>
-          <AddCircleOutlineIcon style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}/>
+          <h2>Ingredients:</h2>
+          <p>{item.ingredients}</p>
         </div>
+        <div>
+          <h2>Contains:</h2>
+          <p>{item.contains}</p>
+        </div>
+        <p className="allergies">{item.allergies}</p>
       </div>
       </ChocoModalContent>
       
