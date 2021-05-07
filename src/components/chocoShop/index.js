@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useContext, createContext } from 'react';
+import ReactDOM from 'react-dom';
 import { Container, SidebarContainer, SidebarNav, MainMenuContainer, MainMenu, MenuItem, ChocoSelectModal, ChocoModalContent } from './styles/chocoShop';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
@@ -113,21 +114,33 @@ export const smallBars = [
     subTitle: "1.8oz, 1 bar",
     price: "$2.39",
     image: "./img/small-bars/milk-chocolate-small-red.png"  ,
-    alt: "Milk Chocolate"
+    alt: "Milk Chocolate",
+    about: "Not just a classic milk chocolate bar, but our classic chocolate bar. It was the first bar we ever made, back in 2005. We gave it a screaming red wrapper to attract attention to our main mission - 100% slave-free chocolate.",
+    contains: "Belgian milk chocolate. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
+    allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts."
   },
   {
     title: "Milk Caramel Sea Salt 32%",
     subTitle: "1.8oz, 1 bar",
     price: "$2.39",
     image: "./img/small-bars/milk-caramel-sea-salt-small-orange.png"  ,
-    alt: "Milk Caramel Sea Salt"
+    alt: "Milk Caramel Sea Salt",
+    about: "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
+    contains: "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, caramel pieces (sugar, wheat syrup, cream (milk), butter (milk)), sea salt, soy lecithin ",
+    allergies: "May contain traces of Eggs, Peanuts and Tree nuts."
   },
   {
     title: "Dark Chocolate 70%",
     subTitle: "1.8oz, 1 bar",
     price: "$2.39",
     image:"./img/small-bars/dark-chocolate-small-blue.png",
-    alt: "Dark Chocolate"
+    alt: "Dark Chocolate",
+    about: "This bar contains at least 70% cacao. Se-ven-ty! This means we use a lot of cocoa beans.. This dark chocolate delicacy is designed for the true chocolate lover.",
+    contains: "Belgian dark chocolate. Cocoa solids: 70% minimum. Made in Belgium.",
+    ingredients: "cocoa mass, sugar, cocoa butter, cocoa powder, soy lecithin",
+    allergies: "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts."
   },      
 ];
 
@@ -137,21 +150,33 @@ export const tinyTonys = [
     subTitle: "100 pieces",
     price: "$48.69",
     image:"./img/tiny-tonys/milk-chocolate/milk-chocolate-mini-open-small.png",
-    alt: "Milk Chocolate"
+    alt: "Milk Chocolate",
+    about: "Not just a classic milk chocolate bar, but our classic chocolate bar. It was the first bar we ever made, back in 2005. We gave it a screaming red wrapper to attract attention to our main mission - 100% slave-free chocolate.",
+    contains: "Belgian milk chocolate. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
+    allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts."
   },
   {
     title: "Milk Caramel Sea Salt 32% Tiny Tony's",
     subTitle: "100 pieces",
     price: "$48.69",
     image:"./img/tiny-tonys/milk-chocolate-caramel-seasalt/milk-chocolate-caramel-open.png" ,
-    alt: "Milk Chocolate Caramel Sea Salt Tiny Tony's"
+    alt: "Milk Chocolate Caramel Sea Salt Tiny Tony's",
+    about: "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
+    contains: "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, caramel pieces (sugar, wheat syrup, cream (milk), butter (milk)), sea salt, soy lecithin ",
+    allergies: "May contain traces of Eggs, Peanuts and Tree nuts."
   },
   {
     title: "Dark Chocolate 70% Tiny Tony's",
     subTitle: "100 pieces",
     price: "$48.69",
     image:"./img/tiny-tonys/dark-chocolate/dark-chocolate-mini-open-large.png"  ,
-    alt: "Dark Chocolate Tiny Tony's"
+    alt: "Dark Chocolate Tiny Tony's",
+    about: "This bar contains at least 70% cacao. Se-ven-ty! This means we use a lot of cocoa beans.. This dark chocolate delicacy is designed for the true chocolate lover.",
+    contains: "Belgian dark chocolate. Cocoa solids: 70% minimum. Made in Belgium.",
+    ingredients: "cocoa mass, sugar, cocoa butter, cocoa powder, soy lecithin",
+    allergies: "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts."
   },
 ];
 
@@ -172,10 +197,10 @@ ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({ children, ...r
   return <SidebarContainer { ...restProps }>{ children }</SidebarContainer>;
 }
 
-ChocoShop.SidebarNav = function ChocoShopSidebarNav({ ref, children, ...restProps }) {
+ChocoShop.SidebarNav = function ChocoShopSidebarNav({children, ...restProps }) {
 
   //? Menu moves on scroll
-  const sidebarRef = useRef( null );
+  const sidebarRef = useRef('');
   useEffect(() => {
     window.addEventListener('scroll', function() {
       const elem = sidebarRef.current;
