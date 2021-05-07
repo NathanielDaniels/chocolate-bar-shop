@@ -9,7 +9,7 @@ export default function JoinForm() {
     <>
       <ChocolateContainer/>
       <HeaderContainer/>
-      {/* <FormContainer/> */}
+      <FormContainer/>
       <FooterContainer/>
     </>
   )

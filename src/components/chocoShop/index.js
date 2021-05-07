@@ -204,9 +204,10 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({children, ...restProps }) {
 
   // //? Menu moves on scroll
   const sidebarRef = useRef('');
+  
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      const elem = sidebarRef.current;
+      let elem = sidebarRef.current;
       elem.classList.toggle("sticky", window.scrollY > 0);
     });
   }, []);
