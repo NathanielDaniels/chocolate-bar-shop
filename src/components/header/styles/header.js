@@ -28,7 +28,10 @@ export const MenuList = styled.ul`
 `;
 
 export const MenuListItem = styled.li`
-    a {
+    
+`;
+
+export const MenuLink = styled.a`
       color: #fff;
       font-size: clamp(100%, 2vw, 1.4rem);
       transition: border-bottom .2s ease;
@@ -36,7 +39,8 @@ export const MenuListItem = styled.li`
       //? Underline effect
       &::after {
         content: '';
-        width: 0px;
+        width: 0;
+        ${'' /* width: ${({ active }) => (active ? '100%' : '0')}; */}
         height: 3px;
         background: var(--main-white);
         position: absolute;
@@ -51,12 +55,6 @@ export const MenuListItem = styled.li`
           width: 100%;
         }
       }
-    }
-    a.active {
-      &::after {
-        width: 100%;
-      }
-    }
 `;
 
 //? Main Container

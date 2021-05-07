@@ -20,3 +20,12 @@ export const InnerForm = styled.form`
   padding: 25px 50px;
   border-radius: 5px;
 `;
+
+export const Error = styled.div`
+  background: #e87c03;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 0 0 16px;
+  color: white;
+  padding: 15px 20px;
+`;

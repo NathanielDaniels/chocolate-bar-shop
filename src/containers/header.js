@@ -1,36 +1,41 @@
 import React, {useState, useEffect} from 'react';
-import { Header } from '../components'
-
-// const myRef = React.createRef()
-// console.log(myRef)
+import { Header } from '../components';
 
 export function HeaderContainer() {
-  // const [activeMenu, setActiveMenu] = useState('');
+  const [activePage, setActivePage] = useState('');
 
-  // useEffect(() => {
-  //   setActiveMenu('active')
-  // },[])
-
-  // if (activeMenu) {
-  //   setActiveMenu("active")
-  // }
-
-  // function removeActive() {
-  //   return setActiveMenu(null)
-  // }
+  useEffect(() => {
+    console.log("active Page: ", activePage)
+  }, [activePage])
 
   return (
-    <Header >
-      <Header.Menu >
+    <Header>
+      <Header.Menu>
         <Header.MenuList>
           <Header.MenuListItem>
-            <a href="/">Our Mission</a>
+            <Header.MenuLink 
+              active={ activePage === 'mission' ? 'true' : 'false' } 
+              onClick={ () => setActivePage('mission') } 
+              href="/"
+              > 
+              Our Mission
+            </Header.MenuLink>
           </Header.MenuListItem>
           <Header.MenuListItem>
-            <a href="/Join">Join In</a>
+            <Header.MenuLink 
+              active={ activePage === 'join' ? 'true' : 'false' } 
+              onClick={ () => setActivePage('join') } 
+              href="/Join">
+              Join In
+            </Header.MenuLink>
           </Header.MenuListItem>
           <Header.MenuListItem>
-            <a href="/ChocoShop">Chocoshop</a>
+            <Header.MenuLink 
+              active={ activePage === 'chocoShop' ? 'true' : 'false' } 
+              onClick={ () => setActivePage('chocoShop') } 
+              href="/ChocoShop">
+              Chocoshop
+            </Header.MenuLink>
           </Header.MenuListItem>
         </Header.MenuList>
       </Header.Menu>

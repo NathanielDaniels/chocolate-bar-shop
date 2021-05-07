@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
-import { Container, Menu, MenuList, MenuListItem } from './styles/header'
+import { Container, Menu, MenuList, MenuListItem, MenuLink } from './styles/header'
 
 export default function Header({ ref, children, ...restProps }) {
   const headerDom = useRef(null);
+  
   
   useEffect(() => {
     window.addEventListener('scroll', function() {
@@ -24,4 +25,8 @@ Header.MenuList = function HeaderMenuList({children, ...restProps}) {
 
 Header.MenuListItem = function HeaderMenuListItem({children, ...restProps}) {
   return <MenuListItem { ...restProps }>{ children }</MenuListItem>
+};
+
+Header.MenuLink = function HeaderMenuLink({children, ...restProps}) {
+  return <MenuLink { ...restProps }>{ children }</MenuLink>
 };
