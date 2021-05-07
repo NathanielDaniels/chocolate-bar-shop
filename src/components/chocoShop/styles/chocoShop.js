@@ -25,6 +25,7 @@ export const SidebarContainer = styled.section`
 `;
 
 export const SidebarNav = styled.nav`
+${'' /* border: 2px solid yellow; */}
   position: fixed;
   top: 100px;
   transition: top .3s ease-in-out;
@@ -123,17 +124,14 @@ export const MenuItem = styled.li`
 
 //? Popup Modal ===========================
 export const ChocoSelectModal = styled.div`
-  display: none;
+  ${'' /* display: none; */}
   z-index: 9999;
   width: 80%;
-  ${'' /* min-height: 60%; */}
   padding: 20px;
   border-radius: 10px;
-  ${'' /* max-width: 800px;
-  max-height: 400px; */}
   border: 2px solid red;
   background: var(--main-white);
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);

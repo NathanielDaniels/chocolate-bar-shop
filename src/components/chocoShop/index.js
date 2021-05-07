@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useContext, createContext } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { Container, SidebarContainer, SidebarNav, MainMenuContainer, MainMenu, MenuItem, ChocoSelectModal, ChocoModalContent } from './styles/chocoShop';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
@@ -183,10 +183,13 @@ export const tinyTonys = [
 export default function ChocoShop({children, ...restProps}) {
   const [showModal, setShowModal] = useState(false);
   const [item, setItem] = useState('');
+  const containerRef = useRef('')
+
+  // useEffect(() => {console.log("container ref", containerRef.current)}, [])
 
   return (
-    <FeatureModalContext.Provider value={{ showModal, setShowModal, item, setItem }}>
-      <Container { ...restProps }>{ children }</Container>;
+    <FeatureModalContext.Provider value={{ containerRef, showModal, setShowModal, item, setItem }}>
+      <Container ref={containerRef} { ...restProps }>{ children }</Container>;
     </FeatureModalContext.Provider>
   )
 };
@@ -199,17 +202,22 @@ ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({ children, ...r
 
 ChocoShop.SidebarNav = function ChocoShopSidebarNav({children, ...restProps }) {
 
-  //? Menu moves on scroll
+  // //? Menu moves on scroll
   const sidebarRef = useRef('');
   useEffect(() => {
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', () => {
       const elem = sidebarRef.current;
       elem.classList.toggle("sticky", window.scrollY > 0);
     });
   }, []);
 
   return (
-    <SidebarNav ref={ sidebarRef } { ...restProps }>{ children }</SidebarNav>
+    <SidebarNav 
+      ref={ sidebarRef } 
+      { ...restProps }
+    >
+      { children }
+    </SidebarNav>
   );
 }
 
@@ -224,40 +232,50 @@ ChocoShop.MainMenu = function ChocoShopMainMenu({ children, ...restProps }) {
 }
 
 ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }) {
-  const { showModal, setShowModal, setItem } = useContext(FeatureModalContext);
+  const { setShowModal, setItem } = useContext(FeatureModalContext);
   const menuItem = useRef(null) 
 
    useEffect(() => {
     
     const MenuItems = menuItem.current
     MenuItems.addEventListener('click', function() {
-      setShowModal(true)
-      setItem(item)
+      setShowModal(true);
+      setItem(item);
     });
   }, []);
+
+
+
   return (
     <MenuItem ref={ menuItem } { ...restProps }>{ children }</MenuItem>
   );
 }
 
 ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children, ...restProps }) {
-  const { showModal, setShowModal, item } = useContext(FeatureModalContext);
-  const modal = useRef('')
-  const activeModal = modal.current;
+  const { containerRef ,showModal, setShowModal, item } = useContext(FeatureModalContext);
 
-  console.log("State item:", item)
+  
+  //? Blur background on showModal
+  // useEffect(() => {
+  //   const mainContainer = containerRef.current
+  //     showModal ? (mainContainer.style.filter = "blur(8px)") : (mainContainer.style.filter = "blur(0px)")
+  //   }, [showModal])
+    
+  //? Remove Scroll when Modal is open
+  //   useEffect(() => {
+  //   const mainContainer = containerRef.current
+  //   console.log("modal container Ref:", mainContainer)
+  //   showModal ? (mainContainer.style.overflow = "hidden") : (mainContainer.style.overflow = 'scroll')
+  // }, [showModal])
 
-  useEffect(() => {
-    showModal && (activeModal.style.display = "block");
-  }, [showModal])
-  //! about, contains, ingredients, allergies
-  return (
-    <ChocoSelectModal ref={ modal } { ...restProps }>
+  // console.log("State item:", item)
+
+  return showModal ? (
+    <ChocoSelectModal { ...restProps }>
       <ChocoModalContent>
 
         <button 
           onClick={() => {
-            modal.current.style.display = "none";
             setShowModal(false)
           }}>
           Close
@@ -290,6 +308,7 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children,
       </ChocoModalContent>
       
     </ChocoSelectModal>
-  );
+  ) 
+  : null;
 }
 
