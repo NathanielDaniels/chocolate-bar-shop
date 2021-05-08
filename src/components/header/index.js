@@ -2,15 +2,16 @@ import React, { useRef, useEffect } from 'react';
 import { Container, Menu, MenuList, MenuListItem, MenuLink } from './styles/header'
 
 export default function Header({ ref, children, ...restProps }) {
-  const headerDom = useRef(null);
+  const headerDom = useRef('');
   
   
   useEffect(() => {
     window.addEventListener('scroll', function() {
       const elem = headerDom.current;
-      elem.classList.toggle("sticky", window.scrollY > 0);
+      return elem ? (elem.classList.toggle("sticky", window.scrollY > 0)) : '';
     });
   }, []);
+
   
   return <Container ref={ headerDom } { ...restProps }>{ children }</Container>
 };

@@ -208,7 +208,7 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({children, ...restProps }) {
   useEffect(() => {
     window.addEventListener('scroll', () => {
       let elem = sidebarRef.current;
-      elem.classList.toggle("sticky", window.scrollY > 0);
+      return elem ? (elem.classList.toggle("sticky", window.scrollY > 0)) : '';
     });
   }, []);
 

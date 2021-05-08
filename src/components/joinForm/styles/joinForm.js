@@ -1,10 +1,9 @@
 import styled from 'styled-components';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 100%;
   padding: 150px 0 100px;
-
-  
 `;
 
 export const Title = styled.h1`
@@ -49,14 +48,14 @@ export const TextSmall = styled.h4`
   bottom: 20px;
 `;
 
-// export const Link = styled(ReactRouterLink)`
-//   color: #fff;
-//   text-decoration: none;
+export const Link = styled(ReactRouterLink)`
+  color: #fff;
+  text-decoration: none;
   
-//   &:hover {
-//     text-decoration: underline;
-//   }
-// `;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 export const Input = styled.input`
   ${'' /* background: #333; */}

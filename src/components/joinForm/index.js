@@ -5,7 +5,7 @@ import {
   InnerForm, 
   Text, 
   TextSmall, 
-  // Link, 
+  Link, 
   Input, 
   Error, 
   Submit, 
@@ -31,9 +31,9 @@ Form.Text = function formText({children, ...restProps}) {
 Form.TextSmall = function FormTextSmall({ children, ...restProps }) {
     return <TextSmall {...restProps}>{children}</TextSmall>;
 }
-// Form.Link = function FormLink({ children, ...restProps }) {
-//     return <Link {...restProps}>{children}</Link>;
-// }
+Form.Link = function FormLink({ children, ...restProps }) {
+    return <Link {...restProps}>{children}</Link>;
+}
 
 Form.Input = function formInput({...restProps}) {
   return <Input {...restProps}/>

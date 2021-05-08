@@ -38,15 +38,15 @@ export function FormContainer() {
     <Form>
       {error && <Form.Error>{error}</Form.Error>}
       <Form.InnerForm onSubmit={handleSignin} method="POST">
-        <Form.Title>Join In</Form.Title>
+        <Form.Title>Sign In</Form.Title>
 
-        <Form.Input 
+        {/* <Form.Input 
           type="text" 
           placeholder="First Name"
           value={firstName}
           onChange={({ target }) => setFirstName(target.value)}
           required
-        />
+        /> */}
 
         <Form.Input 
           type="email" 
@@ -64,17 +64,17 @@ export function FormContainer() {
           required
         />
 
-        <Form.Submit type="submit" disabled={isInvalid}>Sign Up</Form.Submit>
+        <Form.Submit type="submit" disabled={isInvalid}>Sign In</Form.Submit>
 
         <Form.Text>
-          Already a user? <Form.Link to="/SignIn">Sign in now.</Form.Link>
+          New to Tony's Chocolates? <Form.Link to="/Join">Sign up now.</Form.Link>
         </Form.Text>
 
-        {/* <Form.Demo 
+        <Form.Demo 
           onClick={() => handleDemo()}
           type="button">
          Demo
-        </Form.Demo> */}
+        </Form.Demo>
 
         <Form.TextSmall>
           This page is protected by Google reCAPTCHA.
