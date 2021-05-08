@@ -70,12 +70,6 @@ export function FormContainer() {
           Already a user? <Form.Link to="/SignIn">Sign in now.</Form.Link>
         </Form.Text>
 
-        {/* <Form.Demo 
-          onClick={() => handleDemo()}
-          type="button">
-         Demo
-        </Form.Demo> */}
-
         <Form.TextSmall>
           This page is protected by Google reCAPTCHA.
         </Form.TextSmall>

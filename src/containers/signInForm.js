@@ -40,14 +40,6 @@ export function FormContainer() {
       <Form.InnerForm onSubmit={handleSignin} method="POST">
         <Form.Title>Sign In</Form.Title>
 
-        {/* <Form.Input 
-          type="text" 
-          placeholder="First Name"
-          value={firstName}
-          onChange={({ target }) => setFirstName(target.value)}
-          required
-        /> */}
-
         <Form.Input 
           type="email" 
           placeholder="Email"
@@ -67,7 +59,7 @@ export function FormContainer() {
         <Form.Submit type="submit" disabled={isInvalid}>Sign In</Form.Submit>
 
         <Form.Text>
-          New to Tony's Chocolates? <Form.Link to="/Join">Sign up now.</Form.Link>
+          New to Tony's Chocolates? <Form.Link to="/Join">Join in now.</Form.Link>
         </Form.Text>
 
         <Form.Demo 

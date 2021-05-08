@@ -19,23 +19,17 @@ export const InnerForm = styled.form`
   min-height: 540px;
   max-width: 450px;
   background-color: rgba(0, 0, 0, 0.45);
-  border-radius: 5px;
-  ${'' /* padding: 60px 68px 40px; */}
   margin: 0 auto;
   margin-bottom: 100px;
   position: relative;
-  border: 2px solid red;
-
-  ${'' /* width: 500px;
-  height: 400px;
-  margin: 0 auto;
-  ${'' /* background: var(--main-white);  */}
   padding: 25px 50px;
-  border-radius: 5px; */}
+  border: 2px solid red;
+  border-radius: 5px;
 `;
 
 export const Text = styled.p`
-  color: #737373;
+  ${'' /* color: #737373; */}
+  color: rgba(255,255,255,.6);
   font-size: 16px;
   font-weight: 500;
 `;
@@ -43,7 +37,7 @@ export const Text = styled.p`
 export const TextSmall = styled.h4`
   font-size: 13px;
   line-height: normal;
-  color: #8c8c8c;
+  color: rgba(255,255,255,.6);
   position: absolute;
   bottom: 20px;
 `;
@@ -74,8 +68,7 @@ export const Input = styled.input`
   }
 
   &::placeholder {
-    ${'' /* font-weight: 600; */}
-    color: #fff;
+    color: var(--main-white);
   }
 `;
 
@@ -89,7 +82,7 @@ export const Error = styled.div`
 `;
 
 export const Submit = styled.button`
-  background: #e50914;
+  background: var(--main-red);
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
@@ -106,7 +99,7 @@ export const Submit = styled.button`
 
 export const Demo = styled.button`
   position: relative;
-  background: #e50914;
+  background: var(--main-red);
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
