@@ -2,8 +2,12 @@ import styled from 'styled-components';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
+  ${'' /* z-index: 9999; */}
   width: 100%;
   padding: 150px 0 100px;
+  position: relative;
+  top: 0;
+  ${({ right }) => right && `right: ${right}`};
 `;
 
 export const Title = styled.h1`
