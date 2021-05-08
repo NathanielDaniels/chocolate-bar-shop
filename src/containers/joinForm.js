@@ -28,12 +28,6 @@ export function FormContainer() {
       .catch((error) => setError(error.message));
   }
 
-  const handleDemo = () => {
-    setEmailAddress("demo@demo.com")
-    setUserPassword("nateflixdemo")
-    // history.push(ROUTES.BROWSE);
-  }
-
   return (
     <Form>
       {error && <Form.Error>{error}</Form.Error>}
