@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
@@ -6,29 +6,37 @@ export const Container = styled.div`
   width: 100%;
   padding: 150px 0 100px;
   position: relative;
-  top: 0;
+  top: 50px;
   ${({ right }) => right && `right: ${right}`};
+
+  @media (max-width: 1200px) {
+    width: 98%;
+    margin: 0 auto;
+    right: 0;
+    top: 100px;
+  }
 `;
 
 export const Title = styled.h1`
+  font-size: 2.5rem;
   text-align: center;
   color: var(--main-yellow);
   margin-bottom: 20px;
 `;
 
 export const InnerForm = styled.form`
+  box-shadow: inset 0 0 10px hsl(210, 100%, 26%), inset 0 0 15px hsl(210, 100%, 30%);
+  background: hsl(210, 100%, 37%);
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 540px;
   max-width: 450px;
-  background-color: rgba(0, 0, 0, 0.45);
+  ${'' /* background-color: rgba(0, 0, 0, 0.45); */}
   margin: 0 auto;
-  margin-bottom: 100px;
   position: relative;
   padding: 25px 50px;
-  border: 2px solid red;
-  border-radius: 5px;
+  border-radius: 10px;
 `;
 
 export const Text = styled.p`
@@ -56,8 +64,9 @@ export const Link = styled(ReactRouterLink)`
 `;
 
 export const Input = styled.input`
-  ${'' /* background: #333; */}
-  background: var(--main-blue);
+  background: #335;
+  box-shadow: inset 0 2px 5px #334;
+  ${'' /* background: var(--main-blue); */}
   border-radius: 5px;
   border: 0;
   color: #fff;
