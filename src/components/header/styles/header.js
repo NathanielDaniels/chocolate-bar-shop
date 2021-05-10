@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components/macro';
+import styled from 'styled-components/macro';
 
 export const Menu = styled.nav`
   display: flex;
@@ -12,13 +12,6 @@ export const Menu = styled.nav`
   transition: 0.6s;
   border-radius: 4px;
   }
-  ${'' /* ${props => props.primary && css`
-    background: white;
-    color: black;
-    padding: 100%;
-  `} */}
-
-  
 `;
 
 export const MenuList = styled.ul`
@@ -28,19 +21,14 @@ export const MenuList = styled.ul`
 `;
 
 export const MenuListItem = styled.li`
-    
-`;
-
-export const MenuLink = styled.a`
-      color: #fff;
       font-size: clamp(100%, 2vw, 1.4rem);
       transition: border-bottom .2s ease;
       position: relative;
       //? Underline effect
+        ${'' /* width: ${({ active }) => (active ? '100%' : '0')}; */}
       &::after {
         content: '';
         width: 0;
-        ${'' /* width: ${({ active }) => (active ? '100%' : '0')}; */}
         height: 3px;
         background: var(--main-white);
         position: absolute;
@@ -48,15 +36,46 @@ export const MenuLink = styled.a`
         bottom: 0;
         transition: width .3s ease;
       }
-      
-      &:hover, &:focus{
-        outline: none;
-        &::after {
-          width: 100%;
+
+
+      a {
+        color: var(--main-white);
+
+         &::after {
+        content: '';
+        width: 0;
+        height: 3px;
+        background: var(--main-white);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: width .3s ease;
+      }
+        &:hover, &:focus {
+          outline: none;
+          &::after {
+            width: 100%;
+          }
         }
       }
+      .active {
+        ${'' /* color: var(--main-yellow); */}
+        
+        &::after {
+          content: '';
+          width: 100%;
+          height: 3px;
+          background: var(--main-white);
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          transition: width .3s ease;
+        }
+         
+      }
+      
+      
 `;
-
 //? Main Container
 export const Container = styled.header`
   z-index: 2;
