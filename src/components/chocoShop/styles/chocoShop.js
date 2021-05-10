@@ -7,6 +7,17 @@ export const Container = styled.section`
   grid-template-rows: 1fr;
   background: white;
   width: 100%;
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr 1.5fr;
+  }
 `;
 
 //? Left Side Menu
@@ -14,7 +25,7 @@ export const SidebarContainer = styled.section`
   ${'' /* border: 4px solid green; */}
   background: var(--main-blue);
   border-right: 2px solid var(--main-red);
-  position: relative;
+  ${'' /* position: relative; */}
   height: 100%;
   width: 100%;
   grid-column: 1 / 2;
@@ -29,7 +40,7 @@ ${'' /* border: 2px solid yellow; */}
   position: fixed;
   top: 100px;
   transition: top .3s ease-in-out;
-  width: 20%;
+  ${'' /* width: 20%; */}
   ul {
     width: 100%;
     li {
@@ -47,7 +58,16 @@ ${'' /* border: 2px solid yellow; */}
       &:hover {
         color: var(--main-yellow);
       }
+      @media (max-width: 1200px) {
+        font-size: clamp(1rem, 2vw, 1.6rem);
+        height: 30px;
+      }
+
+      @media (max-width: 600px) {
+        padding: 0 10px;
+      }
     }
+
   }
 
   //? Sticky Menu on scroll
@@ -106,17 +126,28 @@ export const MenuItem = styled.li`
       @media (max-width: 1200px) {
         width: 250px;
       }
+
+      @media (max-width: 600px) {
+        ${'' /* width: 150px; */}
+        width: 100%;
+      }
     }
     p {
       padding-left: 10px;
       color: var(--main-black);
+      @media (max-width: 600px) {
+        font-size: 14px;
+      }
     }
     div {
       display: flex;
       justify-content: space-between;
-      font-weight: 500;
-      font-size: 1.4rem;
       padding-right: 5px;
+      p {
+        font-weight: 500;
+        font-size: 1.4rem;
+
+      }
     }
   } 
     
