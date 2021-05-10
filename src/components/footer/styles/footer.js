@@ -57,5 +57,10 @@ export const Section = styled.div`
       flex-direction: column;
       justify-content: center;
     }
+
+    .socialMedia {
+      width: 150px;
+      
+    }
   };
 `;

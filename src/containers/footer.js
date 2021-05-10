@@ -1,5 +1,8 @@
 import React from 'react';
 import { Footer } from '../components';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 export function FooterContainer() {
  return (
@@ -10,25 +13,25 @@ export function FooterContainer() {
         <h4>Our Story</h4>
         <ul>
           <li><a href="/">Our Mission</a></li>
-          <li><a href="#OurTimeline">Our Timeline</a></li>
-          <li><a href="#TonysImpact">Tony's Impact</a></li>
-          <li><a href="#AnualReports">Anual FAIR report</a></li>
+          <li><a>Our Timeline</a></li>
+          <li><a>Tony's Impact</a></li>
+          <li><a>Anual FAIR report</a></li>
         </ul>
       </Footer.Section>
       <Footer.Section>
         <h4>Join In</h4>
         <ul>
-          <li><a href="#WhatYouCanDo">See What You Can Do</a></li>
-          <li><a href="#BecomeFriends">Become Serious Friends</a></li>
+          <li><a href="/join">See What You Can Do</a></li>
+          <li><a href="/join">Become Serious Friends</a></li>
         </ul>
       </Footer.Section>
       <Footer.Section>
         <h4>ChocoShop</h4>
         <ul>
-          <li><a href="#BigBars">Big Bars</a></li>
-          <li><a href="#SmallBars">Small Bars</a></li>
-          <li><a href="#TinyTonys">Tiny Tony's</a></li>
-          <li><a href="#StoreLocator">Store Locator</a></li>
+          <li><a href="/chocoShop">Big Bars</a></li>
+          <li><a href="/chocoShop">Small Bars</a></li>
+          <li><a href="/chocoShop">Tiny Tony's</a></li>
+          <li><a>Store Locator</a></li>
         </ul>
       </Footer.Section>
       <Footer.Section>
@@ -43,9 +46,9 @@ export function FooterContainer() {
       </Footer.Section>
       <Footer.Section>
         <ul>
-          <li><a href="#BigBars">Facebook</a></li>
-          <li><a href="#BigBars">Twitter</a></li>
-          <li><a href="#BigBars">Instagram</a></li>
+          <li><a className="socialMedia" href="https://www.facebook.com/TonysChocolonelyUS/"><FacebookIcon fontSize="large"/></a></li>
+          <li><a className="socialMedia" href="https://twitter.com/TonysChocoUS/"><TwitterIcon fontSize="large"/></a></li>
+          <li><a className="socialMedia" href="https://www.instagram.com/tonyschocolonely_us/"><InstagramIcon fontSize="large"/></a></li>
         </ul>
       </Footer.Section>
     </Footer.Wrapper>
