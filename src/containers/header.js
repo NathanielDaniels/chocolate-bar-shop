@@ -3,12 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { Header } from '../components';
 
 export function HeaderContainer() {
-  // const [activePage, setActivePage] = useState('mission');
-
-  // useEffect(() => {
-  //   console.log("active Page: ", activePage)
-  // }, [activePage])
-
   return (
     <Header>
       <Header.Menu>
@@ -16,11 +10,7 @@ export function HeaderContainer() {
           <Header.MenuListItem>
             <NavLink 
               exact to="/"
-              activeClassName="active" 
-              // activeStyle={{
-              //   // fontWeight: "bold",
-              //   color: "#fff"
-              // }}
+              activeClassName="active"
             >
               Mission
             </NavLink>
@@ -28,11 +18,7 @@ export function HeaderContainer() {
           <Header.MenuListItem>
             <NavLink 
               to="/Join"
-              activeClassName="active" 
-              // activeStyle={{
-              //   // fontWeight: "bold",
-              //   color: "#fff"
-              // }}
+              activeClassName="active"
             >
               Join In
             </NavLink>
@@ -40,30 +26,11 @@ export function HeaderContainer() {
           <Header.MenuListItem>
             <NavLink 
               to="/ChocoShop"
-              activeClassName="active" 
-              // activeStyle={{
-              //   // fontWeight: "bold",
-              //   color: "#fff"
-              // }}
+              activeClassName="active"
             >
               Chocoshop
             </NavLink>
           </Header.MenuListItem>
-
-          {/* <Header.MenuListItem>
-            <Header.MenuLink 
-              active={ activePage === 'join' ? 'true' : 'false' } 
-              // onClick={ () => setActivePage('join') } 
-              onClick={ (e) => {
-                // e.preventDefault()
-                setActivePage('join')
-                console.log(activePage)
-              } } 
-              href="/Join">
-              Join In
-            </Header.MenuLink>
-          </Header.MenuListItem> */}
-  
         </Header.MenuList>
       </Header.Menu>
     </Header>
