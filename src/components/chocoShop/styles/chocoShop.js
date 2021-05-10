@@ -155,7 +155,6 @@ export const MenuItem = styled.li`
 
 //? Popup Modal ===========================
 export const ChocoSelectModal = styled.div`
-  ${'' /* display: none; */}
   z-index: 9999;
   width: 80%;
   padding: 20px;
@@ -166,15 +165,29 @@ export const ChocoSelectModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+
+  @media (max-width: 800px) {
+    width: 80%;
+    height: 95vh;
+    padding: 0;
+  }
 `;
 
 export const ChocoModalContent = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  height: 100%;
-  width: 100%;
   font-size: 14px;
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    height: 100%;
+  }
+  
   button {
     position: absolute;
     cursor: pointer;
@@ -187,11 +200,19 @@ export const ChocoModalContent = styled.div`
     display: flex;
     align-items: flex-start;
     padding: 40px 20px;
+    @media (max-width: 800px) {
+      padding: 10px 20px;
+    }
   }
   .leftSide {
     grid-column: 1 / 2;
     flex-direction: column;
     justify-content: center;
+    @media (max-width: 800px) {
+      grid-column: 1;
+      grid-row: 1 / 2;
+      font-size: 12px;
+    }
   }
   .middleSide {
     grid-column: 2 / 3;
@@ -200,6 +221,8 @@ export const ChocoModalContent = styled.div`
     ${'' /* justify-content: space-evenly; */}
     justify-content: center;
     align-items: center;
+
+   
     img {
       width: 80%;
       margin-bottom: 1em;
@@ -207,7 +230,6 @@ export const ChocoModalContent = styled.div`
     div {
       display: flex;
       flex-direction: column;
-      ${'' /* align-items: space-between; */}
       font-size: 1.4rem;
       div {
         justify-content: space-between;
@@ -216,12 +238,30 @@ export const ChocoModalContent = styled.div`
         ${'' /* padding-right: 5px; */}
       }
     }
+     @media (max-width: 800px) {
+      grid-column: 1;
+      grid-row: 2 / 3;
+      flex-direction: row;
+      img {
+        width: clamp(100px, 30vw, 200px);
+        max-width:50%;
+      }
+      div {
+        font-size: 1.2rem;
+        padding: 0 10px;
+      }
+    }
   }
   .rightSide {
     justify-content: space-evenly;
     flex-direction: column;
     align-items: flex-start;
     grid-column: 3 / 4;
+    @media (max-width: 800px) {
+      grid-column: 1;
+      grid-row: 3 / 4;
+      font-size: 12px;
+    }
     .allergies {
       border: 2px solid red;
       border-radius: 5px;
