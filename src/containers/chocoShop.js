@@ -56,7 +56,7 @@ export function ChocoShopContainer() {
         <ChocoShop.SidebarNav>
           <ul>
             <NavLink 
-                to="#"
+                to="/allBars"
                 activeClassName="active"
                 onClick={(e) => {
                   e.preventDefault()
@@ -67,7 +67,7 @@ export function ChocoShopContainer() {
               </NavLink>
 
             <NavLink 
-                to="#"
+                to="/bigBars"
                 activeClassName="active"
                 onClick={(e) => {
                   e.preventDefault()
@@ -78,7 +78,7 @@ export function ChocoShopContainer() {
               </NavLink>
 
             <NavLink 
-                to="/ChocoShop"
+                to="/smallBars"
                 activeClassName="active"
                 onClick={(e) => {
                   e.preventDefault()
@@ -89,7 +89,7 @@ export function ChocoShopContainer() {
               </NavLink>
 
             <NavLink 
-                to="/ChocoShop"
+                to="/tinyTonys"
                 activeClassName="active"
                 onClick={(e) => {
                   e.preventDefault()

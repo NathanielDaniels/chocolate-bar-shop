@@ -56,7 +56,7 @@ ${'' /* border: 2px solid yellow; */}
       font-weight: 600;
       color: var(--main-white);
       &:hover {
-        color: var(--main-white);
+        color: var(--main-yellow);
       }
       @media (max-width: 1200px) {
         font-size: clamp(1rem, 2vw, 1.6rem);
