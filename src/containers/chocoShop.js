@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext, createContext} from 'react';
+import { NavLink } from 'react-router-dom';
 import { ChocoShop } from '../components';
 import { bigBars, smallBars, tinyTonys } from '../components/chocoShop';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -54,6 +55,46 @@ export function ChocoShopContainer() {
       <ChocoShop.SidebarNav />
         <ChocoShop.SidebarNav>
           <ul>
+            {/* <NavLink 
+                to="#"
+                activeClassName="active"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setItemFeature(ChocoShopTotalMenu)
+                }}
+              >
+                All Chocolates
+              </NavLink> */}
+            {/* <NavLink 
+                to="#"
+                activeClassName="active"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setItemFeature(bigBars)
+                }}
+              >
+                Big Bars
+              </NavLink> */}
+            {/* <NavLink 
+                to="/ChocoShop"
+                activeClassName="active"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setItemFeature(smallBars)
+                }}
+              >
+                Small Bars
+              </NavLink> */}
+            {/* <NavLink 
+                to="/ChocoShop"
+                activeClassName="active"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setItemFeature(tinyTonys)
+                }}
+              >
+               Tiny Tony's
+              </NavLink> */}
             <a href="#" onClick={(e) => {
               e.preventDefault()
               setItemFeature(ChocoShopTotalMenu)

@@ -69,7 +69,9 @@ ${'' /* border: 2px solid yellow; */}
     }
 
   }
-
+  .active {
+    color: var(--main-yellow);
+  }
   //? Sticky Menu on scroll
   &.sticky {
     top: 60px;
