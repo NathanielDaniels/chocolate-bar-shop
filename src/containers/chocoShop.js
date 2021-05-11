@@ -1,19 +1,22 @@
 import React, {useState, useEffect, useContext, createContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChocoShop } from '../components';
-import { bigBars, smallBars, tinyTonys } from '../components/chocoShop';
+// import { bigBars, smallBars, tinyTonys } from '../components/chocoShop';
+import { allBars } from '../components/chocoShop';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 export const FeatureContext = createContext();
 export const FeatureModalContext = createContext();
 
 //? All Chocolates
-const ChocoShopTotalMenu = bigBars.concat(smallBars).concat(tinyTonys);
+// const ChocoShopTotalMenu = bigBars.concat(smallBars).concat(tinyTonys);
+const ChocoShopTotalMenu = allBars
+
 
 //? Filtered Chocolates by size
-// const filterBigBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$5.95");
-// const filterSmallBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$2.39");
-// const filterTinyTonys = ChocoShopTotalMenu.filter((bars) => bars.price === "$48.69");
+const filterBigBars = allBars.filter((bars) => bars.price === "$5.95");
+const filterSmallBars = allBars.filter((bars) => bars.price === "$2.39");
+const filterTinyTonys = allBars.filter((bars) => bars.price === "$48.69");
 
 
 export function ChocoShopContainer() {
@@ -21,22 +24,28 @@ export function ChocoShopContainer() {
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
   const [item, setItem] = useState('');
 
-  // console.log("item", item)
+  // console.log("item Feature", itemFeature);
   
   // useEffect(() => {
   //   console.log("item", item)
   // }, [item])
 
+  useEffect(() => {
+
+    console.log("item", item)
+  },[])
   function modalFeature(chocolate) {
       setItem(chocolate)
-      
-      // console.log("item", item)
       // console.log("chocolate", chocolate.target)
 
 
       return (
          <ChocoShop.MenuItem key={chocolate.title + chocolate.price}>
-            <img src={chocolate.image} loading="lazy" alt={chocolate.alt}/>
+            <img 
+              src={chocolate.image} 
+              // loading="lazy" 
+              alt={chocolate.alt}
+            />
             <p>{chocolate.title}</p>
             <p>{chocolate.subTitle}</p>
             <div>
@@ -45,7 +54,7 @@ export function ChocoShopContainer() {
             </div>
           </ChocoShop.MenuItem>
       )
-    }
+  }
 
   return (
     <ChocoShop>
@@ -57,8 +66,9 @@ export function ChocoShopContainer() {
               exact to="/ChocoShop"
               activeClassName="active"
               onClick={(e) => {
-                // e.preventDefault()
-                setItemFeature(ChocoShopTotalMenu)
+                e.preventDefault()
+                setItemFeature(() => ChocoShopTotalMenu)
+                // setItemFeature(allBars)
               }}
             >
               All Chocolates
@@ -68,8 +78,9 @@ export function ChocoShopContainer() {
               to="/ChocoShop/Big"
               activeClassName="active"
               onClick={(e) => {
-                // e.preventDefault()
-                setItemFeature(bigBars)
+                e.preventDefault()
+                // setItemFeature(bigBars)
+                setItemFeature(() => filterBigBars)
               }}
             >
               Big Bars
@@ -79,8 +90,9 @@ export function ChocoShopContainer() {
               to="/ChocoShop/Small"
               activeClassName="active"
               onClick={(e) => {
-                // e.preventDefault()
-                setItemFeature(smallBars)
+                e.preventDefault()
+                // setItemFeature(smallBars)
+                setItemFeature(() => filterSmallBars)
               }}
             >
               Small Bars
@@ -91,8 +103,8 @@ export function ChocoShopContainer() {
               activeClassName="active"
               onClick={(e) => {
                 // e.preventDefault()
-                setItemFeature(tinyTonys)
-                // handleActive()
+                // setItemFeature(tinyTonys)
+                setItemFeature(() => filterTinyTonys)
               }}
             >
               Tiny Tony's
