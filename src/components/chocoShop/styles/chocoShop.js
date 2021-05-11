@@ -20,7 +20,7 @@ export const Container = styled.section`
   }
 `;
 
-//? Left Side Menu
+//? Left Side Nav Menu ============================
 export const SidebarContainer = styled.section`
   ${'' /* border: 4px solid green; */}
   background: var(--main-blue);
@@ -30,9 +30,6 @@ export const SidebarContainer = styled.section`
   width: 100%;
   grid-column: 1 / 2;
   grid-row: 1;
-  ${'' /* display: flex;
-  align-items: center;
-  justify-content: center; */}
 `;
 
 export const SidebarNav = styled.nav`
@@ -41,7 +38,14 @@ ${'' /* border: 2px solid yellow; */}
   top: 100px;
   transition: top .3s ease-in-out;
   ${'' /* width: 20%; */}
-  ul {
+
+  //? Sticky Menu on scroll
+  &.sticky {
+    top: 60px;
+  }
+`;
+
+export const SidebarNavList = styled.ul`
     width: 100%;
     a {
       ${'' /* border: 2px solid blue; */}
@@ -71,14 +75,10 @@ ${'' /* border: 2px solid yellow; */}
     .active {
       color: var(--main-yellow);
     }
-  }
-  //? Sticky Menu on scroll
-  &.sticky {
-    top: 60px;
-  }
+  
 `;
 
-//? Right Side Main
+//? Right Side Main ====================================
 export const MainMenuContainer = styled.section`
   background: var(--main-white);
   grid-column: 2 / span 1;

@@ -23,22 +23,20 @@ export function ChocoShopContainer() {
 
   // console.log("item", item)
   
-  useEffect(() => {
-    console.log("item", item)
-  }, [item])
+  // useEffect(() => {
+  //   console.log("item", item)
+  // }, [item])
 
   function modalFeature(chocolate) {
-      // console.log("modalFeature:", chocolate.currentTarget.children[0].firstChild)
       setItem(chocolate)
       
-      console.log("item", item)
-      console.log("chocolate", chocolate.target)
+      // console.log("item", item)
+      // console.log("chocolate", chocolate.target)
 
 
       return (
          <ChocoShop.MenuItem key={chocolate.title + chocolate.price}>
             <img src={chocolate.image} loading="lazy" alt={chocolate.alt}/>
-            {/* {chocolate.currentTarget.children[0].firstChild} */}
             <p>{chocolate.title}</p>
             <p>{chocolate.subTitle}</p>
             <div>
@@ -54,50 +52,51 @@ export function ChocoShopContainer() {
       <ChocoShop.SidebarContainer>
       <ChocoShop.SidebarNav />
         <ChocoShop.SidebarNav>
-          <ul>
+          <ChocoShop.SidebarNavList>
             <NavLink 
-                to="/allBars"
-                activeClassName="active"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setItemFeature(ChocoShopTotalMenu)
-                }}
-              >
-                All Chocolates
-              </NavLink>
+              exact to="/ChocoShop"
+              activeClassName="active"
+              onClick={(e) => {
+                // e.preventDefault()
+                setItemFeature(ChocoShopTotalMenu)
+              }}
+            >
+              All Chocolates
+            </NavLink>
 
             <NavLink 
-                to="/bigBars"
-                activeClassName="active"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setItemFeature(bigBars)
-                }}
-              >
-                Big Bars
-              </NavLink>
+              to="/ChocoShop/Big"
+              activeClassName="active"
+              onClick={(e) => {
+                // e.preventDefault()
+                setItemFeature(bigBars)
+              }}
+            >
+              Big Bars
+            </NavLink>
 
             <NavLink 
-                to="/smallBars"
-                activeClassName="active"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setItemFeature(smallBars)
-                }}
-              >
-                Small Bars
-              </NavLink>
+              to="/ChocoShop/Small"
+              activeClassName="active"
+              onClick={(e) => {
+                // e.preventDefault()
+                setItemFeature(smallBars)
+              }}
+            >
+              Small Bars
+            </NavLink>
 
             <NavLink 
-                to="/tinyTonys"
-                activeClassName="active"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setItemFeature(tinyTonys)
-                }}
-              >
-               Tiny Tony's
-              </NavLink>
+              to="/ChocoShop/Tiny"
+              activeClassName="active"
+              onClick={(e) => {
+                // e.preventDefault()
+                setItemFeature(tinyTonys)
+                // handleActive()
+              }}
+            >
+              Tiny Tony's
+            </NavLink>
 
               {/*! ==================================== */}
 
@@ -129,7 +128,7 @@ export function ChocoShopContainer() {
               <li>Tiny Tony's</li>
             </a> */}
 
-          </ul>
+          </ChocoShop.SidebarNavList>
         </ChocoShop.SidebarNav>
       </ChocoShop.SidebarContainer>
 
@@ -138,7 +137,11 @@ export function ChocoShopContainer() {
           <ul>
             {itemFeature.map((chocolate) => {
               return (
-                <ChocoShop.MenuItem onClick={(chocolate) => modalFeature(chocolate.target)} item={chocolate} key={chocolate.title + chocolate.price}>
+                <ChocoShop.MenuItem 
+                  onClick={(chocolate) => modalFeature(chocolate.target)} 
+                  item={chocolate} 
+                  key={chocolate.title + chocolate.price}
+                >
                   <a>
                     <img src={ chocolate.image } loading="lazy" alt={ chocolate.alt }/>
                     <p>{ chocolate.title }</p>

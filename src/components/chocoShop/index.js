@@ -1,7 +1,17 @@
 import React, { useRef, useState, useEffect, useContext, createContext } from 'react';
 // import ReactDOM from 'react-dom';
-import { Container, SidebarContainer, SidebarNav, MainMenuContainer, MainMenu, MenuItem, ChocoSelectModal, ChocoModalContent } from './styles/chocoShop';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import { 
+  Container, 
+  SidebarContainer, 
+  SidebarNav,
+  SidebarNavList,
+  MainMenuContainer, 
+  MainMenu, 
+  MenuItem, 
+  ChocoSelectModal, 
+  ChocoModalContent 
+} from './styles/chocoShop';
 
 export const FeatureModalContext = createContext();
 
@@ -220,6 +230,10 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({children, ...restProps }) {
       { children }
     </SidebarNav>
   );
+}
+
+ChocoShop.SidebarNavList = function ChocoShopSidebarNavList({children, ...restProps }) {
+  return <SidebarNavList { ...restProps }>{ children }</SidebarNavList>
 }
 
 //? Right Side Navbar Menu ============================================
