@@ -55,7 +55,7 @@ export function ChocoShopContainer() {
       <ChocoShop.SidebarNav />
         <ChocoShop.SidebarNav>
           <ul>
-            {/* <NavLink 
+            <NavLink 
                 to="#"
                 activeClassName="active"
                 onClick={(e) => {
@@ -64,8 +64,9 @@ export function ChocoShopContainer() {
                 }}
               >
                 All Chocolates
-              </NavLink> */}
-            {/* <NavLink 
+              </NavLink>
+
+            <NavLink 
                 to="#"
                 activeClassName="active"
                 onClick={(e) => {
@@ -74,8 +75,9 @@ export function ChocoShopContainer() {
                 }}
               >
                 Big Bars
-              </NavLink> */}
-            {/* <NavLink 
+              </NavLink>
+
+            <NavLink 
                 to="/ChocoShop"
                 activeClassName="active"
                 onClick={(e) => {
@@ -84,8 +86,9 @@ export function ChocoShopContainer() {
                 }}
               >
                 Small Bars
-              </NavLink> */}
-            {/* <NavLink 
+              </NavLink>
+
+            <NavLink 
                 to="/ChocoShop"
                 activeClassName="active"
                 onClick={(e) => {
@@ -94,31 +97,38 @@ export function ChocoShopContainer() {
                 }}
               >
                Tiny Tony's
-              </NavLink> */}
-            <a href="#" onClick={(e) => {
+              </NavLink>
+
+              {/*! ==================================== */}
+
+            {/* <a href="#" onClick={(e) => {
               e.preventDefault()
               setItemFeature(ChocoShopTotalMenu)
             }}>
               <li>All Chocolate</li>
-            </a>
-            <a href="#" onClick={(e) => {
+            </a> */}
+
+            {/* <a href="#" onClick={(e) => {
               e.preventDefault()
               setItemFeature(bigBars)
             }}>
               <li>Big Bars</li>
-            </a>
-            <a href="/ChocoShop" onClick={(e) => {
+            </a> */}
+
+            {/* <a href="/ChocoShop" onClick={(e) => {
               e.preventDefault()
               setItemFeature(smallBars)
             }}>
               <li>Small Bars</li>
-            </a>
-            <a href="/ChocoShop" onClick={(e) => {
+            </a> */}
+
+            {/* <a href="/ChocoShop" onClick={(e) => {
               e.preventDefault()
               setItemFeature(tinyTonys)
             }}>
               <li>Tiny Tony's</li>
-            </a>
+            </a> */}
+
           </ul>
         </ChocoShop.SidebarNav>
       </ChocoShop.SidebarContainer>

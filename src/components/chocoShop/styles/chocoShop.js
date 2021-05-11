@@ -43,7 +43,7 @@ ${'' /* border: 2px solid yellow; */}
   ${'' /* width: 20%; */}
   ul {
     width: 100%;
-    li {
+    a {
       ${'' /* border: 2px solid blue; */}
       width: 100%;
       height: 50px;
@@ -56,7 +56,7 @@ ${'' /* border: 2px solid yellow; */}
       font-weight: 600;
       color: var(--main-white);
       &:hover {
-        color: var(--main-yellow);
+        color: var(--main-white);
       }
       @media (max-width: 1200px) {
         font-size: clamp(1rem, 2vw, 1.6rem);
@@ -68,9 +68,9 @@ ${'' /* border: 2px solid yellow; */}
       }
     }
 
-  }
-  .active {
-    color: var(--main-yellow);
+    .active {
+      color: var(--main-yellow);
+    }
   }
   //? Sticky Menu on scroll
   &.sticky {
