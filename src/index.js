@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { GlobalStyles } from './global-styles'
+
 import Firebase from 'firebase/app';
-import 'firebase/firestore';
+// import 'firebase/firestore';
 import 'firebase/auth';
 import { FirebaseContext } from './context/firebase';
 import Keys from './stash'
 
-const config = {
+const FirebaseConfig = {
   apiKey: Keys().apiKey,
   authDomain: "chocolateshop-e8efb.firebaseapp.com",
   projectId: "chocolateshop-e8efb",
@@ -19,7 +20,7 @@ const config = {
   measurementId: "G-LWBVCQEDB2"
 };
 
-const firebase = Firebase.initializeApp(config);
+const firebase = Firebase.initializeApp(FirebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>

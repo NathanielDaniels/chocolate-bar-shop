@@ -1,4 +1,5 @@
 import React, {useState, useContext, createContext} from 'react';
+import { useHistory } from 'react-router-dom'
 import { Form } from '../components'
 import { About } from '../components'
 import { FirebaseContext } from '../context/firebase';
@@ -6,8 +7,8 @@ import { FirebaseContext } from '../context/firebase';
 // export const FirebaseContext = createContext('')
 
 export function FormContainer() {
-  // const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
+  const history = useHistory();
   const [firstName, setFirstName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -32,7 +33,7 @@ export function FormContainer() {
           setEmailAddress('')
           setUserPassword('')
           setError('')
-          // history.push(/signin);
+          history.push('/signin');
         })
       }).catch((error) => setError(error.message))
   };

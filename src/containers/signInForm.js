@@ -6,8 +6,8 @@ import { FirebaseContext } from '../context/firebase';
 // export const FirebaseContext = createContext('')
 
 export function FormContainer() {
-  // const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
+  const history = useHistory();
   const [emailAddress, setEmailAddress] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [error, setError] = useState('');
@@ -24,7 +24,7 @@ export function FormContainer() {
           setEmailAddress('');
           setUserPassword('');
           setError('');
-          // history.push('/ChocoShop');
+          history.push('/ChocoShop');
       })
       .catch((error) => setError(error.message));
   }
