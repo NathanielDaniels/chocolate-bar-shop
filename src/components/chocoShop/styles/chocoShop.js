@@ -94,15 +94,17 @@ export const MainMenuContainer = styled.section`
 export const MainMenu = styled.div`
   ${'' /* border: 2px solid red; */}
   width: 95%;
-  ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    a {
-      cursor: pointer;
-    }
+`;
+
+export const MenuList = styled.ul`
+  ${'' /* border: 2px solid red; */}
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  a {
+    cursor: pointer;
   }
 `;
 
@@ -110,11 +112,43 @@ export const MenuItem = styled.li`
   margin: 10px;
   padding: 0 0 5px;
   border-radius: 5px;
-  a {
+  ${'' /* a {
     img {
       max-width: 300px;
 
-      &.tinyTony1{
+      @media (max-width: 1200px) {
+        width: 250px;
+      }
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
+    }
+    p {
+      padding-left: 10px;
+      color: var(--main-black);
+      @media (max-width: 600px) {
+        font-size: 14px;
+      }
+    }
+    div {
+      display: flex;
+      justify-content: space-between;
+      padding-right: 5px;
+      p {
+        font-weight: 500;
+        font-size: 1.4rem;
+      }
+    }
+  }  */}
+    
+`;
+
+export const Link = styled.a`
+    img {
+      max-width: 300px;
+
+      ${'' /* &.tinyTony1{
         max-width: 200px;
         margin-bottom: -20px;
       }
@@ -123,7 +157,7 @@ export const MenuItem = styled.li`
       }
       &.tinyTony3 {
         margin-bottom: -40px;
-      }
+      } */}
 
       @media (max-width: 1200px) {
         width: 250px;
@@ -148,10 +182,8 @@ export const MenuItem = styled.li`
       p {
         font-weight: 500;
         font-size: 1.4rem;
-
       }
     }
-  } 
     
 `;
 
