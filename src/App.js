@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import JoinForm from './pages/JoinForm';
 import ChocoShop from './pages/ChocoShop';
 import SignIn from './pages/SignInForm';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // import { useAuthListener } from './hooks'
 import * as ROUTES from './constants/routes'
 
@@ -16,15 +16,19 @@ function App() {
       <Switch>
         <Route 
           exact path={ROUTES.HOME} 
-          component={OurMission}
+          component={Home}
         >
-          <Home />
+          <Link>
+            <Home />
+          </Link>
         </Route>
         <Route 
           path={ROUTES.JOIN_IN} 
-          component={Form}
+          component={JoinForm}
         >
-          <JoinForm />
+          <Link>
+            <JoinForm />
+          </Link>
         </Route>
         <Route path={ROUTES.SIGN_IN} component={SignIn}>
           <SignIn 
