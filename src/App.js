@@ -14,10 +14,16 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path={ROUTES.HOME} component={Home}>
+        <Route 
+          exact path={ROUTES.HOME} 
+          component={OurMission}
+        >
           <Home />
         </Route>
-        <Route path={ROUTES.JOIN_IN} component={JoinForm}>
+        <Route 
+          path={ROUTES.JOIN_IN} 
+          component={Form}
+        >
           <JoinForm />
         </Route>
         <Route path={ROUTES.SIGN_IN} component={SignIn}>
