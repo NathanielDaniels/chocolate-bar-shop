@@ -48,7 +48,10 @@ export function FormContainer() {
             All chocolate 100% slave free. Worldwide. That's our mission. And we can't do it alone. We need your help! Become Serious Friends with Tony's and support the mission. We'll help you with tools, videos and information in the Tony's Toolbox. And 'cause we're friends, there'll be some presents in there sometimes too.
           </About.Info>
         </About.Inner>
-        <Form right="-100px">
+        <Form 
+          // right="-100px"
+          right="-50px"
+        >
           {error && <Form.Error>{error}</Form.Error>}
           <Form.InnerForm onSubmit={handleSignup} method="POST">
             <Form.Title>Join In</Form.Title>
