@@ -1,8 +1,9 @@
 import React, {useState, useContext, createContext} from 'react';
 import { Form } from '../components'
 import { About } from '../components'
+import { FirebaseContext } from '../context/firebase';
 
-export const FirebaseContext = createContext('')
+// export const FirebaseContext = createContext('')
 
 export function FormContainer() {
   // const history = useHistory();
@@ -12,22 +13,29 @@ export function FormContainer() {
   const [userPassword, setUserPassword] = useState('');
   const [error, setError] = useState('');
 
+  //* If logins are blank, Submit button is Disabled ( isInvalid = true )
   const isInvalid = userPassword === '' || emailAddress === '';
 
-  const handleSignin = event => {
+  const handleSignup = event => {
     event.preventDefault();
 
     firebase
       .auth()
-      .signInWithEmailAndPassword(emailAddress, userPassword)
-      .then(() => {
-          setEmailAddress('');
-          setUserPassword('');
-          setError('');
-          // history.push(ROUTES.BROWSE);
-      })
-      .catch((error) => setError(error.message));
-  }
+      .createUserWithEmailAndPassword(emailAddress, userPassword)
+      .then(result => {
+        result.user
+        .updateProfile({
+          displayName: firstName,
+          // photoURL: Math.floor(Math.random() * 5 ) + 1,
+        })
+        .then(() => {
+          setEmailAddress('')
+          setUserPassword('')
+          setError('')
+          // history.push(/signin);
+        })
+      }).catch((error) => setError(error.message))
+  };
 
   return (
     <>
@@ -40,7 +48,7 @@ export function FormContainer() {
         </About.Inner>
         <Form right="-100px">
           {error && <Form.Error>{error}</Form.Error>}
-          <Form.InnerForm onSubmit={handleSignin} method="POST">
+          <Form.InnerForm onSubmit={handleSignup} method="POST">
             <Form.Title>Join In</Form.Title>
 
             <Form.Input 
@@ -61,10 +69,15 @@ export function FormContainer() {
 
             <Form.Input 
               type="password" 
+              autoComplete="off"
               placeholder="Password"
               value={userPassword}
-              onChange={({ target }) => setUserPassword(target.value)}
-              required
+              onChange={({ target }) => {
+                setUserPassword(target.value)
+                if (userPassword.split('').length = 0) {
+                  console.log('not valid password')
+                }
+              }}
             />
 
             <Form.Submit type="submit" disabled={isInvalid}>Sign Up</Form.Submit>

@@ -1,12 +1,13 @@
 import React, {useState, useContext, createContext} from 'react';
 import { Form } from '../components'
+import { useHistory } from 'react-router-dom'
+import { FirebaseContext } from '../context/firebase';
 
-export const FirebaseContext = createContext('')
+// export const FirebaseContext = createContext('')
 
 export function FormContainer() {
   // const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
-  const [firstName, setFirstName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [error, setError] = useState('');
@@ -23,7 +24,7 @@ export function FormContainer() {
           setEmailAddress('');
           setUserPassword('');
           setError('');
-          // history.push(ROUTES.BROWSE);
+          // history.push('/ChocoShop');
       })
       .catch((error) => setError(error.message));
   }

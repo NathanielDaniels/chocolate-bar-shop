@@ -4,8 +4,13 @@ import JoinForm from './pages/JoinForm';
 import ChocoShop from './pages/ChocoShop';
 import SignIn from './pages/SignInForm';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useAuthListener } from './hooks'
+
 
 function App() {
+   // * Get user from useAuthListener
+  const { user, demo } = useAuthListener();
+
   return (
     <Router>
       <Switch>
@@ -16,10 +21,10 @@ function App() {
           <JoinForm />
         </Route>
         <Route path="/SignIn">
-          <SignIn />
+          <SignIn demo={demo}/>
         </Route>
         <Route path="/ChocoShop/">
-          <ChocoShop />
+          <ChocoShop user={user}/>
         </Route>
       </Switch>
     </Router>
