@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Form } from '../components'
 import { About } from '../components'
 import { FirebaseContext } from '../context/firebase';
+import * as ROUTES from '../constants/routes'
 
 // export const FirebaseContext = createContext('')
 
@@ -33,7 +34,7 @@ export function FormContainer() {
           setEmailAddress('')
           setUserPassword('')
           setError('')
-          history.push('/signin');
+          history.push(ROUTES.SIGN_IN);
         })
       }).catch((error) => setError(error.message))
   };
@@ -70,7 +71,7 @@ export function FormContainer() {
 
             <Form.Input 
               type="password" 
-              autoComplete="off"
+              autoComplete="new-password"
               placeholder="Password"
               value={userPassword}
               onChange={({ target }) => {
@@ -84,7 +85,7 @@ export function FormContainer() {
             <Form.Submit type="submit" disabled={isInvalid}>Sign Up</Form.Submit>
 
             <Form.Text>
-              Already a user? <Form.Link to="/SignIn">Sign in now.</Form.Link>
+              Already a user? <Form.Link to={ROUTES.SIGN_IN}>Sign in now.</Form.Link>
             </Form.Text>
 
             <Form.TextSmall>

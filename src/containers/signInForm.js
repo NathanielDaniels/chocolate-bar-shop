@@ -2,6 +2,7 @@ import React, {useState, useContext, createContext} from 'react';
 import { Form } from '../components'
 import { useHistory } from 'react-router-dom'
 import { FirebaseContext } from '../context/firebase';
+import * as ROUTES from '../constants/routes'
 
 // export const FirebaseContext = createContext('')
 
@@ -24,7 +25,7 @@ export function FormContainer() {
           setEmailAddress('');
           setUserPassword('');
           setError('');
-          history.push('/ChocoShop');
+          history.push(ROUTES.CHOCOSHOP);
       })
       .catch((error) => setError(error.message));
   }
@@ -32,7 +33,7 @@ export function FormContainer() {
   const handleDemo = () => {
     setEmailAddress("demo@demo.com")
     setUserPassword("nateflixdemo")
-    // history.push(ROUTES.BROWSE);
+    history.push(ROUTES.CHOCOSHOP);
   }
 
   return (
@@ -60,7 +61,7 @@ export function FormContainer() {
         <Form.Submit type="submit" disabled={isInvalid}>Sign In</Form.Submit>
 
         <Form.Text>
-          New to Tony's Chocolates? <Form.Link to="/Join">Join in now.</Form.Link>
+          New to Tony's Chocolates? <Form.Link to={ROUTES.JOIN_IN}>Join in now.</Form.Link>
         </Form.Text>
 
         <Form.Demo 
