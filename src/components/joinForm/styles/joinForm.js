@@ -86,6 +86,11 @@ export const Input = styled.input`
 `;
 
 export const Error = styled.div`
+  z-index: 9999;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
   background: #e87c03;
   border-radius: 4px;
   font-size: 14px;
