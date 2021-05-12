@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Header } from '../components';
+import * as ROUTES from '../constants/routes'
 
 export function HeaderContainer() {
   return (
@@ -9,7 +10,8 @@ export function HeaderContainer() {
         <Header.MenuList>
           <Header.MenuListItem>
             <NavLink 
-              exact to="/"
+              // exact to="/"
+              exact to={ROUTES.HOME}
               activeClassName="active"
             >
               Mission
@@ -17,7 +19,8 @@ export function HeaderContainer() {
           </Header.MenuListItem>
           <Header.MenuListItem>
             <NavLink 
-              to="/Join"
+              // to="/Join"
+              to={ROUTES.JOIN_IN}
               activeClassName="active"
             >
               Join In
@@ -25,7 +28,8 @@ export function HeaderContainer() {
           </Header.MenuListItem>
           <Header.MenuListItem>
             <NavLink 
-              to="/ChocoShop"
+              // to="/ChocoShop"
+              to={ROUTES.CHOCOSHOP}
               activeClassName="active"
             >
               Chocoshop
