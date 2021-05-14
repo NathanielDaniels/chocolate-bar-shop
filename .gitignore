@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 src/secret.js
-src/stash.js
+# src/stash.js
