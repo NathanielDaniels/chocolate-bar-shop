@@ -20,7 +20,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   html, body {
-    ${'' /* border: 2px solid red; */}
     width: 100vw;
     font-family: 'Poppins', 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
