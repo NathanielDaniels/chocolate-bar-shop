@@ -14,7 +14,7 @@ export function HeaderContainer() {
               exact to={ROUTES.HOME}
               activeClassName="active"
             >
-              Mission
+              Our Mission
             </NavLink>
           </Header.MenuListItem>
           <Header.MenuListItem>
