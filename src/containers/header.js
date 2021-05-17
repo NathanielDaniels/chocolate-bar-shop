@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Header } from '../components';
-import * as ROUTES from '../constants/routes'
+import * as ROUTES from '../constants/routes';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 export function HeaderContainer() {
   return (
@@ -38,10 +39,10 @@ export function HeaderContainer() {
           <Header.MenuListItem>
             <NavLink 
               // to="/ChocoShop"
-              to={ROUTES.CHOCOSHOP}
-              activeClassName="active"
+              to={ROUTES.CART}
+              // activeClassName="active"
             >
-              Cart
+              <ShoppingCartIcon />
             </NavLink>
           </Header.MenuListItem>
         </Header.MenuList>
