@@ -35,6 +35,15 @@ export function HeaderContainer() {
               Chocoshop
             </NavLink>
           </Header.MenuListItem>
+          <Header.MenuListItem>
+            <NavLink 
+              // to="/ChocoShop"
+              to={ROUTES.CHOCOSHOP}
+              activeClassName="active"
+            >
+              Cart
+            </NavLink>
+          </Header.MenuListItem>
         </Header.MenuList>
       </Header.Menu>
     </Header>
