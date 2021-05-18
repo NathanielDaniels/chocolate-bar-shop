@@ -15,18 +15,19 @@ export const Menu = styled.nav`
 `;
 
 export const MenuList = styled.ul`
+
     display: flex;
     justify-content: space-evenly;
     width: 100%;
 `;
 
 export const MenuListItem = styled.li`
-      font-size: clamp(100%, 2vw, 1.4rem);
+      font-size: clamp(1.2rem, 2vw, 1.4rem);
       transition: border-bottom .2s ease;
       position: relative;
       //? Underline effect
         ${'' /* width: ${({ active }) => (active ? '100%' : '0')}; */}
-      &::after {
+      ${'' /* &::after {
         content: '';
         width: 0;
         height: 3px;
@@ -35,6 +36,14 @@ export const MenuListItem = styled.li`
         left: 0;
         bottom: 0;
         transition: width .3s ease;
+      } */}
+
+      &:last-child {
+        display: flex;
+        a {
+          display: inherit;
+          align-items: center;
+        }
       }
 
 
@@ -73,10 +82,11 @@ export const MenuListItem = styled.li`
         }
          
       }
-      
-      
 `;
+
+
 //? Main Container
+//* Placed at bottom to access other styles
 export const Container = styled.header`
   z-index: 2;
   position: fixed;
@@ -96,10 +106,17 @@ export const Container = styled.header`
       border-radius: 0;
     }
     ${MenuList} {
+      border: 2px solid blue;
       justify-content: flex-end;
       padding: 0 20px;
       li {
         margin: 0 20px;
+      }
+      @media (max-width: 800px) {
+        width: auto;
+        li {
+          margin: 0 10px;
+        }
       }
     }
   }
