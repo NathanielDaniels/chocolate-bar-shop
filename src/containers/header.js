@@ -11,7 +11,6 @@ export function HeaderContainer() {
         <Header.MenuList>
           <Header.MenuListItem>
             <NavLink 
-              // exact to="/"
               exact to={ROUTES.HOME}
               activeClassName="active"
             >
@@ -20,7 +19,6 @@ export function HeaderContainer() {
           </Header.MenuListItem>
           <Header.MenuListItem>
             <NavLink 
-              // to="/Join"
               to={ROUTES.JOIN_IN}
               activeClassName="active"
             >
@@ -29,7 +27,6 @@ export function HeaderContainer() {
           </Header.MenuListItem>
           <Header.MenuListItem>
             <NavLink 
-              // to="/ChocoShop"
               to={ROUTES.CHOCOSHOP}
               activeClassName="active"
             >
@@ -38,7 +35,6 @@ export function HeaderContainer() {
           </Header.MenuListItem>
           <Header.MenuListItem>
             <NavLink 
-              // to="/ChocoShop"
               to={ROUTES.CART}
               // activeClassName="active"
             >

@@ -280,36 +280,6 @@ export function ChocoShopContainer() {
               Tiny Tony's
             </NavLink>
 
-              {/*! ==================================== */}
-
-            {/* <a href="#" onClick={(e) => {
-              e.preventDefault()
-              setItemFeature(ChocoShopTotalMenu)
-            }}>
-              <li>All Chocolate</li>
-            </a> */}
-
-            {/* <a href="#" onClick={(e) => {
-              e.preventDefault()
-              setItemFeature(bigBars)
-            }}>
-              <li>Big Bars</li>
-            </a> */}
-
-            {/* <a href="/ChocoShop" onClick={(e) => {
-              e.preventDefault()
-              setItemFeature(smallBars)
-            }}>
-              <li>Small Bars</li>
-            </a> */}
-
-            {/* <a href="/ChocoShop" onClick={(e) => {
-              e.preventDefault()
-              setItemFeature(tinyTonys)
-            }}>
-              <li>Tiny Tony's</li>
-            </a> */}
-
           </ChocoShop.SidebarNavList>
         </ChocoShop.SidebarNav>
       </ChocoShop.SidebarContainer>
