@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, createContext} from 'react';
+import React, {useState, useEffect, createContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChocoShop } from '../components';
 // import { bigBars, smallBars, tinyTonys } from '../components/chocoShop';
@@ -194,13 +194,13 @@ const filterTinyTonys = ChocoShopTotalMenu.filter((bars) => bars.price === "$48.
 export function ChocoShopContainer() {
   //? State for Chocolate Menu
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
-  const [item, setItem] = useState('');
+  // const [item, setItem] = useState('');
 
   // console.log("item Feature", itemFeature);
   
   useEffect(() => {
     console.log("itemfeature", itemFeature)
-  }, [])
+  }, [itemFeature])
 
   // useEffect(() => {
 

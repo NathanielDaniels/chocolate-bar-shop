@@ -1,4 +1,4 @@
-import React, {useState, useContext, createContext} from 'react';
+import React, {useState, useContext} from 'react';
 import { useHistory } from 'react-router-dom'
 import { Form } from '../components'
 import { About } from '../components'
@@ -36,7 +36,7 @@ export function FormContainer() {
           setError('')
           history.push(ROUTES.SIGN_IN);
         })
-      }).catch((error) => setError(error.message))
+      }).catch((error) => setError(error.message))                 
   };
 
   return (
@@ -79,9 +79,7 @@ export function FormContainer() {
               value={userPassword}
               onChange={({ target }) => {
                 setUserPassword(target.value)
-                if (userPassword.split('').length = 0) {
-                  console.log('not valid password')
-                }
+                userPassword.split('').length = 0 && console.log('not valid password')
               }}
             />
 

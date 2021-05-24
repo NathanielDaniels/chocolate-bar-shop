@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import { Header } from '../components';
-// import {Context} from "../Context";
+import { Context } from "../context/Context.js";
 import * as ROUTES from '../constants/routes';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 export function HeaderContainer() {
-// const {cartItems} = useContext(Context)
+const {cartItems} = useContext(Context)
 
   const cartCounter = () => (
     cartItems.length > 0 && <span className="cartCounter">{cartItems.length}</span>

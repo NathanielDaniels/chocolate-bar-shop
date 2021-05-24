@@ -265,7 +265,7 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }
       setShowModal(true);
       setItem(item);
     });
-  }, []);
+  }, [item, setItem, setShowModal]);
 
 
 
@@ -279,7 +279,7 @@ ChocoShop.Link = function ChocoShopLink({ children, ...restProps }) {
 }
 
 ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children, ...restProps }) {
-  const { containerRef ,showModal, setShowModal, item } = useContext(FeatureModalContext);
+  const { showModal, setShowModal, item } = useContext(FeatureModalContext);
 
   
   //? Blur background on showModal
