@@ -298,7 +298,7 @@ export function ChocoShopContainer() {
                     <img 
                       src={ chocolate.image } 
                       loading="lazy" 
-                      alt={ chocolate.alt }
+                      alt={ `...loading &{chocolate.alt}` }
                     />
                     <p>{ chocolate.title }</p>
                     <p>{ chocolate.subTitle }</p>

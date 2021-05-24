@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Header } from '../components';
-// import {Context} from "../Context"
+// import {Context} from "../Context";
 import * as ROUTES from '../constants/routes';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
