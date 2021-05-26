@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import JoinForm from './pages/JoinForm';
 import ChocoShop from './pages/ChocoShop';
 import SignIn from './pages/SignInForm';
-import CartPage from './pages/Cart';
+import Cart from './pages/Cart';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 // import { useAuthListener } from './hooks'
 import * as ROUTES from './constants/routes'
@@ -47,7 +47,7 @@ function App() {
           path={ROUTES.CART} 
           component={Cart}
         >
-          <CartPage
+          <Cart
           // user={user}
           />
         </Route>
