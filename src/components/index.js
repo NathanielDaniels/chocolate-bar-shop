@@ -6,4 +6,4 @@ export {default as Footer} from './footer';
 export {default as Form} from './joinForm';
 export {default as ChocoShop} from './chocoShop';
 export {default as About} from './about';
-export {default as Cart} from './cart';
+export {default as CartItems} from './cartItems';
