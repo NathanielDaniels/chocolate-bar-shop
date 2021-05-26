@@ -8,6 +8,7 @@ import Firebase from 'firebase/app';
 // import 'firebase/firestore';
 import 'firebase/auth';
 import { FirebaseContext } from './context/firebase';
+import { ContextProvider } from './context/Context';
 import Keys from './stash'
 
 const FirebaseConfig = {
@@ -25,8 +26,10 @@ const firebase = Firebase.initializeApp(FirebaseConfig);
 ReactDOM.render(
   <React.StrictMode>
     <FirebaseContext.Provider value={{ firebase }}>
-      <GlobalStyles />
-      <App />
+      <ContextProvider>
+        <GlobalStyles />
+        <App />
+      </ContextProvider>
     </FirebaseContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')

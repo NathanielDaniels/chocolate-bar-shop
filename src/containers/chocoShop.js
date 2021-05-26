@@ -198,9 +198,9 @@ export function ChocoShopContainer() {
 
   // console.log("item Feature", itemFeature);
   
-  useEffect(() => {
-    console.log("itemfeature", itemFeature)
-  }, [itemFeature])
+  // useEffect(() => {
+  //   console.log("itemfeature", itemFeature)
+  // }, [itemFeature])
 
   // useEffect(() => {
 

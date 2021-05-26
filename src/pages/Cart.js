@@ -1,15 +1,15 @@
-import React, {useState, useContext} from "react"
-import {Context} from "../context/Context.js"
-import CartItem from "../components"
+import React, { useState, useContext } from "react"
+import { Context } from "../context/Context.js"
+import Cart from "../components"
 
 function Cart() {
     const [buttonText, setButtonText] = useState("Place Order");
     const {cartItems, emptyCart} = useContext(Context);
     const totalCost = cartItems.length * 5.99;
-    const totalCostDisplay = totalCost.toLocaleString("en-US", {style: "currency", currency: "USD"});
+    const totalCostDisplay = totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
     const cartItemElements = cartItems.map(item => (
-        <CartItem key={item.id} item={item} />
+        <Cart key={ item.id } item={ item } />
     ))
 
     function placeOrder() {

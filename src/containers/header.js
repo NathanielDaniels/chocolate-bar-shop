@@ -1,16 +1,22 @@
 import React, {useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import { Header } from '../components';
-import { Context } from "../context/Context.js";
+import { Context } from "../context/Context";
 import * as ROUTES from '../constants/routes';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+
 
 export function HeaderContainer() {
-const {cartItems} = useContext(Context)
+// const { cartItems } = useContext(Context);
+// const cartClassName = cartItems.length > 0 ? <ShoppingCartIcon/> : <ShoppingCartOutlinedIcon/>
 
-  const cartCounter = () => (
-    cartItems.length > 0 && <span className="cartCounter">{cartItems.length}</span>
-  )
+// console.log(cartItems)
+console.log(Context)
+
+  // const cartCounter = () => (
+  //   cartItems.length > 0 && <span className="cartCounter">{cartItems.length}</span>
+  // )
 
   return (
     <Header>
@@ -46,9 +52,11 @@ const {cartItems} = useContext(Context)
               // activeClassName="active"
             >
              <div className="cartInfo">
-              {cartCounter()}
+              {/* {cartCounter()} */}
               {/* <i className={`${cartClassName} ri-fw ri-2x`}></i> */}
               <ShoppingCartIcon />
+
+              {/* {cartClassName} */}
             </div>
             </NavLink>
           </Header.MenuListItem>

@@ -6,6 +6,8 @@ function ContextProvider({children}) {
   const [allPhotos, setAllPhotos] = useState(JSON.parse(localStorage.getItem("photos")) || [])
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || [])
 
+  console.log("cart items:", cartItems)
+
   console.log("storage:", JSON.parse(localStorage.getItem("photos")))
 
   //? Fetch Images Data
