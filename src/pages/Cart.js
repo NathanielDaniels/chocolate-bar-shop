@@ -1,60 +1,12 @@
-import React, { useState, useContext } from "react"
-import { Context } from "../context/Context.js"
-// import CartItems from "../components/cartItems"
-import { CartContainer } from "../containers/cart"
+import React from "react";
+import { CartContainer } from "../containers/cart";
 
 function Cart() {
-    const [buttonText, setButtonText] = useState("Place Order");
-    const {cartItems, emptyCart} = useContext(Context);
-    const totalCost = cartItems.length * 5.99;
-    const totalCostDisplay = totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" });
-
-    console.log("cart Items: ", cartItems);
-    console.log("cart Total: ", totalCost);
-
-    const cartItemElements = cartItems.map(item => (
-        <CartItem key={ item.id } item={ item } />
-    ))
-
-    function placeOrder() {
-      const orderButton = document.querySelector(".order-button > button")
-      orderButton.style.backgroundColor = "lightgray"
-      setButtonText("Ordering...")
-      setTimeout(() => {
-        orderButton.style.backgroundColor = "#fff"
-        setButtonText("Place Order")
-        changeCartTitle()
-        emptyCart()
-      }, 1500)
-    }
-
-    function changeCartTitle() {
-      const title = document.querySelector(".cart-page > h1")
-      title.style.color = "green"
-      title.innerText = "Order Placed!"
-      setTimeout(() => {
-        title.style.color = "black"
-        title.innerText = "Check Out"
-      }, 3000)
-    }
-
-    const showOrderBtn = () => (
-      cartItems.length > 0 
-      ? <button onClick={placeOrder}>{buttonText}</button> 
-      : <p>You have no items in your cart.</p>
-    )
-    
-    
-    return (
-      <main className="cart-page">
-        <h1>Check out</h1>
-        {cartItemElements}
-        <p className="total-cost">Total: {totalCostDisplay}</p>
-        <div className="order-button">
-          {showOrderBtn()}
-        </div>
-      </main>
-    )
+  return (
+    <>
+      <CartContainer/>
+    </>
+  )
 }
 
 export default Cart

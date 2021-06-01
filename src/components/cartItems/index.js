@@ -1,12 +1,16 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, createContext} from 'react';
 import { Container, CartItem, Main } from './styles/cartItems';
 import { Context } from '../../context/Context'
+
+export const CartContext = createContext();
 
 export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
   const {cartItems, emptyCart} = useContext(Context);
   const totalCost = cartItems.length * 5.99;
   const totalCostDisplay = totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" });
+
+  // console.log(totalCost)
 
   const cartItemElements = cartItems.map(item => (
       <CartItem key={ item.id } item={ item } />
@@ -39,12 +43,18 @@ export default function CartItems({ children, ...restProps }) {
     ? <button onClick={placeOrder}>{buttonText}</button> 
     : <p>You have no items in your cart.</p>
   )
+
   return (
-    <Container { ...restProps }>{ children }</Container>
+    <CartContext.Provider value={{ cartItemElements, totalCostDisplay, showOrderBtn }}>
+      <Container { ...restProps }>{ children }</Container>
+    </CartContext.Provider>
   )
 }
 
-CartItems.MainInfo = function CartMainInfo({ totalCostDisplay, cartItemElements, showOrderBtn, children, ...restProps }) {
+CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
+  const { cartItemElements, totalCostDisplay, showOrderBtn } = useContext(CartContext);
+
+  // console.log(totalCostDisplay)
   return (
     <Main { ...restProps } className="cart-page">
       <h1>Check out</h1>
