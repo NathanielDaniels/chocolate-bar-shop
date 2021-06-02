@@ -54,7 +54,7 @@ export default function CartItems({ children, ...restProps }) {
 CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
   const { cartItemElements, totalCostDisplay, showOrderBtn } = useContext(CartContext);
 
-  // console.log(totalCostDisplay)
+  // console.log(totalCostDisplay)  
   return (
     <Main { ...restProps } className="cart-page">
       <h1>Check out</h1>

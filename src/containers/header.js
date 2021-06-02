@@ -52,11 +52,7 @@ console.log(Context)
               // activeClassName="active"
             >
              <div className="cartInfo">
-              {/* {cartCounter()} */}
-              {/* <i className={`${cartClassName} ri-fw ri-2x`}></i> */}
               <ShoppingCartIcon />
-
-              {/* {cartClassName} */}
             </div>
             </NavLink>
           </Header.MenuListItem>

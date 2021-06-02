@@ -18,6 +18,7 @@ export const MenuList = styled.ul`
 
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     width: 100%;
 `;
 
@@ -39,9 +40,11 @@ export const MenuListItem = styled.li`
       } */}
 
       &:last-child {
+        ${'' /* border: 2px solid white; */}
         display: flex;
         a {
           display: inherit;
+          justify-content: center;
           align-items: center;
         }
       }
@@ -106,8 +109,9 @@ export const Container = styled.header`
       border-radius: 0;
     }
     ${MenuList} {
-      border: 2px solid blue;
+      ${'' /* border: 2px solid blue; */}
       justify-content: flex-end;
+      align-items: center;
       padding: 0 20px;
       li {
         margin: 0 20px;
