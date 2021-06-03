@@ -144,6 +144,10 @@ export const MenuItem = styled.li`
     
 `;
 
+export const Image = styled.img`
+  border: 2px solid red;
+`;
+
 export const Link = styled.a`
     img {
       max-width: 300px;

@@ -6,6 +6,7 @@ export function CartContainer() {
   return (
     <CartItems>
       <CartItems.MainInfo/>
+      {/* <CartItems.item/> */}
     </CartItems>
   )
 }

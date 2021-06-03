@@ -31,6 +31,8 @@ export const CartItem = styled.div`
   margin: 20px 0;
 `;
 
+//=============================================================================
+
 // .cart {
 //   color: var(--blue);
 //   font-size: 1.5rem;

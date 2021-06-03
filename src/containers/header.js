@@ -8,15 +8,15 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 
 export function HeaderContainer() {
-// const { cartItems } = useContext(Context);
+const { cartItems } = useContext(Context);
 // const cartClassName = cartItems.length > 0 ? <ShoppingCartIcon/> : <ShoppingCartOutlinedIcon/>
 
 // console.log(cartItems)
 // console.log(Context)
 
-  // const cartCounter = () => (
-  //   cartItems.length > 0 && <span className="cartCounter">{cartItems.length}</span>
-  // )
+  const cartCounter = () => (
+    cartItems.length > 0 && <span className="cartCounter">{cartItems.length}</span>
+  )
 
   return (
     <Header>
@@ -52,7 +52,10 @@ export function HeaderContainer() {
               // activeClassName="active"
             >
              <div className="cartInfo">
-              <ShoppingCartIcon />
+              {cartCounter()}
+              {/* <ShoppingCartIcon /> */}
+              {/* <i className={`${cartClassName} ri-fw ri-2x`}></i> */}
+              {cartItems.length > 0 ? <ShoppingCartIcon /> : <ShoppingCartOutlinedIcon/>}
             </div>
             </NavLink>
           </Header.MenuListItem>

@@ -10,11 +10,13 @@ import {
   MainMenu,
   MenuList,
   MenuItem,
+  Image,
   Link,
   ChocoSelectModal, 
   ChocoModalContent 
 } from './styles/chocoShop';
-
+import useHover from "../../hooks/useHover";
+import { Context } from '../../context/Context';
 export const FeatureModalContext = createContext();
 
 
@@ -272,6 +274,32 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }
   return (
     <MenuItem ref={ menuItem } { ...restProps }>{ children }</MenuItem>
   );
+}
+
+ChocoShop.image = function ChocoShopImage({ className, img , children, ...restProps }) {
+  const [hovered, ref] = useHover(null);
+  const {toggleFavorite, addToCart, removeFromCart, cartItems} = useContext(Context);
+
+  console.log(img)
+  
+  function heartIcon() {
+    if (img.isFavorite) {
+      return <i className="ri-heart-fill favorite" title="Favorite" onClick={() => toggleFavorite(img.id)}></i>
+    } else if (hovered) {
+      return <i className="ri-heart-line favorite" title="Favorite" onClick={() => toggleFavorite(img.id)}></i>
+    }
+  } 
+
+  function cartIcon() {
+    const alreadyInCart = cartItems.find(item => item.id === img.id)
+    if (alreadyInCart) {
+      return <i className="ri-shopping-cart-fill cart"  onClick={() => removeFromCart(img.id)}></i>
+    } else if (hovered) {
+      return <i className="ri-add-circle-line cart" title="Add To Cart" onClick={() => addToCart(img)}></i> 
+    }
+  }
+
+  return <Image ref={ref} { ...restProps }>{ children }</Image>
 }
 
 ChocoShop.Link = function ChocoShopLink({ children, ...restProps }) {

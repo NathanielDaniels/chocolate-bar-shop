@@ -202,7 +202,6 @@ function ContextProvider({children}) {
     allBars.map(item => allImgs.push({url: item.image, id: item.id, isFavorite: false} ))
     return photoStorage.length > 0 ? photoStorage : setAllPhotos(allImgs)
     // console.log(allImgs)
-    // setAllPhotos(allImgs)
   }, [])
   
   console.log("allPhotos", allPhotos)
