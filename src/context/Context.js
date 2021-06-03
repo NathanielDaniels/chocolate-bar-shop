@@ -194,31 +194,22 @@ function ContextProvider({children}) {
   const [allPhotos, setAllPhotos] = useState(JSON.parse(localStorage.getItem("photos")) || [])
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || [])
 
+  //? Fetch Choco Data
   useEffect(() => {
-    const allImgs = []
+    const allImgs = [];
+    const photoStorage = JSON.parse(localStorage.getItem("photos"));
+
     allBars.map(item => allImgs.push({url: item.image, id: item.id, isFavorite: false} ))
+    return photoStorage.length > 0 ? photoStorage : setAllPhotos(allImgs)
     // console.log(allImgs)
-    setAllPhotos(allImgs)
+    // setAllPhotos(allImgs)
   }, [])
   
   console.log("allPhotos", allPhotos)
 
-  // console.log("cart items:", cartItems)
+  console.log("cartItems:", cartItems)
 
   // console.log("storage:", JSON.parse(localStorage.getItem("photos")))
-
-  //? Fetch Images Data
-  // useEffect(() => {
-  //   const url = "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
-  //   const photoStorage = JSON.parse(localStorage.getItem("photos"))
-  //   // console.log("photoStorage", photoStorage)
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(data => photoStorage.length > 0 ? photoStorage : setAllPhotos(data))
-  //     .catch(error => {
-  //       console.error('Fetch Error!', error)
-  //     })
-  // }, [])
   
   function toggleFavorite(id) {
     const updatedArr = allPhotos.map(photo => {

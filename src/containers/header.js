@@ -12,7 +12,7 @@ export function HeaderContainer() {
 // const cartClassName = cartItems.length > 0 ? <ShoppingCartIcon/> : <ShoppingCartOutlinedIcon/>
 
 // console.log(cartItems)
-console.log(Context)
+// console.log(Context)
 
   // const cartCounter = () => (
   //   cartItems.length > 0 && <span className="cartCounter">{cartItems.length}</span>

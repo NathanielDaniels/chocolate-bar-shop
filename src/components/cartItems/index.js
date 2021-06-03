@@ -1,6 +1,8 @@
-import React, {useState, useContext, createContext} from 'react';
+import React, {useState, useContext, createContext, useRef} from 'react';
+import PropTypes from "prop-types";
 import { Container, CartItem, Main } from './styles/cartItems';
-import { Context } from '../../context/Context'
+import { Context } from '../../context/Context';
+import useHover from "../../hooks/useHover";
 
 export const CartContext = createContext();
 
@@ -51,10 +53,37 @@ export default function CartItems({ children, ...restProps }) {
   )
 }
 
+CartItems.Item = function CartItemsItem({ item, children, ...restProps }) {
+  const [hovered, ref] = useHover();
+  const {removeFromCart} = useContext(Context);
+
+  // ? Switch between Trash Icons
+  function trashHover() {
+    if (hovered) {
+      return "ri-delete-bin-fill" 
+    } else {
+      return "ri-delete-bin-line" 
+    };
+  }
+
+  return (
+    <CartItem { ...restProps }>
+      <div className="cart-item">
+        <i className={trashHover()} 
+          onClick={() => removeFromCart(item.id)}
+          ref={ref}>
+        </i>
+        <img src={item.url} width="130px" alt={item.id}/>
+        <p>$5.99</p>
+      </div>
+      <hr/>
+    </CartItem>
+  )
+}
+
 CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
   const { cartItemElements, totalCostDisplay, showOrderBtn } = useContext(CartContext);
 
-  // console.log(totalCostDisplay)  
   return (
     <Main { ...restProps } className="cart-page">
       <h1>Check out</h1>
