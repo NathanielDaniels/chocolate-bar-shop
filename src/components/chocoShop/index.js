@@ -19,7 +19,7 @@ import useHover from "../../hooks/useHover";
 import { Context } from '../../context/Context';
 export const FeatureModalContext = createContext();
 
-
+console.log("useHover",useHover)
 
 // export const bigBars = [
 //   {
@@ -276,11 +276,12 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }
   );
 }
 
-ChocoShop.image = function ChocoShopImage({ className, img , children, ...restProps }) {
-  const [hovered, ref] = useHover(null);
+ChocoShop.image = function ChocoShopImage({ myRef, className, img, children, ...restProps }) {
+  // const [hovered, ref] = useHover(null);
   const {toggleFavorite, addToCart, removeFromCart, cartItems} = useContext(Context);
 
-  console.log(img)
+  // console.log("hovered",hovered)
+  // console.log(ref)
   
   function heartIcon() {
     if (img.isFavorite) {
@@ -299,7 +300,19 @@ ChocoShop.image = function ChocoShopImage({ className, img , children, ...restPr
     }
   }
 
-  return <Image ref={ref} { ...restProps }>{ children }</Image>
+  // return <Image ref={ref} { ...restProps }>{ children }</Image>
+  return (
+    <Image ref={ref} { ...restProps }>
+       <div 
+          className={`${className} image-container`}
+          // ref={ref}
+        >
+          <img src={img.url} className="image-grid" alt={`...Loading #${img.id}`}/>
+          {heartIcon()}
+          {cartIcon()}
+        </div>
+    </Image>
+  )
 }
 
 ChocoShop.Link = function ChocoShopLink({ children, ...restProps }) {

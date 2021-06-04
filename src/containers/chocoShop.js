@@ -317,7 +317,7 @@ export function ChocoShopContainer() {
       <ChocoShop.ChocoSelectModal 
         // item={ item } 
       />
-
+      <ChocoShop.image/>
     </ChocoShop>
   )
 }
