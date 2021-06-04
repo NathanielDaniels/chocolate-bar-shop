@@ -276,12 +276,14 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }
   );
 }
 
-ChocoShop.image = function ChocoShopImage({ myRef, className, img, children, ...restProps }) {
+ChocoShop.image = function ChocoShopImage({ className, img, children, ...restProps }) {
   // const [hovered, ref] = useHover(null);
+  const [hovered] = useHover(null);
   const {toggleFavorite, addToCart, removeFromCart, cartItems} = useContext(Context);
+  const ref = useRef('');
 
   // console.log("hovered",hovered)
-  // console.log(ref)
+  console.log(ref)
   
   function heartIcon() {
     if (img.isFavorite) {

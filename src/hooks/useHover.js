@@ -17,7 +17,7 @@ function useHover() {
   
   useEffect(() => {
     const myRef = ref.current
-    // console.log("myRef", myRef)
+    console.log("myRef", myRef)
     myRef.addEventListener("mouseenter", mouseEnter);
     myRef.addEventListener("mouseleave", mouseLeave);
     
@@ -27,9 +27,7 @@ function useHover() {
     }
   }, [])
   
-  // console.log(ref)
   return [hovered, ref]
-
 }
 
 export default useHover
