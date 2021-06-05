@@ -19,7 +19,7 @@ import useHover from "../../hooks/useHover";
 import { Context } from '../../context/Context';
 export const FeatureModalContext = createContext();
 
-console.log("useHover",useHover)
+// console.log("useHover", useHover)
 
 // export const bigBars = [
 //   {
@@ -276,46 +276,46 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }
   );
 }
 
-ChocoShop.image = function ChocoShopImage({ className, img, children, ...restProps }) {
-  // const [hovered, ref] = useHover(null);
-  const [hovered] = useHover(null);
-  const {toggleFavorite, addToCart, removeFromCart, cartItems} = useContext(Context);
-  const ref = useRef('');
+// ChocoShop.image = function ChocoShopImage({ className, img, children, ...restProps }) {
+//   // const [hovered, ref] = useHover(null);
+//   const [hovered] = useHover(null);
+//   const {toggleFavorite, addToCart, removeFromCart, cartItems} = useContext(Context);
+//   const ref = useRef('');
 
-  // console.log("hovered",hovered)
-  console.log(ref)
+//   // console.log("hovered",hovered)
+//   console.log(ref)
   
-  function heartIcon() {
-    if (img.isFavorite) {
-      return <i className="ri-heart-fill favorite" title="Favorite" onClick={() => toggleFavorite(img.id)}></i>
-    } else if (hovered) {
-      return <i className="ri-heart-line favorite" title="Favorite" onClick={() => toggleFavorite(img.id)}></i>
-    }
-  } 
+//   function heartIcon() {
+//     if (img.isFavorite) {
+//       return <i className="ri-heart-fill favorite" title="Favorite" onClick={() => toggleFavorite(img.id)}></i>
+//     } else if (hovered) {
+//       return <i className="ri-heart-line favorite" title="Favorite" onClick={() => toggleFavorite(img.id)}></i>
+//     }
+//   } 
 
-  function cartIcon() {
-    const alreadyInCart = cartItems.find(item => item.id === img.id)
-    if (alreadyInCart) {
-      return <i className="ri-shopping-cart-fill cart"  onClick={() => removeFromCart(img.id)}></i>
-    } else if (hovered) {
-      return <i className="ri-add-circle-line cart" title="Add To Cart" onClick={() => addToCart(img)}></i> 
-    }
-  }
+//   function cartIcon() {
+//     const alreadyInCart = cartItems.find(item => item.id === img.id)
+//     if (alreadyInCart) {
+//       return <i className="ri-shopping-cart-fill cart"  onClick={() => removeFromCart(img.id)}></i>
+//     } else if (hovered) {
+//       return <i className="ri-add-circle-line cart" title="Add To Cart" onClick={() => addToCart(img)}></i> 
+//     }
+//   }
 
-  // return <Image ref={ref} { ...restProps }>{ children }</Image>
-  return (
-    <Image ref={ref} { ...restProps }>
-       <div 
-          className={`${className} image-container`}
-          // ref={ref}
-        >
-          <img src={img.url} className="image-grid" alt={`...Loading #${img.id}`}/>
-          {heartIcon()}
-          {cartIcon()}
-        </div>
-    </Image>
-  )
-}
+//   // return <Image ref={ref} { ...restProps }>{ children }</Image>
+//   return (
+//     <Image ref={ref} { ...restProps }>
+//        <div 
+//           className={`${className} image-container`}
+//           // ref={ref}
+//         >
+//           <img src={img.url} className="image-grid" alt={`...Loading #${img.id}`}/>
+//           {heartIcon()}
+//           {cartIcon()}
+//         </div>
+//     </Image>
+//   )
+// }
 
 ChocoShop.Link = function ChocoShopLink({ children, ...restProps }) {
   return <Link { ...restProps }>{ children }</Link>;

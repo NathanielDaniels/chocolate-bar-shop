@@ -204,9 +204,9 @@ function ContextProvider({children}) {
     // console.log(allImgs)
   }, [])
   
-  console.log("allPhotos", allPhotos)
+  // console.log("allPhotos", allPhotos)
 
-  console.log("cartItems:", cartItems)
+  // console.log("cartItems:", cartItems)
 
   // console.log("storage:", JSON.parse(localStorage.getItem("photos")))
   
@@ -240,6 +240,7 @@ function ContextProvider({children}) {
   
   return (
     <Context.Provider value={{
+      allBars,
       allPhotos, 
       toggleFavorite, 
       cartItems,

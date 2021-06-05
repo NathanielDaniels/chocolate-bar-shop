@@ -5,14 +5,13 @@ import useHover from "../../hooks/useHover";
 import PropTypes from "prop-types";
 
 
-export default function Image({...restProps, children}) {
-  // import {Context} from "../Context";
-  // import PropTypes from "prop-types";
-  // import useHover from "../hooks/useHover";
+export default function Image({...restProps}) {
 
   function Image({className, img}) {
     const [hovered, ref] = useHover(null);
-    const {toggleFavorite, addToCart, removeFromCart, cartItems} = useContext(Context);
+    const { allBars, toggleFavorite, addToCart, removeFromCart, cartItems } = useContext(Context);
+
+    console.log("allBars image", allBars)
     
     function heartIcon() {
       if (img.isFavorite) {

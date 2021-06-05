@@ -7,3 +7,4 @@ export {default as Form} from './joinForm';
 export {default as ChocoShop} from './chocoShop';
 export {default as About} from './about';
 export {default as CartItems} from './cartItems';
+export {default as Image} from './image';
