@@ -13,7 +13,6 @@ export const FeatureModalContext = createContext();
 export function ChocoShopContainer() {
   // const [hovered, ref] = useHover(null);
   const { allBars, cartItems, addToCart} = useContext(Context);
-  // console.log("allBars", allBars)
 
   const ChocoShopTotalMenu = allBars;
 
@@ -109,19 +108,6 @@ export function ChocoShopContainer() {
                       <AddCircleOutlineIcon 
                         onClick={() => {
                           console.log("clicked add to cart")
-                          // setItem(chocolate)
-                          // setItem({
-                          //   id: chocolate.id,
-                          //   image: chocolate.image,
-                          //   title: chocolate.title,
-                          //   price: chocolate.price,
-                          // })
-                          // addToCart({
-                          //   id: chocolate.id,
-                          //   image: chocolate.image,
-                          //   title: chocolate.title,
-                          //   price: chocolate.price,
-                          // })
                           addToCart({
                             id: chocolate.id,
                             image: chocolate.image,
@@ -138,12 +124,9 @@ export function ChocoShopContainer() {
             })}
           </ChocoShop.MenuList>
         </ChocoShop.MainMenu>
-      {/* { FooterContainer() } */}
       </ChocoShop.MainMenuContainer>
 
-      <ChocoShop.ChocoSelectModal 
-        // item={ item } 
-      />
+      <ChocoShop.ChocoSelectModal />
     </ChocoShop>
   )
 }

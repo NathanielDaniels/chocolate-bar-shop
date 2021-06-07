@@ -5,8 +5,8 @@ export const Container = styled.section`
   border: 2px solid red;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100vw;
-  ${'' /* height: 500px; */}
   height: ${({ height }) => (height > 0 ? 'auto' : '100vh')};
   color: var(--main-white);
 `;
@@ -17,9 +17,21 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   width: 500px;
+
   .total-cost {
     display: inherit;
     justify-content: flex-end;
+  }
+
+  .order-button {
+    ${'' /* color: red; */}
+    button {
+      cursor: pointer;
+      padding: 20px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
   }
 `;
 
@@ -27,14 +39,25 @@ export const CartItem = styled.div`
   border: 2px solid var(--main-red);
   border-radius: 10px;
   padding: 20px;
+  ${'' /* padding: 20px 0; */}
   background: var(--main-white);
   color: var(--main-blue);
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 20px 0;
-  width: 100%;
+
+  .cart-item {
+    ${'' /* border: 2px solid yellow; */}
+    ${'' /* width: 100%; */}
+    ${'' /* display: inherit;
+    justify-content: space-evenly; */}
+  }
+
+  i {
+    cursor: pointer;
+  }
+  
 `;
 
 //=============================================================================
