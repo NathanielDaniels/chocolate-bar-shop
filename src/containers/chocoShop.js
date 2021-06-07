@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { ChocoShop } from '../components';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { Context } from '../context/Context';
+// import { FooterContainer } from './footer'
 
 export const FeatureContext = createContext();
 export const FeatureModalContext = createContext();
@@ -112,6 +113,7 @@ export function ChocoShopContainer() {
 
           </ChocoShop.SidebarNavList>
         </ChocoShop.SidebarNav>
+        
       </ChocoShop.SidebarContainer>
 
       <ChocoShop.MainMenuContainer>
@@ -148,6 +150,7 @@ export function ChocoShopContainer() {
             })}
           </ChocoShop.MenuList>
         </ChocoShop.MainMenu>
+      {/* { FooterContainer() } */}
       </ChocoShop.MainMenuContainer>
 
       <ChocoShop.ChocoSelectModal 
