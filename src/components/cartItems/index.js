@@ -12,6 +12,8 @@ export default function CartItems({ children, ...restProps }) {
   const totalCost = cartItems.length * 5.99;
   const totalCostDisplay = totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
+  console.log(cartItems)
+
   const [hovered, ref] = useHover();
   const {removeFromCart} = useContext(Context);
 
@@ -116,7 +118,7 @@ export default function CartItems({ children, ...restProps }) {
 CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
   const { cartItemElements, totalCostDisplay, showOrderBtn } = useContext(CartContext);
 
-  console.log("cartItemElements", cartItemElements)
+  // console.log("cartItemElements", cartItemElements)
 
   return (
     <Main { ...restProps } className="cart-page">

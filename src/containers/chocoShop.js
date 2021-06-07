@@ -20,7 +20,11 @@ export function ChocoShopContainer() {
 
   //? State for Chocolate Menu
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
-  // const [item, setItem] = useState('');
+  const [item, setItem] = useState({});
+
+  useEffect(() => {
+    console.log("selected Chocolate Item State",item)
+  },[item])
 
   // console.log("item Feature", itemFeature);
   
@@ -130,7 +134,13 @@ export function ChocoShopContainer() {
                     <p>{ chocolate.subTitle }</p>
                     <div>
                       <p>{ chocolate.price }</p>
-                      <AddCircleOutlineIcon style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}/>
+                      <AddCircleOutlineIcon 
+                        onClick={() => {
+                          console.log("clicked add to cart")
+                          setItem(chocolate)
+                        }} 
+                        style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}
+                      />
                     </div>
                   </ChocoShop.Link>
                 </ChocoShop.MenuItem>

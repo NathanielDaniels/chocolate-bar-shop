@@ -5,13 +5,14 @@ import useHover from "../../hooks/useHover";
 import PropTypes from "prop-types";
 
 
-export default function Image({...restProps}) {
+export default function Image({className, img, ...restProps}) {
+  const [hovered, ref] = useHover(null);
+  const { allBars, toggleFavorite, addToCart, removeFromCart, cartItems } = useContext(Context);
+  console.log("allBars image", allBars);
+  
+  // function Image({className, img}) {
+    console.log("image className + img", className, img);
 
-  function Image({className, img}) {
-    const [hovered, ref] = useHover(null);
-    const { allBars, toggleFavorite, addToCart, removeFromCart, cartItems } = useContext(Context);
-
-    console.log("allBars image", allBars)
     
     function heartIcon() {
       if (img.isFavorite) {
@@ -42,7 +43,7 @@ export default function Image({...restProps}) {
         </div>
       </Container>
     )
-  }
+  // }
 }
 
 Image.propTypes = {
