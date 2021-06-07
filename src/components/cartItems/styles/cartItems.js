@@ -1,17 +1,17 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const Container = styled.section`
+  padding: 140px 0 100px;
   border: 2px solid red;
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   color: var(--main-white);
 `;
 
 export const Main = styled.main`
-  ${'' /* border: 2px solid yellow; */}
+  border: 2px solid yellow;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -23,12 +23,17 @@ export const Main = styled.main`
 `;
 
 export const CartItem = styled.div`
-  border: 2px solid white;
+  border: 2px solid var(--main-red);
+  border-radius: 10px;
+  padding: 20px;
+  background: var(--main-white);
+  color: var(--main-blue);
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
+  width: 100%;
 `;
 
 //=============================================================================

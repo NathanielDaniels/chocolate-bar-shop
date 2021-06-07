@@ -18,9 +18,9 @@ export function ChocoShopContainer() {
   const ChocoShopTotalMenu = allBars;
 
   //? Filtered Chocolates by size
-  const filterBigBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$5.95");
-  const filterSmallBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$2.39");
-  const filterTinyTonys = ChocoShopTotalMenu.filter((bars) => bars.price === "$48.69");
+  const filterBigBars = ChocoShopTotalMenu.filter((bars) => bars.price === 5.95);
+  const filterSmallBars = ChocoShopTotalMenu.filter((bars) => bars.price === 2.39);
+  const filterTinyTonys = ChocoShopTotalMenu.filter((bars) => bars.price === 48.69);
 
   //? State for Chocolate Menu
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
@@ -111,6 +111,12 @@ export function ChocoShopContainer() {
                           console.log("clicked add to cart")
                           // setItem(chocolate)
                           // setItem({
+                          //   id: chocolate.id,
+                          //   image: chocolate.image,
+                          //   title: chocolate.title,
+                          //   price: chocolate.price,
+                          // })
+                          // addToCart({
                           //   id: chocolate.id,
                           //   image: chocolate.image,
                           //   title: chocolate.title,

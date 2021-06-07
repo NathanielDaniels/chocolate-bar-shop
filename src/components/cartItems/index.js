@@ -3,26 +3,48 @@ import { Container, CartItem, Main } from './styles/cartItems';
 import { Context } from '../../context/Context';
 import useHover from "../../hooks/useHover";
 // import PropTypes from "prop-types";
+import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 export const CartContext = createContext();
 
 export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
   const {cartItems, emptyCart} = useContext(Context);
+  const [hovered, ref] = useHover();
+  const {removeFromCart} = useContext(Context);
   const totalCost = cartItems.length * 5.99;
   const totalCostDisplay = totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
-  console.log(cartItems)
+  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  // const itemCost = cartItems.map(item => item.reduce(reducer));
+  const itemCost = cartItems.map(item => item.price);
+  // const total = Object.values(itemCost).reduce((t, n) => t + n)
 
-  const [hovered, ref] = useHover();
-  const {removeFromCart} = useContext(Context);
+
+
+  // const splitTotal = [itemCost.split('$')]
+
+
+  // const totalCost = cartItems.length * ;
+
+  // console.log("cartItems: ",cartItems)
+  console.log("itemCost: ", itemCost)
+  console.log("itemCost: ", itemCost.reduce((a,b) => a + b))
 
   // ? Switch between Trash Icons
+  // function trashHover() {
+  //   if (hovered) {
+  //     return "ri-delete-bin-fill" 
+  //   } else {
+  //     return "ri-delete-bin-line" 
+  //   };
+  // }
   function trashHover() {
     if (hovered) {
-      return "ri-delete-bin-fill" 
+      return {DeleteForeverIcon}
     } else {
-      return "ri-delete-bin-line" 
+      return {DeleteIcon}
     };
   }
 
@@ -39,8 +61,9 @@ export default function CartItems({ children, ...restProps }) {
           onClick={() => removeFromCart(item.id)}
           ref={ref}>
         </i>
-        <img src={item.url} width="130px" alt={item.id}/>
-        <p>$5.99</p>
+        <img src={item.image} width="130px" alt={item.id}/>
+        <p>{item.title}</p>
+        <p>{item.price}</p>
         </div>
         <hr/>
       </CartItem>
@@ -80,40 +103,6 @@ export default function CartItems({ children, ...restProps }) {
     </CartContext.Provider>
   )
 }
-
-// CartItems.Item = function CartItemsItem({ item, children, ...restProps }) {
-//   const [hovered, ref] = useHover();
-//   const {removeFromCart} = useContext(Context);
-
-//   // ? Switch between Trash Icons
-//   function trashHover() {
-//     if (hovered) {
-//       return "ri-delete-bin-fill" 
-//     } else {
-//       return "ri-delete-bin-line" 
-//     };
-//   }
-
-//   CartItem.propTypes = {
-//   item: PropTypes.shape({
-//     url: PropTypes.string.isRequired
-//   })
-// } 
-
-//   return (
-//     <CartItem { ...restProps }>
-//       <div className="cart-item">
-//         <i className={trashHover()} 
-//           onClick={() => removeFromCart(item.id)}
-//           ref={ref}>
-//         </i>
-//         <img src={item.url} width="130px" alt={item.id}/>
-//         <p>$5.99</p>
-//       </div>
-//       <hr/>
-//     </CartItem>
-//   )
-// }
 
 CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
   const { cartItemElements, totalCostDisplay, showOrderBtn } = useContext(CartContext);
