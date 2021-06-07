@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect, useContext, createContext } from 'react';
-// import ReactDOM from 'react-dom';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { 
   Container, 
@@ -10,13 +9,13 @@ import {
   MainMenu,
   MenuList,
   MenuItem,
-  // Image,
   Link,
   ChocoSelectModal, 
   ChocoModalContent 
 } from './styles/chocoShop';
-// import useHover from "../../hooks/useHover";
+import useHover from "../../hooks/useHover";
 // import { Context } from '../../context/Context';
+
 export const FeatureModalContext = createContext();
 
 export default function ChocoShop({children, ...restProps}) {
@@ -99,53 +98,14 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }
   );
 }
 
-// ChocoShop.image = function ChocoShopImage({ className, img, children, ...restProps }) {
-//   // const [hovered, ref] = useHover(null);
-//   const [hovered] = useHover(null);
-//   const {toggleFavorite, addToCart, removeFromCart, cartItems} = useContext(Context);
-//   const ref = useRef('');
-
-//   // console.log("hovered",hovered)
-//   console.log(ref)
-  
-//   function heartIcon() {
-//     if (img.isFavorite) {
-//       return <i className="ri-heart-fill favorite" title="Favorite" onClick={() => toggleFavorite(img.id)}></i>
-//     } else if (hovered) {
-//       return <i className="ri-heart-line favorite" title="Favorite" onClick={() => toggleFavorite(img.id)}></i>
-//     }
-//   } 
-
-//   function cartIcon() {
-//     const alreadyInCart = cartItems.find(item => item.id === img.id)
-//     if (alreadyInCart) {
-//       return <i className="ri-shopping-cart-fill cart"  onClick={() => removeFromCart(img.id)}></i>
-//     } else if (hovered) {
-//       return <i className="ri-add-circle-line cart" title="Add To Cart" onClick={() => addToCart(img)}></i> 
-//     }
-//   }
-
-//   // return <Image ref={ref} { ...restProps }>{ children }</Image>
-//   return (
-//     <Image ref={ref} { ...restProps }>
-//        <div 
-//           className={`${className} image-container`}
-//           // ref={ref}
-//         >
-//           <img src={img.url} className="image-grid" alt={`...Loading #${img.id}`}/>
-//           {heartIcon()}
-//           {cartIcon()}
-//         </div>
-//     </Image>
-//   )
-// }
-
 ChocoShop.Link = function ChocoShopLink({ children, ...restProps }) {
   return <Link { ...restProps }>{ children }</Link>;
 }
 
 ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children, ...restProps }) {
   const { showModal, setShowModal, item } = useContext(FeatureModalContext);
+  // const { allBars, addToCart} = useContext(Context)
+  // const [itemFeature, setItemFeature] = useState(allBars)
 
   
   //? Blur background on showModal
@@ -171,33 +131,47 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children,
           onClick={() => {
             setShowModal(false)
           }}>
-          Close
+          X
         </button>
-      <div className="leftSide">
-        <h1>{item.title}</h1>
-        <p className="about">{item.about}</p>
-      </div>
-      <div className="middleSide">
-        <img src={item.image} loading="lazy" alt={item.alt}/>
-        <div>
-          <p>{item.subTitle}</p>
+        <div className="leftSide">
+          <h1>{item.title}</h1>
+          <p className="about">{item.about}</p>
+        </div>
+        <div className="middleSide">
+          <img src={item.image} loading="lazy" alt={item.alt}/>
           <div>
-            <p>{item.price}</p>
-            <AddCircleOutlineIcon style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}/>
+            <p>{item.subTitle}</p>
+            <div>
+              <p>{item.price}</p>
+              <AddCircleOutlineIcon style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}/>
+              {/* {itemFeature.map((chocolate) => {
+               <AddCircleOutlineIcon 
+                  onClick={() => {
+                    console.log("clicked add to cart")
+                    addToCart({
+                      id: chocolate.id,
+                      image: chocolate.image,
+                      title: chocolate.title,
+                      price: chocolate.price,
+                    })
+                  }} 
+                  style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}
+                />
+              })} */}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="rightSide">
-        <div>
-          <h2>Ingredients:</h2>
-          <p>{item.ingredients}</p>
+        <div className="rightSide">
+          <div>
+            <h2>Ingredients:</h2>
+            <p>{item.ingredients}</p>
+          </div>
+          <div>
+            <h2>Contains:</h2>
+            <p>{item.contains}</p>
+          </div>
+          <p className="allergies">{item.allergies}</p>
         </div>
-        <div>
-          <h2>Contains:</h2>
-          <p>{item.contains}</p>
-        </div>
-        <p className="allergies">{item.allergies}</p>
-      </div>
       </ChocoModalContent>
       
     </ChocoSelectModal>

@@ -1,17 +1,17 @@
 import React, {useState, useContext, createContext} from 'react';
 import { Container, CartItem, Main } from './styles/cartItems';
 import { Context } from '../../context/Context';
-import useHover from "../../hooks/useHover";
-// import PropTypes from "prop-types";
+// import useHover from "../../hooks/useHover";
 import DeleteIcon from '@material-ui/icons/Delete';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+// import PropTypes from "prop-types";
 
 export const CartContext = createContext();
 
 export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
   const {cartItems, emptyCart} = useContext(Context);
-  const [hovered, ref] = useHover(null);
+  // const [hovered, ref] = useHover();
   const {removeFromCart} = useContext(Context);
 
   const itemCost = cartItems.map(item => item.price);
@@ -21,23 +21,25 @@ export default function CartItems({ children, ...restProps }) {
   // console.log("hovered",hovered)
   
   // ? Switch between Trash Icons
-  function trashHover() {
-    if (hovered) {
-      return <DeleteForeverIcon />
-    } else {
-      return <DeleteIcon />
-    };
-  }
+  // function trashHover() {
+  //   if (hovered) {
+  //     return <DeleteForeverIcon />
+  //   } else {
+  //     return <DeleteIcon />
+  //   };
+  // }
 
   const cartItemElements = cartItems.map(item => (
-      <CartItem  key={ item.id } item={ item }>
+      <CartItem key={ item.id } item={ item }>
         <div className="cart-item">
           <i 
-            className="trashHover"
+            // className="trashHover"
             onClick={() => removeFromCart(item.id)}
-            ref={ref}
+            // ref={ref}
           >
-            {trashHover()}
+            {/* {trashHover()} */}
+            {/* <DeleteIcon /> */}
+            <DeleteForeverIcon/>
           </i>
           <img src={item.image} width="130px" alt={item.id}/>
           <p>{item.title}</p>
@@ -49,7 +51,6 @@ export default function CartItems({ children, ...restProps }) {
   function placeOrder() {
     const orderButton = document.querySelector(".order-button > button");
     orderButton.style.backgroundColor = "lightgray";
-    // orderButton.style.padding = "20px";
     setButtonText("Ordering...");
     setTimeout(() => {
       orderButton.style.backgroundColor = "#fff";
