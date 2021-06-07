@@ -16,9 +16,7 @@ export default function CartItems({ children, ...restProps }) {
 
   const itemCost = cartItems.map(item => item.price);
   const cartTotal = itemCost.length > 0 ? itemCost.reduce((a,b) => a + b) : [];
-  const totalCostDisplay = cartTotal.toLocaleString("en-US", { style: "currency", currency: "USD" });
-  
-  // console.log("itemCost: ", itemCost)
+  const totalCostDisplay = itemCost.length > 0 ? cartTotal.toLocaleString("en-US", { style: "currency", currency: "USD" }) : '$0';
   
   // ? Switch between Trash Icons
   function trashHover() {
@@ -40,7 +38,7 @@ export default function CartItems({ children, ...restProps }) {
         <p>{item.title}</p>
         <p>${item.price}</p>
         </div>
-        <hr/>
+        {/* <hr/> */}
       </CartItem>
   ))
 
@@ -74,15 +72,13 @@ export default function CartItems({ children, ...restProps }) {
 
   return (
     <CartContext.Provider value={{ cartItemElements, totalCostDisplay, showOrderBtn }}>
-      <Container { ...restProps }>{ children }</Container>
+      <Container height={cartItemElements.length} { ...restProps }>{ children }</Container>
     </CartContext.Provider>
   )
 }
 
 CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
   const { cartItemElements, totalCostDisplay, showOrderBtn } = useContext(CartContext);
-
-  // console.log("cartItemElements", cartItemElements)
 
   return (
     <Main { ...restProps } className="cart-page">

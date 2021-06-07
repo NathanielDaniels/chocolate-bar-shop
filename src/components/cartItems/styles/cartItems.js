@@ -6,7 +6,8 @@ export const Container = styled.section`
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: auto;
+  ${'' /* height: 500px; */}
+  height: ${({ height }) => (height > 0 ? 'auto' : '100vh')};
   color: var(--main-white);
 `;
 
