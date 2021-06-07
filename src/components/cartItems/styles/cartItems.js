@@ -11,7 +11,7 @@ export const Container = styled.section`
 `;
 
 export const Main = styled.main`
-  border: 2px solid yellow;
+  ${'' /* border: 2px solid yellow; */}
   padding: 20px;
   display: flex;
   flex-direction: column;

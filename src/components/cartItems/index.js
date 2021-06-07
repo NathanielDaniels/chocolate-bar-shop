@@ -13,33 +13,14 @@ export default function CartItems({ children, ...restProps }) {
   const {cartItems, emptyCart} = useContext(Context);
   const [hovered, ref] = useHover();
   const {removeFromCart} = useContext(Context);
-  const totalCost = cartItems.length * 5.99;
-  const totalCostDisplay = totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
-  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  // const itemCost = cartItems.map(item => item.reduce(reducer));
   const itemCost = cartItems.map(item => item.price);
-  // const total = Object.values(itemCost).reduce((t, n) => t + n)
-
-
-
-  // const splitTotal = [itemCost.split('$')]
-
-
-  // const totalCost = cartItems.length * ;
-
-  // console.log("cartItems: ",cartItems)
-  console.log("itemCost: ", itemCost)
-  console.log("itemCost: ", itemCost.reduce((a,b) => a + b))
-
+  const cartTotal = itemCost.length > 0 ? itemCost.reduce((a,b) => a + b) : [];
+  const totalCostDisplay = cartTotal.toLocaleString("en-US", { style: "currency", currency: "USD" });
+  
+  // console.log("itemCost: ", itemCost)
+  
   // ? Switch between Trash Icons
-  // function trashHover() {
-  //   if (hovered) {
-  //     return "ri-delete-bin-fill" 
-  //   } else {
-  //     return "ri-delete-bin-line" 
-  //   };
-  // }
   function trashHover() {
     if (hovered) {
       return {DeleteForeverIcon}
@@ -47,12 +28,6 @@ export default function CartItems({ children, ...restProps }) {
       return {DeleteIcon}
     };
   }
-
-  // console.log(totalCost)
-
-  // const cartItemElements = cartItems.map(item => (
-  //     <CartItem key={ item.id } item={ item } />
-  // ))
 
   const cartItemElements = cartItems.map(item => (
       <CartItem key={ item.id } item={ item }>
@@ -63,7 +38,7 @@ export default function CartItems({ children, ...restProps }) {
         </i>
         <img src={item.image} width="130px" alt={item.id}/>
         <p>{item.title}</p>
-        <p>{item.price}</p>
+        <p>${item.price}</p>
         </div>
         <hr/>
       </CartItem>
@@ -83,10 +58,10 @@ export default function CartItems({ children, ...restProps }) {
 
   function changeCartTitle() {
     const title = document.querySelector(".cart-page > h1")
-    title.style.color = "green"
+    title.style.color = "var(--main-yellow)";
     title.innerText = "Order Placed!"
     setTimeout(() => {
-      title.style.color = "black"
+      title.style.color = "var(--main-white)";
       title.innerText = "Check Out"
     }, 3000)
   }
