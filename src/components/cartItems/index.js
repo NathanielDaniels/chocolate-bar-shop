@@ -32,9 +32,11 @@ export default function CartItems({ children, ...restProps }) {
   const cartItemElements = cartItems.map(item => (
       <CartItem  key={ item.id } item={ item }>
         <div className="cart-item">
-          <i className="trashHover"
+          <i 
+            className="trashHover"
             onClick={() => removeFromCart(item.id)}
-            ref={ref}>
+            ref={ref}
+          >
             {trashHover()}
           </i>
           <img src={item.image} width="130px" alt={item.id}/>

@@ -16,7 +16,7 @@ export const Main = styled.main`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 550px;
 
   .total-cost {
     display: inherit;
@@ -48,86 +48,19 @@ export const CartItem = styled.div`
   margin: 20px 0;
 
   .cart-item {
-    ${'' /* border: 2px solid yellow; */}
-    ${'' /* width: 100%; */}
-    ${'' /* display: inherit;
-    justify-content: space-evenly; */}
+    display: inherit;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
 
   i {
     cursor: pointer;
+    margin-right: 20px;
+  }
+
+  p {
+    padding-left: 20px;
   }
   
 `;
-
-//=============================================================================
-
-// .cart {
-//   color: var(--blue);
-//   font-size: 1.5rem;
-//   position: absolute;
-//   top: 5px;
-//   right: 5px;
-//   cursor: pointer;
-// }
-
-// .cartInfo:active {
-//   transform: scale(0.95);
-// }
-
-// main.cart-page {
-//   padding: 10px;
-// }
-
-// .cart-page>h1 {
-//   text-align: center;
-// }
-
-// .cart-item {
-//   position: relative;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin: 20px 0;
-// }
-
-// .cart-item img {
-//   margin-right: auto;
-//   margin-left: 10px;
-// }
-
-// .ri-delete-bin-line,
-// .ri-delete-bin-fill {
-//   font-size: 1.3em;
-//   cursor: pointer;
-//   z-index: 100;
-// }
-
-// .ri-shopping-cart-fill {
-//   transition: color 0.1s ease-in-out;
-// }
-
-// .cart-page .total-cost {
-//   text-align: right;
-//   font-size: 1.3em;
-// }
-
-// .cart-page div.order-button {
-//   display: flex;
-//   justify-content: center;
-// }
-
-// .order-button>button {
-//   border-color: var(--black);
-//   cursor: pointer;
-//   padding: 15px;
-//   transition: all 0.2s ease-in-out;
-// }
-
-// .order-button>button:focus {
-//   outline: none;
-// }
-
-// .order-button>button:disabled {
-//   border-color: lightgray;
-// }
