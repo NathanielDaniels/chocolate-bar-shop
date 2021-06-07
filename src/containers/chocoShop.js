@@ -1,18 +1,21 @@
 import React, {useState, useEffect, createContext, useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChocoShop } from '../components';
+import { Image } from '../components';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { Context } from '../context/Context';
+import { useHover } from '../hooks/useHover'
 // import { FooterContainer } from './footer'
 
 export const FeatureContext = createContext();
 export const FeatureModalContext = createContext();
 
 export function ChocoShopContainer() {
-  const { allBars } = useContext(Context);
+  // const [hovered, ref] = useHover(null);
+  const { allBars, cartItems, addToCart} = useContext(Context);
   // console.log("allBars", allBars)
 
-  const ChocoShopTotalMenu = allBars
+  const ChocoShopTotalMenu = allBars;
 
   //? Filtered Chocolates by size
   const filterBigBars = ChocoShopTotalMenu.filter((bars) => bars.price === "$5.95");
@@ -24,46 +27,14 @@ export function ChocoShopContainer() {
   const [item, setItem] = useState({});
 
   useEffect(() => {
-    console.log("selected Chocolate Item State",item)
+    console.log("selected Chocolate Item State", item)
+    console.log("cart Items:", cartItems)
   },[item])
-
-  // console.log("item Feature", itemFeature);
-  
-  // useEffect(() => {
-  //   console.log("itemfeature", itemFeature)
-  // }, [itemFeature])
-
-  // useEffect(() => {
-
-  //   console.log("item", item)
-  // },[])
-  
-  // function modalFeature(chocolate) {
-  //     setItem(chocolate)
-  //     console.log("chocolate", chocolate)
-
-
-  //     return (
-  //        <ChocoShop.MenuItem key={chocolate.title + chocolate.price}>
-  //           <img 
-  //             src={chocolate.image} 
-  //             loading="lazy" 
-  //             alt={chocolate.alt}
-  //           />
-  //           <p>{chocolate.title}</p>
-  //           <p>{chocolate.subTitle}</p>
-  //           <div>
-  //             <p>{chocolate.price}</p>
-  //             <AddCircleOutlineIcon style={{ fontSize: 35 }}/>
-  //           </div>
-  //         </ChocoShop.MenuItem>
-  //     )
-  // }
 
   return (
     <ChocoShop>
       <ChocoShop.SidebarContainer>
-      <ChocoShop.SidebarNav />
+      {/* <ChocoShop.SidebarNav /> */}
         <ChocoShop.SidebarNav>
           <ChocoShop.SidebarNavList>
             <NavLink 
@@ -113,7 +84,6 @@ export function ChocoShopContainer() {
 
           </ChocoShop.SidebarNavList>
         </ChocoShop.SidebarNav>
-        
       </ChocoShop.SidebarContainer>
 
       <ChocoShop.MainMenuContainer>
@@ -127,7 +97,7 @@ export function ChocoShopContainer() {
                   key={chocolate.title + chocolate.price}
                 >
                   <ChocoShop.Link>
-                    <img 
+                    <img
                       src={ chocolate.image } 
                       loading="lazy" 
                       alt={ `...loading &{chocolate.alt}` }
@@ -139,7 +109,19 @@ export function ChocoShopContainer() {
                       <AddCircleOutlineIcon 
                         onClick={() => {
                           console.log("clicked add to cart")
-                          setItem(chocolate)
+                          // setItem(chocolate)
+                          // setItem({
+                          //   id: chocolate.id,
+                          //   image: chocolate.image,
+                          //   title: chocolate.title,
+                          //   price: chocolate.price,
+                          // })
+                          addToCart({
+                            id: chocolate.id,
+                            image: chocolate.image,
+                            title: chocolate.title,
+                            price: chocolate.price,
+                          })
                         }} 
                         style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}
                       />

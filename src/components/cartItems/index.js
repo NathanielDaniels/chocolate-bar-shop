@@ -1,8 +1,8 @@
-import React, {useState, useContext, createContext, useRef} from 'react';
+import React, {useState, useContext, createContext} from 'react';
 import { Container, CartItem, Main } from './styles/cartItems';
 import { Context } from '../../context/Context';
 import useHover from "../../hooks/useHover";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export const CartContext = createContext();
 

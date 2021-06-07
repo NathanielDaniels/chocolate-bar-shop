@@ -13,9 +13,9 @@ export function FooterContainer() {
         <h4>Our Story</h4>
         <ul>
           <li><a href="/">Our Mission</a></li>
-          <li><a>Our Timeline</a></li>
-          <li><a>Tony's Impact</a></li>
-          <li><a>Anual FAIR report</a></li>
+          <li>Our Timeline</li>
+          <li>Tony's Impact</li>
+          <li>Anual FAIR report</li>
         </ul>
       </Footer.Section>
       <Footer.Section>
@@ -31,7 +31,7 @@ export function FooterContainer() {
           <li><a href="/chocoShop">Big Bars</a></li>
           <li><a href="/chocoShop">Small Bars</a></li>
           <li><a href="/chocoShop">Tiny Tony's</a></li>
-          <li><a>Store Locator</a></li>
+          <li>Store Locator</li>
         </ul>
       </Footer.Section>
       <Footer.Section>

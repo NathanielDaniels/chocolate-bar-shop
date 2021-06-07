@@ -11,7 +11,7 @@ export function HeaderContainer() {
 const { cartItems } = useContext(Context);
 // const cartClassName = cartItems.length > 0 ? <ShoppingCartIcon/> : <ShoppingCartOutlinedIcon/>
 
-// console.log(cartItems)
+console.log(cartItems)
 // console.log(Context)
 
   const cartCounter = () => (

@@ -10,7 +10,7 @@ import {
   MainMenu,
   MenuList,
   MenuItem,
-  Image,
+  // Image,
   Link,
   ChocoSelectModal, 
   ChocoModalContent 

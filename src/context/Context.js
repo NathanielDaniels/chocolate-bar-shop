@@ -206,7 +206,7 @@ function ContextProvider({children}) {
   
   // console.log("allPhotos", allPhotos)
 
-  // console.log("cartItems:", cartItems)
+  console.log("cartItems context:", cartItems)
 
   // console.log("storage:", JSON.parse(localStorage.getItem("photos")))
   
