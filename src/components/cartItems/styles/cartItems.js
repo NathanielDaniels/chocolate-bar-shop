@@ -18,13 +18,17 @@ export const Main = styled.main`
   flex-direction: column;
   width: 550px;
 
+  h1 {
+    text-align: center;
+  }
+
   .total-cost {
     display: inherit;
     justify-content: flex-end;
   }
 
   .order-button {
-    ${'' /* color: red; */}
+    margin: 0 auto;
     button {
       cursor: pointer;
       padding: 20px;

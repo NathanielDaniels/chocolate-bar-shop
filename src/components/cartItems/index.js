@@ -58,12 +58,12 @@ export default function CartItems({ children, ...restProps }) {
   }
 
   function changeCartTitle() {
-    const title = document.querySelector(".cart-page > h1")
+    const title = document.querySelector(".cart-page > h1");
     title.style.color = "var(--main-yellow)";
-    title.innerText = "Order Placed!"
+    title.innerText = "Order Placed!";
     setTimeout(() => {
       title.style.color = "var(--main-white)";
-      title.innerText = "Check Out"
+      title.innerText = "Check Out";
     }, 3000)
   }
 
