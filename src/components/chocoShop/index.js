@@ -13,7 +13,7 @@ import {
   ChocoSelectModal, 
   ChocoModalContent 
 } from './styles/chocoShop';
-import useHover from "../../hooks/useHover";
+// import useHover from "../../hooks/useHover";
 // import { Context } from '../../context/Context';
 
 export const FeatureModalContext = createContext();
@@ -78,28 +78,58 @@ ChocoShop.MenuList = function ChocoShopMenuList({ children, ...restProps }) {
   return <MenuList { ...restProps }>{ children }</MenuList>;
 }
 
+ChocoShop.MenuItem = function ChocoShopMenuItem({ children, ...restProps }) {
+  return <MenuItem { ...restProps }>{ children }</MenuItem>;
+}
 
-ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }) {
+//? Original
+// ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }) {
+//   const { setShowModal, setItem } = useContext(FeatureModalContext);
+//   const menuItem = useRef('') 
+
+//    useEffect(() => {
+//     const MenuItems = menuItem.current
+//     MenuItems.addEventListener('click', function() {
+//       setShowModal(true);
+//       setItem(item);
+//     });
+//   }, [item, setItem, setShowModal]);
+
+
+
+//   return (
+//     <MenuItem 
+//       ref={ menuItem } 
+//       { ...restProps }
+//     >
+//     { children }
+//     </MenuItem>
+//   );
+// }
+
+// ChocoShop.Link = function ChocoShopLink({ children, ...restProps }) {
+//   return <Link { ...restProps }>{ children }</Link>;
+// }
+
+ChocoShop.Link = function ChocoShopLink({ item, children, ...restProps }) {
   const { setShowModal, setItem } = useContext(FeatureModalContext);
   const menuItem = useRef('') 
 
-   useEffect(() => {
+  useEffect(() => {
     const MenuItems = menuItem.current
     MenuItems.addEventListener('click', function() {
+      console.log(item)
       setShowModal(true);
       setItem(item);
     });
   }, [item, setItem, setShowModal]);
 
-
-
-  return (
-    <MenuItem ref={ menuItem } { ...restProps }>{ children }</MenuItem>
-  );
-}
-
-ChocoShop.Link = function ChocoShopLink({ children, ...restProps }) {
-  return <Link { ...restProps }>{ children }</Link>;
+  return <Link 
+  ref={ menuItem } 
+  { ...restProps }
+  >
+    { children }
+  </Link>;
 }
 
 ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children, ...restProps }) {
@@ -142,7 +172,7 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({ ref, children,
           <div>
             <p>{item.subTitle}</p>
             <div>
-              <p>{item.price}</p>
+              <p>${item.price}</p>
               <AddCircleOutlineIcon style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}/>
               {/* {itemFeature.map((chocolate) => {
                <AddCircleOutlineIcon 

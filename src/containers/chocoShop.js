@@ -32,7 +32,6 @@ export function ChocoShopContainer() {
   return (
     <ChocoShop>
       <ChocoShop.SidebarContainer>
-      {/* <ChocoShop.SidebarNav /> */}
         <ChocoShop.SidebarNav>
           <ChocoShop.SidebarNavList>
             <NavLink 
@@ -90,20 +89,25 @@ export function ChocoShopContainer() {
             {itemFeature.map((chocolate) => {
               return (
                 <ChocoShop.MenuItem
-                  item={chocolate} 
+                  // item={chocolate} 
                   key={chocolate.title + chocolate.price}
                 >
-                  <ChocoShop.Link>
+                  <ChocoShop.Link
+                    item={chocolate}
+                    key={chocolate.title + chocolate.price}
+                  >
                     <img
-                      src={ chocolate.image } 
-                      loading="lazy" 
-                      alt={ `...loading &{chocolate.alt}` }
+                      src={ chocolate.image }
+                      loading="lazy"
+                      alt={ `...loading ${chocolate.alt}` }
                     />
+                  </ChocoShop.Link>
                     <p>{ chocolate.title }</p>
                     <p>{ chocolate.subTitle }</p>
                     <div>
-                      <p>{ chocolate.price }</p>
-                      <AddCircleOutlineIcon 
+                      <p>${ chocolate.price }</p>
+                      <AddCircleOutlineIcon
+                        className="addToCardBtn" 
                         onClick={() => {
                           console.log("clicked add to cart")
                           addToCart({
@@ -116,7 +120,7 @@ export function ChocoShopContainer() {
                         style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}
                       />
                     </div>
-                  </ChocoShop.Link>
+                  {/* </ChocoShop.Link> */}
                 </ChocoShop.MenuItem>
               )
             })}

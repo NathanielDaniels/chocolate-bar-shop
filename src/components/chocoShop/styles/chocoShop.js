@@ -188,7 +188,9 @@ export const Link = styled.a`
         font-size: 1.4rem;
       }
     }
-    
+    ${'' /* .addToCardBtn {
+      z-index: 99999;
+    } */}
 `;
 
 //? Popup Modal ===========================
