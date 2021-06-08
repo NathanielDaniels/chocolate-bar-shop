@@ -112,19 +112,8 @@ export const MenuItem = styled.li`
   margin: 10px;
   padding: 0 0 5px;
   border-radius: 5px;
-  ${'' /* a {
-    img {
-      max-width: 300px;
 
-      @media (max-width: 1200px) {
-        width: 250px;
-      }
-
-      @media (max-width: 600px) {
-        width: 100%;
-      }
-    }
-    p {
+  p {
       padding-left: 10px;
       color: var(--main-black);
       @media (max-width: 600px) {
@@ -140,7 +129,9 @@ export const MenuItem = styled.li`
         font-size: 1.4rem;
       }
     }
-  }  */}
+    ${'' /* .addToCardBtn {
+      z-index: 99999;
+    } */}
     
 `;
 
@@ -172,25 +163,7 @@ export const Link = styled.a`
         width: 100%;
       }
     }
-    p {
-      padding-left: 10px;
-      color: var(--main-black);
-      @media (max-width: 600px) {
-        font-size: 14px;
-      }
-    }
-    div {
-      display: flex;
-      justify-content: space-between;
-      padding-right: 5px;
-      p {
-        font-weight: 500;
-        font-size: 1.4rem;
-      }
-    }
-    ${'' /* .addToCardBtn {
-      z-index: 99999;
-    } */}
+    
 `;
 
 //? Popup Modal ===========================

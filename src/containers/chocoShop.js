@@ -1,11 +1,9 @@
 import React, {useState, useEffect, createContext, useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChocoShop } from '../components';
-// import { Image } from '../components';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { Context } from '../context/Context';
-// import { useHover } from '../hooks/useHover'
-// import { FooterContainer } from './footer'
+// import { useHover } from '../hooks/useHover';
 
 export const FeatureContext = createContext();
 export const FeatureModalContext = createContext();
@@ -23,11 +21,6 @@ export function ChocoShopContainer() {
   //? State for Chocolate Menu
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
   const [item, setItem] = useState({});
-
-  // useEffect(() => {
-  //   console.log("selected Chocolate Item State", item)
-  //   console.log("cart Items:", cartItems)
-  // },[item])
 
   return (
     <ChocoShop>
@@ -88,10 +81,7 @@ export function ChocoShopContainer() {
           <ChocoShop.MenuList>
             {itemFeature.map((chocolate) => {
               return (
-                <ChocoShop.MenuItem
-                  // item={chocolate} 
-                  key={chocolate.title + chocolate.price}
-                >
+                <ChocoShop.MenuItem>
                   <ChocoShop.Link
                     item={chocolate}
                     key={chocolate.title + chocolate.price}
@@ -120,7 +110,6 @@ export function ChocoShopContainer() {
                         style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}
                       />
                     </div>
-                  {/* </ChocoShop.Link> */}
                 </ChocoShop.MenuItem>
               )
             })}
