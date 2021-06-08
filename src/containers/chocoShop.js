@@ -33,12 +33,10 @@ export function ChocoShopContainer() {
               onClick={(e) => {
                 e.preventDefault()
                 setItemFeature(() => ChocoShopTotalMenu)
-                // setItemFeature(allBars)
               }}
             >
               All Chocolates
             </NavLink>
-
             <NavLink 
               to="/ChocoShop/big"
               activeClassName="active"
@@ -49,7 +47,6 @@ export function ChocoShopContainer() {
             >
               Big Bars
             </NavLink>
-
             <NavLink 
               to="/ChocoShop/small"
               activeClassName="active"
@@ -60,7 +57,6 @@ export function ChocoShopContainer() {
             >
               Small Bars
             </NavLink>
-
             <NavLink 
               to="/ChocoShop/tiny"
               activeClassName="active"
@@ -81,10 +77,10 @@ export function ChocoShopContainer() {
           <ChocoShop.MenuList>
             {itemFeature.map((chocolate) => {
               return (
-                <ChocoShop.MenuItem>
+                <ChocoShop.MenuItem key={chocolate.id}>
                   <ChocoShop.Link
                     item={chocolate}
-                    key={chocolate.title + chocolate.price}
+                    key={chocolate.id}
                   >
                     <img
                       src={ chocolate.image }
@@ -99,9 +95,9 @@ export function ChocoShopContainer() {
                       <AddCircleOutlineIcon
                         className="addToCardBtn" 
                         onClick={() => {
-                          console.log("clicked add to cart")
+                          let randomId = chocolate.id * Math.floor(Math.random() * 999)
                           addToCart({
-                            id: chocolate.id,
+                            id: randomId,
                             image: chocolate.image,
                             title: chocolate.title,
                             price: chocolate.price,

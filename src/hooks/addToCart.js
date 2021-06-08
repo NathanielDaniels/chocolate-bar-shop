@@ -10,7 +10,7 @@ export default function addToCart(target) {
     itemFeature.map((chocolate) => {
       <AddCircleOutlineIcon 
         onClick={() => {
-          console.log("clicked add to cart")
+          // console.log("clicked add to cart")
           addToCart({
             id: chocolate.id,
             image: chocolate.image,

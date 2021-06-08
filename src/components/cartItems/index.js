@@ -1,9 +1,9 @@
 import React, {useState, useContext, createContext} from 'react';
 import { Container, CartItem, Main } from './styles/cartItems';
 import { Context } from '../../context/Context';
-// import useHover from "../../hooks/useHover";
 import DeleteIcon from '@material-ui/icons/Delete';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+// import useHover from "../../hooks/useHover";
 // import PropTypes from "prop-types";
 
 export const CartContext = createContext();
@@ -11,14 +11,12 @@ export const CartContext = createContext();
 export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
   const {cartItems, emptyCart} = useContext(Context);
-  // const [hovered, ref] = useHover();
   const {removeFromCart} = useContext(Context);
+  // const [hovered, ref] = useHover();
 
   const itemCost = cartItems.map(item => item.price);
   const cartTotal = itemCost.length > 0 ? itemCost.reduce((a,b) => a + b) : [];
   const totalCostDisplay = itemCost.length > 0 ? cartTotal.toLocaleString("en-US", { style: "currency", currency: "USD" }) : '$0';
-
-  // console.log("hovered",hovered)
   
   // ? Switch between Trash Icons
   // function trashHover() {
@@ -38,7 +36,6 @@ export default function CartItems({ children, ...restProps }) {
             // ref={ref}
           >
             {/* {trashHover()} */}
-            {/* <DeleteIcon /> */}
             <DeleteForeverIcon/>
           </i>
           <img src={item.image} width="130px" alt={item.id}/>

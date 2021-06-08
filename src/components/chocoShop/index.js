@@ -23,8 +23,6 @@ export default function ChocoShop({children, ...restProps}) {
   const [item, setItem] = useState('');
   const containerRef = useRef('')
 
-  // useEffect(() => {console.log("container ref", containerRef.current)}, [])
-
   return (
     <FeatureModalContext.Provider value={{ containerRef, showModal, setShowModal, item, setItem }}>
       <Container ref={containerRef} { ...restProps }>{ children }</Container>;
@@ -82,35 +80,6 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ children, ...restProps }) {
   return <MenuItem { ...restProps }>{ children }</MenuItem>;
 }
 
-//? Original
-// ChocoShop.MenuItem = function ChocoShopMenuItem({ item, children, ...restProps }) {
-//   const { setShowModal, setItem } = useContext(FeatureModalContext);
-//   const menuItem = useRef('') 
-
-//    useEffect(() => {
-//     const MenuItems = menuItem.current
-//     MenuItems.addEventListener('click', function() {
-//       setShowModal(true);
-//       setItem(item);
-//     });
-//   }, [item, setItem, setShowModal]);
-
-
-
-//   return (
-//     <MenuItem 
-//       ref={ menuItem } 
-//       { ...restProps }
-//     >
-//     { children }
-//     </MenuItem>
-//   );
-// }
-
-// ChocoShop.Link = function ChocoShopLink({ children, ...restProps }) {
-//   return <Link { ...restProps }>{ children }</Link>;
-// }
-
 ChocoShop.Link = function ChocoShopLink({ item, children, ...restProps }) {
   const { setShowModal, setItem } = useContext(FeatureModalContext);
   const menuItem = useRef('') 
@@ -118,14 +87,13 @@ ChocoShop.Link = function ChocoShopLink({ item, children, ...restProps }) {
   useEffect(() => {
     const MenuItems = menuItem.current
     MenuItems.addEventListener('click', function() {
-      console.log(item)
       setShowModal(true);
       setItem(item);
     });
   }, [item, setItem, setShowModal]);
 
   return <Link 
-  ref={ menuItem } 
+  ref={ menuItem }
   { ...restProps }
   >
     { children }
