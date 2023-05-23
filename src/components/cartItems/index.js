@@ -15,14 +15,17 @@ export default function CartItems({ children, ...restProps }) {
   // const [hovered, ref] = useHover();
 
   const itemCost = cartItems.map((item) => item.price);
-  const cartTotal = itemCost.length > 0 ? itemCost.reduce((a, b) => a + b) : [];
-  const totalCostDisplay =
-    itemCost.length > 0
-      ? cartTotal.toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })
-      : "$0";
+  const totalCostDisplay = () => {
+    if (itemCost.length > 0) {
+      const totalCost = itemCost.reduce((sum, item) => sum + item, 0);
+      return totalCost.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      });
+    } else {
+      return "$0";
+    }
+  };
 
   // ? Switch between Trash Icons
   // function trashHover() {
@@ -92,6 +95,7 @@ export default function CartItems({ children, ...restProps }) {
 }
 
 CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
+  // const { cartItemElements, totalCostDisplay, showOrderBtn } =
   const { cartItemElements, totalCostDisplay, showOrderBtn } =
     useContext(CartContext);
 
@@ -99,7 +103,7 @@ CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
     <Main {...restProps} className="cart-page">
       <h1>Check out</h1>
       {cartItemElements}
-      <p className="total-cost">Total: {totalCostDisplay}</p>
+      <p className="total-cost">Total: {totalCostDisplay()}</p>
       <div className="order-button">{showOrderBtn()}</div>
     </Main>
   );

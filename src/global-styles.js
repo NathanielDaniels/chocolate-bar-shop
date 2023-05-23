@@ -1,5 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
-
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -21,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   html, body {
-    width: 100vw;
+    width: 100%;
     font-family: 'Poppins', 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
