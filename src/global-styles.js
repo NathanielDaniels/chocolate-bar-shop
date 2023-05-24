@@ -21,6 +21,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html, body {
     width: 100%;
+    max-width: 100vw;
     font-family: 'Poppins', 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

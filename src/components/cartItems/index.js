@@ -10,12 +10,37 @@ export const CartContext = createContext();
 
 export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
-  const { cartItems, emptyCart } = useContext(Context);
+  const { cartItems, setCartItems, emptyCart } = useContext(Context);
   const { removeFromCart } = useContext(Context);
   // const [hovered, ref] = useHover();
 
-  const itemCost = cartItems.map((item) => item.price);
+  console.log({ cartItems });
+
+  //! Working on this
+  // (function addToCart(item) {
+  //   setCartItems((prevItems) => {
+  //     const itemIndex = prevItems.findIndex(
+  //       (prevItem) => prevItem.id === item.id
+  //     );
+  //     if (itemIndex >= 0) {
+  //       // Item already exists in cart, increment quantity
+  //       const updatedItems = [...prevItems];
+  //       updatedItems[itemIndex].quantity += 1;
+  //       return updatedItems;
+  //     } else {
+  //       // Item does not exist in cart, add it
+  //       return [...prevItems, { ...item, quantity: 1 }];
+  //     }
+  //   });
+  // })();
+
+  // const totalItems = cartItems.reduce(
+  //   (total, item) => total + item.quantity,
+  //   0
+  // );
+
   const totalCostDisplay = () => {
+    const itemCost = cartItems.map((item) => item.price);
     if (itemCost.length > 0) {
       const totalCost = itemCost.reduce((sum, item) => sum + item, 0);
       return totalCost.toLocaleString("en-US", {
