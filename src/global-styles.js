@@ -1,10 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
-
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
   :root {
     --main-blue: #0066CC;
+    --main-bright-blue: #0066CC;
     --main-red: #FF0000;
     --main-white: #FFFFFF;
     --main-black: #101010;
@@ -20,7 +20,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   html, body {
-    width: 100vw;
+    width: 100%;
+    max-width: 100vw;
     font-family: 'Poppins', 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

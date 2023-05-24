@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.section`
-  ${'' /* border: 2px solid red; */}
+  border: 2px solid red;
 `;
 
 export const Inner = styled.div`

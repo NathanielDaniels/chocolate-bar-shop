@@ -4,7 +4,7 @@ import { Header } from '../components';
 import { Context } from "../context/Context";
 import * as ROUTES from '../constants/routes';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+// import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 
 export function HeaderContainer() {
