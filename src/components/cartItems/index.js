@@ -108,7 +108,6 @@ export default function CartItems({ children, ...restProps }) {
       <p>You have no items in your cart.</p>
     );
 
-  //! Look for container to add z-index: 2;
   return (
     <CartContext.Provider
       value={{ cartItemElements, totalCostDisplay, showOrderBtn }}
@@ -121,15 +120,16 @@ export default function CartItems({ children, ...restProps }) {
 }
 
 CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
-  // const { cartItemElements, totalCostDisplay, showOrderBtn } =
   const { cartItemElements, totalCostDisplay, showOrderBtn } =
     useContext(CartContext);
-
+  const amountInCart = cartItemElements.length;
   return (
     <Main {...restProps} className="cart-page">
       <h1>Check out</h1>
       {cartItemElements}
-      <p className="total-cost">Total: {totalCostDisplay()}</p>
+      {amountInCart !== 0 ? (
+        <p className="total-cost">Total: {totalCostDisplay()}</p>
+      ) : null}
       <div className="order-button">{showOrderBtn()}</div>
     </Main>
   );
