@@ -14,7 +14,7 @@ export default function CartItems({ children, ...restProps }) {
   const { removeFromCart } = useContext(Context);
   // const [hovered, ref] = useHover();
 
-  console.log({ cartItems });
+  // console.log({ cartItems });
 
   //! Working on this
   // (function addToCart(item) {
@@ -108,6 +108,7 @@ export default function CartItems({ children, ...restProps }) {
       <p>You have no items in your cart.</p>
     );
 
+  //! Look for container to add z-index: 2;
   return (
     <CartContext.Provider
       value={{ cartItemElements, totalCostDisplay, showOrderBtn }}
