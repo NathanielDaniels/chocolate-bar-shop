@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 
 export const Menu = styled.nav`
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,7 +90,7 @@ export const MenuListItem = styled.li`
 //? Main Container
 //* Placed at bottom to access other styles
 export const Container = styled.header`
-  z-index: 2;
+  z-index: 3;
   position: fixed;
   display: flex;
   justify-content: center;

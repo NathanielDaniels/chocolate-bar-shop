@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
 export const Container = styled.section`
   padding: 140px 0 100px;
@@ -7,12 +7,12 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: ${({ height }) => (height > 0 ? 'auto' : '100vh')};
+  height: ${({ height }) => (height > 0 ? "auto" : "100vh")};
   color: var(--main-white);
 `;
 
 export const Main = styled.main`
-  ${'' /* border: 2px solid yellow; */}
+  z-index: 2;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ export const Main = styled.main`
     button {
       cursor: pointer;
       padding: 20px;
-      letter-spacing: .4px;
+      letter-spacing: 0.4px;
       text-transform: uppercase;
       font-size: 16px;
     }
@@ -43,7 +43,6 @@ export const CartItem = styled.div`
   border: 2px solid var(--main-red);
   border-radius: 10px;
   padding: 20px;
-  ${'' /* padding: 20px 0; */}
   background: var(--main-white);
   color: var(--main-blue);
   position: relative;
@@ -66,5 +65,4 @@ export const CartItem = styled.div`
   p {
     padding-left: 20px;
   }
-  
 `;
