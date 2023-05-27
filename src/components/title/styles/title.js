@@ -4,21 +4,19 @@ export const Container = styled.section`
   ${"" /* border: 2px solid yellow; */}
   position: relative;
   width: 100vw;
-  height: 700px;
+  height: 800px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   .titleContent {
-    ${"" /* border: 2px solid red; */}
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
-
   @media (max-width: 700px) {
     height: 600px;
   }
