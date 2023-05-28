@@ -2,7 +2,8 @@ import styled from "styled-components/macro";
 
 export const Container = styled.div`
   width: 100vw;
-  height: 800px;
+  ${"" /* height: 800px; */}
+  height: clamp(800px, 33vw, 1400px);
   top: 0;
   right: 0;
   background: transparent;
@@ -18,9 +19,10 @@ export const ChocoBars = styled.div`
   background-position: bottom;
   z-index: 1;
   position: absolute;
-  width: clamp(951px, 46vw, 1200px);
+  width: clamp(951px, 46vw, 2000px);
+  ${"" /* width: clamp(951px, 46vw, 1200px); */}
   height: clamp(500px, 23vw, 1001px);
-  top: clamp(-105px, -30%, -100px);
+  top: clamp(-120px, -30%, -100px);
   left: clamp(72vw, 30vw, 25vw);
   transform: rotate(50deg);
   box-shadow: 0 2px 5px hsl(210, 100%, 30%);

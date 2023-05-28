@@ -1,4 +1,6 @@
 import React, { useState, useContext, createContext } from "react";
+import { useHistory } from "react-router-dom";
+
 import { Container, CartItem, Main } from "./styles/cartItems";
 import { Context } from "../../context/Context";
 // import DeleteIcon from '@material-ui/icons/Delete';
@@ -12,6 +14,7 @@ export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
   const { cartItems, setCartItems, emptyCart } = useContext(Context);
   const { removeFromCart } = useContext(Context);
+  const history = useHistory(); 
   // const [hovered, ref] = useHover();
 
   // console.log({ cartItems });
@@ -64,12 +67,7 @@ export default function CartItems({ children, ...restProps }) {
   const cartItemElements = cartItems.map((item) => (
     <CartItem key={item.id} item={item}>
       <div className="cart-item">
-        <i
-          // className="trashHover"
-          onClick={() => removeFromCart(item.id)}
-          // ref={ref}
-        >
-          {/* {trashHover()} */}
+        <i onClick={() => removeFromCart(item.id)}>
           <DeleteForeverIcon />
         </i>
         <img src={item.image} width="130px" alt={item.id} />
@@ -78,6 +76,20 @@ export default function CartItems({ children, ...restProps }) {
       </div>
     </CartItem>
   ));
+  // const cartItemElements = cartItems.map((item) => (
+  //   <CartItem key={item.id} item={item}>
+  //     <div className="cart-item">
+  //       <i
+  //         onClick={() => removeFromCart(item.id)}
+  //       >
+  //         <DeleteForeverIcon />
+  //       </i>
+  //       <img src={item.image} width="130px" alt={item.id} />
+  //       <p>{item.title}</p>
+  //       <p>${item.price}</p>
+  //     </div>
+  //   </CartItem>
+  // ));
 
   function placeOrder() {
     const orderButton = document.querySelector(".order-button > button");
@@ -88,6 +100,7 @@ export default function CartItems({ children, ...restProps }) {
       setButtonText("Place Order");
       changeCartTitle();
       emptyCart();
+      history.push("/Cart");
     }, 1500);
   }
 
@@ -101,36 +114,47 @@ export default function CartItems({ children, ...restProps }) {
     }, 3000);
   }
 
-  const showOrderBtn = () =>
-    cartItems.length > 0 ? (
-      <button onClick={placeOrder}>{buttonText}</button>
-    ) : (
-      <p>You have no items in your cart.</p>
-    );
-
+  const showOrderBtn = () => (
+    <>
+      {cartItems.length > 0 ? (
+        <button onClick={placeOrder}>{buttonText}</button>
+      ) : (
+        <p>You have no items in your cart.</p>
+      )}
+    </>
+  );
+  const amountInCart = cartItemElements.length;
   return (
     <CartContext.Provider
       value={{ cartItemElements, totalCostDisplay, showOrderBtn }}
     >
       <Container height={cartItemElements.length} {...restProps}>
-        {children}
+        {/* {children} */}
+        <Main {...restProps} className="cart-page">
+          <h1>Check out</h1>
+          {cartItemElements}
+          {amountInCart !== 0 ? (
+            <p className="total-cost">Total: {totalCostDisplay()}</p>
+          ) : null}
+          <div className="order-button">{showOrderBtn()}</div>
+        </Main>
       </Container>
     </CartContext.Provider>
   );
 }
 
-CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
-  const { cartItemElements, totalCostDisplay, showOrderBtn } =
-    useContext(CartContext);
-  const amountInCart = cartItemElements.length;
-  return (
-    <Main {...restProps} className="cart-page">
-      <h1>Check out</h1>
-      {cartItemElements}
-      {amountInCart !== 0 ? (
-        <p className="total-cost">Total: {totalCostDisplay()}</p>
-      ) : null}
-      <div className="order-button">{showOrderBtn()}</div>
-    </Main>
-  );
-};
+// CartItems.MainInfo = function CartMainInfo({ children, ...restProps }) {
+//   const { cartItemElements, totalCostDisplay, showOrderBtn } =
+//     useContext(CartContext);
+//   const amountInCart = cartItemElements.length;
+//   return (
+//     <Main {...restProps} className="cart-page">
+//       <h1>Check out</h1>
+//       {cartItemElements}
+//       {amountInCart !== 0 ? (
+//         <p className="total-cost">Total: {totalCostDisplay()}</p>
+//       ) : null}
+//       <div className="order-button">{showOrderBtn()}</div>
+//     </Main>
+//   );
+// };

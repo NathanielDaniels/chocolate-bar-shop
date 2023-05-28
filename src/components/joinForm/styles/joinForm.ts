@@ -1,14 +1,13 @@
 import styled from "styled-components/macro";
 import { Link as ReactRouterLink } from "react-router-dom";
 
-export const Container = styled.div`
-  z-index: 2;
-  width: 100%;
-  padding: 150px 0 100px;
-  position: relative;
-  top: 50px;
-  ${({ right }) => right && `right: ${right}`};
+type Props = {
+  isSignInPage: boolean;
+};
 
+export const Container = styled.div<Props>`
+  z-index: 2;
+  padding-top: ${(props) => (props.isSigninPage ? "100px" : "0px")};
   @media (max-width: 1200px) {
     width: 98%;
     margin: 0 auto;
@@ -25,15 +24,17 @@ export const Title = styled.h1`
 `;
 
 export const InnerForm = styled.form`
-  box-shadow: inset 0 0 10px hsl(210, 100%, 26%),
+  z-index: 2;
+  ${
+    "" /* box-shadow: inset 0 0 10px hsl(210, 100%, 26%),
     inset 0 0 15px hsl(210, 100%, 30%);
-  background: hsl(210, 100%, 37%);
+  background: hsl(210, 100%, 37%); */
+  }
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: clamp(350px, 30vw, 400px);
   min-height: 540px;
   max-width: 450px;
-  ${"" /* background-color: rgba(0, 0, 0, 0.45); */}
   margin: 0 auto;
   position: relative;
   padding: 25px 50px;
@@ -41,8 +42,7 @@ export const InnerForm = styled.form`
 `;
 
 export const Text = styled.p`
-  ${"" /* color: #737373; */}
-  color: rgba(255,255,255,.6);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 16px;
   font-weight: 500;
 `;
@@ -58,7 +58,6 @@ export const TextSmall = styled.h4`
 export const Link = styled(ReactRouterLink)`
   color: #fff;
   text-decoration: none;
-
   &:hover {
     text-decoration: underline;
   }
@@ -67,7 +66,6 @@ export const Link = styled(ReactRouterLink)`
 export const Input = styled.input`
   background: #335;
   box-shadow: inset 0 2px 5px #334;
-  ${"" /* background: var(--main-blue); */}
   border-radius: 5px;
   border: 0;
   color: #fff;
@@ -110,7 +108,6 @@ export const Submit = styled.button`
   border: 0;
   color: white;
   cursor: pointer;
-
   &:disabled {
     opacity: 0.5;
   }
@@ -122,7 +119,6 @@ export const Demo = styled.button`
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
-  ${"" /* margin-top: 12px; */}
   bottom: -50px;
   padding: 16px;
   border: 0;
