@@ -53,4 +53,7 @@ export const StoryImg = styled.img`
   width: 500px;
   left: 0;
   max-width: 100%;
+  @media (max-width: 900px) {
+    position: relative;
+  }
 `;

@@ -32,7 +32,7 @@ export const InnerForm = styled.form`
   }
   display: flex;
   flex-direction: column;
-  width: clamp(350px, 30vw, 400px);
+  width: clamp(350px, 30vw, 405px);
   min-height: 540px;
   max-width: 450px;
   margin: 0 auto;

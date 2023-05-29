@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { ChocoShop } from "../components";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
@@ -27,54 +27,53 @@ export function ChocoShopContainer() {
 
   //? State for Chocolate Menu
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
-  // const [item, setItem] = useState({});
+  const [activeMenu, setActiveMenu] = useState("All Chocolates");
 
   return (
     <ChocoShop>
       <ChocoShop.SidebarContainer>
         <ChocoShop.SidebarNav>
           <ChocoShop.SidebarNavList>
-            <NavLink
-              exact
-              to="/ChocoShop"
-              activeClassName="active"
+            <a
+              className={activeMenu === "All Chocolates" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
                 setItemFeature(() => ChocoShopTotalMenu);
+                setActiveMenu(() => "All Chocolates");
               }}
             >
               All Chocolates
-            </NavLink>
-            <NavLink
-              to="/ChocoShop/big"
-              activeClassName="active"
+            </a>
+            <a
+              className={activeMenu === "Big Bars" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
                 setItemFeature(() => filterBigBars);
+                setActiveMenu(() => "Big Bars");
               }}
             >
               Big Bars
-            </NavLink>
-            <NavLink
-              to="/ChocoShop/small"
-              activeClassName="active"
+            </a>
+            <a
+              className={activeMenu === "Small Bars" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
                 setItemFeature(() => filterSmallBars);
+                setActiveMenu(() => "Small Bars");
               }}
             >
               Small Bars
-            </NavLink>
-            <NavLink
-              to="/ChocoShop/tiny"
-              activeClassName="active"
+            </a>
+            <a
+              className={activeMenu === "Tiny Tony's" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
                 setItemFeature(() => filterTinyTonys);
+                setActiveMenu(() => "Tiny Tony's");
               }}
             >
               Tiny Tony's
-            </NavLink>
+            </a>
           </ChocoShop.SidebarNavList>
         </ChocoShop.SidebarNav>
       </ChocoShop.SidebarContainer>
@@ -83,29 +82,25 @@ export function ChocoShopContainer() {
         <ChocoShop.MainMenu>
           <ChocoShop.MenuList>
             {itemFeature.map((chocolate) => {
+              const { id, image, title, subTitle, price, alt } = chocolate;
               return (
-                <ChocoShop.MenuItem key={chocolate.id}>
-                  <ChocoShop.Link item={chocolate} key={chocolate.id}>
-                    <img
-                      src={chocolate.image}
-                      loading="lazy"
-                      alt={`...loading ${chocolate.alt}`}
-                    />
+                <ChocoShop.MenuItem key={id}>
+                  <ChocoShop.Link item={chocolate} key={id}>
+                    <img src={image} loading="lazy" alt={`...loading ${alt}`} />
                   </ChocoShop.Link>
-                  <p>{chocolate.title}</p>
-                  <p>{chocolate.subTitle}</p>
+                  <p>{title}</p>
+                  <p>{subTitle}</p>
                   <div>
-                    <p>${chocolate.price}</p>
+                    <p>${price}</p>
                     <AddCircleOutlineIcon
                       className="addToCardBtn"
                       onClick={() => {
-                        let randomId =
-                          chocolate.id * Math.floor(Math.random() * 999);
+                        let randomId = id * Math.floor(Math.random() * 999);
                         addToCart({
                           id: randomId,
-                          image: chocolate.image,
-                          title: chocolate.title,
-                          price: chocolate.price,
+                          image: image,
+                          title: title,
+                          price: price,
                         });
                       }}
                       style={{

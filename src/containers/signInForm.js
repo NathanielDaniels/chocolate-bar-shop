@@ -63,7 +63,7 @@ export function FormContainer() {
         </Form.Submit>
 
         <Form.Text>
-          New to Tony's Chocolates?{" "}
+          New to Tony's Chocolate?{" "}
           <Form.Link to={ROUTES.JOIN_IN}>Join in now.</Form.Link>
         </Form.Text>
 
