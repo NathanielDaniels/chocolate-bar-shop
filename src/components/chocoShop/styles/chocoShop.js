@@ -1,7 +1,6 @@
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
 export const Container = styled.section`
-  ${'' /* border: 2px solid red; */}
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr;
@@ -22,10 +21,8 @@ export const Container = styled.section`
 
 //? Left Side Nav Menu ============================
 export const SidebarContainer = styled.section`
-  ${'' /* border: 4px solid green; */}
   background: var(--main-blue);
   border-right: 2px solid var(--main-red);
-  ${'' /* position: relative; */}
   height: 100%;
   width: 100%;
   grid-column: 1 / 2;
@@ -33,11 +30,9 @@ export const SidebarContainer = styled.section`
 `;
 
 export const SidebarNav = styled.nav`
-${'' /* border: 2px solid yellow; */}
   position: fixed;
   top: 100px;
-  transition: top .3s ease-in-out;
-  ${'' /* width: 20%; */}
+  transition: top 0.3s ease-in-out;
 
   //? Sticky Menu on scroll
   &.sticky {
@@ -46,36 +41,36 @@ ${'' /* border: 2px solid yellow; */}
 `;
 
 export const SidebarNavList = styled.ul`
+  width: 100%;
+  button {
+    all: unset;
+    cursor: pointer; 
     width: 100%;
-    a {
-      ${'' /* border: 2px solid blue; */}
-      width: 100%;
-      height: 50px;
-      padding: 0 20px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--main-white);
-      &:hover {
-        color: var(--main-yellow);
-      }
-      @media (max-width: 1200px) {
-        font-size: clamp(1rem, 2vw, 1.6rem);
-        height: 30px;
-      }
-
-      @media (max-width: 600px) {
-        padding: 0 10px;
-      }
-    }
-
-    .active {
+    height: 50px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--main-white);
+    &:hover {
       color: var(--main-yellow);
     }
-  
+    @media (max-width: 1200px) {
+      font-size: clamp(1rem, 2vw, 1.6rem);
+      height: 30px;
+    }
+
+    @media (max-width: 600px) {
+      padding: 0 10px;
+    }
+  }
+
+  .active {
+    color: var(--main-yellow);
+  }
 `;
 
 //? Right Side Main ====================================
@@ -92,12 +87,10 @@ export const MainMenuContainer = styled.section`
 `;
 
 export const MainMenu = styled.div`
-  ${'' /* border: 2px solid red; */}
   width: 95%;
 `;
 
 export const MenuList = styled.ul`
-  ${'' /* border: 2px solid red; */}
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -114,25 +107,21 @@ export const MenuItem = styled.li`
   border-radius: 5px;
 
   p {
-      padding-left: 10px;
-      color: var(--main-black);
-      @media (max-width: 600px) {
-        font-size: 14px;
-      }
+    padding-left: 10px;
+    color: var(--main-black);
+    @media (max-width: 600px) {
+      font-size: 14px;
     }
-    div {
-      display: flex;
-      justify-content: space-between;
-      padding-right: 5px;
-      p {
-        font-weight: 500;
-        font-size: 1.4rem;
-      }
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5px;
+    p {
+      font-weight: 500;
+      font-size: 1.4rem;
     }
-    ${'' /* .addToCardBtn {
-      z-index: 99999;
-    } */}
-    
+  }
 `;
 
 export const Image = styled.img`
@@ -140,10 +129,11 @@ export const Image = styled.img`
 `;
 
 export const Link = styled.a`
-    img {
-      max-width: 300px;
+  img {
+    max-width: 300px;
 
-      ${'' /* &.tinyTony1{
+    ${
+      "" /* &.tinyTony1{
         max-width: 200px;
         margin-bottom: -20px;
       }
@@ -152,18 +142,17 @@ export const Link = styled.a`
       }
       &.tinyTony3 {
         margin-bottom: -40px;
-      } */}
-
-      @media (max-width: 1200px) {
-        width: 250px;
-      }
-
-      @media (max-width: 600px) {
-        ${'' /* width: 150px; */}
-        width: 100%;
-      }
+      } */
     }
-    
+
+    @media (max-width: 1200px) {
+      width: 250px;
+    }
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
 `;
 
 //? Popup Modal ===========================
@@ -177,12 +166,10 @@ export const ChocoSelectModal = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-
+  transform: translate(-50%, -50%);
   @media (max-width: 1000px) {
     width: 100%;
   }
-
   @media (max-width: 800px) {
     width: 80%;
     height: 95vh;
@@ -200,7 +187,7 @@ export const ChocoModalContent = styled.div`
     grid-template-rows: repeat(3, 1fr);
     height: 100%;
   }
-  
+
   button {
     position: absolute;
     cursor: pointer;
@@ -209,7 +196,8 @@ export const ChocoModalContent = styled.div`
     right: 0;
     top: 0;
   }
-  .leftSide, .rightSide {
+  .leftSide,
+  .rightSide {
     display: flex;
     align-items: flex-start;
     padding: 40px 20px;
@@ -231,11 +219,9 @@ export const ChocoModalContent = styled.div`
     grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
-    ${'' /* justify-content: space-evenly; */}
     justify-content: center;
     align-items: center;
 
-   
     img {
       width: 80%;
       margin-bottom: 1em;
@@ -248,16 +234,15 @@ export const ChocoModalContent = styled.div`
         justify-content: space-between;
         flex-direction: row;
         font-weight: 500;
-        ${'' /* padding-right: 5px; */}
       }
     }
-     @media (max-width: 800px) {
+    @media (max-width: 800px) {
       grid-column: 1;
       grid-row: 2 / 3;
       flex-direction: row;
       img {
         width: clamp(100px, 30vw, 200px);
-        max-width:50%;
+        max-width: 50%;
       }
       div {
         font-size: 1.2rem;
@@ -278,7 +263,6 @@ export const ChocoModalContent = styled.div`
     .allergies {
       border: 2px solid red;
       border-radius: 5px;
-      ${'' /* margin-top: 10px; */}
       padding: 5px 10px;
       font-weight: 500;
     }

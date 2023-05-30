@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react";
 
-const Context = React.createContext()
+const Context = React.createContext();
 
 export const allBars = [
-
   // ? Big Bars ===========================
   {
     id: 1,
@@ -12,9 +11,12 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "Milk Chocolate Bar",
-    about: "Not just a classic milk chocolate bar, but our classic chocolate bar. It was the first bar we ever made, back in 2005. We gave it a screaming red wrapper to attract attention to our main mission - 100% slave-free chocolate.",
-    contains: "Belgian milk chocolate. Cocoa solids: 32% minimum. Made in Belgium.",
-    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
+    about:
+      "Not just a classic milk chocolate bar, but our classic chocolate bar. It was the first bar we ever made, back in 2005. We gave it a screaming red wrapper to attract attention to our main mission - 100% slave-free chocolate.",
+    contains:
+      "Belgian milk chocolate. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
@@ -24,9 +26,12 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "Milk Chocolate Hazelnut Bar",
-    about: "This flavor is a perfect combo of 32% Fairtrade milk chocolate and a minimum of 10% hazelnuts. Did you know that we hid a map of Western Africa in our unequally divided bar? We couldn't fit whole hazelnuts into the pieces that represent Togo and Benin! After a very heated debate, we completely and politically incorrectly combined two separate countries into one bigger piece so we could use whole hazelnuts.",
-    contains: "Belgian milk chocolate with hazelnut. Cocoa solids: 32% minimum. Made in Belgium.",
-    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
+    about:
+      "This flavor is a perfect combo of 32% Fairtrade milk chocolate and a minimum of 10% hazelnuts. Did you know that we hid a map of Western Africa in our unequally divided bar? We couldn't fit whole hazelnuts into the pieces that represent Togo and Benin! After a very heated debate, we completely and politically incorrectly combined two separate countries into one bigger piece so we could use whole hazelnuts.",
+    contains:
+      "Belgian milk chocolate with hazelnut. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
@@ -36,9 +41,12 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "Milk Caramel Sea Salt Bar",
-    about: "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
-    contains: "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
-    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, caramel pieces (sugar, wheat syrup, cream (milk), butter (milk)), sea salt, soy lecithin ",
+    about:
+      "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
+    contains:
+      "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, dry whole milk, cocoa butter, cocoa mass, caramel pieces (sugar, wheat syrup, cream (milk), butter (milk)), sea salt, soy lecithin ",
     allergies: "May contain traces of Eggs, Peanuts and Tree nuts.",
   },
   {
@@ -48,9 +56,12 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "Milk Honey Almond Nougat",
-    about: "What's everyone buzzing about? It's our newest classic flavor, milk chocolate honey almond nougat. Creamy milk chocolate with bits of sticky, sweet nougat made from honey and almonds. We put it in bright yellow wrapping and voila.. we have ourselves a full rainbow! We're kind of nuts like that. Nougat the joke?",
-    contains: "Belgian Fairtrade milk chocolate with nougat. Cocoa solids: 32% minimum. Made in Belgium.",
-    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
+    about:
+      "What's everyone buzzing about? It's our newest classic flavor, milk chocolate honey almond nougat. Creamy milk chocolate with bits of sticky, sweet nougat made from honey and almonds. We put it in bright yellow wrapping and voila.. we have ourselves a full rainbow! We're kind of nuts like that. Nougat the joke?",
+    contains:
+      "Belgian Fairtrade milk chocolate with nougat. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
@@ -60,10 +71,14 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "Dark Almond Sea Salt",
-    about: "This dark chocolate bar has got it all: almonds and sea salt. A golden match! Pass the salt please...",
-    contains: "Belgian dark chocolate with almond and sea salt. Cocoa solids: 51% minimum. Made in Belgium.",
-    ingredients: "cocoa mass, sugar, almonds, cocoa butter, sea salt, soy lecithin",
-    allergies: "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
+    about:
+      "This dark chocolate bar has got it all: almonds and sea salt. A golden match! Pass the salt please...",
+    contains:
+      "Belgian dark chocolate with almond and sea salt. Cocoa solids: 51% minimum. Made in Belgium.",
+    ingredients:
+      "cocoa mass, sugar, almonds, cocoa butter, sea salt, soy lecithin",
+    allergies:
+      "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
   {
     id: 6,
@@ -72,10 +87,14 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "Dark Pecan Coconut",
-    about: "Coconut and pecans in the mix with dark chocolate. With this bar, you find yourself in a hammock on a sandy beach with swaying palms. Wake me up before you coco!",
-    contains: "Belgian dark chocolate with pecan and coconut. Cocoa solids: 51% minimum. Made in Belgium.",
-    ingredients: "cocoa mass, sugar, cocoa butter, pecans, grated coconut, soy lecithin",
-    allergies: "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
+    about:
+      "Coconut and pecans in the mix with dark chocolate. With this bar, you find yourself in a hammock on a sandy beach with swaying palms. Wake me up before you coco!",
+    contains:
+      "Belgian dark chocolate with pecan and coconut. Cocoa solids: 51% minimum. Made in Belgium.",
+    ingredients:
+      "cocoa mass, sugar, cocoa butter, pecans, grated coconut, soy lecithin",
+    allergies:
+      "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
   {
     id: 7,
@@ -84,10 +103,13 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "Dark Chocolate",
-    about: "This bar contains at least 70% cacao. Se-ven-ty! This means we use a lot of cocoa beans.. This dark chocolate delicacy is designed for the true chocolate lover.",
-    contains: "Belgian dark chocolate. Cocoa solids: 70% minimum. Made in Belgium.",
+    about:
+      "This bar contains at least 70% cacao. Se-ven-ty! This means we use a lot of cocoa beans.. This dark chocolate delicacy is designed for the true chocolate lover.",
+    contains:
+      "Belgian dark chocolate. Cocoa solids: 70% minimum. Made in Belgium.",
     ingredients: "cocoa mass, sugar, cocoa butter, cocoa powder, soy lecithin",
-    allergies: "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
+    allergies:
+      "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
   {
     id: 8,
@@ -96,9 +118,12 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "Dark Milk Pretzel Toffee",
-    about: "Pretzel? Yummy. Toffee? Yes please. Dark milk chocolate? Say it ain't so! Put crunchy pretzel pieces with a sweet toffee crunch in dark milk chocolate with 42% cocoa, wrap in a purple wrapper and we have ourselves a new flavor!",
-    contains: "Belgian Fairtrade milk chocolate with pretzel crumbs and toffee. Cocoa solids: 42% minimum. Made in Belgium.",
-    ingredients: "sugar, chocolate liquor, dry whole milk, cocoa butter, pretzel crumbs (wheat flour, salt, sunflower oil, malted wheat flour, yeast, acidity regulator (sodium hydroxide)), caramel pieces (sugar, glucose syrup (wheat)), sea salt, soy lecithin",
+    about:
+      "Pretzel? Yummy. Toffee? Yes please. Dark milk chocolate? Say it ain't so! Put crunchy pretzel pieces with a sweet toffee crunch in dark milk chocolate with 42% cocoa, wrap in a purple wrapper and we have ourselves a new flavor!",
+    contains:
+      "Belgian Fairtrade milk chocolate with pretzel crumbs and toffee. Cocoa solids: 42% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, chocolate liquor, dry whole milk, cocoa butter, pretzel crumbs (wheat flour, salt, sunflower oil, malted wheat flour, yeast, acidity regulator (sodium hydroxide)), caramel pieces (sugar, glucose syrup (wheat)), sea salt, soy lecithin",
     allergies: "May contain traces of Eggs, Peanuts and Tree nuts.",
   },
   {
@@ -108,9 +133,12 @@ export const allBars = [
     subTitle: "6.35oz, 1 bar",
     price: 5.95,
     alt: "White Raspberry Popping Candy",
-    about: "Break out your disco balls because our white raspberry popping candy bar is here to get the party started! We mixed creamy, dreamy white chocolate with raspberry and some popping candy to really make this bar pop.",
-    contains: "Belgian Fairtrade white chocolate with freeze-dried raspberry and popping candy. Cocoa solids: 28% minimum. Made in Belgium.",
-    ingredients: "sugar, cocoa butter, dry whole milk, raspberry, popping candy (glucose syrup (corn), sugar, carbon dioxide), soy lecithin",
+    about:
+      "Break out your disco balls because our white raspberry popping candy bar is here to get the party started! We mixed creamy, dreamy white chocolate with raspberry and some popping candy to really make this bar pop.",
+    contains:
+      "Belgian Fairtrade white chocolate with freeze-dried raspberry and popping candy. Cocoa solids: 28% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, cocoa butter, dry whole milk, raspberry, popping candy (glucose syrup (corn), sugar, carbon dioxide), soy lecithin",
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   // ? Small Bars ===========================
@@ -121,9 +149,12 @@ export const allBars = [
     subTitle: "1.8oz, 1 bar",
     price: 2.39,
     alt: "Milk Chocolate",
-    about: "Not just a classic milk chocolate bar, but our classic chocolate bar. It was the first bar we ever made, back in 2005. We gave it a screaming red wrapper to attract attention to our main mission - 100% slave-free chocolate.",
-    contains: "Belgian milk chocolate. Cocoa solids: 32% minimum. Made in Belgium.",
-    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
+    about:
+      "Not just a classic milk chocolate bar, but our classic chocolate bar. It was the first bar we ever made, back in 2005. We gave it a screaming red wrapper to attract attention to our main mission - 100% slave-free chocolate.",
+    contains:
+      "Belgian milk chocolate. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
@@ -133,125 +164,149 @@ export const allBars = [
     subTitle: "1.8oz, 1 bar",
     price: 2.39,
     alt: "Milk Caramel Sea Salt",
-    about: "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
-    contains: "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
-    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, caramel pieces (sugar, wheat syrup, cream (milk), butter (milk)), sea salt, soy lecithin ",
+    about:
+      "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
+    contains:
+      "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, dry whole milk, cocoa butter, cocoa mass, caramel pieces (sugar, wheat syrup, cream (milk), butter (milk)), sea salt, soy lecithin ",
     allergies: "May contain traces of Eggs, Peanuts and Tree nuts.",
   },
   {
     id: 12,
-    image:"./img/small-bars/dark-chocolate-small-blue.png",
+    image: "./img/small-bars/dark-chocolate-small-blue.png",
     title: "Dark Chocolate 70%",
     subTitle: "1.8oz, 1 bar",
     price: 2.39,
     alt: "Dark Chocolate",
-    about: "This bar contains at least 70% cacao. Se-ven-ty! This means we use a lot of cocoa beans.. This dark chocolate delicacy is designed for the true chocolate lover.",
-    contains: "Belgian dark chocolate. Cocoa solids: 70% minimum. Made in Belgium.",
+    about:
+      "This bar contains at least 70% cacao. Se-ven-ty! This means we use a lot of cocoa beans.. This dark chocolate delicacy is designed for the true chocolate lover.",
+    contains:
+      "Belgian dark chocolate. Cocoa solids: 70% minimum. Made in Belgium.",
     ingredients: "cocoa mass, sugar, cocoa butter, cocoa powder, soy lecithin",
-    allergies: "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
+    allergies:
+      "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
   // ? Tiny Bars ===========================
-   {
-     id: 13,
-     image:"./img/tiny-tonys/milk-chocolate/milk-chocolate-mini-open-small.png",
+  {
+    id: 13,
+    image: "./img/tiny-tonys/milk-chocolate/milk-chocolate-mini-open-small.png",
     title: "Milk Chocolate 32% Tiny Tony's",
     subTitle: "100 pieces",
     price: 48.69,
     alt: "Milk Chocolate",
-    about: "Not just a classic milk chocolate bar, but our classic chocolate bar. It was the first bar we ever made, back in 2005. We gave it a screaming red wrapper to attract attention to our main mission - 100% slave-free chocolate.",
-    contains: "Belgian milk chocolate. Cocoa solids: 32% minimum. Made in Belgium.",
-    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
+    about:
+      "Not just a classic milk chocolate bar, but our classic chocolate bar. It was the first bar we ever made, back in 2005. We gave it a screaming red wrapper to attract attention to our main mission - 100% slave-free chocolate.",
+    contains:
+      "Belgian milk chocolate. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, dry whole milk, cocoa butter, cocoa mass, soy lecithin",
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
     id: 14,
-    image:"./img/tiny-tonys/milk-chocolate-caramel-seasalt/milk-chocolate-caramel-open.png",
+    image:
+      "./img/tiny-tonys/milk-chocolate-caramel-seasalt/milk-chocolate-caramel-open.png",
     title: "Milk Caramel Sea Salt 32% Tiny Tony's",
     subTitle: "100 pieces",
     price: 48.69,
     alt: "Milk Chocolate Caramel Sea Salt Tiny Tony's",
-    about: "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
-    contains: "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
-    ingredients: "sugar, dry whole milk, cocoa butter, cocoa mass, caramel pieces (sugar, wheat syrup, cream (milk), butter (milk)), sea salt, soy lecithin ",
+    about:
+      "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
+    contains:
+      "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
+    ingredients:
+      "sugar, dry whole milk, cocoa butter, cocoa mass, caramel pieces (sugar, wheat syrup, cream (milk), butter (milk)), sea salt, soy lecithin ",
     allergies: "May contain traces of Eggs, Peanuts and Tree nuts.",
   },
   {
     id: 15,
-    image:"./img/tiny-tonys/dark-chocolate/dark-chocolate-mini-open-large.png",
+    image: "./img/tiny-tonys/dark-chocolate/dark-chocolate-mini-open-large.png",
     title: "Dark Chocolate 70% Tiny Tony's",
     subTitle: "100 pieces",
     price: 48.69,
     alt: "Dark Chocolate Tiny Tony's",
-    about: "This bar contains at least 70% cacao. Se-ven-ty! This means we use a lot of cocoa beans.. This dark chocolate delicacy is designed for the true chocolate lover.",
-    contains: "Belgian dark chocolate. Cocoa solids: 70% minimum. Made in Belgium.",
+    about:
+      "This bar contains at least 70% cacao. Se-ven-ty! This means we use a lot of cocoa beans.. This dark chocolate delicacy is designed for the true chocolate lover.",
+    contains:
+      "Belgian dark chocolate. Cocoa solids: 70% minimum. Made in Belgium.",
     ingredients: "cocoa mass, sugar, cocoa butter, cocoa powder, soy lecithin",
-    allergies: "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts."
+    allergies:
+      "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
-]
+];
 
-function ContextProvider({children}) {
+function ContextProvider({ children }) {
   // const [allPhotos, setAllPhotos] = useState([])
-  const [allPhotos, setAllPhotos] = useState(JSON.parse(localStorage.getItem("photos")) || [])
-  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || [])
+  const [allPhotos, setAllPhotos] = useState(
+    JSON.parse(localStorage.getItem("photos")) || []
+  );
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems")) || []
+  );
 
   //? Fetch Choco Data
   useEffect(() => {
     const allImgs = [];
     const photoStorage = JSON.parse(localStorage.getItem("photos"));
 
-    allBars.map(item => allImgs.push({url: item.image, id: item.id, isFavorite: false} ))
-    return photoStorage.length > 0 ? photoStorage : setAllPhotos(allImgs)
+    allBars.map((item) =>
+      allImgs.push({ url: item.image, id: item.id, isFavorite: false })
+    );
+    return photoStorage.length > 0 ? photoStorage : setAllPhotos(allImgs);
     // console.log(allImgs)
-  }, [])
-  
+  }, []);
+
   // console.log("allPhotos", allPhotos)
 
   // console.log("cartItems context:", cartItems)
 
   // console.log("storage:", JSON.parse(localStorage.getItem("photos")))
-  
+
   function toggleFavorite(id) {
-    const updatedArr = allPhotos.map(photo => {
+    const updatedArr = allPhotos.map((photo) => {
       if (photo.id === id) {
-        return {...photo, isFavorite: !photo.isFavorite}
+        return { ...photo, isFavorite: !photo.isFavorite };
       }
-      return photo
-    })
-    setAllPhotos(updatedArr)
+      return photo;
+    });
+    setAllPhotos(updatedArr);
   }
 
   //? Save Items in localStorage
   useEffect(() => {
-    localStorage.setItem("photos", JSON.stringify(allPhotos))
-    localStorage.setItem("cartItems", JSON.stringify(cartItems))
-  }, [allPhotos, cartItems])
+    localStorage.setItem("photos", JSON.stringify(allPhotos));
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [allPhotos, cartItems]);
 
   function addToCart(newItem) {
-    setCartItems(prevItems => [...prevItems, newItem])
+    setCartItems((prevItems) => [...prevItems, newItem]);
   }
-  
+
   function removeFromCart(id) {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== id))
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   }
 
   function emptyCart() {
-    setCartItems([])
+    setCartItems([]);
   }
-  
+
   return (
-    <Context.Provider value={{
-      allBars,
-      allPhotos, 
-      toggleFavorite, 
-      cartItems,
-      setCartItems,
-      addToCart, 
-      removeFromCart,
-      emptyCart
-    }}>
+    <Context.Provider
+      value={{
+        allBars,
+        allPhotos,
+        toggleFavorite,
+        cartItems,
+        setCartItems,
+        addToCart,
+        removeFromCart,
+        emptyCart,
+      }}
+    >
       {children}
     </Context.Provider>
-  )
+  );
 }
 
-export {ContextProvider, Context}
+export { ContextProvider, Context };

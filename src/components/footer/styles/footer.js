@@ -1,12 +1,12 @@
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
-export const Container = styled.section`
+export const Container = styled.footer`
   border-top: 2px solid red;
   background: #fff;
   padding: 50px 35px;
-  
+
   position: relative;
-  bottom:0;
+  bottom: 0;
   left: 0;
   right: 0;
 
@@ -16,7 +16,7 @@ export const Container = styled.section`
 `;
 
 export const Wrapper = styled.div`
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 `;
@@ -30,7 +30,7 @@ export const Logo = styled.img`
 `;
 
 export const Section = styled.div`
-  ${'' /* border: 2px solid blue; */}
+  ${"" /* border: 2px solid blue; */}
   display: inherit;
   flex-direction: column;
   padding: 10px 15px;
@@ -44,7 +44,7 @@ export const Section = styled.div`
       font-size: clamp(14px, 2vw, 1rem);
       color: #222;
       a {
-        transition: color .2s ease-in-out;
+        transition: color 0.2s ease-in-out;
         color: var(--main-black);
         &:hover {
           color: var(--main-red);
@@ -60,7 +60,6 @@ export const Section = styled.div`
 
     .socialMedia {
       width: 150px;
-      
     }
-  };
+  }
 `;
