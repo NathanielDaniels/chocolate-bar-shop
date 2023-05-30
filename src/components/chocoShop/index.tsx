@@ -22,12 +22,22 @@ import {
 // import useHover from "../../hooks/useHover";
 // import { Context } from '../../context/Context';
 
-export const FeatureModalContext = createContext();
+type StateType = {
+  containerRef: React.MutableRefObject<HTMLElement | null>;
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  item: string;
+  setItem: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const FeatureModalContext = createContext<StateType | null>(null);
 
 export default function ChocoShop({ children, ...restProps }) {
   const [showModal, setShowModal] = useState(false);
   const [item, setItem] = useState("");
-  const containerRef = useRef("");
+  const containerRef = useRef<HTMLElement | null>(null);
+
+  console.log(containerRef.current);
 
   return (
     <FeatureModalContext.Provider
@@ -55,7 +65,7 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({
   ...restProps
 }) {
   // //? Menu moves on scroll
-  const sidebarRef = useRef("");
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -99,12 +109,18 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ children, ...restProps }) {
   return <MenuItem {...restProps}>{children}</MenuItem>;
 };
 
+// type FeatureModalContextType = {
+//   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+//   setItem: React.Dispatch<React.SetStateAction<string>>;
+// };
+
 ChocoShop.Link = function ChocoShopLink({ item, children, ...restProps }) {
-  const { setShowModal, setItem } = useContext(FeatureModalContext);
-  const menuItem = useRef("");
+  const { setShowModal, setItem }: any = useContext(FeatureModalContext);
+  const menuItem = useRef<HTMLElement | any>();
 
   useEffect(() => {
     const MenuItems = menuItem.current;
+    if (!MenuItems) return;
     MenuItems.addEventListener("click", function () {
       setShowModal(true);
       setItem(item);
@@ -118,12 +134,14 @@ ChocoShop.Link = function ChocoShopLink({ item, children, ...restProps }) {
   );
 };
 
-ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({
-  ref,
-  children,
-  ...restProps
-}) {
-  const { showModal, setShowModal, item } = useContext(FeatureModalContext);
+// type ChocoSelectModalType = {
+//   ref: React.MutableRefObject<HTMLElement>;
+//   children: React.ReactNode;
+// };
+
+ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal() {
+  const { showModal, setShowModal, item }: any =
+    useContext(FeatureModalContext);
   // const { allBars, addToCart} = useContext(Context)
   // const [itemFeature, setItemFeature] = useState(allBars)
 
@@ -143,7 +161,7 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({
   // console.log("State item:", item)
 
   return showModal ? (
-    <ChocoSelectModal {...restProps}>
+    <ChocoSelectModal>
       <ChocoModalContent>
         <button
           onClick={() => {
@@ -157,7 +175,7 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({
           <p className="about">{item.about}</p>
         </div>
         <div className="middleSide">
-          <img src={item.image} loading="lazy" alt={item.alt} />
+          <img src={item.image} alt={item.alt} />
           <div>
             <p>{item.subTitle}</p>
             <div>

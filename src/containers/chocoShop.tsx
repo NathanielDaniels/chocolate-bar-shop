@@ -1,83 +1,75 @@
-import React, { useState, createContext, useContext, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, createContext, useContext } from "react";
 import { ChocoShop } from "../components";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { Context } from "../context/Context";
 // import { useHover } from '../hooks/useHover';
 
-export const FeatureContext = createContext();
-export const FeatureModalContext = createContext();
+export const FeatureContext = createContext(null);
+export const FeatureModalContext = createContext(null);
 
+type ChocoBar = {
+  id: number;
+  image: string;
+  subTitle: string;
+  price: number;
+  alt: string;
+};
 export function ChocoShopContainer() {
   const { allBars, addToCart } = useContext(Context);
-  // const { allBars, cartItems, addToCart} = useContext(Context);
-
   const ChocoShopTotalMenu = allBars;
-
-  //? Filtered Chocolates by size
-  const filterBigBars = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 5.95
-  );
-  const filterSmallBars = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 2.39
-  );
-  const filterTinyTonys = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 48.69
-  );
-
-  //? State for Chocolate Menu
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
-  const [activeMenu, setActiveMenu] = useState("All Chocolates");
+
+  const filterBigBars: ChocoBar[] = ChocoShopTotalMenu.filter(
+    (bars: ChocoBar) => bars.price === 5.95
+  );
+  const filterSmallBars: ChocoBar[] = ChocoShopTotalMenu.filter(
+    (bars: ChocoBar) => bars.price === 2.39
+  );
+  const filterTinyTonys: ChocoBar[] = ChocoShopTotalMenu.filter(
+    (bars: ChocoBar) => bars.price === 48.69
+  );
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>, menu: any) => {
+    e.preventDefault();
+    setItemFeature(() => menu);
+  };
 
   return (
     <ChocoShop>
       <ChocoShop.SidebarContainer>
         <ChocoShop.SidebarNav>
           <ChocoShop.SidebarNavList>
-            <a
-              className={activeMenu === "All Chocolates" ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                setItemFeature(() => ChocoShopTotalMenu);
-                setActiveMenu(() => "All Chocolates");
-              }}
+            <button
+              type="button"
+              className={itemFeature === ChocoShopTotalMenu ? "active" : ""}
+              onClick={(e) => handleClick(e, ChocoShopTotalMenu)}
             >
               All Chocolates
-            </a>
-            <a
-              className={activeMenu === "Big Bars" ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                setItemFeature(() => filterBigBars);
-                setActiveMenu(() => "Big Bars");
-              }}
+            </button>
+            <button
+              type="button"
+              className={itemFeature === filterBigBars ? "active" : ""}
+              onClick={(e) => handleClick(e, filterBigBars)}
             >
               Big Bars
-            </a>
-            <a
-              className={activeMenu === "Small Bars" ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                setItemFeature(() => filterSmallBars);
-                setActiveMenu(() => "Small Bars");
-              }}
+            </button>
+            <button
+              type="button"
+              className={itemFeature === filterSmallBars ? "active" : ""}
+              onClick={(e) => handleClick(e, filterSmallBars)}
             >
               Small Bars
-            </a>
-            <a
-              className={activeMenu === "Tiny Tony's" ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                setItemFeature(() => filterTinyTonys);
-                setActiveMenu(() => "Tiny Tony's");
-              }}
+            </button>
+            <button
+              type="button"
+              className={itemFeature === filterTinyTonys ? "active" : ""}
+              onClick={(e) => handleClick(e, filterTinyTonys)}
             >
               Tiny Tony's
-            </a>
+            </button>
           </ChocoShop.SidebarNavList>
         </ChocoShop.SidebarNav>
       </ChocoShop.SidebarContainer>
-
       <ChocoShop.MainMenuContainer>
         <ChocoShop.MainMenu>
           <ChocoShop.MenuList>
@@ -116,7 +108,6 @@ export function ChocoShopContainer() {
           </ChocoShop.MenuList>
         </ChocoShop.MainMenu>
       </ChocoShop.MainMenuContainer>
-
       <ChocoShop.ChocoSelectModal />
     </ChocoShop>
   );
