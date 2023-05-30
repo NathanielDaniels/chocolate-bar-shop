@@ -18,6 +18,7 @@ export function ChocoShopContainer() {
   const { allBars, addToCart } = useContext(Context);
   const ChocoShopTotalMenu = allBars;
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
+  const [activeMenu, setActiveMenu] = useState("All Chocolates");
 
   const filterBigBars: ChocoBar[] = ChocoShopTotalMenu.filter(
     (bars: ChocoBar) => bars.price === 5.95
@@ -29,9 +30,15 @@ export function ChocoShopContainer() {
     (bars: ChocoBar) => bars.price === 48.69
   );
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>, menu: any) => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    menu: any,
+    active: string
+  ) => {
     e.preventDefault();
+    console.log({ menu });
     setItemFeature(() => menu);
+    setActiveMenu(() => active);
   };
 
   return (
@@ -41,29 +48,31 @@ export function ChocoShopContainer() {
           <ChocoShop.SidebarNavList>
             <button
               type="button"
-              className={itemFeature === ChocoShopTotalMenu ? "active" : ""}
-              onClick={(e) => handleClick(e, ChocoShopTotalMenu)}
+              className={activeMenu === "All Chocolates" ? "active" : ""}
+              onClick={(e) =>
+                handleClick(e, ChocoShopTotalMenu, "All Chocolates")
+              }
             >
               All Chocolates
             </button>
             <button
               type="button"
-              className={itemFeature === filterBigBars ? "active" : ""}
-              onClick={(e) => handleClick(e, filterBigBars)}
+              className={activeMenu === "Big Bars" ? "active" : ""}
+              onClick={(e) => handleClick(e, filterBigBars, "Big Bars")}
             >
               Big Bars
             </button>
             <button
               type="button"
-              className={itemFeature === filterSmallBars ? "active" : ""}
-              onClick={(e) => handleClick(e, filterSmallBars)}
+              className={activeMenu === "Small Bars" ? "active" : ""}
+              onClick={(e) => handleClick(e, filterSmallBars, "Small Bars")}
             >
               Small Bars
             </button>
             <button
               type="button"
-              className={itemFeature === filterTinyTonys ? "active" : ""}
-              onClick={(e) => handleClick(e, filterTinyTonys)}
+              className={activeMenu === "Tiny Tony's" ? "active" : ""}
+              onClick={(e) => handleClick(e, filterTinyTonys, "Tiny Tony's")}
             >
               Tiny Tony's
             </button>
