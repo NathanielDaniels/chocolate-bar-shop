@@ -78,7 +78,7 @@ export function ChocoShopContainer() {
               return (
                 <ChocoShop.MenuItem key={id}>
                   <ChocoShop.Link item={chocolate} key={id}>
-                    <img src={image} loading="lazy" alt={`...loading ${alt}`} />
+                    <img src={image} alt={`...loading ${alt}`} />
                   </ChocoShop.Link>
                   <p>{title}</p>
                   <p>{subTitle}</p>
