@@ -19,7 +19,6 @@ function useHover() {
   
   useEffect(() => {
     const myRef = ref.current
-    // console.log("myRef", myRef)
     myRef.addEventListener("mouseenter", mouseEnter);
     myRef.addEventListener("mouseleave", mouseLeave);
     
