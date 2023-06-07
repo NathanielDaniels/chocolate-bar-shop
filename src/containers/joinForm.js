@@ -56,10 +56,8 @@ export function FormContainer() {
           </About.Info>
         </About.Inner>
         <Form>
-          {error && <Form.Error>{error}</Form.Error>}
           <Form.InnerForm onSubmit={handleSignup} method="POST">
             <Form.Title>Join In</Form.Title>
-
             <Form.Input
               type="text"
               placeholder="First Name"
@@ -67,7 +65,6 @@ export function FormContainer() {
               onChange={({ target }) => setFirstName(target.value)}
               required
             />
-
             <Form.Input
               type="email"
               placeholder="Email"
@@ -75,7 +72,6 @@ export function FormContainer() {
               onChange={({ target }) => setEmailAddress(target.value)}
               required
             />
-
             <Form.Input
               type="password"
               autoComplete="new-password"
@@ -83,15 +79,13 @@ export function FormContainer() {
               value={userPassword}
               onChange={({ target }) => {
                 setUserPassword(target.value);
-                userPassword.split("").length =
-                  0 && console.log("not valid password");
+                userPassword.split("").length = 0 && "not valid password";
               }}
             />
-
+            {error && <Form.Error>{error}</Form.Error>}
             <Form.Submit type="submit" disabled={isInvalid}>
               Sign Up
             </Form.Submit>
-
             <Form.Text>
               Already a user?{" "}
               <Form.Link to={ROUTES.SIGN_IN}>Sign in now.</Form.Link>
