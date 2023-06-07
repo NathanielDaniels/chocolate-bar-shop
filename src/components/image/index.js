@@ -1,18 +1,17 @@
-import { useContext, useState } from "react";
+//? Deprecated??
+
+// import { useContext, useState } from "react";
 // import React, { useContext, useState } from "react";
 // import { Container } from './styles/image';
-import { Context } from "../../context/Context";
+// import { Context } from "../../context/Context.tsx";
 // import useHover from "../../hooks/useHover";
 // import PropTypes from "prop-types";
 
 export default function Image({ className, img, ...restProps }) {
   // const [hovered, ref] = useHover(null);
   // const { allBars, toggleFavorite, addToCart, removeFromCart, cartItems } =
-  const { allBars } = useContext(Context);
-  // console.log("allBars image", allBars);
-
-  const ChocoShopTotalMenu = allBars;
-
+  // const { allBars } = useContext(Context);
+  // const ChocoShopTotalMenu = allBars;
   //? Filtered Chocolates by size
   // const filterBigBars = ChocoShopTotalMenu.filter(
   //   (bars) => bars.price === "$5.95"
@@ -23,17 +22,10 @@ export default function Image({ className, img, ...restProps }) {
   // const filterTinyTonys = ChocoShopTotalMenu.filter(
   //   (bars) => bars.price === "$48.69"
   // );
-
   //? State for Chocolate Menu
-  const [itemFeature] = useState(ChocoShopTotalMenu);
+  // const [itemFeature] = useState(ChocoShopTotalMenu);
   // const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
   // const [item, setItem] = useState({});
-
-  // console.log("image className + img", className, img);
-
-  console.log(itemFeature);
-  // console.log(ChocoShopTotalMenu)
-
   // function heartIcon() {
   //   if (img.isFavorite) {
   //     return (
@@ -53,7 +45,6 @@ export default function Image({ className, img, ...restProps }) {
   //     );
   //   }
   // }
-
   // function cartIcon() {
   //   const alreadyInCart = cartItems.find((item) => item.id === img.id);
   //   if (alreadyInCart) {
@@ -73,7 +64,6 @@ export default function Image({ className, img, ...restProps }) {
   //     );
   //   }
   // }
-
   // return (
   //   {itemFeature.map((chocolate) => {
   //     <img
@@ -87,15 +77,12 @@ export default function Image({ className, img, ...restProps }) {
   //   //     <p>{ chocolate.price }</p>
   //   //     <AddCircleOutlineIcon
   //   //       onClick={() => {
-  //   //         console.log("clicked add to cart")
   //   //         setItem(chocolate)
   //   //       }}
   //   //       style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}
   //   //     />
   //   //   </div>
-
   //   })}
-
   // <Container { ...restProps }>
   //    {/* <div
   //     className={`${className} image-container`}
@@ -116,7 +103,6 @@ export default function Image({ className, img, ...restProps }) {
   //     <p>{ chocolate.price }</p>
   //     <AddCircleOutlineIcon
   //       onClick={() => {
-  //         console.log("clicked add to cart")
   //         setItem(chocolate)
   //       }}
   //       style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}
@@ -154,7 +140,6 @@ export default function Image({ className, img, ...restProps }) {
 //                       <p>{ chocolate.price }</p>
 //                       <AddCircleOutlineIcon
 //                         onClick={() => {
-//                           console.log("clicked add to cart")
 //                           setItem(chocolate)
 //                         }}
 //                         style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}

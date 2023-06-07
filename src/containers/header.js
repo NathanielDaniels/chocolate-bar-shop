@@ -1,67 +1,59 @@
-import React, {useContext} from 'react';
-import { NavLink } from 'react-router-dom';
-import { Header } from '../components';
-import { Context } from "../context/Context";
-import * as ROUTES from '../constants/routes';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { Header } from "../components";
+import { Context } from "../context/Context.tsx";
+import * as ROUTES from "../constants/routes";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 // import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
-
 export function HeaderContainer() {
-const { cartItems } = useContext(Context);
+  const { cartItems } = useContext(Context);
 
-// console.log("cartItems",cartItems);
+  console.log(cartItems);
 
-  const cartCounter = () => (
-    cartItems.length > 0 && <span className="cartCounter">{cartItems.length}</span>
-  )
+  const cartCount = () => {
+    const totalItems = cartItems.reduce(
+      (total, item) => total + item.amount,
+      0
+    );
+    if (cartItems.length > 0) {
+      return <span className="cartCount">{totalItems}</span>;
+    }
+  };
 
   return (
     <Header>
       <Header.Menu>
         <Header.MenuList>
           <Header.MenuListItem>
-            <NavLink 
-              exact to={ROUTES.HOME}
-              activeClassName="active"
-            >
+            <NavLink exact to={ROUTES.HOME} activeClassName="active">
               Our Mission
             </NavLink>
           </Header.MenuListItem>
           <Header.MenuListItem>
-            <NavLink 
-              to={ROUTES.JOIN_IN}
-              activeClassName="active"
-            >
+            <NavLink to={ROUTES.JOIN_IN} activeClassName="active">
               Join In
             </NavLink>
           </Header.MenuListItem>
           <Header.MenuListItem>
-            <NavLink 
-              to={ROUTES.CHOCOSHOP}
-              activeClassName="active"
-            >
+            <NavLink to={ROUTES.CHOCOSHOP} activeClassName="active">
               Chocoshop
             </NavLink>
           </Header.MenuListItem>
 
           {/* Hide when No Items In Cart */}
-          {cartItems.length > 0 ?
+          {cartItems.length > 0 ? (
             <Header.MenuListItem>
-              <NavLink 
-                to={ROUTES.CART}
-              >
-                  <div className="cartInfo">
-                    {cartCounter()}
-                    <ShoppingCartIcon />
-                    {/* {cartItems.length > 0 ? <ShoppingCartIcon /> : <ShoppingCartOutlinedIcon/>} */}
-                  </div>
+              <NavLink to={ROUTES.CART}>
+                <div className="cartInfo">
+                  {cartCount()}
+                  <ShoppingCartIcon />
+                </div>
               </NavLink>
             </Header.MenuListItem>
-          : null}
-
+          ) : null}
         </Header.MenuList>
       </Header.Menu>
     </Header>
-  )
+  );
 }

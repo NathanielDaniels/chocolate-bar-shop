@@ -44,7 +44,7 @@ export const SidebarNavList = styled.ul`
   width: 100%;
   button {
     all: unset;
-    cursor: pointer; 
+    cursor: pointer;
     width: 100%;
     height: 50px;
     padding: 0 20px;
@@ -120,6 +120,33 @@ export const MenuItem = styled.li`
     p {
       font-weight: 500;
       font-size: 1.4rem;
+    }
+    span {
+      position: relative;
+      max-height: 35px;
+      .cartAmount {
+        border: 2px solid red;
+        background: var(--main-yellow);
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        z-index: 1;
+        position: absolute;
+        top: -20px;
+        right: -15px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+          padding: 0;
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: var(--main-black);
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+      }
     }
   }
 `;

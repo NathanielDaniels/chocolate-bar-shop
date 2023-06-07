@@ -142,7 +142,7 @@ export function ChocoShopContainer() {
                     <div>
                       <p>${price}</p>
                       {cartAmount.hasOwnProperty(id) ? (
-                        <>
+                        <span>
                           <AddShoppingCartIcon
                             className="addToCartBtn"
                             onClick={(e) => handleChocolateClick(e, chocolate)}
@@ -152,10 +152,10 @@ export function ChocoShopContainer() {
                               cursor: "pointer",
                             }}
                           />
-                          <div key={id}>
+                          <div className="cartAmount" key={id}>
                             <p>{cartAmount[id]}</p>
                           </div>
-                        </>
+                        </span>
                       ) : (
                         <AddCircleOutlineIcon
                           className="addToCartBtn"
