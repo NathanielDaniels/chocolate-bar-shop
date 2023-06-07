@@ -32,12 +32,10 @@ type StateType = {
 
 export const FeatureModalContext = createContext<StateType | null>(null);
 
-export default function ChocoShop({ children, ...restProps }) {
+export default function ChocoShop({ children, ...restProps }: any) {
   const [showModal, setShowModal] = useState(false);
   const [item, setItem] = useState("");
   const containerRef = useRef<HTMLElement | null>(null);
-
-  console.log(containerRef.current);
 
   return (
     <FeatureModalContext.Provider
@@ -56,14 +54,14 @@ export default function ChocoShop({ children, ...restProps }) {
 ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({
   children,
   ...restProps
-}) {
+}: any) {
   return <SidebarContainer {...restProps}>{children}</SidebarContainer>;
 };
 
 ChocoShop.SidebarNav = function ChocoShopSidebarNav({
   children,
   ...restProps
-}) {
+}: any) {
   // //? Menu moves on scroll
   const sidebarRef = useRef<HTMLDivElement | null>(null);
 
@@ -84,7 +82,7 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({
 ChocoShop.SidebarNavList = function ChocoShopSidebarNavList({
   children,
   ...restProps
-}) {
+}: any) {
   return <SidebarNavList {...restProps}>{children}</SidebarNavList>;
 };
 
@@ -93,19 +91,28 @@ ChocoShop.SidebarNavList = function ChocoShopSidebarNavList({
 ChocoShop.MainMenuContainer = function ChocoShopMainMenu({
   children,
   ...restProps
-}) {
+}: any) {
   return <MainMenuContainer {...restProps}>{children}</MainMenuContainer>;
 };
 
-ChocoShop.MainMenu = function ChocoShopMainMenu({ children, ...restProps }) {
+ChocoShop.MainMenu = function ChocoShopMainMenu({
+  children,
+  ...restProps
+}: any) {
   return <MainMenu {...restProps}>{children}</MainMenu>;
 };
 
-ChocoShop.MenuList = function ChocoShopMenuList({ children, ...restProps }) {
+ChocoShop.MenuList = function ChocoShopMenuList({
+  children,
+  ...restProps
+}: any) {
   return <MenuList {...restProps}>{children}</MenuList>;
 };
 
-ChocoShop.MenuItem = function ChocoShopMenuItem({ children, ...restProps }) {
+ChocoShop.MenuItem = function ChocoShopMenuItem({
+  children,
+  ...restProps
+}: any) {
   return <MenuItem {...restProps}>{children}</MenuItem>;
 };
 
@@ -114,7 +121,7 @@ ChocoShop.MenuItem = function ChocoShopMenuItem({ children, ...restProps }) {
 //   setItem: React.Dispatch<React.SetStateAction<string>>;
 // };
 
-ChocoShop.Link = function ChocoShopLink({ item, children, ...restProps }) {
+ChocoShop.Link = function ChocoShopLink({ item, children, ...restProps }: any) {
   const { setShowModal, setItem }: any = useContext(FeatureModalContext);
   const menuItem = useRef<HTMLElement | any>();
 
@@ -154,11 +161,8 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal() {
   //? Remove Scroll when Modal is open
   //   useEffect(() => {
   //   const mainContainer = containerRef.current
-  //   console.log("modal container Ref:", mainContainer)
   //   showModal ? (mainContainer.style.overflow = "hidden") : (mainContainer.style.overflow = 'scroll')
   // }, [showModal])
-
-  // console.log("State item:", item)
 
   return showModal ? (
     <ChocoSelectModal>
@@ -187,20 +191,6 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal() {
                   cursor: "pointer",
                 }}
               />
-              {/* {itemFeature.map((chocolate) => {
-               <AddCircleOutlineIcon 
-                  onClick={() => {
-                    console.log("clicked add to cart")
-                    addToCart({
-                      id: chocolate.id,
-                      image: chocolate.image,
-                      title: chocolate.title,
-                      price: chocolate.price,
-                    })
-                  }} 
-                  style={{ fontSize: 35, color: "var(--main-red)", cursor: "pointer"}}
-                />
-              })} */}
             </div>
           </div>
         </div>

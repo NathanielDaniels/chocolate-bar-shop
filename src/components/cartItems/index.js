@@ -2,7 +2,7 @@ import React, { useState, useContext, createContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Container, CartItem, Main } from "./styles/cartItems";
-import { Context } from "../../context/Context";
+import { Context } from "../../context/Context.tsx";
 // import DeleteIcon from '@material-ui/icons/Delete';
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 // import useHover from "../../hooks/useHover";
@@ -12,38 +12,13 @@ export const CartContext = createContext();
 
 export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
-  const { cartItems, setCartItems, emptyCart } = useContext(Context);
+  const { cartItems, emptyCart } = useContext(Context);
   const { removeFromCart } = useContext(Context);
-  const history = useHistory(); 
+  const history = useHistory();
   // const [hovered, ref] = useHover();
 
-  // console.log({ cartItems });
-
-  //! Working on this
-  // (function addToCart(item) {
-  //   setCartItems((prevItems) => {
-  //     const itemIndex = prevItems.findIndex(
-  //       (prevItem) => prevItem.id === item.id
-  //     );
-  //     if (itemIndex >= 0) {
-  //       // Item already exists in cart, increment quantity
-  //       const updatedItems = [...prevItems];
-  //       updatedItems[itemIndex].quantity += 1;
-  //       return updatedItems;
-  //     } else {
-  //       // Item does not exist in cart, add it
-  //       return [...prevItems, { ...item, quantity: 1 }];
-  //     }
-  //   });
-  // })();
-
-  // const totalItems = cartItems.reduce(
-  //   (total, item) => total + item.quantity,
-  //   0
-  // );
-
   const totalCostDisplay = () => {
-    const itemCost = cartItems.map((item) => item.price);
+    const itemCost = cartItems.map((item) => item.price * item.amount);
     if (itemCost.length > 0) {
       const totalCost = itemCost.reduce((sum, item) => sum + item, 0);
       return totalCost.toLocaleString("en-US", {
@@ -64,32 +39,23 @@ export default function CartItems({ children, ...restProps }) {
   //   };
   // }
 
-  const cartItemElements = cartItems.map((item) => (
-    <CartItem key={item.id} item={item}>
-      <div className="cart-item">
-        <i onClick={() => removeFromCart(item.id)}>
-          <DeleteForeverIcon />
-        </i>
-        <img src={item.image} width="130px" alt={item.id} />
-        <p>{item.title}</p>
-        <p>${item.price}</p>
-      </div>
-    </CartItem>
-  ));
-  // const cartItemElements = cartItems.map((item) => (
-  //   <CartItem key={item.id} item={item}>
-  //     <div className="cart-item">
-  //       <i
-  //         onClick={() => removeFromCart(item.id)}
-  //       >
-  //         <DeleteForeverIcon />
-  //       </i>
-  //       <img src={item.image} width="130px" alt={item.id} />
-  //       <p>{item.title}</p>
-  //       <p>${item.price}</p>
-  //     </div>
-  //   </CartItem>
-  // ));
+  const cartItemElements = cartItems.map((item) => {
+    return (
+      <CartItem key={item.id}>
+        <div className="cart-item">
+          <i onClick={() => removeFromCart(item.id)}>
+            <DeleteForeverIcon />
+          </i>
+          <img src={item.image} width="130px" alt={item.id} />
+          <p>{item.title}</p>
+          <p>${item.price}</p>
+          <div>
+            <p>x{item.amount}</p>
+          </div>
+        </div>
+      </CartItem>
+    );
+  });
 
   function placeOrder() {
     const orderButton = document.querySelector(".order-button > button");
