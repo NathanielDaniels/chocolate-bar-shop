@@ -1,11 +1,77 @@
-import React, { useState, useEffect } from "react";
+// import { type } from "os";
+import { useState, useEffect } from "react";
+import React from "react";
 
-const Context = React.createContext();
+interface ContextInterface {
+  allBars: {
+    id: string;
+    image: string;
+    title: string;
+    subTitle: string;
+    price: number;
+    alt: string;
+    about: string;
+    contains: string;
+    ingredients: string;
+    allergies: string;
+  }[];
+  allPhotos: {
+    id: string;
+    url: string;
+    isFavorite: boolean;
+  }[];
+  toggleFavorite: (id: string) => void;
+  cartItems: {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+    description: string;
+    amount: {};
+  }[];
+  setCartItems: React.Dispatch<
+    React.SetStateAction<
+      {
+        id: string;
+        name: string;
+        price: number;
+        image: string;
+        description: string;
+        title: string;
+        subTitle: string;
+        alt: string;
+        about: string;
+      }[]
+    >
+  >;
+  addToCart: (item: {
+    id: string;
+    name?: string;
+    price: number;
+    image: string;
+    title: string;
+    description?: string;
+    amount?: {};
+  }) => void;
+  removeFromCart: (id: string) => void;
+  emptyCart: () => void;
+}
 
-export const allBars = [
+const Context = React.createContext<ContextInterface>({
+  allBars: [],
+  allPhotos: [],
+  toggleFavorite: () => {},
+  cartItems: [],
+  setCartItems: () => {},
+  addToCart: () => {},
+  removeFromCart: () => {},
+  emptyCart: () => {},
+});
+
+export const totalBarData = [
   // ? Big Bars ===========================
   {
-    id: 1,
+    id: "1",
     image: "./img/big-bars/milk-chocolate-bar-red.png",
     title: "Milk Chocolate 32%",
     subTitle: "6.35oz, 1 bar",
@@ -20,7 +86,7 @@ export const allBars = [
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 2,
+    id: "2",
     image: "./img/big-bars/milk-chocolate-hazelnut-green.png",
     title: "Milk Hazelnut 32%",
     subTitle: "6.35oz, 1 bar",
@@ -35,7 +101,7 @@ export const allBars = [
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 3,
+    id: "3",
     image: "./img/big-bars/milk-chocolate-seasalt-caramel-orange.png",
     title: "Milk Caramel Sea Salt 32%",
     subTitle: "6.35oz, 1 bar",
@@ -50,7 +116,7 @@ export const allBars = [
     allergies: "May contain traces of Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 4,
+    id: "4",
     image: "./img/big-bars/chocolate-honey-almond-nougat-yellow.png",
     title: "Milk Honey Almond Nougat 32%",
     subTitle: "6.35oz, 1 bar",
@@ -65,7 +131,7 @@ export const allBars = [
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 5,
+    id: "5",
     image: "./img/big-bars/chocolate-almond-seasalt-limegreen.png",
     title: "Dark Almond Sea Salt 51%",
     subTitle: "6.35oz, 1 bar",
@@ -81,7 +147,7 @@ export const allBars = [
       "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
   {
-    id: 6,
+    id: "6",
     image: "./img/big-bars/dark-chocolate-pecan-coconut-teal.png",
     title: "Dark Pecan Coconut 51%",
     subTitle: "6.35oz, 1 bar",
@@ -97,7 +163,7 @@ export const allBars = [
       "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
   {
-    id: 7,
+    id: "7",
     image: "./img/big-bars/dark-chocolate-blue.png",
     title: "Dark Chocolate 70%",
     subTitle: "6.35oz, 1 bar",
@@ -112,7 +178,7 @@ export const allBars = [
       "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
   {
-    id: 8,
+    id: "8",
     image: "./img/big-bars/dark-milk-chocolate-pretzel-toffee-purple.png",
     title: "Dark Milk Pretzel Toffee 42%",
     subTitle: "6.35oz, 1 bar",
@@ -127,7 +193,7 @@ export const allBars = [
     allergies: "May contain traces of Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 9,
+    id: "9",
     image: "./img/big-bars/white-raspberry-popping-candy-pink.png",
     title: "White Raspberry Popping Candy 28%",
     subTitle: "6.35oz, 1 bar",
@@ -143,7 +209,7 @@ export const allBars = [
   },
   // ? Small Bars ===========================
   {
-    id: 10,
+    id: "10",
     image: "./img/small-bars/milk-chocolate-small-red.png",
     title: "Milk Chocolate 32%",
     subTitle: "1.8oz, 1 bar",
@@ -158,7 +224,7 @@ export const allBars = [
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 11,
+    id: "11",
     image: "./img/small-bars/milk-caramel-sea-salt-small-orange.png",
     title: "Milk Caramel Sea Salt 32%",
     subTitle: "1.8oz, 1 bar",
@@ -173,7 +239,7 @@ export const allBars = [
     allergies: "May contain traces of Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 12,
+    id: "12",
     image: "./img/small-bars/dark-chocolate-small-blue.png",
     title: "Dark Chocolate 70%",
     subTitle: "1.8oz, 1 bar",
@@ -189,7 +255,7 @@ export const allBars = [
   },
   // ? Tiny Bars ===========================
   {
-    id: 13,
+    id: "13",
     image: "./img/tiny-tonys/milk-chocolate/milk-chocolate-mini-open-small.png",
     title: "Milk Chocolate 32% Tiny Tony's",
     subTitle: "100 pieces",
@@ -204,7 +270,7 @@ export const allBars = [
     allergies: "May contain traces of Wheat, Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 14,
+    id: "14",
     image:
       "./img/tiny-tonys/milk-chocolate-caramel-seasalt/milk-chocolate-caramel-open.png",
     title: "Milk Caramel Sea Salt 32% Tiny Tony's",
@@ -220,7 +286,7 @@ export const allBars = [
     allergies: "May contain traces of Eggs, Peanuts and Tree nuts.",
   },
   {
-    id: 15,
+    id: "15",
     image: "./img/tiny-tonys/dark-chocolate/dark-chocolate-mini-open-large.png",
     title: "Dark Chocolate 70% Tiny Tony's",
     subTitle: "100 pieces",
@@ -236,34 +302,53 @@ export const allBars = [
   },
 ];
 
-function ContextProvider({ children }) {
-  // const [allPhotos, setAllPhotos] = useState([])
-  const [allPhotos, setAllPhotos] = useState(
-    JSON.parse(localStorage.getItem("photos")) || []
+type PhotoType = {
+  id: string;
+  url: string;
+  isFavorite: boolean;
+};
+
+type SetAllPhotosType = React.Dispatch<React.SetStateAction<PhotoType[]>>;
+
+type BarType = {
+  id: string;
+  image: string;
+  title: string;
+  subTitle: string;
+  price: number;
+  alt: string;
+  about: string;
+  contains: string;
+  ingredients: string;
+  allergies: string;
+};
+
+const ContextProvider: any = ({ children }: any) => {
+  const [allBars, setAllBars] = useState<BarType[]>(totalBarData);
+  const [allPhotos, setAllPhotos]: [PhotoType[], SetAllPhotosType] = useState(
+    JSON.parse(localStorage.getItem("photos") || "[]") || []
   );
   const [cartItems, setCartItems] = useState(
-    JSON.parse(localStorage.getItem("cartItems")) || []
+    JSON.parse(localStorage.getItem("cartItems") || "[]") || []
   );
+
+  type ImageType = {
+    id: string;
+    url: string;
+    isFavorite: boolean;
+  };
 
   //? Fetch Choco Data
   useEffect(() => {
-    const allImgs = [];
-    const photoStorage = JSON.parse(localStorage.getItem("photos"));
-
+    const allImgs: ImageType[] = [];
+    const photoStorage = JSON.parse(localStorage.getItem("photos") || "[]");
     allBars.map((item) =>
       allImgs.push({ url: item.image, id: item.id, isFavorite: false })
     );
     return photoStorage.length > 0 ? photoStorage : setAllPhotos(allImgs);
-    // console.log(allImgs)
-  }, []);
+  }, [allBars]);
 
-  // console.log("allPhotos", allPhotos)
-
-  // console.log("cartItems context:", cartItems)
-
-  // console.log("storage:", JSON.parse(localStorage.getItem("photos")))
-
-  function toggleFavorite(id) {
+  function toggleFavorite(id: any) {
     const updatedArr = allPhotos.map((photo) => {
       if (photo.id === id) {
         return { ...photo, isFavorite: !photo.isFavorite };
@@ -279,12 +364,42 @@ function ContextProvider({ children }) {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [allPhotos, cartItems]);
 
-  function addToCart(newItem) {
-    setCartItems((prevItems) => [...prevItems, newItem]);
+  function addToCart(item: any) {
+    setCartItems((prevItems: any) => {
+      const itemIndex = prevItems.findIndex(
+        (cartItem: any) => cartItem.id === item.id
+      );
+      if (itemIndex !== -1) {
+        // Item already exists in cart, increment amount
+        const newItems = [...prevItems];
+        newItems[itemIndex] = {
+          ...newItems[itemIndex],
+          amount: newItems[itemIndex].amount + 1,
+        };
+        return newItems;
+      } else {
+        // Item does not exist in cart, add it with amount of 1
+        return [...prevItems, { ...item, amount: 1 }];
+      }
+    });
   }
 
-  function removeFromCart(id) {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  // function cartItemsTotal() {
+  //   return cartItems.map((item: any) => (
+  //     <div key={item.id}>
+  //       <p>{item.name}</p>
+  //       <p>Amount: {item.amount}</p>
+  //     </div>
+  //   ));
+  // }
+  // function addToCart(newItem) {
+  //   setCartItems((prevItems) => [...prevItems, newItem]);
+  // }
+
+  function removeFromCart(id: any) {
+    setCartItems((prevItems: any) =>
+      prevItems.filter((item: any) => item.id !== id)
+    );
   }
 
   function emptyCart() {
@@ -307,6 +422,6 @@ function ContextProvider({ children }) {
       {children}
     </Context.Provider>
   );
-}
+};
 
 export { ContextProvider, Context };

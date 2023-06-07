@@ -7,7 +7,7 @@ type Props = {
 
 export const Container = styled.div<Props>`
   z-index: 2;
-  padding-top: ${(props) => (props.isSigninPage ? "100px" : "0px")};
+  padding-top: ${(props: any) => (props.isSigninPage ? "100px" : "0px")};
   @media (max-width: 1200px) {
     width: 98%;
     margin: 0 auto;
