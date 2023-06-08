@@ -29,6 +29,7 @@ export const Main = styled.main`
   .order-button {
     margin: 0 auto;
     button {
+      color: hsl(62.4, 100%, 50%);
       cursor: pointer;
       padding: 20px;
       letter-spacing: 0.4px;

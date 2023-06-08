@@ -59,15 +59,19 @@ export default function CartItems({ children, ...restProps }) {
 
   function placeOrder() {
     const orderButton = document.querySelector(".order-button > button");
-    orderButton.style.backgroundColor = "lightgray";
+    // orderButton.style.backgroundColor = "hsla(62.4, 100%, 50%, 50%)";
+    orderButton.style.backgroundColor = "hsla(62.4, 100%, 50%, 80%)";
+    orderButton.style.color = "var(--main-blue)";
     setButtonText("Ordering...");
     setTimeout(() => {
       orderButton.style.backgroundColor = "#fff";
       setButtonText("Place Order");
       changeCartTitle();
       emptyCart();
-      history.push("/Cart");
     }, 1500);
+    setTimeout(() => {
+      history.push("/ChocoShop");
+    }, 4000);
   }
 
   function changeCartTitle() {

@@ -28,6 +28,9 @@ export const SidebarContainer = styled.section`
   grid-column: 1 / 2;
   grid-row: 1;
 `;
+export const Loading = styled.section`
+  min-height: 100dvh;
+`;
 
 export const SidebarNav = styled.nav`
   position: fixed;
@@ -128,11 +131,11 @@ export const MenuItem = styled.li`
         border: 2px solid red;
         background: var(--main-yellow);
         border-radius: 50%;
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
         z-index: 1;
         position: absolute;
-        top: -20px;
+        top: -25px;
         right: -15px;
         padding: 0;
         display: flex;

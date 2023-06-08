@@ -127,6 +127,9 @@ const ContextProvider: any = ({ children }: any) => {
   useEffect(() => {
     localStorage.setItem("photos", JSON.stringify(allPhotos));
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    if (cartItems.length === 0) {
+      localStorage.removeItem("cartItems");
+    }
   }, [allPhotos, cartItems]);
 
   function addToCart(item: any) {
@@ -153,6 +156,15 @@ const ContextProvider: any = ({ children }: any) => {
     setCartItems((prevItems: any) =>
       prevItems.filter((item: any) => item.id !== id)
     );
+    const updatedCartItems = cartItems.filter((item: any) => item.id !== id);
+    const updatedCartAmount = updatedCartItems.reduce(
+      (total: any, item: any) => {
+        total[item.id] = (total[item.id] || 0) + item.amount;
+        return total
+      }
+    , {}
+    );
+    sessionStorage.setItem("cartAmount", JSON.stringify(updatedCartAmount));
   }
 
   function emptyCart() {

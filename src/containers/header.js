@@ -9,8 +9,6 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 export function HeaderContainer() {
   const { cartItems } = useContext(Context);
 
-  console.log(cartItems);
-
   const cartCount = () => {
     const totalItems = cartItems.reduce(
       (total, item) => total + item.amount,
