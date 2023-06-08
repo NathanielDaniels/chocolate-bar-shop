@@ -1,4 +1,4 @@
-import React from "react"
+// import React from "react"
 import { CartItems } from '../components';
 
 export function CartContainer() {
