@@ -12,8 +12,7 @@ export const CartContext = createContext();
 
 export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
-  const { cartItems, emptyCart } = useContext(Context);
-  const { removeFromCart } = useContext(Context);
+  const { cartItems, emptyCart, removeFromCart } = useContext(Context);
   const history = useHistory();
   // const [hovered, ref] = useHover();
 
@@ -60,14 +59,13 @@ export default function CartItems({ children, ...restProps }) {
   function placeOrder() {
     const orderButton = document.querySelector(".order-button > button");
     // orderButton.style.backgroundColor = "hsla(62.4, 100%, 50%, 50%)";
-    orderButton.style.backgroundColor = "hsla(62.4, 100%, 50%, 80%)";
-    orderButton.style.color = "var(--main-blue)";
+    orderButton.style.backgroundColor = "#3e8e41";
     setButtonText("Ordering...");
     setTimeout(() => {
-      orderButton.style.backgroundColor = "#fff";
       setButtonText("Place Order");
       changeCartTitle();
       emptyCart();
+      sessionStorage.setItem("cartAmount", JSON.stringify({}));
     }, 1500);
     setTimeout(() => {
       history.push("/ChocoShop");
