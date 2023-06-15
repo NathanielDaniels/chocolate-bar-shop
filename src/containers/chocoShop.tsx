@@ -19,16 +19,23 @@ export function ChocoShopContainer() {
   const ChocoShopTotalMenu = allBars;
   const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
   const [activeMenu, setActiveMenu] = useState("All Chocolates");
-  const [cartAmount, setCartAmount] = useState<CartAmounts>({});
+  const [cartAmount, setCartAmount] = useState<CartAmounts>(() => {
+    const storedCartAmount = sessionStorage.getItem("cartAmount");
+    return storedCartAmount ? JSON.parse(storedCartAmount) : {};
+  });
   // const [currentId, setCurrentId] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    sessionStorage.setItem("cartAmount", JSON.stringify(cartAmount));
+  }, [cartAmount]);
 
   React.useEffect(() => {
     setTimeout(() => {
-      setLoading(true);
+      setLoading(false);
     }, 1000);
     return () => {
-      setLoading(false);
+      setLoading(true);
     };
   }, []);
 
@@ -130,6 +137,10 @@ export function ChocoShopContainer() {
         <ChocoShop.MainMenu>
           <ChocoShop.MenuList>
             {loading ? (
+              <ChocoShop.Loading>
+                <h1>Loading...</h1>
+              </ChocoShop.Loading>
+            ) : (
               itemFeature.map((chocolate) => {
                 const { id, image, title, subTitle, price, alt } = chocolate;
                 return (
@@ -173,12 +184,6 @@ export function ChocoShopContainer() {
                   </ChocoShop.MenuItem>
                 );
               })
-            ) : (
-              // <ChocoShop.Loading>
-              <div className="loading">
-                <h1>Loading...</h1>
-              </div>
-              // </ChocoShop.Loading>
             )}
           </ChocoShop.MenuList>
         </ChocoShop.MainMenu>

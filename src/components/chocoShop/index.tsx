@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import {
+  Loading,
   Container,
   SidebarContainer,
   SidebarNav,
@@ -51,6 +52,9 @@ export default function ChocoShop({ children, ...restProps }: any) {
 
 //? Left Side Menu ===========================================
 
+ChocoShop.Loading = function ChocoShopLoading({ children, ...restProps }: any) {
+  return <Loading {...restProps}>{children}</Loading>;
+};
 ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({
   children,
   ...restProps
