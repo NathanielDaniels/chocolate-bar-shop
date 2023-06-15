@@ -5,7 +5,7 @@ import { Context } from "../context/Context.tsx";
 import * as ROUTES from "../constants/routes";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 // import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-
+// import ProfileIcon from "../assets/icons/profile.svg";
 export function HeaderContainer() {
   const { cartItems } = useContext(Context);
 
@@ -38,14 +38,27 @@ export function HeaderContainer() {
               Chocoshop
             </NavLink>
           </Header.MenuListItem>
+          <Header.MenuListItem>
+            <NavLink to={ROUTES.PROFILE} activeClassName="active">
+              {/* <img src={ProfileIcon} alt="goto Profile Icon" /> */}
+              {/* <script src="https://cdn.lordicon.com/bhenfmcm.js"></script> */}
+              <lord-icon
+                src="https://cdn.lordicon.com/bhfjfgqz.json"
+                className="profileIcon"
+                trigger="hover"
+                colors="primary:#fff"
+                style={{ width: "35px", height: "35px" }}
+              ></lord-icon>
+            </NavLink>
+          </Header.MenuListItem>
 
           {/* Hide when No Items In Cart */}
           {cartItems.length > 0 ? (
             <Header.MenuListItem>
               <NavLink to={ROUTES.CART}>
                 <div className="cartInfo">
-                  {cartCount()}
                   <ShoppingCartIcon />
+                  {cartCount()}
                 </div>
               </NavLink>
             </Header.MenuListItem>

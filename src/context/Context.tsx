@@ -152,17 +152,25 @@ const ContextProvider: any = ({ children }: any) => {
     });
   }
 
-  function removeFromCart(id: any) {
-    setCartItems((prevItems: any) =>
-      prevItems.filter((item: any) => item.id !== id)
-    );
+  function removeFromCart(id?: any) {
+    // console.log(id);
+    if (id) {
+      setCartItems((prevItems: any) =>
+        prevItems.filter((item: any) => item.id !== id)
+      );
+    } else {
+      setCartItems([]);
+      sessionStorage.setItem("cartAmount", JSON.stringify({}));
+    }
     const updatedCartItems = cartItems.filter((item: any) => item.id !== id);
     const updatedCartAmount = updatedCartItems.reduce(
       (total: any, item: any) => {
+        // console.log({ total, item  });
+        // console.log(`${total[item.id]} = ${total[item.id]} + ${item.amount}`);
         total[item.id] = (total[item.id] || 0) + item.amount;
-        return total
-      }
-    , {}
+        return total;
+      },
+      {}
     );
     sessionStorage.setItem("cartAmount", JSON.stringify(updatedCartAmount));
   }
