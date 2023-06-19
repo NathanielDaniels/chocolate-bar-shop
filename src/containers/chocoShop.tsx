@@ -39,9 +39,6 @@ export function ChocoShopContainer() {
     };
   }, []);
 
-  // const filterBigBars: ChocoBar[] = ChocoShopTotalMenu.filter((bars: ChocoBar[]) =>
-  //   bars.filter((bar) => bar.price === 5.95)
-  // );
   const filterBigBars = ChocoShopTotalMenu.filter(
     (bars) => bars.price === 5.95
   );
@@ -148,8 +145,8 @@ export function ChocoShopContainer() {
                     <ChocoShop.Link item={chocolate} key={id}>
                       <img src={image} alt={`...loading ${alt}`} />
                     </ChocoShop.Link>
-                    <p>{title}</p>
-                    <p>{subTitle}</p>
+                    <p className="title">{title}</p>
+                    <p className="subTitle">{subTitle}</p>
                     <div>
                       <p>${price}</p>
                       {cartAmount.hasOwnProperty(id) ? (

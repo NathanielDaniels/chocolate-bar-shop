@@ -1,27 +1,26 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.section`
-  ${"" /* border: 2px solid red; */}
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding: 100px 0;
+  padding-top: 100px;
   justify-content: center;
   align-items: center;
   height: auto;
-  ${"" /* width: 80vw; */}
   margin: 0 auto;
 `;
 
 export const Inner = styled.div`
-  z-index: 2;
-  ${"" /* position: absolute; */}
-  ${"" /* top: 350px; */}
-  ${"" /* left: 60px; */}
   color: #fff;
   width: 40ch;
   max-width: 100%;
   padding: 0 10px;
-
+  z-index: 2;
+  @media (max-width: 1200px) {
+    margin-top: 30px;
+    order: 1;
+  }
   ${
     "" /* @media (max-width: 1200px) {
     position: relative;
@@ -42,6 +41,7 @@ export const Title = styled.h2`
 
 export const Info = styled.p`
   color: var(--main-white);
+  margin-bottom: 40px;
   @media (max-width: 600px) {
     font-size: 14px;
   }
@@ -49,11 +49,17 @@ export const Info = styled.p`
 
 export const StoryImg = styled.img`
   position: absolute;
-  bottom: -10px;
+  bottom: 0px;
   width: 500px;
   left: 0;
   max-width: 100%;
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     position: relative;
+    order: 2;
+  }
+  ${
+    "" /* @media (max-width: 900px) {
+    position: relative;
+  } */
   }
 `;

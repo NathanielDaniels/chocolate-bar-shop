@@ -5,7 +5,6 @@ export const Menu = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${"" /* margin: 0 auto; */}
   width: clamp(25em, 80vw, 35em);
   height: 50px;
   background: var(--main-red);
@@ -19,12 +18,7 @@ export const MenuList = styled.ul`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  margin: 0 5px;
-  ${
-    "" /* @media (max-width: 768px) {
-    padding: 0;
-  } */
-  }
+  margin: 0 10px;
 `;
 
 export const MenuListItem = styled.li`
@@ -51,15 +45,13 @@ export const MenuListItem = styled.li`
       height: 25px;
       width: 25px;
       font-size: 1.1rem;
-      ${"" /* background: var(--main-white); */}
-      ${"" /* color: var(--main-red); */}
     }
   }
   .profileIcon {
     width: 1.5rem;
-      height: 1.5rem;
-      fill: var(--main-yellow);
-      display: blo
+    height: 1.5rem;
+    fill: var(--main-yellow);
+    display: block;
     ${
       "" /* svg {
       width: 1.5rem;
@@ -151,37 +143,12 @@ export const Container = styled.header`
   align-items: center;
   margin-top: 25px;
   width: 100%;
-  ${"" /* height: auto; */}
   transition: margin 0.3s ease, height 0.3s ease;
   li {
     margin: 0 10px;
-  }
-
-  @media (max-width: 600px) {
-    margin-top: 0;
-    ${Menu} {
-      width: 100%;
-      border-radius: 0;
-    }
-    ${MenuList} {
-      ${"" /* border: 2px solid blue; */}
-      ${"" /* justify-content: flex-end; */}
-      align-items: center;
-      justify-content: center;
-      ${"" /* gap: 1em; */}
-      ${"" /* gap: 1em; */}
-      ${"" /* padding: 0 20px; */}
-      ${
-        "" /* li {
-        margin: 0 10px;
-      } */
-      }
-      @media (max-width: 800px) {
-        ${"" /* width: auto; */}
-        li {
-          ${"" /* margin: 0 10px; */}
-        }
-      }
+    white-space: nowrap;
+    @media (max-width: 420px) {
+      font-size: 0.92rem;
     }
   }
 
@@ -193,15 +160,8 @@ export const Container = styled.header`
       border-radius: 0;
     }
     ${MenuList} {
-      ${"" /* border: 2px solid blue; */}
       justify-content: flex-end;
       align-items: center;
-      ${"" /* gap: 1em; */}
-      ${"" /* gap: 1em; */}
-      ${"" /* padding: 0 20px; */}
-      li {
-        ${"" /* margin: 0 10px; */}
-      }
       @media (max-width: 800px) {
         width: auto;
       }

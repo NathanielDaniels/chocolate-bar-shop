@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Logo, Section, Wrapper } from "./styles/footer";
 
 export default function Footer({ children, ...restProps }) {
