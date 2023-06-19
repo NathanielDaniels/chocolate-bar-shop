@@ -2,21 +2,21 @@ import styled from "styled-components/macro";
 
 export const Container = styled.section`
   max-width: 1200px;
-  ${"" /* height: 100%; */}
   margin: 0 auto;
   display: block;
-  ${"" /* overflow-y: auto; */}
 `;
 
 export const Info = styled.article`
   width: 100%;
-  ${"" /* height: 100dvh; */}
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   color: #fff;
   margin-bottom: 10em;
   gap: 1em;
   padding: 0 25px;
+  img {
+    width: clamp(300px, 45vw, 500px);
+  }
   ${
     "" /* scroll-snap-type: y mandatory;
   scroll-snap-align: center;
@@ -27,25 +27,13 @@ export const Info = styled.article`
     grid-template-rows: repeat(2, 1fr);
     margin-bottom: 4em;
     gap: 0;
-    img {
-      ${"" /* border: 2px solid #fff; */}
-      ${"" /* height: 100px; */}
-    }
     .left {
       order: 1;
     }
     .right {
-      ${"" /* border: 2px solid red; */}
       order: 2;
     }
   }
-  .left {
-    img {
-      width: 100%;
-      ${"" /* height: auto; */}
-    }
-  }
-
   .right {
     flex-direction: column;
     align-items: flex-start;

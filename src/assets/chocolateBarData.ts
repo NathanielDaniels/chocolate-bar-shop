@@ -3,8 +3,8 @@ export const totalBarData = [
   {
     id: "1",
     image: "./img/big-bars/milk-chocolate-bar-red.png",
-    title: "Milk Chocolate 32%",
-    subTitle: "6.35oz, 1 bar",
+    title: "Milk Chocolate",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "Milk Chocolate Bar",
     about:
@@ -18,8 +18,8 @@ export const totalBarData = [
   {
     id: "2",
     image: "./img/big-bars/milk-chocolate-hazelnut-green.png",
-    title: "Milk Hazelnut 32%",
-    subTitle: "6.35oz, 1 bar",
+    title: "Milk Hazelnut",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "Milk Chocolate Hazelnut Bar",
     about:
@@ -33,8 +33,8 @@ export const totalBarData = [
   {
     id: "3",
     image: "./img/big-bars/milk-chocolate-seasalt-caramel-orange.png",
-    title: "Milk Caramel Sea Salt 32%",
-    subTitle: "6.35oz, 1 bar",
+    title: "Milk Caramel Sea Salt",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "Milk Caramel Sea Salt Bar",
     about:
@@ -48,8 +48,8 @@ export const totalBarData = [
   {
     id: "4",
     image: "./img/big-bars/chocolate-honey-almond-nougat-yellow.png",
-    title: "Milk Honey Almond Nougat 32%",
-    subTitle: "6.35oz, 1 bar",
+    title: "Milk Honey Almond Nougat",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "Milk Honey Almond Nougat",
     about:
@@ -63,8 +63,8 @@ export const totalBarData = [
   {
     id: "5",
     image: "./img/big-bars/chocolate-almond-seasalt-limegreen.png",
-    title: "Dark Almond Sea Salt 51%",
-    subTitle: "6.35oz, 1 bar",
+    title: "Dark Almond Sea Salt",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "Dark Almond Sea Salt",
     about:
@@ -79,8 +79,8 @@ export const totalBarData = [
   {
     id: "6",
     image: "./img/big-bars/dark-chocolate-pecan-coconut-teal.png",
-    title: "Dark Pecan Coconut 51%",
-    subTitle: "6.35oz, 1 bar",
+    title: "Dark Pecan Coconut",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "Dark Pecan Coconut",
     about:
@@ -95,8 +95,8 @@ export const totalBarData = [
   {
     id: "7",
     image: "./img/big-bars/dark-chocolate-blue.png",
-    title: "Dark Chocolate 70%",
-    subTitle: "6.35oz, 1 bar",
+    title: "Dark Chocolate",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "Dark Chocolate",
     about:
@@ -110,8 +110,8 @@ export const totalBarData = [
   {
     id: "8",
     image: "./img/big-bars/dark-milk-chocolate-pretzel-toffee-purple.png",
-    title: "Dark Milk Pretzel Toffee 42%",
-    subTitle: "6.35oz, 1 bar",
+    title: "Dark Milk Pretzel Toffee",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "Dark Milk Pretzel Toffee",
     about:
@@ -125,8 +125,8 @@ export const totalBarData = [
   {
     id: "9",
     image: "./img/big-bars/white-raspberry-popping-candy-pink.png",
-    title: "White Raspberry Popping Candy 28%",
-    subTitle: "6.35oz, 1 bar",
+    title: "White Raspberry Popping Candy",
+    subTitle: "6.35oz bar",
     price: 5.95,
     alt: "White Raspberry Popping Candy",
     about:
@@ -141,8 +141,8 @@ export const totalBarData = [
   {
     id: "10",
     image: "./img/small-bars/milk-chocolate-small-red.png",
-    title: "Milk Chocolate 32%",
-    subTitle: "1.8oz, 1 bar",
+    title: "Milk Chocolate",
+    subTitle: "1.8oz Mini",
     price: 2.39,
     alt: "Milk Chocolate",
     about:
@@ -156,8 +156,8 @@ export const totalBarData = [
   {
     id: "11",
     image: "./img/small-bars/milk-caramel-sea-salt-small-orange.png",
-    title: "Milk Caramel Sea Salt 32%",
-    subTitle: "1.8oz, 1 bar",
+    title: "Milk Caramel Sea Salt",
+    subTitle: "1.8oz Mini",
     price: 2.39,
     alt: "Milk Caramel Sea Salt",
     about:
@@ -171,8 +171,8 @@ export const totalBarData = [
   {
     id: "12",
     image: "./img/small-bars/dark-chocolate-small-blue.png",
-    title: "Dark Chocolate 70%",
-    subTitle: "1.8oz, 1 bar",
+    title: "Dark Chocolate",
+    subTitle: "1.8oz Mini",
     price: 2.39,
     alt: "Dark Chocolate",
     about:
@@ -187,8 +187,8 @@ export const totalBarData = [
   {
     id: "13",
     image: "./img/tiny-tonys/milk-chocolate/milk-chocolate-mini-open-small.png",
-    title: "Milk Chocolate 32% Tiny Tony's",
-    subTitle: "100 pieces",
+    title: "Milk Chocolate",
+    subTitle: "100 piece Tiny Tony's",
     price: 48.69,
     alt: "Milk Chocolate",
     about:
@@ -203,8 +203,8 @@ export const totalBarData = [
     id: "14",
     image:
       "./img/tiny-tonys/milk-chocolate-caramel-seasalt/milk-chocolate-caramel-open.png",
-    title: "Milk Caramel Sea Salt 32% Tiny Tony's",
-    subTitle: "100 pieces",
+    title: "Milk Caramel Sea Salt",
+    subTitle: "100 piece Tiny Tony's",
     price: 48.69,
     alt: "Milk Chocolate Caramel Sea Salt Tiny Tony's",
     about:
@@ -218,8 +218,8 @@ export const totalBarData = [
   {
     id: "15",
     image: "./img/tiny-tonys/dark-chocolate/dark-chocolate-mini-open-large.png",
-    title: "Dark Chocolate 70% Tiny Tony's",
-    subTitle: "100 pieces",
+    title: "Dark Chocolate",
+    subTitle: "100 piece Tiny Tony's",
     price: 48.69,
     alt: "Dark Chocolate Tiny Tony's",
     about:

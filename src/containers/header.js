@@ -6,7 +6,7 @@ import * as ROUTES from "../constants/routes";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 // import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 // import ProfileIcon from "../assets/icons/profile.svg";
-export function HeaderContainer() {
+export function   HeaderContainer() {
   const { cartItems } = useContext(Context);
 
   const cartCount = () => {

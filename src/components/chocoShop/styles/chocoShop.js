@@ -39,7 +39,7 @@ export const SidebarNav = styled.nav`
 
   //? Sticky Menu on scroll
   &.sticky {
-    top: 60px;
+    top: 75px;
   }
 `;
 
@@ -62,7 +62,7 @@ export const SidebarNavList = styled.ul`
       color: var(--main-yellow);
     }
     @media (max-width: 1200px) {
-      font-size: clamp(1rem, 2vw, 1.6rem);
+      font-size: clamp(1rem, 2.2vw, 1.6rem);
       height: 30px;
     }
 
@@ -108,12 +108,15 @@ export const MenuItem = styled.li`
   margin: 10px;
   padding: 0 0 5px;
   border-radius: 5px;
+  width: clamp(160px, 22vw, 300px);
 
   p {
+    font-weight: 500;
     padding-left: 10px;
     color: var(--main-black);
-    @media (max-width: 600px) {
-      font-size: 14px;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    &.subTitle {
+      font-size: clamp(0.7rem, 1.5vw, 1.0rem);
     }
   }
   div {
@@ -160,28 +163,8 @@ export const Image = styled.img`
 
 export const Link = styled.a`
   img {
-    max-width: 300px;
-
-    ${
-      "" /* &.tinyTony1{
-        max-width: 200px;
-        margin-bottom: -20px;
-      }
-      &.tinyTony2 {
-        max-width:185px;
-      }
-      &.tinyTony3 {
-        margin-bottom: -40px;
-      } */
-    }
-
-    @media (max-width: 1200px) {
-      width: 250px;
-    }
-
-    @media (max-width: 600px) {
-      width: 100%;
-    }
+    width: clamp(150px, 22vw, 300px);
+    ${"" /* max-width: 300px; */}
   }
 `;
 

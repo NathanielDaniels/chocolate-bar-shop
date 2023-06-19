@@ -36,9 +36,12 @@ export const InnerForm = styled.form`
   min-height: 540px;
   max-width: 450px;
   margin: 0 auto;
-  position: relative;
-  padding: 25px 50px;
+  position: relative; 
+  padding: 25px;
   border-radius: 10px;
+  @media (max-width: 1200px) {
+    min-height: 400px;
+  }
 `;
 
 export const Text = styled.p`

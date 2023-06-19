@@ -18,28 +18,36 @@ export const Container = styled.footer`
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: 0 auto;
   justify-content: space-evenly;
 `;
 
 export const Logo = styled.img`
   max-width: 250px;
   max-height: 170px;
-  @media (max-width: 748px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 `;
 
 export const Section = styled.div`
-  ${"" /* border: 2px solid blue; */}
+  text-wrap: nowrap;
   display: inherit;
   flex-direction: column;
   padding: 10px 15px;
-  min-width: fit-content;
   h4 {
     font-size: clamp(1rem, 2vw, 1.5rem);
   }
 
+  .socialMedia {
+    @media (max-width: 945px) {
+      display: flex;
+    }
+  }
   ul {
+    &:not(:nth-child(1)) {
+      width: clamp(15em, 10vw, 25em);
+    }
     li {
       font-size: clamp(14px, 2vw, 1rem);
       color: #222;
@@ -51,14 +59,7 @@ export const Section = styled.div`
         }
       }
     }
-    &:nth-child(1) {
-      height: 100%;
-      display: inherit;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .socialMedia {
+    .mediaIcons {
       width: 150px;
     }
   }

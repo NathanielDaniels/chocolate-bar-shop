@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   width: 100vw;
   ${"" /* height: 800px; */}
-  height: clamp(800px, 33vw, 1400px);
+  height: clamp(645px, 33vw, 1400px);
   top: 0;
   right: 0;
   background: transparent;

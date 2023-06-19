@@ -1,4 +1,3 @@
-import React from "react";
 import { Footer } from "../components";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
@@ -60,10 +59,10 @@ export function FooterContainer() {
           </ul>
         </Footer.Section>
         <Footer.Section>
-          <ul>
+          <ul className='socialMedia'>
             <li>
               <a
-                className="socialMedia"
+                className="mediaIcons"
                 href="https://www.facebook.com/TonysChocolonelyUS/"
               >
                 <FacebookIcon fontSize="large" />
@@ -71,7 +70,7 @@ export function FooterContainer() {
             </li>
             <li>
               <a
-                className="socialMedia"
+                className="mediaIcons"
                 href="https://twitter.com/TonysChocoUS/"
               >
                 <TwitterIcon fontSize="large" />
@@ -79,7 +78,7 @@ export function FooterContainer() {
             </li>
             <li>
               <a
-                className="socialMedia"
+                className="mediaIcons"
                 href="https://www.instagram.com/tonyschocolonely_us/"
               >
                 <InstagramIcon fontSize="large" />
