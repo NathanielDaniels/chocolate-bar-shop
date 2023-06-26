@@ -12,32 +12,95 @@ import { Context } from "../context/Context";
 //   amount: number;
 // }
 
-export const FeatureContext = createContext(null);
-export const FeatureModalContext = createContext(null);
-export function ChocoShopContainer() {
-  const { allBars, addToCart } = useContext(Context);
-  const ChocoShopTotalMenu = allBars;
-  const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
-  const [activeMenu, setActiveMenu] = useState("All Chocolates");
+interface CartAmounts {
+  [key: string]: number;
+}
+
+export const AddToCartButton = ({ id, addToCart, selectedItem }: any) => {
   const [cartAmount, setCartAmount] = useState<CartAmounts>(() => {
     const storedCartAmount = sessionStorage.getItem("cartAmount");
     return storedCartAmount ? JSON.parse(storedCartAmount) : {};
   });
-  // const [currentId, setCurrentId] = useState("");
-  const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
     sessionStorage.setItem("cartAmount", JSON.stringify(cartAmount));
   }, [cartAmount]);
 
+  const handleItemClick = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    selectedItem: any
+  ) => {
+    e.preventDefault();
+    const { id, image, title, price } = selectedItem;
+    // cartAmount.id === id && setCurrentId(id);
+    // let randomId: any = uuidv4();
+    setCartAmount((prevCartAmounts: CartAmounts) => {
+      const prevAmount = prevCartAmounts[id] || 0;
+      return {
+        ...prevCartAmounts,
+        [id]: prevAmount + 1,
+      };
+    });
+    addToCart({
+      id,
+      image,
+      title,
+      price,
+      amount: cartAmount || 0,
+    });
+  };
+  return (
+    <>
+      {cartAmount.hasOwnProperty(id) ? (
+        <span>
+          <AddShoppingCartIcon
+            className="addToCartBtn"
+            onClick={(e) => handleItemClick(e, selectedItem)}
+            style={{
+              fontSize: 35,
+              color: "var(--main-red)",
+              cursor: "pointer",
+            }}
+          />
+          <span className="cartAmount" key={id}>
+            <p>{cartAmount[id]}</p>
+          </span>
+        </span>
+      ) : (
+        <AddCircleOutlineIcon
+          className="addToCartBtn"
+          onClick={(e) => {
+            handleItemClick(e, selectedItem);
+          }}
+          style={{
+            fontSize: 35,
+            color: "var(--main-red)",
+            cursor: "pointer",
+          }}
+        />
+      )}
+    </>
+  );
+};
+export const FeatureContext = createContext(null);
+export const FeatureModalContext = createContext(null);
+
+export function ChocoShopContainer() {
+  const { allBars, addToCart } = useContext(Context);
+  const ChocoShopTotalMenu = allBars;
+  const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
+  const [activeMenu, setActiveMenu] = useState("All Chocolates");
+  const [loading, setLoading] = useState(true);
+
   React.useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-    return () => {
-      setLoading(true);
-    };
-  }, []);
+    loading &&
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    // return () => {
+    //   setLoading(true);
+    // };
+  }, [loading]);
 
   const filterBigBars = ChocoShopTotalMenu.filter(
     (bars) => bars.price === 5.95
@@ -57,35 +120,6 @@ export function ChocoShopContainer() {
     e.preventDefault();
     setItemFeature(() => menu);
     setActiveMenu(() => active);
-  };
-
-  interface CartAmounts {
-    [key: string]: number;
-  }
-
-  const handleChocolateClick = (
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
-    chocolate: any
-  ) => {
-    e.preventDefault();
-    const { id, image, title, price } = chocolate;
-    // cartAmount.id === id && setCurrentId(id);
-    // let randomId: any = uuidv4();
-    setCartAmount((prevCartAmounts: CartAmounts) => {
-      const prevAmount = prevCartAmounts[id] || 0;
-      return {
-        ...prevCartAmounts,
-        [id]: prevAmount + 1,
-      };
-    });
-    addToCart({
-      id,
-      image,
-      title,
-      price,
-      amount: cartAmount || 0,
-      // prevAmount,
-    });
   };
 
   return (
@@ -138,45 +172,22 @@ export function ChocoShopContainer() {
                 <h1>Loading...</h1>
               </ChocoShop.Loading>
             ) : (
-              itemFeature.map((chocolate) => {
-                const { id, image, title, subTitle, price, alt } = chocolate;
+              itemFeature.map((item) => {
+                const { id, image, title, subTitle, price, alt } = item;
                 return (
                   <ChocoShop.MenuItem key={id}>
-                    <ChocoShop.Link item={chocolate} key={id}>
+                    <ChocoShop.Link item={item} key={id}>
                       <img src={image} alt={`...loading ${alt}`} />
                     </ChocoShop.Link>
                     <p className="title">{title}</p>
                     <p className="subTitle">{subTitle}</p>
                     <div>
                       <p>${price}</p>
-                      {cartAmount.hasOwnProperty(id) ? (
-                        <span>
-                          <AddShoppingCartIcon
-                            className="addToCartBtn"
-                            onClick={(e) => handleChocolateClick(e, chocolate)}
-                            style={{
-                              fontSize: 35,
-                              color: "var(--main-red)",
-                              cursor: "pointer",
-                            }}
-                          />
-                          <div className="cartAmount" key={id}>
-                            <p>{cartAmount[id]}</p>
-                          </div>
-                        </span>
-                      ) : (
-                        <AddCircleOutlineIcon
-                          className="addToCartBtn"
-                          onClick={(e) => {
-                            handleChocolateClick(e, chocolate);
-                          }}
-                          style={{
-                            fontSize: 35,
-                            color: "var(--main-red)",
-                            cursor: "pointer",
-                          }}
-                        />
-                      )}
+                      <AddToCartButton
+                        id={id}
+                        addToCart={addToCart}
+                        selectedItem={item}
+                      />
                     </div>
                   </ChocoShop.MenuItem>
                 );
@@ -185,7 +196,7 @@ export function ChocoShopContainer() {
           </ChocoShop.MenuList>
         </ChocoShop.MainMenu>
       </ChocoShop.MainMenuContainer>
-      <ChocoShop.ChocoSelectModal />
+      <ChocoShop.ChocoSelectModal loading={setLoading} />
     </ChocoShop>
   );
 }

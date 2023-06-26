@@ -1,7 +1,9 @@
 // import { type } from "os";
 import { useState, useEffect } from "react";
 import React from "react";
+// import { totalBarData } from "../assets/chocolateBarData";
 import { totalBarData } from "../assets/chocolateBarData";
+// import { totalBarData, products } from "../assets/chocolateBarData";
 
 interface ContextInterface {
   allBars: {
@@ -90,7 +92,10 @@ type BarType = {
   allergies: string;
 };
 
+// console.log(products.then((res) => console.log(res)));
+
 const ContextProvider: any = ({ children }: any) => {
+  // const [newBars, setNewBars] = useState<BarType[]>([]);
   const [allBars] = useState<BarType[]>(totalBarData);
   const [allPhotos, setAllPhotos]: [PhotoType[], SetAllPhotosType] = useState(
     JSON.parse(localStorage.getItem("photos") || "[]") || []
@@ -105,12 +110,35 @@ const ContextProvider: any = ({ children }: any) => {
     isFavorite: boolean;
   };
 
+  // const newFunc = async () => {
+  //   try {
+  //     const response = await products;
+  //     console.log({ response });
+  //     setNewBars(response as BarType[]);
+  //     return response;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // console.log({ newBars });
+
+  // const response = products.then((res) => res);
+
+  // console.log({ response });
+
+  // const test = newFunc().then((res) => console.log(res));
+  // console.log({ test });
+
   useEffect(() => {
     const allImgs: ImageType[] = [];
     const photoStorage = JSON.parse(localStorage.getItem("photos") || "[]");
     allBars.map((item) =>
       allImgs.push({ url: item.image, id: item.id, isFavorite: false })
     );
+    // allBars.map((item) =>
+    //   allImgs.push({ url: item.image, id: item.id, isFavorite: false })
+    // );
     return photoStorage.length > 0 ? photoStorage : setAllPhotos(allImgs);
   }, [allBars]);
 
@@ -153,7 +181,6 @@ const ContextProvider: any = ({ children }: any) => {
   }
 
   function removeFromCart(id?: any) {
-    // console.log(id);
     if (id) {
       setCartItems((prevItems: any) =>
         prevItems.filter((item: any) => item.id !== id)
@@ -165,8 +192,6 @@ const ContextProvider: any = ({ children }: any) => {
     const updatedCartItems = cartItems.filter((item: any) => item.id !== id);
     const updatedCartAmount = updatedCartItems.reduce(
       (total: any, item: any) => {
-        // console.log({ total, item  });
-        // console.log(`${total[item.id]} = ${total[item.id]} + ${item.amount}`);
         total[item.id] = (total[item.id] || 0) + item.amount;
         return total;
       },
