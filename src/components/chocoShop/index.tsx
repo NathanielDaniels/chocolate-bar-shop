@@ -5,7 +5,7 @@ import React, {
   useContext,
   createContext,
 } from "react";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+// import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import {
   Loading,
   Container,
@@ -20,6 +20,8 @@ import {
   ChocoSelectModal,
   ChocoModalContent,
 } from "./styles/chocoShop";
+import { AddToCartButton } from "../../containers/chocoShop";
+import { Context } from "../../context/Context";
 // import useHover from "../../hooks/useHover";
 // import { Context } from '../../context/Context';
 
@@ -150,12 +152,52 @@ ChocoShop.Link = function ChocoShopLink({ item, children, ...restProps }: any) {
 //   children: React.ReactNode;
 // };
 
-ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal() {
+// interface CartItemType {
+//   id: number;
+//   title: string;
+//   description: string;
+//   price: number;
+//   amount: number;
+// }
+
+ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({
+  loading,
+}: any) {
   const { showModal, setShowModal, item }: any =
     useContext(FeatureModalContext);
+  const { addToCart } = useContext(Context);
+
   // const { allBars, addToCart} = useContext(Context)
   // const [itemFeature, setItemFeature] = useState(allBars)
 
+  // const handleAddToCart = (item: CartItemType) => {
+  //   setCart((prev) => {
+  //     const isItemInCart = prev.find((cartItem) => cartItem.id === item.id);
+
+  //     if (isItemInCart) {
+  //       return prev.map((cartItem) =>
+  //         cartItem.id === item.id
+  //           ? { ...cartItem, amount: cartItem.amount + 1 }
+  //           : cartItem
+  //       );
+  //     }
+
+  //     return [...prev, { ...item, amount: 1 }];
+  //   });
+  // };
+
+  // const handleRemoveFromCart = (id: number) => {
+  //   setCart((prev) =>
+  //     prev.reduce((acc, item) => {
+  //       if (item.id === id) {
+  //         if (item.amount === 1) return acc;
+  //         return [...acc, { ...item, amount: item.amount - 1 }];
+  //       } else {
+  //         return [...acc, item];
+  //       }
+  //     }, [] as CartItemType[])
+  //   );
+  // };
   //? Blur background on showModal
   // useEffect(() => {
   //   const mainContainer = containerRef.current
@@ -174,6 +216,7 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal() {
         <button
           onClick={() => {
             setShowModal(false);
+            loading(true);
           }}
         >
           X
@@ -188,12 +231,10 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal() {
             <p>{item.subTitle}</p>
             <div>
               <p>${item.price}</p>
-              <AddCircleOutlineIcon
-                style={{
-                  fontSize: 35,
-                  color: "var(--main-red)",
-                  cursor: "pointer",
-                }}
+              <AddToCartButton
+                id={item.id}
+                addToCart={addToCart}
+                selectedItem={item}
               />
             </div>
           </div>

@@ -231,3 +231,9 @@ export const totalBarData = [
       "May contain traces of Wheat, Eggs, Peanuts, Milk and Tree nuts.",
   },
 ];
+
+export const products = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(totalBarData);
+  }, 300);
+});

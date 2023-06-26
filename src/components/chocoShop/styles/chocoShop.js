@@ -11,7 +11,7 @@ export const Container = styled.section`
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2.2fr;
   }
 
   @media (max-width: 400px) {
@@ -27,6 +27,8 @@ export const SidebarContainer = styled.section`
   width: 100%;
   grid-column: 1 / 2;
   grid-row: 1;
+  ${"" /* max-height: calc(100vh - 100px); */}
+  ${"" /* overflow-y: auto; */}
 `;
 export const Loading = styled.section`
   min-height: 100dvh;
@@ -116,7 +118,7 @@ export const MenuItem = styled.li`
     color: var(--main-black);
     font-size: clamp(0.8rem, 1.5vw, 1.2rem);
     &.subTitle {
-      font-size: clamp(0.7rem, 1.5vw, 1.0rem);
+      font-size: clamp(0.7rem, 1.5vw, 1rem);
     }
   }
   div {
@@ -185,7 +187,7 @@ export const ChocoSelectModal = styled.div`
   }
   @media (max-width: 800px) {
     width: 80%;
-    height: 95vh;
+    ${"" /* height: auto; */}
     padding: 0;
   }
 `;
@@ -233,33 +235,59 @@ export const ChocoModalContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
     img {
       width: 80%;
-      margin-bottom: 1em;
+      margin: 0 auto 1em;
     }
     div {
       display: flex;
-      flex-direction: column;
       font-size: 1.4rem;
+      justify-content: space-evenly;
       div {
-        justify-content: space-between;
         flex-direction: row;
         font-weight: 500;
+        position: relative;
+        .cartAmount {
+          border: 2px solid red;
+          background: var(--main-yellow);
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          z-index: 1;
+          position: absolute;
+          top: -25px;
+          right: -15px;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          p {
+            padding: 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--main-black);
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+        }
       }
     }
     @media (max-width: 800px) {
       grid-column: 1;
       grid-row: 2 / 3;
       flex-direction: row;
+      ${"" /* align-items: center; */}
+      height: fit-content;
       img {
         width: clamp(100px, 30vw, 200px);
         max-width: 50%;
+        margin: 0;
+        height: fit-content;
       }
       div {
         font-size: 1.2rem;
         padding: 0 10px;
+        flex-direction: column;
       }
     }
   }
@@ -274,6 +302,7 @@ export const ChocoModalContent = styled.div`
       font-size: 12px;
     }
     .allergies {
+      margin: 0 auto;
       border: 2px solid red;
       border-radius: 5px;
       padding: 5px 10px;
