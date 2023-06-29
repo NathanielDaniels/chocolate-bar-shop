@@ -5,12 +5,6 @@ import { ChocoShop } from "../components";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { Context } from "../context/Context";
-// import { useHover } from '../hooks/useHover';
-
-// interface Cart {
-//   id?: string;
-//   amount: number;
-// }
 
 interface CartAmounts {
   [key: string]: number;
@@ -32,7 +26,6 @@ export const AddToCartButton = ({ id, addToCart, selectedItem }: any) => {
   ) => {
     e.preventDefault();
     const { id, image, title, price } = selectedItem;
-    // cartAmount.id === id && setCurrentId(id);
     // let randomId: any = uuidv4();
     setCartAmount((prevCartAmounts: CartAmounts) => {
       const prevAmount = prevCartAmounts[id] || 0;
