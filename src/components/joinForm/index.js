@@ -1,5 +1,5 @@
-import React from "react";
 import {
+  UserProfile,
   Container,
   Title,
   InnerForm,
@@ -15,6 +15,10 @@ import {
 export default function Form({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 }
+
+Form.UserProfile = ({ children, ...restProps }) => {
+  return <UserProfile {...restProps}>{children}</UserProfile>;
+};
 
 Form.Title = function FormTitle({ children, ...restProps }) {
   return <Title {...restProps}>{children}</Title>;
