@@ -2,6 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
+  .Toastify {
+    z-index: 9999;
+  }
+
   :root {
     --main-blue: #0066CC;
     --main-bright-blue: #0066CC;
