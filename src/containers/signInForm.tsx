@@ -46,7 +46,6 @@ export function FormContainer() {
           isAnonymous,
           uid,
         } = user;
-        console.log({ user });
         setUsername(displayName);
         setEmailAddress(email);
         setEmailVerified(emailVerified);
@@ -56,7 +55,6 @@ export function FormContainer() {
       } else {
         // User is signed out.
         setLoading(false);
-        console.log("no user signed in");
       }
     });
   }, [firebase]);
