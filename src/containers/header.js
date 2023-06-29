@@ -6,8 +6,9 @@ import * as ROUTES from "../constants/routes";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 // import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 // import ProfileIcon from "../assets/icons/profile.svg";
-export function   HeaderContainer() {
+export function HeaderContainer() {
   const { cartItems } = useContext(Context);
+  const userData = JSON.parse(localStorage.getItem("authUser"));
 
   const cartCount = () => {
     const totalItems = cartItems.reduce(
@@ -47,6 +48,11 @@ export function   HeaderContainer() {
                 className="profileIcon"
                 trigger="hover"
                 colors="primary:#fff"
+                title={
+                  userData
+                    ? `${userData.displayName}'s Profile`
+                    : "User Profile"
+                }
                 style={{ width: "35px", height: "35px" }}
               ></lord-icon>
             </NavLink>

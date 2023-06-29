@@ -5,6 +5,44 @@ type Props = {
   isSignInPage: boolean;
 };
 
+export const UserProfile = styled.main`
+  color: var(--main-yellow);
+  font-size: clamp(0.7rem, 3vw, 1.4rem);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 200px;
+  p {
+    color: var(--main-white);
+  }
+  section {
+    margin-top: 20px;
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      // align-items: center;
+      flex-direction: column;
+      li {
+        margin: 5px 0;
+        text-decoration: none;
+        color: var(--main-white);
+        font-size: clamp(0.7rem, 3vw, 1.2rem);
+        &:hover {
+          color: var(--main-red);
+        }
+      }
+    }
+  }
+  @media (max-width: 1200px) {
+    width: 98%;
+    margin: 0 auto;
+    right: 0;
+    top: 100px;
+  }
+`;
 export const Container = styled.div<Props>`
   z-index: 2;
   padding-top: ${(props: any) => (props.isSigninPage ? "100px" : "0px")};
@@ -36,7 +74,7 @@ export const InnerForm = styled.form`
   min-height: 540px;
   max-width: 450px;
   margin: 0 auto;
-  position: relative; 
+  position: relative;
   padding: 25px;
   border-radius: 10px;
   @media (max-width: 1200px) {
