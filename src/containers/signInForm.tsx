@@ -21,6 +21,18 @@ export function FormContainer() {
   const [uid, setUid] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
 
+  const Loading = () => {
+    return (
+      <div className="loading" style={{ height: "100vh" }}>
+        <h1>Loading...</h1>
+      </div>
+    );
+  };
+
+  useEffect(() => {
+    console.log({ loading });
+  }, [loading]);
+
   const userProfileData = {
     Username: username,
     Email: emailAddress,
@@ -63,32 +75,35 @@ export function FormContainer() {
 
   const handleSignin = (event: Event) => {
     event.preventDefault();
-
+    setLoading(true);
     firebase
       .auth()
       .signInWithEmailAndPassword(emailAddress, userPassword)
       .then(() => {
         setEmailAddress(emailAddress);
+        setUsername(username);
         setUserPassword(userPassword);
         localStorage.setItem(
           "authUser",
           JSON.stringify(firebase.auth().currentUser)
         );
-        toast(`Welcome, ${username}!`, {
-          position: "top-right",
+        setLoading(false);
+        toast(`Welcome, ${emailAddress}!`, {
+          position: "bottom-right",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
         });
         setTimeout(() => {
+          // building Loading component - remove when complete
           window.location.reload();
-        }, 2000);
+        }, 3000);
       })
       .catch((error: any) => {
         setError(error.message);
         toast(`Error signing in: ${error.message}!`, {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -114,20 +129,21 @@ export function FormContainer() {
           })
         );
         toast(`Welcome, Demo User!`, {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
         });
         setTimeout(() => {
+          // building Loading component - remove when complete
           window.location.reload();
         }, 2000);
       })
       .catch((error: any) => {
         setError(error.message);
         toast(`Error signing in: ${error.message}!`, {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -165,33 +181,46 @@ export function FormContainer() {
     );
   });
 
-  const handleSignOut = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        localStorage.removeItem("authUser");
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
-        toast(`Signed out successfully!`, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
+  const SignOutButton = () => {
+    const [isSignedOut, setIsSignedOut] = useState(false);
+    const handleSignOut = () => {
+      setLoading(true);
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          localStorage.removeItem("authUser");
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+          toast(`Signed out successfully!`, {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+          });
+          setIsSignedOut(true);
+        })
+        .catch((error: any) => {
+          setError(error.message);
+          toast(`Error signing out: ${error.message}!`, {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+          });
         });
-      })
-      .catch((error: any) => {
-        setError(error.message);
-        toast(`Error signing out: ${error.message}!`, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-        });
-      });
+    };
+    if (isSignedOut) {
+      return null;
+    }
+    return (
+      <button type="button" style={{ zIndex: "1000" }} onClick={handleSignOut}>
+        Sign Out
+      </button>
+    );
   };
 
   return (
@@ -235,22 +264,19 @@ export function FormContainer() {
       ) : (
         <>
           {loading ? (
-            <Form.UserProfile>loading...</Form.UserProfile>
+            <Form.UserProfile>
+              <Loading />
+            </Form.UserProfile>
           ) : (
             <Form.UserProfile>
               <h1>Welcome Back, {username}!</h1>
               <p>Thank You for being a member of Tony's Chocolate.</p>
               <section>
                 <h2>Account Details</h2>
+                {/* {!loading ? <Loading /> : <ul>{userDataList}</ul>} */}
                 <ul>{userDataList}</ul>
               </section>
-              <button
-                type="button"
-                style={{ zIndex: "1000" }}
-                onClick={handleSignOut}
-              >
-                Sign Out
-              </button>
+              <SignOutButton />
             </Form.UserProfile>
           )}
         </>

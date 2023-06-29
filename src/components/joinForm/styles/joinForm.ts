@@ -18,7 +18,7 @@ export const UserProfile = styled.main`
     color: var(--main-white);
   }
   section {
-    margin-top: 20px;
+    margin: 20px;
     ul {
       list-style: none;
       display: flex;
@@ -30,12 +30,30 @@ export const UserProfile = styled.main`
         text-decoration: none;
         color: var(--main-white);
         font-size: clamp(0.7rem, 3vw, 1.2rem);
-        &:hover {
+        &:is(:hover, :focus) {
           color: var(--main-red);
         }
       }
     }
   }
+  button {
+    background-color: #f51e0f;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    &:is(:hover, :focus) {
+      background-color: #630404;
+      outline-offset: 2px;
+    }
+  }
+
   @media (max-width: 1200px) {
     width: 98%;
     margin: 0 auto;
@@ -99,7 +117,7 @@ export const TextSmall = styled.h4`
 export const Link = styled(ReactRouterLink)`
   color: #fff;
   text-decoration: none;
-  &:hover {
+  &:is(:hover, :focus) {
     text-decoration: underline;
   }
 `;

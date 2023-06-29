@@ -166,50 +166,6 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({
   const { showModal, setShowModal, item }: any =
     useContext(FeatureModalContext);
   const { addToCart } = useContext(Context);
-
-  // const { allBars, addToCart} = useContext(Context)
-  // const [itemFeature, setItemFeature] = useState(allBars)
-
-  // const handleAddToCart = (item: CartItemType) => {
-  //   setCart((prev) => {
-  //     const isItemInCart = prev.find((cartItem) => cartItem.id === item.id);
-
-  //     if (isItemInCart) {
-  //       return prev.map((cartItem) =>
-  //         cartItem.id === item.id
-  //           ? { ...cartItem, amount: cartItem.amount + 1 }
-  //           : cartItem
-  //       );
-  //     }
-
-  //     return [...prev, { ...item, amount: 1 }];
-  //   });
-  // };
-
-  // const handleRemoveFromCart = (id: number) => {
-  //   setCart((prev) =>
-  //     prev.reduce((acc, item) => {
-  //       if (item.id === id) {
-  //         if (item.amount === 1) return acc;
-  //         return [...acc, { ...item, amount: item.amount - 1 }];
-  //       } else {
-  //         return [...acc, item];
-  //       }
-  //     }, [] as CartItemType[])
-  //   );
-  // };
-  //? Blur background on showModal
-  // useEffect(() => {
-  //   const mainContainer = containerRef.current
-  //     showModal ? (mainContainer.style.filter = "blur(8px)") : (mainContainer.style.filter = "blur(0px)")
-  //   }, [showModal])
-
-  //? Remove Scroll when Modal is open
-  //   useEffect(() => {
-  //   const mainContainer = containerRef.current
-  //   showModal ? (mainContainer.style.overflow = "hidden") : (mainContainer.style.overflow = 'scroll')
-  // }, [showModal])
-
   return showModal ? (
     <ChocoSelectModal>
       <ChocoModalContent>
