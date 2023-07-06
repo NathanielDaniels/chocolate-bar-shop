@@ -6,6 +6,14 @@ export const GlobalStyles = createGlobalStyle`
     z-index: 9999;
   }
 
+  .loading {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-yellow)
+  }
+
   :root {
     --main-blue: #0066CC;
     --main-bright-blue: #0066CC;

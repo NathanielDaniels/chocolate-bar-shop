@@ -166,7 +166,11 @@ export const Image = styled.img`
 export const Link = styled.a`
   img {
     width: clamp(150px, 22vw, 300px);
-    ${"" /* max-width: 300px; */}
+    aspect-ratio: 10/6;
+    object-fit: contain;
+    ${"" /* object-fit: scale-down; */}
+    ${"" /* mix-blend-mode: color-burn; */}
+    ${"" /* max-width: 300px; */};
   }
 `;
 
