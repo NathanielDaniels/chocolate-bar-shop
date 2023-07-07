@@ -6,6 +6,7 @@ import { FirebaseContext } from "../context/firebase";
 import * as ROUTES from "../constants/routes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Loader } from "../components/Loader";
 
 // let userData = JSON.parse(localStorage.getItem("authUser") as string) || {};
 
@@ -23,43 +24,22 @@ export function FormContainer() {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [uid, setUid] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isSignedOut, setIsSignedOut] = useState<boolean>(true);
-
-  // console.log("userData", userData);
-  // console.log("Current State", {
-  //   emailAddress,
-  //   username,
-  //   userPassword,
-  //   // userPassword: userPassword.replace(/./g, "*") || "",
-  //   error,
-  //   emailVerified,
-  //   photoURL,
-  //   isAnonymous,
-  //   uid,
-  // });
-  // console.log("current Firebase User", firebase.auth().currentUser);
+  const [isSignedOut, setIsSignedOut] = useState<boolean>(() => {
+    const storedValue = localStorage.getItem("isSignedOut");
+    return storedValue ? JSON.parse(storedValue) : true;
+  });
 
   useEffect(() => {
-    // console.log({ isLoading, isSignedOut });
     if (isLoading) {
       setTimeout(() => {
         setIsLoading(false);
       }, 2000);
     }
-  }, [isLoading, isSignedOut]);
+  }, [isLoading]);
 
-  const Loader = () => {
-    return (
-      <span className="loading">
-        <h1>Loading</h1>
-        <div className="snippet" data-title="dot-pulse">
-          <div className="stage">
-            <div className="dot-pulse"></div>
-          </div>
-        </div>
-      </span>
-    );
-  };
+  useEffect(() => {
+    localStorage.setItem("isSignedOut", JSON.stringify(isSignedOut));
+  }, [isSignedOut]);
 
   const userProfileData = {
     "Name ": username,
@@ -73,6 +53,7 @@ export function FormContainer() {
   const isInvalid = userPassword === "" || emailAddress === "";
 
   useEffect(() => {
+    console.log("firebase auth state changed");
     firebase.auth().onAuthStateChanged((user: any) => {
       if (user) {
         const {
@@ -130,9 +111,9 @@ export function FormContainer() {
     }
   };
 
-  const handleDemo = async () => {
+  const handleDemo = () => {
     setIsLoading(true);
-    await firebase
+    firebase
       .auth()
       .signInWithEmailAndPassword("demo@demo.com", "nateflixdemo")
       .then((data: any) => {
@@ -140,11 +121,12 @@ export function FormContainer() {
           setEmailAddress(data.user.email);
           setUserPassword("nateflixdemo");
           setUsername(data.user.displayName);
-          setIsSignedOut(false);
           setUserData(data.user);
+          setIsSignedOut(false);
           localStorage.setItem("authUser", JSON.stringify(data.user));
         }
         if (userData) {
+          setIsSignedOut(false);
           toast(`Welcome, Demo User!`, {
             position: "bottom-right",
             autoClose: 3000,
