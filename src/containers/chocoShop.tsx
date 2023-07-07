@@ -5,6 +5,7 @@ import { ChocoShop } from "../components";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { Context } from "../context/Context";
+import { Loader } from "../components/Loader";
 
 interface CartAmounts {
   [key: string]: number;
@@ -162,7 +163,7 @@ export function ChocoShopContainer() {
           <ChocoShop.MenuList>
             {loading ? (
               <ChocoShop.Loading>
-                <h1>Loading...</h1>
+                <Loader />
               </ChocoShop.Loading>
             ) : (
               itemFeature.map((item) => {

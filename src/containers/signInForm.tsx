@@ -6,11 +6,15 @@ import { FirebaseContext } from "../context/firebase";
 import * as ROUTES from "../constants/routes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Loader } from "../components/Loader";
 
-const userData = JSON.parse(localStorage.getItem("authUser") as string);
+// let userData = JSON.parse(localStorage.getItem("authUser") as string) || {};
 
 export function FormContainer() {
   const { firebase } = useContext<any>(FirebaseContext);
+  const [userData, setUserData] = useState(
+    JSON.parse(localStorage.getItem("authUser") as string) || null
+  );
   const [emailAddress, setEmailAddress] = useState("");
   const [username, setUsername] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -19,37 +23,39 @@ export function FormContainer() {
   const [photoURL, setPhotoURL] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [uid, setUid] = useState("");
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const Loading = () => {
-    return (
-      <div className="loading" style={{ height: "100vh" }}>
-        <h1>Loading...</h1>
-      </div>
-    );
-  };
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSignedOut, setIsSignedOut] = useState<boolean>(() => {
+    const storedValue = localStorage.getItem("isSignedOut");
+    return storedValue ? JSON.parse(storedValue) : true;
+  });
 
   useEffect(() => {
-    console.log({ loading });
-  }, [loading]);
+    if (isLoading) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    localStorage.setItem("isSignedOut", JSON.stringify(isSignedOut));
+  }, [isSignedOut]);
 
   const userProfileData = {
-    Username: username,
-    Email: emailAddress,
-    "Email Verified": emailVerified,
-    "User Photo": photoURL,
-    "Anonymous?": isAnonymous,
-    UID: uid,
+    "Name ": username,
+    "Email ": emailAddress,
+    "Email Verified ": emailVerified,
+    "Profile Photo ": photoURL,
+    "Anonymous ": isAnonymous,
+    "ID ": uid,
   };
 
   const isInvalid = userPassword === "" || emailAddress === "";
 
   useEffect(() => {
+    console.log("firebase auth state changed");
     firebase.auth().onAuthStateChanged((user: any) => {
-      setLoading(true);
       if (user) {
-        setLoading(false);
-        // User is signed in.
         const {
           displayName,
           email,
@@ -58,15 +64,13 @@ export function FormContainer() {
           isAnonymous,
           uid,
         } = user;
-        setUsername(displayName);
-        setEmailAddress(email);
-        setEmailVerified(emailVerified);
-        setPhotoURL(photoURL);
-        setIsAnonymous(isAnonymous);
-        setUid(uid);
-      } else {
-        // User is signed out.
-        setLoading(false);
+        setUserData({ ...user });
+        if (displayName) setUsername(displayName);
+        if (email) setEmailAddress(email);
+        if (emailVerified) setEmailVerified(emailVerified);
+        if (photoURL) setPhotoURL(photoURL);
+        if (isAnonymous) setIsAnonymous(isAnonymous);
+        if (uid) setUid(uid);
       }
     });
   }, [firebase]);
@@ -75,80 +79,65 @@ export function FormContainer() {
 
   const handleSignin = (event: Event) => {
     event.preventDefault();
-    setLoading(true);
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(emailAddress, userPassword)
-      .then(() => {
-        setEmailAddress(emailAddress);
-        setUsername(username);
-        setUserPassword(userPassword);
-        localStorage.setItem(
-          "authUser",
-          JSON.stringify(firebase.auth().currentUser)
-        );
-        setLoading(false);
-        toast(`Welcome, ${emailAddress}!`, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
+    setIsLoading(true);
+    try {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(emailAddress, userPassword)
+        .then((data: any) => {
+          setIsSignedOut(false);
+          localStorage.setItem("authUser", JSON.stringify(data.user));
+          if (userData) {
+            toast(`Welcome, ${data.user.displayName}!`, {
+              position: "bottom-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+            });
+          }
+        })
+        .catch((error: any) => {
+          setError(error.message);
         });
-        setTimeout(() => {
-          // building Loading component - remove when complete
-          window.location.reload();
-        }, 3000);
-      })
-      .catch((error: any) => {
-        setError(error.message);
-        toast(`Error signing in: ${error.message}!`, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-        });
+    } catch {
+      toast(`Error signing in!`, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
       });
+    }
   };
 
   const handleDemo = () => {
+    setIsLoading(true);
     firebase
       .auth()
       .signInWithEmailAndPassword("demo@demo.com", "nateflixdemo")
-      .then(() => {
-        setEmailAddress("demo@demo.com");
-        setUserPassword("nateflixdemo");
-        setUsername("Demo User");
-        localStorage.setItem(
-          "authUser",
-          JSON.stringify({
-            email: "demo@demo.com",
-            displayName: "Demo User",
-            password: "nateflixdemo",
-          })
-        );
-        toast(`Welcome, Demo User!`, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-        });
-        setTimeout(() => {
-          // building Loading component - remove when complete
-          window.location.reload();
-        }, 2000);
+      .then((data: any) => {
+        if (data.user) {
+          setEmailAddress(data.user.email);
+          setUserPassword("nateflixdemo");
+          setUsername(data.user.displayName);
+          setUserData(data.user);
+          setIsSignedOut(false);
+          localStorage.setItem("authUser", JSON.stringify(data.user));
+        }
+        if (userData) {
+          setIsSignedOut(false);
+          toast(`Welcome, Demo User!`, {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+          });
+        }
       })
       .catch((error: any) => {
         setError(error.message);
-        toast(`Error signing in: ${error.message}!`, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-        });
       });
   };
 
@@ -181,37 +170,42 @@ export function FormContainer() {
     );
   });
 
-  const SignOutButton = () => {
-    const [isSignedOut, setIsSignedOut] = useState(false);
+  interface SignOutButtonProps {
+    isSignedOut: boolean;
+  }
+
+  const SignOutButton: React.FC<SignOutButtonProps> = ({ isSignedOut }) => {
     const handleSignOut = () => {
-      setLoading(true);
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          localStorage.removeItem("authUser");
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000);
-          toast(`Signed out successfully!`, {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
+      if (!isLoading) setIsLoading(true);
+      try {
+        firebase
+          .auth()
+          .signOut()
+          .then(() => {
+            if (userData) localStorage.removeItem("authUser");
+            setIsSignedOut(true);
+            setUserData(null);
+            toast(`Signed out successfully!`, {
+              position: "bottom-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+            });
+          })
+          .catch((error: any) => {
+            setError(error.message);
           });
-          setIsSignedOut(true);
-        })
-        .catch((error: any) => {
-          setError(error.message);
-          toast(`Error signing out: ${error.message}!`, {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-          });
+      } catch {
+        setError(error);
+        toast(`Error signing out!`, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
         });
+      }
     };
     if (isSignedOut) {
       return null;
@@ -225,63 +219,60 @@ export function FormContainer() {
 
   return (
     <>
-      {!userData ? (
-        <Form isSigninPage>
-          <Form.InnerForm onSubmit={handleSignin} method="POST">
-            <Form.Title>Sign In</Form.Title>
-            <Form.Input
-              type="email"
-              placeholder="Email"
-              value={emailAddress}
-              onChange={({ target }: { target: HTMLInputElement }) =>
-                setEmailAddress(target.value)
-              }
-              required
-            />
-            <Form.Input
-              type="password"
-              placeholder="Password"
-              value={userPassword}
-              onChange={({ target }: { target: HTMLInputElement }) =>
-                setUserPassword(target.value)
-              }
-              required
-            />
-            <Form.Submit type="submit" disabled={isInvalid}>
-              Sign In
-            </Form.Submit>
-            <Form.Text>
-              New to Tony's Chocolate?{" "}
-              <Form.Link to={ROUTES.JOIN_IN}>Join in now.</Form.Link>
-            </Form.Text>
-            {error && <Form.Error>{error}</Form.Error>}
-            <Form.Demo onClick={() => handleDemo()} type="button">
-              Demo
-            </Form.Demo>
-            <ToastContainer />
-          </Form.InnerForm>
-        </Form>
+      {isLoading ? (
+        <Loader />
       ) : (
         <>
-          {loading ? (
-            <Form.UserProfile>
-              <Loading />
-            </Form.UserProfile>
+          {!userData || isSignedOut ? (
+            <Form isSigninPage>
+              <Form.InnerForm onSubmit={handleSignin} method="POST">
+                <Form.Title>Sign In</Form.Title>
+                <Form.Input
+                  type="email"
+                  placeholder="Email"
+                  value={emailAddress}
+                  onChange={({ target }: { target: HTMLInputElement }) =>
+                    setEmailAddress(target.value)
+                  }
+                  required
+                />
+                <Form.Input
+                  type="password"
+                  placeholder="Password"
+                  value={userPassword}
+                  onChange={({ target }: { target: HTMLInputElement }) =>
+                    setUserPassword(target.value)
+                  }
+                  required
+                />
+                <Form.Submit type="submit" disabled={isInvalid}>
+                  Sign In
+                </Form.Submit>
+                <Form.Text>
+                  New to Tony's Chocolate?{" "}
+                  <Form.Link to={ROUTES.JOIN_IN}>Join in now.</Form.Link>
+                </Form.Text>
+                {error && <Form.Error>{error}</Form.Error>}
+                <Form.Demo onClick={() => handleDemo()} type="button">
+                  Demo
+                </Form.Demo>
+                <ToastContainer />
+              </Form.InnerForm>
+            </Form>
           ) : (
             <Form.UserProfile>
               <h1>Welcome Back, {username}!</h1>
               <p>Thank You for being a member of Tony's Chocolate.</p>
               <section>
                 <h2>Account Details</h2>
-                {/* {!loading ? <Loading /> : <ul>{userDataList}</ul>} */}
                 <ul>{userDataList}</ul>
               </section>
-              <SignOutButton />
+              <SignOutButton isSignedOut={isSignedOut} />
             </Form.UserProfile>
           )}
+          ;
         </>
       )}
-      ;
     </>
   );
 }
