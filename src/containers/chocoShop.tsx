@@ -86,24 +86,25 @@ export function ChocoShopContainer() {
   const [activeMenu, setActiveMenu] = useState("All Chocolates");
   const [loading, setLoading] = useState(true);
 
+  const bigBarPrice = 5.95;
+  const smallBarPrice = 2.39;
+  const tinyTonysPrice = 48.69;
+
   React.useEffect(() => {
     loading &&
       setTimeout(() => {
         setLoading(false);
       }, 1000);
-    // return () => {
-    //   setLoading(true);
-    // };
   }, [loading]);
 
   const filterBigBars = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 5.95
+    (bars) => bars.price === bigBarPrice
   );
   const filterSmallBars = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 2.39
+    (bars) => bars.price === smallBarPrice
   );
   const filterTinyTonys = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 48.69
+    (bars) => bars.price === tinyTonysPrice
   );
 
   const handleMenuItemClick = (

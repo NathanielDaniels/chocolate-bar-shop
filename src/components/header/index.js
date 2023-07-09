@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Container, Menu, MenuList, MenuListItem } from "./styles/header";
 
-export default function Header({ ref, children, ...restProps }) {
+export default function Header({ children, ...restProps }) {
   const headerDom = useRef("");
 
   useEffect(() => {
