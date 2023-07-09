@@ -33,8 +33,10 @@ export const Inner = styled.div`
 
 export const Title = styled.h2`
   color: var(--main-yellow);
+  max-width: 300px;
+  margin-bottom: 5px;
   @media (max-width: 600px) {
-    width: 80%;
+    ${"" /* width: 80%; */}
     font-size: 1.3rem;
   }
 `;
