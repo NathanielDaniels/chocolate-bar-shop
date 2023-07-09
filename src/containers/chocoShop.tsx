@@ -164,7 +164,7 @@ export function ChocoShopContainer() {
           <ChocoShop.MenuList>
             {loading ? (
               <ChocoShop.Loading>
-                <Loader />
+                <Loader currentPage={"chocoShop"} />
               </ChocoShop.Loading>
             ) : (
               itemFeature.map((item) => {

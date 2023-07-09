@@ -186,8 +186,10 @@ export function FormContainer() {
             setIsSignedOut(true);
             setUserData(null);
             toast(`Signed out successfully!`, {
-              position: "bottom-right",
+              className: "toast",
+              position: "top-right",
               autoClose: 3000,
+              type: "success",
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -201,6 +203,7 @@ export function FormContainer() {
         toast(`Error signing out!`, {
           position: "bottom-right",
           autoClose: 3000,
+          type: "error",
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -220,7 +223,7 @@ export function FormContainer() {
   return (
     <>
       {isLoading ? (
-        <Loader />
+        <Loader currentPage={"signInForm"} />
       ) : (
         <>
           {!userData || isSignedOut ? (
