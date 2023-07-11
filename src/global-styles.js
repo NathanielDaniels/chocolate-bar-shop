@@ -85,7 +85,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .Toastify__toast-container--top-right {
-    ${"" /* margin-top: 2rem; */}
+    margin-top: 2rem;
   }
 
   .Toastify__toast {

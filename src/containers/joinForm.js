@@ -45,7 +45,7 @@ export function FormContainer() {
       <About>
         <About.Inner>
           <About.Title>
-            together we'll make all chocolate worldwide 100% slave free
+            Together we'll make all chocolate worldwide 100% slave free
           </About.Title>
           <About.Info>
             Join the movement with Tony's and help us achieve our mission of
