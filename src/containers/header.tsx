@@ -7,7 +7,6 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { defineElement } from "lord-icon-element";
 import lottie from "lottie-web";
 
-console.log(NavLink);
 // register lottie and define custom element
 defineElement(lottie.loadAnimation);
 
@@ -29,9 +28,7 @@ export function HeaderContainer() {
     return storedValue ? JSON.parse(storedValue) : true;
   });
 
-  console.log(userData);
   useEffect(() => {
-    console.log("isSignedOut", isSignedOut);
     if (isSignedOut) {
       setUserData({});
     } else {

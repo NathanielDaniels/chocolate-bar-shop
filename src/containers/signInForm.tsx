@@ -53,7 +53,7 @@ export function FormContainer() {
   const isInvalid = userPassword === "" || emailAddress === "";
 
   useEffect(() => {
-    console.log("firebase auth state changed");
+    // firebase auth state changed
     firebase.auth().onAuthStateChanged((user: any) => {
       if (user) {
         const {
