@@ -1,13 +1,14 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.section`
+  min-height: 700px;
+  height: 100vh;
   position: relative;
   display: flex;
   flex-wrap: wrap;
   padding-top: 100px;
   justify-content: center;
   align-items: center;
-  height: auto;
   margin: 0 auto;
 `;
 

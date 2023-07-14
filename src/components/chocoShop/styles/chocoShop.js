@@ -1,6 +1,8 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.section`
+  min-height: 100dvh;
+  ${"" /* height: (heigth) => (heigth > 100vh ? auto: "100vh"); */}
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr;
@@ -80,6 +82,7 @@ export const SidebarNavList = styled.ul`
 
 //? Right Side Main ====================================
 export const MainMenuContainer = styled.section`
+  ${"" /* min-height: 100vh; */}
   background: var(--main-white);
   grid-column: 2 / span 1;
   grid-row: 1;

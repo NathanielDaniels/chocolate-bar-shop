@@ -166,6 +166,7 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({
   const { showModal, setShowModal, item }: any =
     useContext(FeatureModalContext);
   const { addToCart } = useContext(Context);
+
   return showModal ? (
     <ChocoSelectModal>
       <ChocoModalContent>

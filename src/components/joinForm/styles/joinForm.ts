@@ -6,6 +6,8 @@ type Props = {
 };
 
 export const UserProfile = styled.main`
+  min-height: 700px;
+  height: 100vh;
   color: var(--main-yellow);
   font-size: clamp(0.7rem, 3vw, 1.4rem);
   z-index: 1;
@@ -62,8 +64,13 @@ export const UserProfile = styled.main`
   }
 `;
 export const Container = styled.div<Props>`
+  min-height: 700px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
-  padding-top: ${(props: any) => (props.isSigninPage ? "100px" : "0px")};
+  // padding-top: ${(props: any) => (props.isSigninPage ? "100px" : "0px")};
   @media (max-width: 1200px) {
     width: 98%;
     margin: 0 auto;
