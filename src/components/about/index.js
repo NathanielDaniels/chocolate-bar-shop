@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Inner, Title, Info, StoryImg } from "./styles/about";
 
 export default function About({ children, ...restProps }) {

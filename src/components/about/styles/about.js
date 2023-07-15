@@ -10,6 +10,11 @@ export const Container = styled.section`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  @media (max-width: 1200px) {
+    min-height: auto;
+    height: auto;
+    padding-top: 0;
+  }
 `;
 
 export const Inner = styled.div`
