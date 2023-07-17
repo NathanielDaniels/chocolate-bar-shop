@@ -14,6 +14,7 @@ export const Info = styled.article`
   margin-bottom: 10em;
   gap: 1em;
   padding: 0 25px;
+  ${"" /* h3 {} */}
   img {
     width: clamp(300px, 45vw, 500px);
   }

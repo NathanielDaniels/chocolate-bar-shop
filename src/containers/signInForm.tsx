@@ -273,7 +273,6 @@ export function FormContainer() {
               <SignOutButton isSignedOut={isSignedOut} />
             </Form.UserProfile>
           )}
-          ;
         </>
       )}
     </>

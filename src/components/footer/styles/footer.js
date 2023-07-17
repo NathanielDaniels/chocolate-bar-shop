@@ -5,10 +5,12 @@ export const Container = styled.footer`
   background: #fff;
   padding: 50px 35px;
 
-  position: relative;
-  bottom: 0;
+  ${"" /* position: relative; */}
+  ${
+    "" /* bottom: 0;
   left: 0;
-  right: 0;
+  right: 0; */
+  }
 
   @media (max-width: 748px) {
     justify-content: flex-start;

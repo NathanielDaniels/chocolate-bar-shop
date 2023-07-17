@@ -47,16 +47,14 @@ export default function ChocoShop({ children, ...restProps }: any) {
       <Container ref={containerRef} {...restProps}>
         {children}
       </Container>
-      ;
     </FeatureModalContext.Provider>
   );
 }
 
-//? Left Side Menu ===========================================
-
 ChocoShop.Loading = function ChocoShopLoading({ children, ...restProps }: any) {
   return <Loading {...restProps}>{children}</Loading>;
 };
+//? Left Side Menu ===========================================
 ChocoShop.SidebarContainer = function ChocoShopSidebarContainer({
   children,
   ...restProps
@@ -68,19 +66,10 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({
   children,
   ...restProps
 }: any) {
-  // //? Menu moves on scroll
-  const sidebarRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      let elem = sidebarRef.current;
-      return elem ? elem.classList.toggle("sticky", window.scrollY > 0) : "";
-    });
-  }, []);
-
+  const containerRef = useRef<HTMLElement | null>(null);
   return (
-    <SidebarNav ref={sidebarRef} {...restProps}>
-      {children}
+    <SidebarNav ref={containerRef} {...restProps}>
+      {children}  
     </SidebarNav>
   );
 };

@@ -77,7 +77,6 @@ export const MenuListItem = styled.li`
   }
 
       &:last-child {
-    ${"" /* border: 2px solid white; */}
     display: flex;
     a {
       display: inherit;

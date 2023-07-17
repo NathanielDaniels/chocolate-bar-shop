@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
-${'' /* Loading dots animation */}
+${"" /* Loading dots animation */}
 .snippet {
   position: relative;
   top: 10px;

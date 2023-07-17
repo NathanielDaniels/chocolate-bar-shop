@@ -57,6 +57,8 @@ export const UserProfile = styled.main`
   }
 
   @media (max-width: 1200px) {
+    min-height: auto;
+    height: fit-content;
     width: 98%;
     margin: 0 auto;
     right: 0;
@@ -72,6 +74,9 @@ export const Container = styled.div<Props>`
   z-index: 2;
   // padding-top: ${(props: any) => (props.isSigninPage ? "100px" : "0px")};
   @media (max-width: 1200px) {
+    padding-top: 100px;
+    height: fit-content;
+    min-height: auto;
     width: 98%;
     margin: 0 auto;
     right: 0;
@@ -102,14 +107,15 @@ export const InnerForm = styled.form`
   position: relative;
   padding: 25px;
   border-radius: 10px;
-  @media (max-width: 1200px) {
-    min-height: 400px;
-  }
+  // @media (max-width: 1200px) {
+  //   min-height: 400px;
+  // }
 `;
 
 export const Text = styled.p`
   color: rgba(255, 255, 255, 0.6);
-  font-size: 16px;
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  // font-size: 16px;
   font-weight: 500;
 `;
 
