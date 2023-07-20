@@ -6,18 +6,19 @@ import { totalBarData } from "../assets/chocolateBarData";
 // import { totalBarData, products } from "../assets/chocolateBarData";
 
 interface ContextInterface {
-  allBars: {
-    id: string;
-    image: string;
-    title: string;
-    subTitle: string;
-    price: number;
-    alt: string;
-    about: string;
-    contains: string;
-    ingredients: string;
-    allergies: string;
-  }[];
+  getAllBars: any;
+  // allBars: {
+  //   id: string;
+  //   image: string;
+  //   title: string;
+  //   subTitle: string;
+  //   price: number;
+  //   alt: string;
+  //   about: string;
+  //   contains: string;
+  //   ingredients: string;
+  //   allergies: string;
+  // }[];
   allPhotos: {
     id: string;
     url: string;
@@ -61,7 +62,7 @@ interface ContextInterface {
 }
 
 const Context = React.createContext<ContextInterface>({
-  allBars: [],
+  getAllBars: [],
   allPhotos: [],
   toggleFavorite: () => {},
   cartItems: [],
@@ -93,14 +94,23 @@ type BarType = {
 };
 
 const ContextProvider: any = ({ children }: any) => {
-  // const [newBars, setNewBars] = useState<BarType[]>([]);
-  const [allBars] = useState<BarType[]>(totalBarData);
+  const [allChocoBars, setAllChocoBars] = useState<BarType[]>([]);
   const [allPhotos, setAllPhotos]: [PhotoType[], SetAllPhotosType] = useState(
     JSON.parse(localStorage.getItem("photos") || "[]") || []
   );
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("cartItems") || "[]") || []
   );
+
+  const getAllBars = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(totalBarData);
+    }, 1000);
+  });
+
+  getAllBars.then((data: any) => {
+    setAllChocoBars(data);
+  });
 
   type ImageType = {
     id: string;
@@ -111,11 +121,11 @@ const ContextProvider: any = ({ children }: any) => {
   useEffect(() => {
     const allImgs: ImageType[] = [];
     const photoStorage = JSON.parse(localStorage.getItem("photos") || "[]");
-    allBars.map((item) =>
+    allChocoBars.map((item) =>
       allImgs.push({ url: item.image, id: item.id, isFavorite: false })
     );
     return photoStorage.length > 0 ? photoStorage : setAllPhotos(allImgs);
-  }, [allBars]);
+  }, [allChocoBars]);
 
   function toggleFavorite(id: any) {
     const updatedArr = allPhotos.map((photo) => {
@@ -129,15 +139,33 @@ const ContextProvider: any = ({ children }: any) => {
 
   useEffect(() => {
     localStorage.setItem("photos", JSON.stringify(allPhotos));
+  }, [allPhotos]);
+
+  useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     if (cartItems.length === 0) {
       localStorage.removeItem("cartItems");
+      sessionStorage.removeItem("cartAmount");
     }
-  }, [allPhotos, cartItems]);
+
+    const updatedCartAmount = cartItems.reduce((total: any, item: any) => { 
+      total[item.id] = (total[item.id] || 0) + item.amount;
+      return total;
+    }, {});
+    sessionStorage.setItem("cartAmount", JSON.stringify(updatedCartAmount));
+  }, [cartItems]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  //   if (cartItems.length === 0) {
+  //     localStorage.removeItem("cartItems");
+  //     sessionStorage.removeItem("cartAmount");
+  //   }
+  // }, [cartItems]);
 
   function addToCart(item: any) {
     setCartItems((prevItems: any) => {
-      const itemIndex = prevItems.findIndex(
+      const itemIndex: any = prevItems.findIndex(
         (cartItem: any) => cartItem.id === item.id
       );
       if (itemIndex !== -1) {
@@ -154,6 +182,15 @@ const ContextProvider: any = ({ children }: any) => {
       }
     });
   }
+  //! Working to pull cart amounts from sessionStorage
+  // useEffect(() => {
+  //   const updatedCartAmounts = cartItems.map((item: any) => {
+  //     const { id, amount } = item;
+  //     return item.amount
+  //       ? { id: id, amount: amount }
+  //       : { ...item.id, amount: 0 };
+  //   });
+  // }, [cartItems]);
 
   function removeFromCart(id?: any) {
     if (id) {
@@ -162,7 +199,8 @@ const ContextProvider: any = ({ children }: any) => {
       );
     } else {
       setCartItems([]);
-      sessionStorage.setItem("cartAmount", JSON.stringify({}));
+      sessionStorage.removeItem("cartAmount");
+      localStorage.removeItem("cartItems");
     }
     const updatedCartItems = cartItems.filter((item: any) => item.id !== id);
     const updatedCartAmount = updatedCartItems.reduce(
@@ -177,12 +215,14 @@ const ContextProvider: any = ({ children }: any) => {
 
   function emptyCart() {
     setCartItems([]);
+    sessionStorage.removeItem("cartAmount");
+    localStorage.removeItem("cartItems");
   }
 
   return (
     <Context.Provider
       value={{
-        allBars,
+        getAllBars,
         allPhotos,
         toggleFavorite,
         cartItems,

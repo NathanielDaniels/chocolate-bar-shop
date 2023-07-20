@@ -17,11 +17,13 @@ import {
   MenuList,
   MenuItem,
   Link,
+  Overlay,
   ChocoSelectModal,
   ChocoModalContent,
 } from "./styles/chocoShop";
 import { AddToCartButton } from "../../containers/chocoShop";
 import { Context } from "../../context/Context";
+// import CloseIcon from "@mui/icons-material/Close";
 // import useHover from "../../hooks/useHover";
 // import { Context } from '../../context/Context';
 
@@ -69,7 +71,7 @@ ChocoShop.SidebarNav = function ChocoShopSidebarNav({
   const containerRef = useRef<HTMLElement | null>(null);
   return (
     <SidebarNav ref={containerRef} {...restProps}>
-      {children}  
+      {children}
     </SidebarNav>
   );
 };
@@ -157,46 +159,48 @@ ChocoShop.ChocoSelectModal = function ChocoShopChocoSelectModal({
   const { addToCart } = useContext(Context);
 
   return showModal ? (
-    <ChocoSelectModal>
-      <ChocoModalContent>
-        <button
-          onClick={() => {
-            setShowModal(false);
-            loading(true);
-          }}
-        >
-          X
-        </button>
-        <div className="leftSide">
-          <h1>{item.title}</h1>
-          <p className="about">{item.about}</p>
-        </div>
-        <div className="middleSide">
-          <img src={item.image} alt={item.alt} />
-          <div>
-            <p>{item.subTitle}</p>
+    <Overlay onClick={() => setShowModal(false)}>
+      <ChocoSelectModal onClick={(e) => e.stopPropagation()}>
+        <ChocoModalContent>
+          <button
+            onClick={() => {
+              setShowModal(false);
+              loading(true);
+            }}
+          >
+            X
+          </button>
+          <div className="leftSide">
+            <h1>{item.title}</h1>
+            <p className="about">{item.about}</p>
+          </div>
+          <div className="middleSide">
+            <img src={item.image} alt={item.alt} />
             <div>
-              <p>${item.price}</p>
-              <AddToCartButton
-                id={item.id}
-                addToCart={addToCart}
-                selectedItem={item}
-              />
+              <p>{item.subTitle}</p>
+              <div>
+                <p>${item.price}</p>
+                <AddToCartButton
+                  id={item.id}
+                  addToCart={addToCart}
+                  selectedItem={item}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="rightSide">
-          <div>
-            <h2>Ingredients:</h2>
-            <p>{item.ingredients}</p>
+          <div className="rightSide">
+            <div>
+              <h2>Ingredients:</h2>
+              <p>{item.ingredients}</p>
+            </div>
+            <div>
+              <h2>Contains:</h2>
+              <p>{item.contains}</p>
+            </div>
+            <p className="allergies">{item.allergies}</p>
           </div>
-          <div>
-            <h2>Contains:</h2>
-            <p>{item.contains}</p>
-          </div>
-          <p className="allergies">{item.allergies}</p>
-        </div>
-      </ChocoModalContent>
-    </ChocoSelectModal>
+        </ChocoModalContent>
+      </ChocoSelectModal>
+    </Overlay>
   ) : null;
 };

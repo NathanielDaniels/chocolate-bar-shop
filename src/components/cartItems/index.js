@@ -64,11 +64,11 @@ export default function CartItems({ children, ...restProps }) {
       setButtonText("Place Order");
       changeCartTitle();
       emptyCart();
-      sessionStorage.setItem("cartAmount", JSON.stringify({}));
+      sessionStorage.removeItem("cartAmount");
     }, 1500);
     setTimeout(() => {
       history.push("/ChocoShop");
-    }, 4000);
+    }, 3000);
   }
 
   function changeCartTitle() {
