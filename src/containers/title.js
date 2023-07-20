@@ -1,16 +1,18 @@
-import React from 'react';
-import { Title } from '../components'
+import { Title } from "../components";
 
 export function TitleContainer() {
   return (
     <Title>
       <div className="titleContent">
-        <Title.Top>Crazy About Chocolate</Title.Top>
-        <Title.Bottom>
-          <span className="serious">Serious</span> About <span className="people">People.</span>
-        </Title.Bottom>
-        <Title.Quote>"100% slave free becomes the norm in chocolate"</Title.Quote>
+        <Title.Main>Crazy About Chocolate</Title.Main>
+        <Title.Sub>
+          <span className="serious">Serious</span> <span>About </span>
+          <span className="people">People.</span>
+        </Title.Sub>
+        <Title.Quote>
+          "100% slave free becomes the norm in chocolate"
+        </Title.Quote>
       </div>
     </Title>
-  )
+  );
 }

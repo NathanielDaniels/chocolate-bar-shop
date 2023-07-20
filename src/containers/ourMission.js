@@ -1,97 +1,100 @@
 import { OurMission } from "../components";
 
+const MissionContent = (props) => {
+  const { img, text, position } = props;
+  return (
+    <>
+      <div className={position === "left" ? "left" : "right"}>
+        {position === "left" ? (
+          <img src={img.src} alt={img.alt} />
+        ) : (
+          <>
+            <h3>{text.title}</h3>
+            <p>{text.body}</p>
+          </>
+        )}
+      </div>
+      <div className={position === "left" ? "right" : "left"}>
+        {position === "left" ? (
+          <>
+            <h3>{text.title}</h3>
+            <p>{text.body}</p>
+          </>
+        ) : (
+          <img src={img.src} alt={img.alt} />
+        )}
+      </div>
+    </>
+  );
+};
+
 export function OurMissionContainer() {
   return (
     <OurMission>
       <OurMission.Info>
-        <div className="left">
-          <img
-            src="./img/OurMission/OurMission-sectionOne-blue.jpg"
-            alt="Chocolate Factory"
-          />
-        </div>
-        <div className="right">
-          <h3>The Problem</h3>
-          <p>
-            Things aren't being shared evenly in the chocolate supply chain. The
-            chain starts with millions of farmers who produce cocoa and ends
-            with the billions of consumers who enjoy chocolate. But what about
-            the bit in between? This section is dominated by a handful of
-            chocolate giants that profits from keeping the cocoa purchasing
-            price as low as possible. As a result, farmers are forced to live in
-            poverty.. leading to child labor and slavery.
-          </p>
-        </div>
+        <MissionContent
+          position="left"
+          img={{
+            src: "./img/OurMission/OurMission-sectionOne-blue.jpg",
+            alt: "Chocolate Factory",
+          }}
+          text={{
+            title: "The Problem",
+            body: "The chocolate supply chain isn't fair for everyone. It begins with many farmers who grow cocoa and ends with lots of people who love chocolate. But what happens in between? Only a few big chocolate companies control that part. They make a lot of money by paying farmers very little for their cocoa. This makes life really hard for the farmers, and some even have to use child labor or become slaves.",
+          }}
+        />
       </OurMission.Info>
       <OurMission.Info>
-        <div className="right">
-          <h3>What?! Modern Slaver?</h3>
-          <p>
-            Right now there is slavery on cocoa farms in West Africa. This is a
-            result of the unequally divided cocoa chain. Tony's Chocolonely
-            exists to change that. Illegal child labor and modern slavery are
-            against the law - it needs to stop.
-          </p>
-        </div>
-        <div className="left">
-          <img
-            src="./img/OurMission/OurMission-sectionTwo-transparent.png"
-            alt="Drawing of people next to a choco plant"
-          />
-        </div>
+        <MissionContent
+          position="right"
+          img={{
+            src: "./img/OurMission/OurMission-sectionTwo-transparent.png",
+            alt: "Drawing of people next to a choco plant",
+          }}
+          text={{
+            title: "What?! Modern Slavery?",
+            body: "Slavery continues to be a troubling issue on cocoa farms in West Africa due to the unequal distribution of resources. However, Tony's Chocolonely is committed to bringing about change and putting an end to this injustice. They believe that everyone deserves to be treated fairly and that no one should be forced into labor or slavery.",
+          }}
+        />
       </OurMission.Info>
       <OurMission.Info>
-        <div className="left">
-          <img
-            src="./img/OurMission/OurMission-sectionThree-yellow.png"
-            alt="Our Vision"
-          />
-        </div>
-        <div className="right">
-          <h3>Tony's route to 100% slave-free chocolate</h3>
-          <p>
-            Our vision: 100% slave-free chocolate. Not just our chocolate, but
-            all chocolate worldwide. How we are going to achieve that? It won't
-            be easy. And it's pretty complex. But we will accomplish it with the
-            help of Tony's roadmap. Our roadmap has 3 pillars and shows us the
-            way to 100% slave-free chocolate.
-          </p>
-        </div>
+        <MissionContent
+          position="left"
+          img={{
+            src: "./img/OurMission/OurMission-sectionThree-yellow.png",
+            alt: "Our Vision",
+          }}
+          text={{
+            title: "Tony's route to 100% slave-free chocolate",
+            body: "Our goal is to have all chocolate in the world be 100% free from slavery. It's not just about our chocolate, but all chocolate everywhere. How are we going to make that happen? It's going to be challenging and there are many things to consider. But with the help of Tony's roadmap, we have a plan. The roadmap has three important pillars that will guide us towards achieving our goal of having 100% slave-free chocolate.",
+          }}
+        />
       </OurMission.Info>
       <OurMission.Info>
-        <div className="right">
-          <h3>Tony's 5 Sourcing Principles for slave-free cocoa</h3>
-          <p>
-            With incredibly tasty chocolate, we lead by example to show the
-            world that chocolate can be made differently. By following Tony's
-            Sourcing Principles for slave-free cocoa, it's possible to make
-            slave-free chocolate and be commercially successful.
-          </p>
-        </div>
-        <div className="left">
-          <img
-            src="./img/OurMission/OurMission-sectionfour-tran.png"
-            alt="Our Vision"
-          />
-        </div>
+        <MissionContent
+          position="right"
+          img={{
+            src: "./img/OurMission/OurMission-sectionFour-tran.png",
+            alt: "Drawing of people next to a choco plant",
+          }}
+          text={{
+            title: "Tony's 5 Sourcing Principles for slave-free cocoa",
+            body: "We believe that chocolate can be made in a better way, and we lead by example with our incredibly delicious chocolate. We show the world that it's possible to make chocolate without using slaves. By following Tony's Sourcing Principles for cocoa, we ensure that our chocolate is free from slavery. And the best part is, we can still be successful as a business while making slave-free chocolate.",
+          }}
+        />
       </OurMission.Info>
       <OurMission.Info>
-        <div className="left">
-          <img
-            src="./img/OurMission/OurMission-sectionFive-tran.png"
-            alt="Our Vision"
-          />
-        </div>
-        <div className="right">
-          <h3>All hands on deck!</h3>
-          <p>
-            We can't do it alone. Alone we'll make slave-free chocolate but
-            together we can make all chocolate 100% slave free. The more people
-            who join our mission and share our story, the sooner 100% slave free
-            becomes the norm in chocolate. We all have to roll up our sleeves..
-            So what action do we expect everyone to take?
-          </p>
-        </div>
+        <MissionContent
+          position="left"
+          img={{
+            src: "./img/OurMission/OurMission-sectionFive-tran.png",
+            alt: "Our Vision",
+          }}
+          text={{
+            title: "All hands on deck!",
+            body: "We know that we can't achieve our goal alone. While we are committed to making slave-free chocolate, we need everyone to join us in this mission. It's a collective effort, and we all need to roll up our sleeves and take action. So, what can you do to help? Share our story, raise awareness about the issue of slavery in the chocolate industry, and support companies that prioritize slave-free cocoa. Together, we can create a significant impact and make slave-free chocolate the norm.",
+          }}
+        />
       </OurMission.Info>
     </OurMission>
   );

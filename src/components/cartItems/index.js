@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Container, CartItem, Main } from "./styles/cartItems";
@@ -58,18 +58,17 @@ export default function CartItems({ children, ...restProps }) {
 
   function placeOrder() {
     const orderButton = document.querySelector(".order-button > button");
-    // orderButton.style.backgroundColor = "hsla(62.4, 100%, 50%, 50%)";
     orderButton.style.backgroundColor = "#3e8e41";
     setButtonText("Ordering...");
     setTimeout(() => {
       setButtonText("Place Order");
       changeCartTitle();
       emptyCart();
-      sessionStorage.setItem("cartAmount", JSON.stringify({}));
+      sessionStorage.removeItem("cartAmount");
     }, 1500);
     setTimeout(() => {
       history.push("/ChocoShop");
-    }, 4000);
+    }, 3000);
   }
 
   function changeCartTitle() {
@@ -91,6 +90,7 @@ export default function CartItems({ children, ...restProps }) {
       )}
     </>
   );
+
   const amountInCart = cartItemElements.length;
   return (
     <CartContext.Provider

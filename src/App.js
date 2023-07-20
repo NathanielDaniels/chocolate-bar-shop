@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./pages/Home";
 import JoinForm from "./pages/JoinForm";
 import Profile from "./pages/Profile";
@@ -44,7 +43,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
-  );
+  )
 }
 
 export default App;

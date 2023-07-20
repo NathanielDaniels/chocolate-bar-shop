@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Form } from "../components";
 import { About } from "../components";
@@ -45,14 +45,12 @@ export function FormContainer() {
       <About>
         <About.Inner>
           <About.Title>
-            together we'll make all chocolate worldwide 100% slave free
+            Together we'll make all chocolate worldwide 100% slave free
           </About.Title>
           <About.Info>
-            All chocolate 100% slave free. Worldwide. That's our mission. And we
-            can't do it alone. We need your help! Become Serious Friends with
-            Tony's and support the mission. We'll help you with tools, videos
-            and information in the Tony's Toolbox. And 'cause we're friends,
-            there'll be some presents in there sometimes too.
+            Join the movement with Tony's and help us achieve our mission of
+            ensuring that all chocolate is 100% slave-free worldwide. Together,
+            let's revolutionize the industry!
           </About.Info>
         </About.Inner>
         <Form>

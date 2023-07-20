@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 // import { v4 as uuidv4 } from "uuid";
 import { ChocoShop } from "../components";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
@@ -7,17 +6,30 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { Context } from "../context/Context";
 import { Loader } from "../components/Loader";
 
-interface CartAmounts {
+interface CartAmountsType {
   [key: string]: number;
 }
 
+type BarType = {
+  id: string;
+  image: string;
+  title: string;
+  subTitle: string;
+  price: number;
+  alt: string;
+  about: string;
+  contains: string;
+  ingredients: string;
+  allergies: string;
+};
+
 export const AddToCartButton = ({ id, addToCart, selectedItem }: any) => {
-  const [cartAmount, setCartAmount] = useState<CartAmounts>(() => {
+  const [cartAmount, setCartAmount] = useState<CartAmountsType>(() => {
     const storedCartAmount = sessionStorage.getItem("cartAmount");
     return storedCartAmount ? JSON.parse(storedCartAmount) : {};
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     sessionStorage.setItem("cartAmount", JSON.stringify(cartAmount));
   }, [cartAmount]);
 
@@ -28,7 +40,7 @@ export const AddToCartButton = ({ id, addToCart, selectedItem }: any) => {
     e.preventDefault();
     const { id, image, title, price } = selectedItem;
     // let randomId: any = uuidv4();
-    setCartAmount((prevCartAmounts: CartAmounts) => {
+    setCartAmount((prevCartAmounts: CartAmountsType) => {
       const prevAmount = prevCartAmounts[id] || 0;
       return {
         ...prevCartAmounts,
@@ -80,31 +92,46 @@ export const FeatureContext = createContext(null);
 export const FeatureModalContext = createContext(null);
 
 export function ChocoShopContainer() {
-  const { allBars, addToCart } = useContext(Context);
-  const ChocoShopTotalMenu = allBars;
-  const [itemFeature, setItemFeature] = useState(ChocoShopTotalMenu);
+  const { getAllBars, addToCart } = useContext(Context);
+  const [allChocoBars, setAllChocoBars] = useState<BarType[]>([]);
+  const [featureItems, setFeatureItems] = useState([]);
   const [activeMenu, setActiveMenu] = useState("All Chocolates");
   const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
-    loading &&
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    // return () => {
-    //   setLoading(true);
-    // };
-  }, [loading]);
+  const bigBarPrice = 5.95;
+  const smallBarPrice = 2.39;
+  const tinyTonysPrice = 48.69;
 
-  const filterBigBars = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 5.95
-  );
-  const filterSmallBars = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 2.39
-  );
-  const filterTinyTonys = ChocoShopTotalMenu.filter(
-    (bars) => bars.price === 48.69
-  );
+  useEffect(() => {
+    loading && allChocoBars.length > 0 && setLoading(false);
+  }, [loading, allChocoBars]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    getAllBars.then((data: any) => {
+      if (isMounted) {
+        setAllChocoBars(data);
+        setFeatureItems(data);
+        setLoading(false);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [getAllBars, loading]);
+
+  function chocoFilter(barPrice: number) {
+    const filterAllChocoBars = allChocoBars.filter(
+      (bars: any) => bars.price === barPrice
+    );
+    return filterAllChocoBars;
+  }
+
+  const filterBigBars = chocoFilter(bigBarPrice);
+  const filterSmallBars = chocoFilter(smallBarPrice);
+  const filterTinyTonys = chocoFilter(tinyTonysPrice);
 
   const handleMenuItemClick = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -112,85 +139,75 @@ export function ChocoShopContainer() {
     active: string
   ) => {
     e.preventDefault();
-    setItemFeature(() => menu);
+    setFeatureItems(() => menu);
     setActiveMenu(() => active);
   };
 
+  const NavbarButton = ({
+    name,
+    selection,
+  }: {
+    name: string;
+    selection: Object[];
+  }) => {
+    return (
+      <button
+        type="button"
+        className={activeMenu === name ? "active" : ""}
+        onClick={(e) => handleMenuItemClick(e, selection, name)}
+      >
+        {name}
+      </button>
+    );
+  };
+
   return (
-    <ChocoShop>
-      <ChocoShop.SidebarContainer>
-        <ChocoShop.SidebarNav>
-          <ChocoShop.SidebarNavList>
-            <button
-              type="button"
-              className={activeMenu === "All Chocolates" ? "active" : ""}
-              onClick={(e) =>
-                handleMenuItemClick(e, ChocoShopTotalMenu, "All Chocolates")
-              }
-            >
-              All Chocolates
-            </button>
-            <button
-              type="button"
-              className={activeMenu === "Big Bars" ? "active" : ""}
-              onClick={(e) => handleMenuItemClick(e, filterBigBars, "Big Bars")}
-            >
-              Big Bars
-            </button>
-            <button
-              type="button"
-              className={activeMenu === "Small Bars" ? "active" : ""}
-              onClick={(e) =>
-                handleMenuItemClick(e, filterSmallBars, "Small Bars")
-              }
-            >
-              Small Bars
-            </button>
-            <button
-              type="button"
-              className={activeMenu === "Tiny Tony's" ? "active" : ""}
-              onClick={(e) =>
-                handleMenuItemClick(e, filterTinyTonys, "Tiny Tony's")
-              }
-            >
-              Tiny Tony's
-            </button>
-          </ChocoShop.SidebarNavList>
-        </ChocoShop.SidebarNav>
-      </ChocoShop.SidebarContainer>
-      <ChocoShop.MainMenuContainer>
-        <ChocoShop.MainMenu>
-          <ChocoShop.MenuList>
-            {loading ? (
-              <ChocoShop.Loading>
-                <Loader />
-              </ChocoShop.Loading>
-            ) : (
-              itemFeature.map((item) => {
-                const { id, image, title, subTitle, price, alt } = item;
-                return (
-                  <ChocoShop.MenuItem key={id}>
-                    <ChocoShop.Link item={item} key={id}>
-                      <img src={image} alt={`...loading ${alt}`} />
-                    </ChocoShop.Link>
-                    <p className="title">{title}</p>
-                    <p className="subTitle">{subTitle}</p>
-                    <div>
-                      <p>${price}</p>
-                      <AddToCartButton
-                        id={id}
-                        addToCart={addToCart}
-                        selectedItem={item}
-                      />
-                    </div>
-                  </ChocoShop.MenuItem>
-                );
-              })
-            )}
-          </ChocoShop.MenuList>
-        </ChocoShop.MainMenu>
-      </ChocoShop.MainMenuContainer>
-      <ChocoShop.ChocoSelectModal loading={setLoading} />
-    </ChocoShop>
+    <>
+      <ChocoShop>
+        <ChocoShop.SidebarContainer>
+          <ChocoShop.SidebarNav>
+            <ChocoShop.SidebarNavList>
+              <NavbarButton name="All Chocolates" selection={allChocoBars} />
+              <NavbarButton name="Big Bars" selection={filterBigBars} />
+              <NavbarButton name="Small Bars" selection={filterSmallBars} />
+              <NavbarButton name="Tiny Tony's" selection={filterTinyTonys} />
+            </ChocoShop.SidebarNavList>
+          </ChocoShop.SidebarNav>
+        </ChocoShop.SidebarContainer>
+        <ChocoShop.MainMenuContainer>
+          <ChocoShop.MainMenu>
+            <ChocoShop.MenuList>
+              {loading ? (
+                <ChocoShop.Loading>
+                  <Loader currentPage={"chocoShop"} />
+                </ChocoShop.Loading>
+              ) : (
+                featureItems.map((item) => {
+                  const { id, image, title, subTitle, price, alt } = item;
+                  return (
+                    <ChocoShop.MenuItem key={id}>
+                      <ChocoShop.Link item={item} key={id}>
+                        <img src={image} alt={`...loading ${alt}`} />
+                      </ChocoShop.Link>
+                      <p className="title">{title}</p>
+                      <p className="subTitle">{subTitle}</p>
+                      <div>
+                        <p>${price}</p>
+                        <AddToCartButton
+                          id={id}
+                          addToCart={addToCart}
+                          selectedItem={item}
+                        />
+                      </div>
+                    </ChocoShop.MenuItem>
+                  );
+                })
+              )}
+            </ChocoShop.MenuList>
+          </ChocoShop.MainMenu>
+        </ChocoShop.MainMenuContainer>
+        <ChocoShop.ChocoSelectModal loading={setLoading} />
+      </ChocoShop>
+    </>
   );
 }

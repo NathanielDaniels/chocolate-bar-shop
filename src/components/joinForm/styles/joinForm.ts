@@ -6,6 +6,8 @@ type Props = {
 };
 
 export const UserProfile = styled.main`
+  min-height: 700px;
+  height: 100vh;
   color: var(--main-yellow);
   font-size: clamp(0.7rem, 3vw, 1.4rem);
   z-index: 1;
@@ -55,6 +57,8 @@ export const UserProfile = styled.main`
   }
 
   @media (max-width: 1200px) {
+    min-height: auto;
+    height: fit-content;
     width: 98%;
     margin: 0 auto;
     right: 0;
@@ -62,9 +66,17 @@ export const UserProfile = styled.main`
   }
 `;
 export const Container = styled.div<Props>`
+  min-height: 700px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
-  padding-top: ${(props: any) => (props.isSigninPage ? "100px" : "0px")};
+  // padding-top: ${(props: any) => (props.isSigninPage ? "100px" : "0px")};
   @media (max-width: 1200px) {
+    padding-top: 100px;
+    height: fit-content;
+    min-height: auto;
     width: 98%;
     margin: 0 auto;
     right: 0;
@@ -95,14 +107,15 @@ export const InnerForm = styled.form`
   position: relative;
   padding: 25px;
   border-radius: 10px;
-  @media (max-width: 1200px) {
-    min-height: 400px;
-  }
+  // @media (max-width: 1200px) {
+  //   min-height: 400px;
+  // }
 `;
 
 export const Text = styled.p`
   color: rgba(255, 255, 255, 0.6);
-  font-size: 16px;
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  // font-size: 16px;
   font-weight: 500;
 `;
 

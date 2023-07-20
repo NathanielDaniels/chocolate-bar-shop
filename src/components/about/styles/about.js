@@ -1,14 +1,20 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.section`
+  min-height: 700px;
+  height: 100vh;
   position: relative;
   display: flex;
   flex-wrap: wrap;
   padding-top: 100px;
   justify-content: center;
   align-items: center;
-  height: auto;
   margin: 0 auto;
+  @media (max-width: 1200px) {
+    min-height: auto;
+    height: auto;
+    padding-top: 0;
+  }
 `;
 
 export const Inner = styled.div`
@@ -33,8 +39,10 @@ export const Inner = styled.div`
 
 export const Title = styled.h2`
   color: var(--main-yellow);
+  max-width: 300px;
+  margin-bottom: 5px;
   @media (max-width: 600px) {
-    width: 80%;
+    ${"" /* width: 80%; */}
     font-size: 1.3rem;
   }
 `;

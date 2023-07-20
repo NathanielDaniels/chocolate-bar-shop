@@ -1,4 +1,3 @@
-import React from "react";
 import { Chocolate } from "../components";
 
 export function ChocolateContainer() {

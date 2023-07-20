@@ -1,19 +1,16 @@
 import styled from "styled-components/macro";
 
-export const Container = styled.section`
+export const Container = styled.main`
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 100vh 1fr;
   background: white;
-  width: 100%;
   @media (max-width: 800px) {
     grid-template-columns: 1fr 3fr;
   }
-
   @media (max-width: 600px) {
     grid-template-columns: 1fr 2.2fr;
   }
-
   @media (max-width: 400px) {
     grid-template-columns: 1fr 1.5fr;
   }
@@ -23,36 +20,21 @@ export const Container = styled.section`
 export const SidebarContainer = styled.section`
   background: var(--main-blue);
   border-right: 2px solid var(--main-red);
-  height: 100%;
-  width: 100%;
-  grid-column: 1 / 2;
-  grid-row: 1;
-  ${"" /* max-height: calc(100vh - 100px); */}
-  ${"" /* overflow-y: auto; */}
-`;
-export const Loading = styled.section`
-  min-height: 100dvh;
 `;
 
 export const SidebarNav = styled.nav`
-  position: fixed;
-  top: 100px;
-  transition: top 0.3s ease-in-out;
-
-  //? Sticky Menu on scroll
-  &.sticky {
-    top: 75px;
-  }
+  height: 100%;
 `;
 
 export const SidebarNavList = styled.ul`
-  width: 100%;
+  position: sticky;
+  top: 75px;
   button {
     all: unset;
     cursor: pointer;
-    width: 100%;
-    height: 50px;
-    padding: 0 20px;
+    width: auto;
+    text-wrap: nowrap;
+    padding: 0px 20px;
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -67,9 +49,8 @@ export const SidebarNavList = styled.ul`
       font-size: clamp(1rem, 2.2vw, 1.6rem);
       height: 30px;
     }
-
     @media (max-width: 600px) {
-      padding: 0 10px;
+      padding: 5px 10px;
     }
   }
 
@@ -87,8 +68,12 @@ export const MainMenuContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid var(--main-red);
+  align-items: flex-start;
+  overflow-y: auto;
+`;
+
+export const Loading = styled.section`
+  min-height: 100dvh;
 `;
 
 export const MainMenu = styled.div`
@@ -97,7 +82,6 @@ export const MainMenu = styled.div`
 
 export const MenuList = styled.ul`
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
@@ -138,7 +122,6 @@ export const MenuItem = styled.li`
         border-radius: 50%;
         width: 30px;
         height: 30px;
-        z-index: 1;
         position: absolute;
         top: -25px;
         right: -15px;
@@ -168,21 +151,33 @@ export const Link = styled.a`
     width: clamp(150px, 22vw, 300px);
     aspect-ratio: 10/6;
     object-fit: contain;
-    ${"" /* object-fit: scale-down; */}
-    ${"" /* mix-blend-mode: color-burn; */}
-    ${"" /* max-width: 300px; */};
   }
 `;
 
 //? Popup Modal ===========================
+export const Overlay = styled.div`
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ChocoSelectModal = styled.div`
-  z-index: 9999;
   width: 80%;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   border: 2px solid red;
   background: var(--main-white);
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -191,12 +186,12 @@ export const ChocoSelectModal = styled.div`
   }
   @media (max-width: 800px) {
     width: 80%;
-    ${"" /* height: auto; */}
     padding: 0;
   }
 `;
 
 export const ChocoModalContent = styled.div`
+  z-index: 10000;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
@@ -208,6 +203,8 @@ export const ChocoModalContent = styled.div`
   }
 
   button {
+    all: unset;
+    font-size: 1.5rem;
     position: absolute;
     cursor: pointer;
     padding: 5px 10px;
@@ -257,7 +254,6 @@ export const ChocoModalContent = styled.div`
           border-radius: 50%;
           width: 30px;
           height: 30px;
-          z-index: 1;
           position: absolute;
           top: -25px;
           right: -15px;
@@ -280,7 +276,6 @@ export const ChocoModalContent = styled.div`
       grid-column: 1;
       grid-row: 2 / 3;
       flex-direction: row;
-      ${"" /* align-items: center; */}
       height: fit-content;
       img {
         width: clamp(100px, 30vw, 200px);

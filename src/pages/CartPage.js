@@ -4,7 +4,7 @@ import { HeaderContainer } from "../containers/header";
 import { ChocolateContainer } from "../containers/chocolate";
 import { FooterContainer } from "../containers/footer";
 
-function Cart() {
+export default function Cart() {
   return (
     <>
       <HeaderContainer />
@@ -14,5 +14,3 @@ function Cart() {
     </>
   );
 }
-
-export default Cart;
