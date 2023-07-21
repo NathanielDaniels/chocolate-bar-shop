@@ -52,7 +52,7 @@ export const AddToCartButton = ({ id, addToCart, selectedItem }: any) => {
       image,
       title,
       price,
-      amount: cartAmount || 0,
+      amount: cartAmount[id] || 0,
     });
   };
   return (
@@ -112,7 +112,9 @@ export function ChocoShopContainer() {
     getAllBars.then((data: any) => {
       if (isMounted) {
         setAllChocoBars(data);
-        setFeatureItems(data);
+        if (featureItems.length === 0) {
+          setFeatureItems(data);
+        }
         setLoading(false);
       }
     });
@@ -120,7 +122,7 @@ export function ChocoShopContainer() {
     return () => {
       isMounted = false;
     };
-  }, [getAllBars, loading]);
+  }, [getAllBars, loading, featureItems.length]);
 
   function chocoFilter(barPrice: number) {
     const filterAllChocoBars = allChocoBars.filter(
