@@ -87,9 +87,4 @@ export const CartItem = styled.div`
     cursor: pointer;
     margin-right: 20px;
   }
-  ${
-    "" /* p {
-    padding-left: 20px;
-  } */
-  }
 `;
