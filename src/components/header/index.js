@@ -7,7 +7,13 @@ export default function Header({ children, ...restProps }) {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       const elem = headerDom.current;
-      return elem ? elem.classList.toggle("sticky", window.scrollY > 0) : "";
+      if (elem) {
+        if (window.innerWidth > 800) {
+          elem.classList.toggle("sticky", window.scrollY > 0);
+        } else {
+          elem.classList.add("sticky");
+        }
+      }
     });
   }, []);
 
