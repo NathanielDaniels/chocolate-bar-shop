@@ -12,7 +12,8 @@ export const CartContext = createContext();
 
 export default function CartItems({ children, ...restProps }) {
   const [buttonText, setButtonText] = useState("Place Order");
-  const { cartItems, emptyCart, removeFromCart } = useContext(Context);
+  const { cartItems, setCartItems, emptyCart, removeFromCart } =
+    useContext(Context);
   const history = useHistory();
   // const [hovered, ref] = useHover();
 
@@ -38,6 +39,36 @@ export default function CartItems({ children, ...restProps }) {
   //   };
   // }
 
+  const updateAmount = (itemId, newAmount) => {
+    setCartItems((prevCartItems) => {
+      return prevCartItems.map((item) => {
+        if (item.id === itemId) {
+          return { ...item, amount: newAmount };
+        } else {
+          return item;
+        }
+      });
+    });
+  };
+
+  const CartItemInput = ({ item, updateAmount }) => {
+    const [amount, setAmount] = useState(item.amount);
+
+    const handleChange = (event) => {
+      const newAmount = parseInt(event.target.value, 10);
+      if (!isNaN(newAmount)) {
+        setAmount(newAmount);
+        updateAmount(item.id, newAmount);
+      }
+    };
+
+    return (
+      <span className="cart-item-input">
+        <input type="number" value={amount} onChange={handleChange} min="1" />
+      </span>
+    );
+  };
+
   const cartItemElements = cartItems.map((item) => {
     return (
       <CartItem key={item.id}>
@@ -49,7 +80,11 @@ export default function CartItems({ children, ...restProps }) {
           <p>{item.title}</p>
           <p>${item.price}</p>
           <div>
-            <p>x{item.amount}</p>
+            <CartItemInput
+              key={item.id}
+              item={item}
+              updateAmount={updateAmount}
+            />
           </div>
         </div>
       </CartItem>

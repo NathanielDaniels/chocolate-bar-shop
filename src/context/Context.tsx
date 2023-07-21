@@ -147,21 +147,12 @@ const ContextProvider: any = ({ children }: any) => {
       localStorage.removeItem("cartItems");
       sessionStorage.removeItem("cartAmount");
     }
-
-    const updatedCartAmount = cartItems.reduce((total: any, item: any) => { 
+    const updatedCartAmount = cartItems.reduce((total: any, item: any) => {
       total[item.id] = (total[item.id] || 0) + item.amount;
       return total;
     }, {});
     sessionStorage.setItem("cartAmount", JSON.stringify(updatedCartAmount));
   }, [cartItems]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  //   if (cartItems.length === 0) {
-  //     localStorage.removeItem("cartItems");
-  //     sessionStorage.removeItem("cartAmount");
-  //   }
-  // }, [cartItems]);
 
   function addToCart(item: any) {
     setCartItems((prevItems: any) => {
@@ -229,7 +220,7 @@ const ContextProvider: any = ({ children }: any) => {
         setCartItems,
         addToCart,
         removeFromCart,
-        emptyCart,
+        emptyCart,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
       }}
     >
       {children}

@@ -56,20 +56,40 @@ export const CartItem = styled.div`
   background: var(--main-white);
   color: var(--main-blue);
   position: relative;
-  display: flex;
-  align-items: center;
   margin: 20px 0;
   .cart-item {
-    display: inherit;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 30px 120px 200px 70px 80px;
+    grid-template-rows: 1fr;
+    place-items: center;
     width: 100%;
+    \ p {
+      text-align: center;
+    }
+    div {
+      display: inherit;
+      width: 60px;
+      justify-content: space-between;
+      .cart-item-input {
+        input {
+          width: 45px;
+          border-radius: 5px;
+          border: 1px solid var(--main-blue);
+          padding: 5px;
+          text-align: center;
+          font-size: 16px;
+          color: var(--main-green);
+        }
+      }
+    }
   }
   i {
     cursor: pointer;
     margin-right: 20px;
   }
-  p {
+  ${
+    "" /* p {
     padding-left: 20px;
+  } */
   }
 `;
