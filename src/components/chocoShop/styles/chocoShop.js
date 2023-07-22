@@ -169,8 +169,8 @@ export const Overlay = styled.div`
 `;
 
 export const ChocoSelectModal = styled.div`
-  width: 80%;
-  padding: 20px;
+  width: clamp(800px, 95vw, 1200px);
+  ${"" /* padding: 20px; */}
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
@@ -185,7 +185,7 @@ export const ChocoSelectModal = styled.div`
     width: 100%;
   }
   @media (max-width: 800px) {
-    width: 80%;
+    width: 22rem;
     padding: 0;
   }
 `;
@@ -200,6 +200,9 @@ export const ChocoModalContent = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
   button {
@@ -208,9 +211,18 @@ export const ChocoModalContent = styled.div`
     position: absolute;
     cursor: pointer;
     padding: 5px 10px;
-    margin: 10px;
-    right: 0;
-    top: 0;
+    right: 0px;
+    top: 0px;
+    border-bottom-left-radius: 20%;
+    border-top-right-radius: 20%;
+    border: 2px solid var(--main-red);
+    background-color: var(--main-red);
+    color: var(--main-white);
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: rgba(210, 0, 0);
+      border: 1px solid white;
+    } 
   }
   .leftSide,
   .rightSide {
@@ -226,6 +238,9 @@ export const ChocoModalContent = styled.div`
     flex-direction: column;
     justify-content: center;
     @media (max-width: 800px) {
+      h1 {
+        font-size: 1.2rem;
+      }
       grid-column: 1;
       grid-row: 1 / 2;
       font-size: 12px;
@@ -245,6 +260,8 @@ export const ChocoModalContent = styled.div`
       font-size: 1.4rem;
       justify-content: space-evenly;
       div {
+        width: 120px;
+        justify-content: space-between;
         flex-direction: row;
         font-weight: 500;
         position: relative;
@@ -278,7 +295,7 @@ export const ChocoModalContent = styled.div`
       flex-direction: row;
       height: fit-content;
       img {
-        width: clamp(100px, 30vw, 200px);
+        width: clamp(170px, 30vw, 200px);
         max-width: 50%;
         margin: 0;
         height: fit-content;

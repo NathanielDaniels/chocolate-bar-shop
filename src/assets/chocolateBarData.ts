@@ -23,7 +23,7 @@ export const totalBarData = [
     price: 5.95,
     alt: "Milk Chocolate Hazelnut Bar",
     about:
-      "This flavor is a perfect combo of 32% Fairtrade milk chocolate and a minimum of 10% hazelnuts. Did you know that we hid a map of Western Africa in our unequally divided bar? We couldn't fit whole hazelnuts into the pieces that represent Togo and Benin! After a very heated debate, we completely and politically incorrectly combined two separate countries into one bigger piece so we could use whole hazelnuts.",
+      "This flavor is a perfect combo of 32% Fairtrade milk chocolate and a minimum of 10% hazelnuts. Did you know that we hid a map of Western Africa in our unequally divided bar? After a very heated debate, we completely and politically incorrectly combined two separate countries into one bigger piece so we could use whole hazelnuts.",
     contains:
       "Belgian milk chocolate with hazelnut. Cocoa solids: 32% minimum. Made in Belgium.",
     ingredients:
@@ -38,7 +38,7 @@ export const totalBarData = [
     price: 5.95,
     alt: "Milk Caramel Sea Salt Bar",
     about:
-      "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. Sweet and salty never tasted soooo good. Well, at least that’s what our chocofans think. It’s our best seller worldwide!",
+      "We like to do things differently and this bar is no exception. We took our classic milk chocolate and added crunchy caramel (yea, you heard right) and flakes of sea salt. It’s our best seller worldwide!",
     contains:
       "Belgian milk chocolate with caramel and sea salt. Cocoa solids: 32% minimum. Made in Belgium.",
     ingredients:
