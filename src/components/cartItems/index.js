@@ -107,6 +107,7 @@ export default function CartItems({ children, ...restProps }) {
   }
 
   function changeCartTitle() {
+    window.scrollTo(0, 0);
     const title = document.querySelector(".cart-page > h1");
     title.style.color = "var(--main-yellow)";
     title.innerText = "Order Placed!";

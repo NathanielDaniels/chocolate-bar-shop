@@ -170,7 +170,6 @@ export const Overlay = styled.div`
 
 export const ChocoSelectModal = styled.div`
   width: clamp(800px, 95vw, 1200px);
-  ${"" /* padding: 20px; */}
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
@@ -222,7 +221,7 @@ export const ChocoModalContent = styled.div`
     &:hover {
       background-color: rgba(210, 0, 0);
       border: 1px solid white;
-    } 
+    }
   }
   .leftSide,
   .rightSide {
