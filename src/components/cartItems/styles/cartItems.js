@@ -16,7 +16,13 @@ export const Main = styled.main`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  width: 550px;
+  width: clamp(400px, 80vw, 600px);
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+  @media (max-width: 500px) {
+    padding: 10px;
+  }
   h1 {
     text-align: center;
     font-size: 3rem;
@@ -52,27 +58,30 @@ export const Main = styled.main`
 export const CartItem = styled.div`
   border: 2px solid var(--main-red);
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 15px;
+  padding: clamp(15px, 2vw, 20px) clamp(5px, 2vw, 15px);
   background: var(--main-white);
   color: var(--main-blue);
   position: relative;
-  margin: 20px 0;
+  margin: clamp(5px, 2vw, 20px) 0;
   .cart-item {
     display: grid;
-    grid-template-columns: 30px 120px 200px 70px 80px;
+    grid-template-columns: 0.5fr 1.5fr 2fr 1fr 0.5fr;
     grid-template-rows: 1fr;
     place-items: center;
     width: 100%;
-    \ p {
+    p {
       text-align: center;
+    }
+    img {
+      width: clamp(65px, 20vw, 100px);
     }
     div {
       display: inherit;
-      width: 60px;
       justify-content: space-between;
       .cart-item-input {
         input {
-          width: 45px;
+          width: clamp(30px, 8vw, 45px);
           border-radius: 5px;
           border: 1px solid var(--main-blue);
           padding: 5px;
@@ -84,7 +93,11 @@ export const CartItem = styled.div`
     }
   }
   i {
+    display: flex;
     cursor: pointer;
-    margin-right: 20px;
+    justify-self: center;
+    svg {
+      font-size: 2rem;
+    }
   }
 `;
